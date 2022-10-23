@@ -1,0 +1,4 @@
+podstawa: dziennik treningowy bjj i manager nawyków
+połączenie z bjj heroes
+wyliczanie kalorii w zaleznosci od czasu
+polaczenie z terminarzem zawodów

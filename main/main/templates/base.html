@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+
+        nav{
+            height:4%;
+            width:30%;
+            position:absolute;
+            z-index:1;
+            top:0;
+            right:0;
+            background-color:dimgray;
+            padding:18px 14px
+
+
+        }
+        nav a{
+            padding:6px 8px 6px 16px;
+           text-decoration: none;
+            color:white;
+            display:inline-block;
+            font-family: 'Roboto', sans-serif;
+
+        }
+
+    </style>
+    <title> {% block title %}  HABJJ IT {% endblock %} </title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+        <div class="topnav">
+            <nav>
+                <a href="/">Home</a>
+                <a href="/create">To Do Manager</a>
+                <a href="/2">Contact</a>
+            <nav>
+        </div>
+        <div id="contentblock"  class ="main">
+            {% block content %}
+            {% endblock %}
+        </div>
+</body>
+</html>
