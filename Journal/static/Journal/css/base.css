@@ -1,0 +1,20 @@
+
+nav{
+    z-index:1;
+    padding:0 25px;
+    line-height: 45px;
+    list-style: none;
+
+
+    }
+nav a{
+    padding:6px 8px 6px 16px;
+    text-decoration: none;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+
+}
+.banner-image{
+
+    background-size:cover;
+}
