@@ -5,5 +5,4 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('<int:id>', views.urladjuster, name='urladjuster'),
     path('create/', views.create, name='create'),
-
 ]

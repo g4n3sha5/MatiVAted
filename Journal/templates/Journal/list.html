@@ -6,21 +6,30 @@
     <form method="post" action = "#">
         {% csrf_token %}
 
-        <ul>
+
 
             {% for item in checklist.item_set.all %}
-                {%  if item.checked == True %}
-                    <li> <input type="checkbox" value ="clicked" name ="c{{item.id}}" checked>  {{ item.text }} </li>
-                {% else %}
-                    <li> <input type="checkbox" value ="clicked" name ="c{{item.id}}">{{ item.text }} </li>
-                {% endif %}
+                <div class ="input-group mb-3 ">
+                    <div class="input-group-prepend input-group-text">
+                        {%  if item.checked == True %}
+                            <input type="checkbox" value ="clicked" name ="c{{item.id}}" checked>
+                        {% else %}
+                            <input type="checkbox" value ="clicked" name ="c{{item.id}}">
+                        {% endif %}
+                    </div>
+                    <input type="text" value="{{ item.text }}" class="form-control">
+                </div>
             {% endfor %}
 
-        </ul>
 
-        <button type="submit" name="save" value="save">Save</button>
-        <input type="text" name ="newItemText">
-        <button type="submit" name="newItem" value="newItem"> Add Item </button>
-
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input class ="form-control mx-3" type="text" name ="newItemText">
+                    <button class = "btn btn-primary" type="submit" name="newItem" value="newItem"> Add Item </button>
+                </div>
+                <button class = "btn btn-success mt-2" type="submit" name="save" value="save">Save</button>
+            </div>
+        </div>
     </form>
 {% endblock %}

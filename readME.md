@@ -1,7 +1,4 @@
-podstawa: dziennik treningowy bjj i manager nawyków
-połączenie z bjj heroes
-wyliczanie kalorii w zaleznosci od czasu
-polaczenie z terminarzem zawodów
+
 # Sun Jitsu - Journal
 
 As numerous studies have shown, monitoring your progress and tracking your habits makes us significantly more prone to 

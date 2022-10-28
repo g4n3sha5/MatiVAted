@@ -16,7 +16,6 @@ def urladjuster(response, id):
     }
 
     if response.method =="POST":
-        # print(response.POST)
         if response.POST.get("save"):
             for item in checklist.item_set.all():
                 if response.POST.get("c" + str(item.id)) == "clicked":

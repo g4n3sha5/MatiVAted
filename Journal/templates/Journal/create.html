@@ -1,17 +1,21 @@
 {% extends 'Journal/base_ToDoList.html' %}
-{% block title %} Create your list!{% endblock %}
+{% block title %} ToDoList!{% endblock %}
 
 {% block content %}
     <form method ="post" action ="/create/">
-        {% csrf_token %}
-        {{ form.as_p }}
-    <button type ="submit" name ="save">Create To Do List</button>
+        <div class="input-group mb-3">
+            <div class ="input-group-prepend">
 
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type ="submit" name ="save" class="btn btn-success">Create To Do List</button>
+            </div>
+        </div>
     </form>
 
 
     <ul>
-    <h1> Lists already done:</h1>
+    <h1> Your lists:</h1>
 
     {% for x in ListCollection %}
         <li>{{ x }}</li>
