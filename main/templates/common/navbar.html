@@ -1,0 +1,37 @@
+{% load static %}
+<nav class=" w-100 navbar navbar-expand-lg fixed-top px-3 navbar-dark d-none d-lg-block">
+        <div class=" container-fluid p-0">
+
+             <a class="navbar-brand nav-link d-inline p-1" target="_blank" href="/account_register/static">
+                <img src=" {% static 'account_register/img/logo.png' %}">
+             </a>
+
+            <button class="navbar-toggler"
+            data-bs-target=".navbarNav"
+            data-bs-toggle="collapse">
+                <span class="navbar-toggler-icon fas fa-bars"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-end px-md-4">
+                <div class=" navbar-nav navbarNav">
+                    <a class ="nav-item"  href="/">Home</a>
+                    <a class ="nav-item" href="/create">To Do Manager</a>
+                    <a class ="nav-item" href="/2">Contact</a>
+                    <div class=" btn-group">
+
+                        <a type="button" class ="  dropdown-toggle" data-bs-toggle="dropdown"
+                        aria-haspopup = "true" aria-expanded ="false">Account</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Account Details</a>
+                            <a class="dropdown-item" href="/login">Login</a>
+                            <a class="dropdown-item" href="/register">Register</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Log Out</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+ </nav>

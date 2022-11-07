@@ -1,0 +1,35 @@
+{% extends 'Journal/layoutBJJ.html' %}
+{% block title %}{% endblock %}
+
+{% block content %}
+    <h1>{{ checklist.name }} </h1>
+    <form method="post" action = "#">
+        {% csrf_token %}
+
+
+
+            {% for item in checklist.item_set.all %}
+                <div class ="input-group mb-3 ">
+                    <div class="input-group-prepend input-group-text">
+                        {%  if item.checked == True %}
+                            <input type="checkbox" value ="clicked" name ="c{{item.id}}" checked>
+                        {% else %}
+                            <input type="checkbox" value ="clicked" name ="c{{item.id}}">
+                        {% endif %}
+                    </div>
+                    <input type="text" value="{{ item.text }}" class="form-control">
+                </div>
+            {% endfor %}
+
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input class ="form-control mx-3" type="text" name ="newItemText">
+                    <button class = "btn btn-primary" type="submit" name="newItem" value="newItem"> Add Item </button>
+                </div>
+                <button class = "btn btn-success mt-2" type="submit" name="save" value="save">Save</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

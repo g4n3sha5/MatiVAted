@@ -1,0 +1,20 @@
+{% extends 'Journal/layoutBJJ.html' %}
+{% block title %} ToDoList!{% endblock %}
+
+{% block content %}
+    <form method ="post" action ="/create/">
+        <div class="input-group mb-3">
+            <div class ="input-group-prepend">
+
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type ="submit" name ="save" class="btn btn-success">Create To Do List</button>
+            </div>
+        </div>
+    </form>
+
+    {% include 'Journal/listView.html' %}
+
+
+{% endblock %}
+

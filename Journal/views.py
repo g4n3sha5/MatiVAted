@@ -4,44 +4,41 @@ from .models import ToDoList, Item, CreateNewList
 
 # Create your views here.
 
-def index(response):
-    # ls = ToDoList.objects.get(id=id)
-    return render(response, "Journal/index.html", {})
 
-def urladjuster(response, id):
+
+def urladjuster(request, id):
     checklist = ToDoList.objects.get(pk = id)
     context = {
         'checklist': checklist,
         'id': id
     }
 
-    if response.method =="POST":
-        if response.POST.get("save"):
+    if request.method =="POST":
+        if request.POST.get("save"):
             for item in checklist.item_set.all():
-                if response.POST.get("c" + str(item.id)) == "clicked":
+                if request.POST.get("c" + str(item.id)) == "clicked":
                     item.checked = True
                 else:
                     item.checked = False
                 item.save()
 
-        elif response.POST.get("newItem"):
-            txt = response.POST.get("newItemText")
+        elif request.POST.get("newItem"):
+            txt = request.POST.get("newItemText")
             if len(txt) > 2:
                 checklist.item_set.create(text = txt)
             else:
                 print("Text too short")
 
-    return render(response, "Journal/list.html", context)
+    return render(request, "Journal/list.html", context)
 
-def create(response):
-    if response.method == "POST":
-        form = CreateNewList(response.POST)
-
+def create(request):
+    if request.method == "POST":
+        form = CreateNewList(request.POST)
         if form.is_valid():
             n = form.cleaned_data["name"]
-            t = ToDoList(name = n)
+            t = ToDoList(name = n, user = request.user)
             t.save()
-
+            request.user.todolist.add(t)
         return HttpResponseRedirect("/%i" %t.id)
 
     else:
@@ -51,4 +48,9 @@ def create(response):
         'form': form,
         'ListCollection' : ToDoList.objects.all()
     }
-    return render(response, "Journal/create.html", context)
+    return render(request, "Journal/create.html", context)
+
+
+def removeList(request, lists):
+    print("abc")
+    return render(request, "Journal/remove.html", )

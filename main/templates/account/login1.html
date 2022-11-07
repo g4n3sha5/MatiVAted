@@ -1,0 +1,15 @@
+{% extends 'register/layoutRegister.html' %}
+{% load static %}
+{% block title %}
+Login here
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form method="post" class= "form-group">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success p-2">Login</button>
+         <p class="text-center"> Don't have an account? <a href="/register"> Register </a></p>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+<H1> Your Lists:</H1>
+{#<p>{{ ListCollection }}</p>#}
+{% for td in ListCollection %}
+    <ul class="list-group-flush w-75">
+        <li class="list-group-item p-2 btn btn-outline-info ">
+
+            <a class = "text-decoration-none text-black " href="/{{ td.id }}"> {{ td.id }}. {{  td.name  }}  </a>
+            <button type="submit" name = "removeList" class=" float-end binbut">
+                <i class="fa fa-lg fa-trash  " aria-hidden="true"> </i>
+            </button>
+
+        </li>
+    </ul>
+{% endfor %}

@@ -1,0 +1,10 @@
+{% if messages %}
+    {% for message in messages %}
+        <div class ="alert alert-success px-5 " role ="alert">
+{#            <a href="#" class="close" data-dismiss="alert" aria-label ="close">&times;</a>#}
+           {{ message }}
+{#            - {{ message.tags }}#}
+        </div>
+
+    {% endfor %}
+{% endif %}

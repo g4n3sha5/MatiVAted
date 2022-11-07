@@ -74,3 +74,7 @@ App inspired by:
 * Buddha Brain by Dr. Rick Hanson
 * The Power of Habit by Charles Duhigg
 
+
+* <a href="https://www.flaticon.com/free-icons/flexibility" title="flexibility icons">Flexibility icons created by Flat Icons - Flaticon</a>
+* Icon 
+* <a href="https://www.flaticon.com/free-icons/jiu-jitsu" title="jiu jitsu icons">Jiu jitsu icons created by Flat Icons - Flaticon</a>
