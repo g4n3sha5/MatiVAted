@@ -7,7 +7,8 @@
     <title> {% block title %}  HABJJ IT {% endblock %} </title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'account_register/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
+
     {% block style %}
         <script src="{% static 'fontawesome/js/all.min.js' %}"></script>
         <link rel="stylesheet" type="text/css" href="{% static "fontawesome/css/all.min.css" %}" />
@@ -15,8 +16,8 @@
 </head>
 
 <body>
-    {% include "../common/navbar.html" %}
-    <div style="background-image: url('{% static "../../static/Journal/img/zenphoto.jpg" %}')" class ="main banner-image
+    {% include "common/navbar.html" %}
+    <div style="background-image: url('{% static "Journal/img/zenphoto.jpg" %}')" class ="main banner-image
     vh-100 justify-content-center align-items-center">
         <div class = "change container vh-100 mt-0 py-5">
 

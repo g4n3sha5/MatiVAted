@@ -22,8 +22,12 @@ urlpatterns = [
     path('', views.index),
     path('admin/', admin.site.urls),
     path('', include("Journal.urls")),
-    path('', include('account_register.urls')),
-
+    path('account/', include('allauth.urls'))
 
 
 ]
+htmx_urlpatterns = [
+
+]
+
+urlpatterns += htmx_urlpatterns

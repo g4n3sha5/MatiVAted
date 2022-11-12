@@ -5,9 +5,8 @@ from .models import ToDoList, Item, CreateNewList
 # Create your views here.
 
 
-
-def urladjuster(request, id):
-    checklist = ToDoList.objects.get(pk = id)
+def listManager(request, id):
+    checklist = ToDoList.objects.get(pk=id)
     context = {
         'checklist': checklist,
         'id': id
@@ -25,20 +24,20 @@ def urladjuster(request, id):
         elif request.POST.get("newItem"):
             txt = request.POST.get("newItemText")
             if len(txt) > 2:
-                checklist.item_set.create(text = txt)
+                checklist.item_set.create(text=txt)
             else:
                 print("Text too short")
 
-    return render(request, "Journal/list.html", context)
+    return render(request, "Journal/singleListView.html", context)
 
 def create(request):
     if request.method == "POST":
         form = CreateNewList(request.POST)
         if form.is_valid():
             n = form.cleaned_data["name"]
-            t = ToDoList(name = n, user = request.user)
+            t = ToDoList(name = n)
             t.save()
-            request.user.todolist.add(t)
+            t.user_lists.add(request.user)
         return HttpResponseRedirect("/%i" %t.id)
 
     else:
@@ -46,11 +45,20 @@ def create(request):
 
     context = {
         'form': form,
-        'ListCollection' : ToDoList.objects.all()
+        'ListCollection' : ToDoList
     }
+    if request.user.is_authenticated:
+        context['ListCollection'] = request.user.user_lists.all()
     return render(request, "Journal/create.html", context)
 
+#removing list at /create/
+def removeList(request, id):
+    print("ACAB")
+    userLists = request.user.user_lists
+    userLists.remove(id)
 
-def removeList(request, lists):
-    print("abc")
-    return render(request, "Journal/remove.html", )
+    context = {
+        'lists' : userLists.all(),
+        'id' : id
+    }
+    return render(request, "Journal/listsView.html", context)

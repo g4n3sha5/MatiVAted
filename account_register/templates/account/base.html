@@ -2,15 +2,12 @@
 {% load static %}
 <html lang="en">
 <head>
-
     <title> {% block title %}  MATivation {% endblock %} </title>
     {% include 'main/load_basic_scripts.html' %}
     <link rel="stylesheet" href="{% static 'account_register/css/base.css' %}">
-
 </head>
 
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-
          {% include "common/navbar.html" %}
 
         <div class="container-fluid vh-100 pt-5 pb-1 inputsize">

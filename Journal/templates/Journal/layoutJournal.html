@@ -5,21 +5,20 @@
     {% include 'main/load_basic_scripts.html' %}
     <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
     <title> {% block title %}  MATIVATION {% endblock %} </title>
-
-
 </head>
 
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     {%include "common/navbar.html" %}
 
         <div class = " container-fluid vh-100 pt-5 pb-1 inputsize ">
+
             <div class =" pt-5 row d-flex justify-content-center align-items-center h-100 " >
                 <div class = "col-xl-12 h-100">
                     <div class="card rounded-3 h-100 overflow-hidden">
                         <div class="row g-0 h-100">
                             <div class="col-lg-6 h-100 p-5 position-relative card-mother">
 
-                                    {% include "common/../common/messages.html" %}
+                                    {% include "common/messages.html" %}
                                     {% if user.is_authenticated %}
 
                                         {% block content %}
@@ -38,12 +37,17 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
 
 
 
-
+    <script>
+    document.body.addEventListener('htmx:configRequest', function(evt) {
+        evt.detail.headers['X-CSRFToken] = '{{csrf_token}}'
+    });
+    </script>
 
 </body>
 </html>
