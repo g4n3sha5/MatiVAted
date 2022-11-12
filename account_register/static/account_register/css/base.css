@@ -1,3 +1,4 @@
+
 body{
     font-family:'Lato', sans-serif !important;
     font-size:2.2vh;
@@ -8,6 +9,7 @@ nav{
     padding:0 25px;
     line-height: 45px;
     list-style: none;
+    font-family: 'Roboto', serif;
 
 
     }
@@ -25,6 +27,7 @@ nav a img{
 .inputsize{
     background:url("../img/10.jpg");
     object-fit: contain;
+    font-family: 'Roboto';
 }
 .banner-image{
     background: url("../img/jess-bailey.jpg");
@@ -39,18 +42,42 @@ nav a img{
     height:10vh;
     font-weight:bolder;
 }
-.napo
 .change{
     padding-top:100px !important;
 }
-.inputsize{
-    width:100% !important;
-}
+
 .card-mother{
-    background:url("../img/marbleA.jpg");
+    background:url("../img/10aa.jpg");
     object-fit: contain;
 
 }
 .binbut{
     border:none;
+}
+.formContent{
+    font-size:1.4vw;
+}
+.formContent .btn{
+    box-shadow: 0 1px 3px 1px #ddd;
+    font-size: 1.02vw
+}
+.btn-google {
+    color: #545454;
+    background-color: #ffffff;
+}
+.or-container {
+    align-items: center;
+    color: #ccc;
+    display: flex;
+    margin: 25px 0;
+}
+.line-separator {
+    background-color: #ccc;
+    flex-grow: 5;
+    height: 1px;
+}
+.or-label {
+    flex-grow: 1;
+    margin: 0 15px;
+    text-align: center;
 }

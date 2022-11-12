@@ -1,4 +1,4 @@
-{% extends 'Journal/layoutBJJ.html' %}
+{% extends 'Journal/layoutJournal.html' %}
 {% block title %} ToDoList!{% endblock %}
 
 {% block content %}
@@ -13,8 +13,10 @@
         </div>
     </form>
 
-    {% include 'Journal/listView.html' %}
-
+    <div id="listDisplayer">
+    <h2><--------listDisplayer    listsview.html----------></h2>
+        {% include 'Journal/listsView.html' %}
+    </div>
 
 {% endblock %}
 
