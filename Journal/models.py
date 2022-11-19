@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 
 
 class ToDoList(models.Model):
-    user_lists = models.ManyToManyField(User, related_name="user_lists", blank = False)
+    user_lists = models.ManyToManyField(User, related_name="user_lists", blank=False)
     name = models.CharField(max_length=300)
 
     def __str__(self):

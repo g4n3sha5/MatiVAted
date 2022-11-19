@@ -1,24 +1,33 @@
 <H1> Your Lists:</H1>
 {#<p>{{ ListCollection }}</p>#}
-<ul class="list-group-flush w-75">
+<ul class=" list-group list-group-flush flex-fill  bg-none">
+
 {% for td in ListCollection %}
 
-        <li class="list-group-item p-2 btn btn-outline-info ">
+        <li class="list-group-item p-2 d-flex  align-items-center justify-content-between  mb-1 bg-transparent">
 
-
-            <a class = "text-decoration-none text-black " href="/{{ td.id }}"> {{ td.id }}. {{  td.name  }}  </a>
-
-            <span
-                hx-delete="{% url 'removeList' td.id %}"
-                hx-target="#listdisplayer"
-                hx-confirm="Are you sure?"
+        {#       div containing list name #}
+            <div class = "d-flex text-decoration-none text-white w-100 "
+                hx-target = "#singleList"
+                hx-get = "/{{ td.id }}"
                 style="cursor:pointer"
-{#                name="removeList"#}
-                class="float-end">
-                <i class="float-end binbut fa fa-lg fa-trash"> </i>
-            </span>
+            >
+                {{ forloop.counter }}. {{  td.name  }}
 
+            </div>
+
+        {#REMOVE ICON            #}
+                <div
+                        hx-delete="{% url 'removeList' td.id %}"
+                        hx-confirm="Are you sure?"
+                        hx-target="#reloadDiv"
+                        type="submit"
+                        class="p-2 border-0">
+                        <i class=" binbut fa fa-lg fa-trash"> </i>
+                </div>
+            </form>
 
         </li>
 {% endfor %}
  </ul>
+

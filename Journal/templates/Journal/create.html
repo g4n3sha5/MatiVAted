@@ -1,22 +1,14 @@
 {% extends 'Journal/layoutJournal.html' %}
+{% load static %}
 {% block title %} ToDoList!{% endblock %}
 
 {% block content %}
-    <form method ="post" action ="/create/">
-        <div class="input-group mb-3">
-            <div class ="input-group-prepend">
 
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type ="submit" name ="save" class="btn btn-success">Create To Do List</button>
-            </div>
+    <div class="card rounded-3 h-100 overflow-hidden">
+        <div id ="reloadDiv" class=" row g-0 h-100">
+            {% include 'Journal/reloadContent.html' %}
+
         </div>
-    </form>
-
-    <div id="listdisplayer">
-    <h2><--------listDisplayer    listsview.html----------></h2>
-        {% include 'Journal/listsView.html' %}
     </div>
-
 {% endblock %}
 

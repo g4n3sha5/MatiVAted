@@ -1,18 +1,39 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
+
+import Journal.models
 from .models import ToDoList, Item, CreateNewList
 
 # Create your views here.
 
 
+def newTaskToDo(request, checklist):
+    txt = request.POST.get("newItemText")
+    if len(txt) > 2:
+        checklist.item_set.create(text=txt)
+    else:
+        print("Text too short")
+
+def saveTaskStatus(request):
+    pass
+
 def listManager(request, id):
+    try:
+        userLists = request.user.user_lists
+        clickedList = userLists.get(pk=id)
+    except:
+
+        return redirect('/create')
+
     checklist = ToDoList.objects.get(pk=id)
     context = {
         'checklist': checklist,
         'id': id
     }
-
     if request.method =="POST":
+        print(request.POST)
+        newTaskToDo(request, checklist)
+
         if request.POST.get("save"):
             for item in checklist.item_set.all():
                 if request.POST.get("c" + str(item.id)) == "clicked":
@@ -21,44 +42,52 @@ def listManager(request, id):
                     item.checked = False
                 item.save()
 
-        elif request.POST.get("newItem"):
-            txt = request.POST.get("newItemText")
-            if len(txt) > 2:
-                checklist.item_set.create(text=txt)
-            else:
-                print("Text too short")
+
 
     return render(request, "Journal/singleListView.html", context)
-
-def create(request):
+def formValidator (request):
     if request.method == "POST":
         form = CreateNewList(request.POST)
         if form.is_valid():
             n = form.cleaned_data["name"]
-            t = ToDoList(name = n)
+            t = ToDoList(name=n)
             t.save()
             t.user_lists.add(request.user)
-        return HttpResponseRedirect("/%i" %t.id)
-
     else:
         form = CreateNewList()
 
+    return form
+
+
+def create(request):
+    form = formValidator(request)
     context = {
         'form': form,
         'ListCollection' : ToDoList
     }
     if request.user.is_authenticated:
         context['ListCollection'] = request.user.user_lists.all()
+
     return render(request, "Journal/create.html", context)
+
+
+
 
 #removing list at /create/
 def removeList(request, id):
-    print("ACAB")
+
+    ToDoList.objects.get(pk = id).delete()
     userLists = request.user.user_lists
     userLists.remove(id)
-
     context = {
-        'lists' : userLists.all(),
-        'id' : id
+        'ListCollection' : userLists.all(),
+        'form' : formValidator(request)
     }
-    return render(request, "Journal/listsView.html", context)
+    return render(request, "Journal/reloadContent.html", context)
+
+
+#removing item at /singlelistView
+def removeItem(request, listId, itemId):
+    checklist = ToDoList.objects.get(pk=listId)
+    Item.objects.get(pk=itemId).delete()
+    return render(request, "Journal/singleListView.html", {'checklist' : checklist})

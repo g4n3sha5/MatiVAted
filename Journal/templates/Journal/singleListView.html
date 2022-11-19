@@ -1,36 +1,64 @@
-{% extends 'Journal/layoutJournal.html' %}
-{% block title %}{% endblock %}
 
-{% block content %}
-    <h1>{{ checklist.name }} </h1>
-    <form method="post" action = "#">
-        {% csrf_token %}
+<h1>{{ checklist.name }} </h1>
+<hr class="solid">
+{##}
+{#    {% csrf_token %}#}
+{#<div id="singleListView">#}
 
-        <div id="item-list">
-            {% for item in checklist.item_set.all %}
-                <div class ="input-group mb-3 ">
-                    <div class="input-group-prepend input-group-text">
-                        {%  if item.checked == True %}
-                            <input type="checkbox" value ="clicked" name ="c{{item.id}}" checked>
-                        {% else %}
-                            <input type="checkbox" value ="clicked" name ="c{{item.id}}">
-                        {% endif %}
-                    </div>
-                    <input type="text" value="{{ item.text }}" class="form-control">
-                </div>
-            {% endfor %}
-        </div>
+<div id="item-list">
+    {% for item in checklist.item_set.all %}
+        <div class ="input-group mb-3 border-primary">
 
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    <input class ="form-control mx-3" type="text" name ="newItemText">
-                    <button class = "btn btn-primary" type="submit" name="newItem" value="newItem"> Add Item </button>
-
-                </div>
-                <button class = "btn btn-success mt-2" type="submit" name="save" value="save">Save</button>
+            {#            checkbox if task is done#}
+            <div class="input-group-prepend input-group-text  ">
+                {%  if item.checked == True %}
+                    <input type="checkbox" value ="clicked" name ="c{{item.id}}" checked>
+                {% else %}
+                    <input type="checkbox" value ="clicked" name ="c{{item.id}}">
+                {% endif %}
             </div>
+
+            <input class="itemTextField p-1 px-3"  type="text" value="{{ item.text }}" class="form-control">
+
+            {#            bin symbol to delete task#}
+            <span
+                class="input-group-text"
+                hx-delete="{% url 'removeItem' checklist.id item.id   %}"
+                hx-target="#singleList">
+                    <i class="float-end binbut fa fa-lg fa-trash"> </i>
+            </span>
+
         </div>
 
-    </form>
-{% endblock %}
+
+
+
+    {% endfor %}
+</div>
+
+<div >
+
+
+                <form class="input-group w-100">
+                    {% csrf_token %}
+                        <input class ="form-control mx-3" type="text" name ="newItemText">
+
+                    <span class="input-group-btn">
+                        <button
+                            hx-post="{% url 'listManager' checklist.id %}"
+                            hx-target="#singleList"
+                            class = "btn btn-outline-info"
+                            type="submit"
+                            >
+                            Add Item
+                        </button>
+                    </span>
+
+                </form>
+
+
+
+</div>
+
+
+<button class = "btn btn-success mt-2" type="submit" name="save" value="save">Save</button>

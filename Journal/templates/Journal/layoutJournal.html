@@ -11,12 +11,8 @@
     {%include "common/navbar.html" %}
 
         <div class = " container-fluid vh-100 pt-5 pb-1 inputsize ">
-
             <div class =" pt-5 row d-flex justify-content-center align-items-center h-100 " >
-                <div class = "col-xl-12 h-100">
-                    <div class="card rounded-3 h-100 overflow-hidden">
-                        <div class="row g-0 h-100">
-                            <div class="col-lg-6 h-100 p-5 position-relative card-mother">
+                <div class = "col-xl-10 h-100 ">
 
                                     {% include "common/messages.html" %}
                                     {% if user.is_authenticated %}
@@ -29,12 +25,7 @@
                                     {% endif %}
 
                             </div>
-                            <div class="col-lg-6 d-flex align-items-center position-relative justify-content-center">
-                                <img class="napis" src="{% static 'account_register/img/napis.png' %}">
-                            </div>
 
-                        </div>
-                    </div>
                 </div>
             </div>
 

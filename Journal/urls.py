@@ -7,7 +7,8 @@ urlpatterns = [
 
 ]
 htmx_urlpatterns = [
-    path('removeList/<int:id>', views.removeList, name="removeList")
+    path('removeList/<int:id>', views.removeList, name="removeList"),
+    path('removeItem/<int:listId>/<int:itemId>', views.removeItem, name="removeItem")
 ]
 urlpatterns += htmx_urlpatterns
 #   path('view/', views.listView, name = "listView")

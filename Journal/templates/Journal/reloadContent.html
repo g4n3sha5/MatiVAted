@@ -1,0 +1,20 @@
+{% load static %}
+
+<div  class="col-lg-3 h-100 p-5 position-relative card-mother">
+
+{% include 'Journal/formToDo.html' %}
+
+<div id="listsDisplayer">
+    {% include 'Journal/listsView.html' %}
+</div>
+
+</div>
+<div class="gradient-custom col-lg-9 d-flex align-items-start  justify-content-center row m-0 p-5 ">
+
+{#    <div class=" mx-auto w-75">#}
+{#        <img class="napis w-75" src="{% static 'account_register/img/napis.png' %}">#}
+{#    </div>#}
+    <div id="singleList" class="w-50 row d-flex ">
+    </div>
+
+</div>

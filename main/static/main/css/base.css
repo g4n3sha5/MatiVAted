@@ -1,18 +1,56 @@
 
 body{
-    font-family:'Lato', sans-serif !important;
+    /*font-family:'Lato', sans-serif !important;*/
     font-size:2.2vh;
 }
-nav{
-      background: rgba(255,255,255,0.088);
-    z-index:1;
-    padding:0 25px;
+
+.landing-page {
+text-align: center;
+}
+nav {
+    background: rgba(255, 255, 255, 0.088);
+    z-index: 1;
+    padding: 0 25px;
     line-height: 45px;
     list-style: none;
-    font-family: 'Roboto', serif;
-
-
+    font-family: 'Roboto', serif
+}
+@media (min-width: 576px) {
+    .page {
+        padding-top: 5rem;
     }
+
+    .clean-block.clean-hero {
+        min-height: 680px;
+    }
+
+      .clean-block.clean-info {
+        padding-left: 0px;
+        padding-right: 0px;
+        text-align: inherit;
+      }
+}
+.img-thumbnail {
+  padding: .25rem;
+  max-width: 100%;
+  height: auto;
+}
+
+
+
+
+.clean-block.clean-hero {
+  position: relative;
+  text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0;
+}
+
+
 nav a{
     padding:6px 8px 6px 16px;
     text-decoration: none;
@@ -24,19 +62,14 @@ nav a{
 nav a img{
     width:60px;
 }
-.inputsize{
-    background:url("../img/10.jpg");
+.inputsize {
+    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    /*background:url("../img/10.jpg");*/
     object-fit: contain;
-    font-family: 'Roboto';
 }
-.banner-image{
-    background: url("../img/jess-bailey.jpg");
-    background-size:cover;
-    position:relative;
-}
+
+
 .napis{
-    width:100%;
-    position:absolute;
     top:0;
     left:0;
     height:10vh;
@@ -45,14 +78,23 @@ nav a img{
 .change{
     padding-top:100px !important;
 }
+.card-mother *{
+     color:#3ede93;
 
+}
 .card-mother{
-    background:url("../img/10aa.jpg");
+    /*background-image: linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%);*/
+    background-image: linear-gradient(-225deg, #3D4E81 0%, #5753C9 48%, #6E7FF3 100%);
+    /*background:url("../img/10aa.jpg");*/
     object-fit: contain;
 
 }
 .binbut{
     border:none;
+    transition: transform .2s;
+}
+.binbut:hover{
+    transform: scale(1.2);
 }
 .formContent{
     font-size:1.4vw;
@@ -81,3 +123,25 @@ nav a img{
     margin: 0 15px;
     text-align: center;
 }
+.gradient-custom{
+    background-color:#f2f3f4
+}
+.itemTextField{
+    border:none;
+}
+#item-list  .input-group-prepend{
+    background-color:#7FDBFF;
+}
+#singleList h1{
+    color: #5753C9;
+}
+#singleList{
+    color:black !important;
+}
+*, *::before, *::after{
+    box-sizing:border-box;
+}
+h2, .h2 {
+  font-size: calc(1.325rem + 0.9vw);
+}
+
