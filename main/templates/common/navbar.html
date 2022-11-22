@@ -1,41 +1,43 @@
 {% load static %}
-<nav class=" w-100 navbar navbar-expand-lg fixed-top px-3 navbar-dark d-none d-lg-block">
-        <div class=" container-fluid p-0">
-             <a class="navbar-brand nav-link d-inline p-1" target="_blank" href="/">
-                <img src=" {% static 'account_register/img/logo.png' %}">
-             </a>
+<div class="container-fluid navContainer d-flex justify-content-between align-items-center  fixed-top p-0">
+    <nav class=" w-100 navbar navbar-expand-lg  navbar-dark  d-lg-block">
+            <div class=" container p-0 positionAdjust">
+                 <a class="navbar-brand nav-link d-inline p-1" target="_blank" href="/">
+                    <img src=" {% static 'account_register/img/logo.png' %}">
+                 </a>
 
-            <button class="navbar-toggler"
-            data-bs-target=".navbarNav"
-            data-bs-toggle="collapse">
-                <span class="navbar-toggler-icon fas fa-bars"></span>
-            </button>
+                <button class="navbar-toggler"
+                data-bs-target=".navbarNav"
+                data-bs-toggle="collapse">
+                    <span class="navbar-toggler-icon fas fa-bars"></span>
+                </button>
 
-            <div class="collapse navbar-collapse justify-content-end px-md-4">
-                <div class=" navbar-nav navbarNav">
-                    <a class ="nav-item"  href="/">Home</a>
-                    <a class ="nav-item" href="/create">To Do Manager</a>
-                    <a class ="nav-item" href="/2">Contact</a>
-                    <div class=" btn-group">
+                <div class="collapse navbar-collapse justify-content-end px-md-4">
+                    <div class=" navbar-nav navbarNav">
+                        <a class ="nav-item"  href="/">Home</a>
+                        <a class ="nav-item" href="/create">To Do Manager</a>
+                        <a class ="nav-item" href="/2">Contact</a>
+                        <div class=" btn-group">
 
-                        <a type="button" class ="  dropdown-toggle" data-bs-toggle="dropdown"
-                        aria-haspopup = "true" aria-expanded ="false">Account</a>
-                        <div class="dropdown-menu">
-                            {% if user.is_authenticated %}
+                            <a type="button" class ="  dropdown-toggle" data-bs-toggle="dropdown"
+                            aria-haspopup = "true" aria-expanded ="false">Account</a>
+                            <div class="dropdown-menu">
+                                {% if user.is_authenticated %}
 
-                                <a class="dropdown-item" href="#">Account Details</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
+                                    <a class="dropdown-item" href="#">Account Details</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
 
-                            {% else %}
-                                <a class="dropdown-item" href="{% url 'account_login' %}">Log In</a>
-                                <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
-                            {% endif %}
+                                {% else %}
+                                    <a class="dropdown-item" href="{% url 'account_login' %}">Log In</a>
+                                    <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
+                                {% endif %}
+                            </div>
+
                         </div>
-
                     </div>
                 </div>
             </div>
-        </div>
 
  </nav>
+</div>
