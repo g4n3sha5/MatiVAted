@@ -44,7 +44,7 @@ def listManager(request, id):
 
 
 
-    return render(request, "Journal/singleListView.html", context)
+    return render(request, "Journal/create_singleListView.html", context)
 def formValidator (request):
     if request.method == "POST":
         form = CreateNewList(request.POST)
@@ -83,11 +83,11 @@ def removeList(request, id):
         'ListCollection' : userLists.all(),
         'form' : formValidator(request)
     }
-    return render(request, "Journal/reloadContent.html", context)
+    return render(request, "Journal/create_reloadContent.html", context)
 
 
 #removing item at /singlelistView
 def removeItem(request, listId, itemId):
     checklist = ToDoList.objects.get(pk=listId)
     Item.objects.get(pk=itemId).delete()
-    return render(request, "Journal/singleListView.html", {'checklist' : checklist})
+    return render(request, "Journal/create_singleListView.html", {'checklist' : checklist})

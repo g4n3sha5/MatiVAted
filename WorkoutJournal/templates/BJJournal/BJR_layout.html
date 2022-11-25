@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    {% include 'main/../../../main/templates/common/load_basic_scripts.html' %}
+    <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
+    <title> {% block title %}  MATIVATION {% endblock %} </title>
+</head>
+
+<body  hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+
+
+  {%include "common/navbar.html" %}
+        <div class = " container-fluid vh-100 p-0 ">
+
+            <div class =" row  h-100" >
+                    {% include "common/messages.html" %}
+                    {% if user.is_authenticated %}
+
+                        {% include "BJJournal/BJR_sideMenu.html" %}
+
+                        <div class="BJR_content  col-lg-10 position-relative p-0">
+                            {% block content %}
+                            {% endblock %}
+                        </div>
+
+
+                    {% else %}
+                        <a href="/login">Login Here to see content</a>
+                    {% endif %}
+
+                </div>
+            </div>
+
+
+    {% include "common/footer.html" %}
+    <script>
+        document.body.addEventListener('htmx:configRequest', function(evt) {
+            evt.detail.headers['X-CSRFToken] = '{{csrf_token}}'
+        });
+    </script>
+</body>
+</html>

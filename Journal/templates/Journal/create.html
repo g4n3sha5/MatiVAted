@@ -1,4 +1,4 @@
-{% extends 'Journal/layoutJournal.html' %}
+{% extends 'Journal/Journal_layout.html' %}
 {% load static %}
 {% block title %} ToDoList!{% endblock %}
 
@@ -6,7 +6,7 @@
 
     <div class="card rounded-3 h-100 overflow-hidden">
         <div id ="reloadDiv" class=" row g-0 h-100">
-            {% include 'Journal/reloadContent.html' %}
+            {% include 'Journal/create_reloadContent.html' %}
 
         </div>
     </div>

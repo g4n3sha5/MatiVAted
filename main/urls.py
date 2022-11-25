@@ -22,7 +22,8 @@ urlpatterns = [
     path('', views.index),
     path('admin/', admin.site.urls),
     path('', include("Journal.urls")),
-    path('account/', include('allauth.urls'))
+    path('account/', include('allauth.urls')),
+    path('', include("WorkoutJournal.urls")),
 
 
 ]

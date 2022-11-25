@@ -25,12 +25,12 @@ nav a img{
     width:60px;
 }
 .inputsize{
-    background:url("../img/10.jpg");
+    background:url("account_register/static/account_register/img/10.jpg");
     object-fit: contain;
     font-family: 'Roboto';
 }
 .banner-image{
-    background: url("../img/jess-bailey.jpg");
+    background: url("account_register/static/account_register/img/jess-bailey.jpg");
     background-size:cover;
     position:relative;
 }
@@ -47,7 +47,7 @@ nav a img{
 }
 
 .card-mother{
-    background:url("../img/10aa.jpg");
+    background:url("account_register/static/account_register/img/10aa.jpg");
     object-fit: contain;
 
 }

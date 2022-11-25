@@ -51,7 +51,8 @@ TO BE ANNOUNCED
 * [Python](https://docs.python.org/3/) - Basic Language
 * [Django](https://www.djangoproject.com/) - The web framework used
 * [Bootstrap](https://getbootstrap.com/) - Framework responsible for CSS
-
+* [FontAwesome](https://fontawesome.com/) - Icon library and toolkit
+* [HTMX](https://htmx.org/) - Gives access to AJAX Server Sent Events etc. directly in HTML
 ## Contributing
 
 PL
@@ -71,10 +72,13 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 App inspired by:
 * Atomic Habits by James Clear
-* Buddha Brain by Dr. Rick Hanson
+* The Motivation Myth by Jeff Haden
 * The Power of Habit by Charles Duhigg
 
 
+
 * <a href="https://www.flaticon.com/free-icons/flexibility" title="flexibility icons">Flexibility icons created by Flat Icons - Flaticon</a>
-* Icon 
+* <a href="https://www.flaticon.com/free-icons/judo" title="judo icons">Judo icons created by Freepik - Flaticon</a>
 * <a href="https://www.flaticon.com/free-icons/jiu-jitsu" title="jiu jitsu icons">Jiu jitsu icons created by Flat Icons - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/clock" title="clock icons">Clock icons created by Arkinasi - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/month" title="month icons">Month icons created by CreativeCons - Flaticon</a>

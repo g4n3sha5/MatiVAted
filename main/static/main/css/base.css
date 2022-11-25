@@ -8,27 +8,38 @@ body{
 *, *::before, *::after{
     box-sizing:border-box;
 }
-.img-buddha, .silhouette img, .bjjimg {
+.img-buddha, .silhouette img, .bjjimg, .countSection img {
     max-height:100%;
     max-width:100%;
     object-fit:contain;
     border:none;
 }
-/* ============ NAVBAR ============ */
-    .navContainer{
-        background: rgba(42, 50, 75, 0.11);
-    }
-    nav {
-        z-index: 1;
-        padding: 0 25px;
-        line-height: 45px;
-        list-style: none;
-        font-family: 'Roboto', serif
 
-    }
-    nav a img{
-        width:60px;
-    }
+
+/* ============ NAVBAR ============ */
+
+.landingNavbar{
+
+    /*background: rgba(42, 50, 75, 0.01);*/
+    background: transparent !important;
+}
+.navContainer{
+    background: linear-gradient(90deg, rgba(60,9,108,1) 4%, rgba(19,6,18,1) 7%, rgba(19,6,18,1) 18%, rgba(60,9,108,1) 20%);
+}
+.navContainer .navbarNav a{
+  text-shadow: -3px 1px 21px rgba(72, 149, 239, 1);
+}
+.navContainer *, .BJR_sideMenu * {
+    z-index: 100;
+    /*font-family: 'Roboto', serif*/
+    font-family: "Open Sans ", serif !important;
+    font-weight:500;
+    letter-spacing: 0.092em;
+}
+
+nav a img{
+    width:60px;
+}
 
 /* ============ LANDING PAGE ============ */
 
@@ -135,14 +146,13 @@ h2, .h2 {
     border-radius: 50%;
     position: relative;
     margin-bottom: 30px;
-    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.25);
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 .feature-1 .wrap-icon.icon-1 {
   /*background: linear-gradient(-55deg, #5753C9, #2d71a2);*/
-
     background: linear-gradient(45deg, hsla(271, 100%, 14%, 1) 17%, hsla(271, 85%, 23%, 1) 64%);
 }
 .feature-1 p{
@@ -186,7 +196,7 @@ h2, .h2 {
 /*# Footer*/
 /*--------------------------------------------------------------*!*/
 #footer {
-  background: #0c0c0c;
+  background: 	#101010;
   padding: 60px 0 30px 0;
   color: #fff;
   font-size: 14px;
@@ -214,7 +224,7 @@ h2, .h2 {
 #footer .footer-info {
   font-size: 14px;
   line-height: 24px;
-  font-family: "Raleway", sans-serif;
+  font-family: "Raleway", sans-serif !important;
 }
 #footer  .social-links a {
   font-size: 18px;
@@ -305,15 +315,13 @@ h2, .h2 {
 
 
 
-
+/*TO DO LIST JOURNAL*/
 
 .inputsize {
     background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     /*background:url("../img/10.jpg");*/
     object-fit: contain;
 }
-
-
 
 .napis{
     top:0;
@@ -326,14 +334,12 @@ h2, .h2 {
 }
 .card-mother *{
      color:#3ede93;
-
 }
 .card-mother{
     /*background-image: linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%);*/
     background-image: linear-gradient(-225deg, #3D4E81 0%, #5753C9 48%, #6E7FF3 100%);
     /*background:url("../img/10aa.jpg");*/
     object-fit: contain;
-
 }
 .binbut{
     border:none;
@@ -383,4 +389,85 @@ h2, .h2 {
 }
 #singleList{
     color:black !important;
+}
+
+
+
+/*======= BJJournal ======= */
+
+.BJR_content{
+    padding-right:0;
+    background-color:lightskyblue;
+
+}
+.BJR_sideMenu {
+      /*z-index: 1155;*/
+    left:0;
+    background-color:	#10002B;
+    padding-top:15vh;
+}
+.BJR_sideMenu a{
+
+     color: #a8a9b4;
+    transition: 0.3s;
+}
+.BJR_sideMenu a:hover{
+    cursor:pointer;
+    color:white;
+}
+
+.dashboardCount .count_item{
+     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.countSection {
+    padding-top:12vh;
+    position: absolute;
+    top: 0;
+    right:0;
+    max-width:13vw;
+    /*background-color: #002D59;*/
+    /*background-color: #161643;*/
+    /*background-color: #161643;*/
+    background: linear-gradient(90deg, rgba(16,0,43,1) 19%, rgba(58,12,163,1) 54%, rgba(6,46,104,1) 80%, rgba(16,0,43,1) 95%);
+
+}
+.count_icon img{
+    width:4vw;
+}
+.count_item {
+
+    padding-top:1rem;
+    width:100%;
+    height: 13vh;
+    font-weight: bolder;
+    font-size: 1.95rem;
+    margin: 0 auto;
+    position: relative;
+    margin-bottom: 12px;
+    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px 22px;
+    background: linear-gradient(135deg, rgba(63,55,201,1) 44%, rgba(72,149,239,1) 56%);
+}
+
+.lastSessions {
+    padding: 3vh 3vw;
+    position: absolute;
+    bottom: 0;
+    background-color: #48BFE3;
+    height: 44%;
+}
+.lastSessions h1{
+  font-size: 45px;
+  font-weight: 600;
+  background-image: linear-gradient(to left, black, white);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.lastSessions .card{
+
 }

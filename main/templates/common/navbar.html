@@ -1,5 +1,8 @@
 {% load static %}
-<div class="container-fluid navContainer d-flex justify-content-between align-items-center  fixed-top p-0">
+
+<div class="container-fluid navContainer d-flex justify-content-between align-items-center  fixed-top p-0 {% if request.path == '/' %} landingNavbar {% endif  %}"
+>
+
     <nav class=" w-100 navbar navbar-expand-lg  navbar-dark  d-lg-block">
             <div class=" container p-0 positionAdjust">
                  <a class="navbar-brand nav-link d-inline p-1" target="_blank" href="/">
@@ -15,10 +18,11 @@
                 <div class="collapse navbar-collapse justify-content-end px-md-4">
                     <div class=" navbar-nav navbarNav">
                         <a class ="nav-item"  href="/">Home</a>
-                        <a class ="nav-item" href="/create">To Do Manager</a>
-                        <a class ="nav-item" href="/2">Contact</a>
-                        <div class=" btn-group">
+                        <a class ="nav-item" href="/create">To Do</a>
+                        <a class ="nav-item" href="/bjjournal">BJJournal</a>
 
+                    {#            ACCOUNT BUTTON        #}
+                        <div class=" btn-group">
                             <a type="button" class ="  dropdown-toggle" data-bs-toggle="dropdown"
                             aria-haspopup = "true" aria-expanded ="false">Account</a>
                             <div class="dropdown-menu">

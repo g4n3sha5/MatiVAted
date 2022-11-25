@@ -40,6 +40,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'main',
     'Journal',
+    'WorkoutJournal',
     'django_static_fontawesome',
     'fontawesome',
     'django.contrib.admin',
