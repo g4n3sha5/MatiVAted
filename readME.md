@@ -78,7 +78,9 @@ App inspired by:
 
 
 * <a href="https://www.flaticon.com/free-icons/flexibility" title="flexibility icons">Flexibility icons created by Flat Icons - Flaticon</a>
-* <a href="https://www.flaticon.com/free-icons/judo" title="judo icons">Judo icons created by Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/judo" title="judo icons">Judo icons created by Vitaly Gorbachev - Flaticon</a>
 * <a href="https://www.flaticon.com/free-icons/jiu-jitsu" title="jiu jitsu icons">Jiu jitsu icons created by Flat Icons - Flaticon</a>
 * <a href="https://www.flaticon.com/free-icons/clock" title="clock icons">Clock icons created by Arkinasi - Flaticon</a>
 * <a href="https://www.flaticon.com/free-icons/month" title="month icons">Month icons created by CreativeCons - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/plus" title="plus icons">Plus icons created by Freepik - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/gym" title="gym icons">Gym icons created by Freepik - Flaticon</a>

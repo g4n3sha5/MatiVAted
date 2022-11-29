@@ -17,7 +17,7 @@
                     {% include "common/messages.html" %}
                     {% if user.is_authenticated %}
 
-                        {% include "BJJournal/BJR_sideMenu.html" %}
+                        {% include "BJJournal/BJR_leftsideMenu.html" %}
 
                         <div class="BJR_content  col-lg-10 position-relative p-0">
                             {% block content %}
@@ -38,6 +38,7 @@
         document.body.addEventListener('htmx:configRequest', function(evt) {
             evt.detail.headers['X-CSRFToken] = '{{csrf_token}}'
         });
+
     </script>
 </body>
 </html>

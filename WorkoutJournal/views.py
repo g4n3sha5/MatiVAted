@@ -15,3 +15,9 @@ def dashboard(request):
     }
 
     return render (request, "BJJournal/BJR_dashboard.html", context)
+
+def addSession(request):
+    context = {
+
+    }
+    return render(request, "BJJournal/BJR_addSession.html", context)

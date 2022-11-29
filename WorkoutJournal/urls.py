@@ -2,11 +2,14 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('bjjournal/', views.BJJournalIndex, name="BJJournalIndex"),
-    path('dashboard/', views.dashboard, name='dashboard')
+    path('bjjournal/', views.BJJournalIndex, name="BJJournalIndex")
+
 
 ]
 htmx_urlpatterns = [
-
+    path('dashboard/', views.dashboard, name='dashboard'),
+    path('addSession/', views.addSession, name="addSession")
 ]
+
+
 urlpatterns += htmx_urlpatterns
