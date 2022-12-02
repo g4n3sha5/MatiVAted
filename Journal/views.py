@@ -22,7 +22,6 @@ def listManager(request, id):
         userLists = request.user.user_lists
         clickedList = userLists.get(pk=id)
     except:
-
         return redirect('/create')
 
     checklist = ToDoList.objects.get(pk=id)
@@ -31,7 +30,6 @@ def listManager(request, id):
         'id': id
     }
     if request.method =="POST":
-        print(request.POST)
         newTaskToDo(request, checklist)
 
         if request.POST.get("save"):
@@ -60,9 +58,8 @@ def formValidator (request):
 
 
 def create(request):
-    form = formValidator(request)
     context = {
-        'form': form,
+        'form': formValidator(request),
         'ListCollection' : ToDoList
     }
     if request.user.is_authenticated:
@@ -75,7 +72,6 @@ def create(request):
 
 #removing list at /create/
 def removeList(request, id):
-
     ToDoList.objects.get(pk = id).delete()
     userLists = request.user.user_lists
     userLists.remove(id)

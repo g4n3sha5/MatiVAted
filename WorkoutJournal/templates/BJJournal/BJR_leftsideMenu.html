@@ -21,12 +21,20 @@
                 <a  class="nav-link scrollto active"
                     hx-target="#BJR_view"
                     hx-get=" {% url 'dashboard' %}">
-                    <i class="bi bi-border-all px-2"></i>
-                    <span>Dashboard</span>
+                        <i class="bi bi-border-all px-2"></i>
+                        <span>Dashboard</span>
                 </a>
           </li>
 
-          <li class="py-3"><a href="#about" class="nav-link scrollto"><i class="bi bi-file-earmark-plus-fill px-2"></i></i> <span>Add Session</span></a></li>
+          <li class="py-3">
+              <a class="nav-link scrollto"
+                hx-target="#BJR_view"
+                hx-get=" {% url 'addSession' %}">
+                  <i class="bi bi-file-earmark-plus-fill px-2"></i>
+                  <span>Add Session</span>
+              </a>
+          </li>
+
           <li class="py-3"><a href="#resume" class="nav-link scrollto"><i class="bi bi-collection-fill px-2"></i> <span>Your Sessions</span></a></li>
           <li class="py-3"><a href="#portfolio" class="nav-link scrollto"><i class="bi bi-bullseye px-2"></i> <span>Workout Goals</span></a></li>
 

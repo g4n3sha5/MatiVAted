@@ -5,6 +5,7 @@
     {% include 'main/../../../main/templates/common/load_basic_scripts.html' %}
     <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
     <title> {% block title %}  MATIVATION {% endblock %} </title>
+
 </head>
 
 <body  hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
@@ -36,9 +37,12 @@
     {% include "common/footer.html" %}
     <script>
         document.body.addEventListener('htmx:configRequest', function(evt) {
-            evt.detail.headers['X-CSRFToken] = '{{csrf_token}}'
+            evt.detail.headers['X-CSRFToken'] = '{{csrf_token}}'
         });
 
+
+        {% block script %}
+        {% endblock %}
     </script>
 </body>
 </html>

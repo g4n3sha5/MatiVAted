@@ -1,4 +1,42 @@
-<h1>What kind of session?</h1>
-<div class="count_icon">
-    <img src="{% static 'BJJournal/img/time.png' %}">
-</div>
+{% load static %}
+<form method ="post" action ="/addSession/">
+    {% csrf_token %}
+    <div class="addSession row p-5">
+        <h1 class="text-white">What kind of session?</h1>
+
+        <div class="count_icon col-md-1">
+            <label>
+                <input class="sessionType" type="radio" name="TStype" value="NOGI"/>
+                <img alt="No Gi training symbol" src="{% static 'BJJournal/img/nogi.png' %}">
+            </label>
+        </div>
+
+        <div class="count_icon col-md-1">
+
+            <label>
+                <input class="sessionType" type="radio" name="TStype" value="GI"/>
+                <img alt="Gi training symbol"  src="{% static 'BJJournal/img/judo2.png' %}">
+            </label>
+        </div>
+
+         <div class="count_icon col-md-1">
+
+            <label>
+                <input class="sessionType" type="radio" name="TStype" value="GYM"/>
+                <img alt="Gym training symbol"  src="{% static 'BJJournal/img/dumbbell.png' %}">
+            </label>
+         </div>
+
+    </div>
+
+
+        {{ BJRform.as_p}}
+    <button type ="submit" name ="save" class="btn btn-success">Add Session</button>
+
+</form>
+
+
+{% block script %}
+    <script type="text/javascript" src="{% static 'BJJournal/scripts.js' %}">
+    </script>
+{% endblock %}
