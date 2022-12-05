@@ -12,7 +12,7 @@
 
 
   {%include "common/navbar.html" %}
-        <div class = " container-fluid vh-100 p-0 ">
+        <div class = " container-fluid vh-100 p-0 overflow-hidden ">
 
             <div class =" row  h-100" >
                     {% include "common/messages.html" %}
@@ -20,7 +20,7 @@
 
                         {% include "BJJournal/BJR_leftsideMenu.html" %}
 
-                        <div class="BJR_content  col-lg-10 position-relative p-0">
+                        <div class="BJR_content  col-lg-10 position-relative p-0 ">
                             {% block content %}
                             {% endblock %}
                         </div>
@@ -34,7 +34,7 @@
             </div>
 
 
-    {% include "common/footer.html" %}
+{#    {% include "common/footer.html" %}#}
     <script>
         document.body.addEventListener('htmx:configRequest', function(evt) {
             evt.detail.headers['X-CSRFToken'] = '{{csrf_token}}'

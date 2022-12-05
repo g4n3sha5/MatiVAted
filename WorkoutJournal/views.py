@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import TrainingSession, addSessionForm
+from .models import TrainingSession, TrainingSessionForm
 # Create your views here.
 def BJJournalIndex (request):
 
@@ -20,7 +20,7 @@ def dashboard(request):
 
 def addSession(request):
     if request.method == 'POST':
-        form = addSessionForm(request.POST)
+        form = TrainingSessionForm(request.POST)
 
         if form.is_valid():
             tp = form.cleaned_data["type"]
@@ -33,7 +33,7 @@ def addSession(request):
             # t.user_lists.add(request.user)
 
     else:
-        form = addSessionForm()
+        form = TrainingSessionForm()
 
     context = {
         'BJRform': form

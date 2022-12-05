@@ -1,0 +1,25 @@
+{% load static %}
+
+<h2 class="text-white">What kind of session?</h2>
+<div class="type_icon count_icon col-md-1">
+    <label>
+        <input class="sessionType" type="radio" name="TStype" value="NOGI"/>
+        <img alt="No Gi training symbol" src="{% static 'BJJournal/img/nogi.png' %}">
+    </label>
+</div>
+
+<div class="type_icon count_icon col-md-1">
+    <label>
+        <input class="sessionType" type="radio" name="TStype" value="GI"/>
+        <img alt="Gi training symbol"  src="{% static 'BJJournal/img/judo2.png' %}">
+    </label>
+</div>
+
+<div class="type_icon count_icon col-md-1">
+
+    <label>
+        <input class="sessionType" type="radio" name="TStype" value="GYM"/>
+        <img alt="Gym training symbol"  src="{% static 'BJJournal/img/dumbbell.png' %}">
+    </label>
+ </div>
+

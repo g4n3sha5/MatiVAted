@@ -84,3 +84,5 @@ App inspired by:
 * <a href="https://www.flaticon.com/free-icons/month" title="month icons">Month icons created by CreativeCons - Flaticon</a>
 * <a href="https://www.flaticon.com/free-icons/plus" title="plus icons">Plus icons created by Freepik - Flaticon</a>
 * <a href="https://www.flaticon.com/free-icons/gym" title="gym icons">Gym icons created by Freepik - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/calendar" title="calendar icons">Calendar icons created by Freepik - Flaticon</a>
+* <a href="https://www.flaticon.com/free-icons/judo" title="judo icons">Judo icons created by photo3idea_studio - Flaticon</a>

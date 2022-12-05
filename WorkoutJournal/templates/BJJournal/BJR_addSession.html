@@ -1,41 +1,67 @@
+{% load crispy_forms_tags %}
+
 {% load static %}
-<form method ="post" action ="/addSession/">
-    {% csrf_token %}
-    <div class="addSession row p-5">
-        <h1 class="text-white">What kind of session?</h1>
+<div class="addSessionSection p-5 ">
 
-        <div class="count_icon col-md-1">
-            <label>
-                <input class="sessionType" type="radio" name="TStype" value="NOGI"/>
-                <img alt="No Gi training symbol" src="{% static 'BJJournal/img/nogi.png' %}">
-            </label>
+    <h1 class="text-white">Add new session</h1>
+    <hr class="text-white">
+
+    <form method ="post" action ="/addSession/">
+        {% csrf_token %}
+        <div class="addSession row justify-content-between  px-3 py-2">
+            {%  include 'BJJournal/BJR_addSession_sessionType.html' %}
+
+            <div class=" col-md-5">
+                <textarea class ="BJRnotes form-control mx-3 h-75" type="text"
+                     placeholder="Training notes..."></textarea>
+            </div>
+
+            <div class="col-md-2 position-relative sessionDate ">
+                <div class=" w-100 h-100 text-center p-3 ">
+{#                    <img alt="Calendar symbol"  src="{% static 'BJJournal/img/calendar.png' %}">#}
+
+                    <div class="datepicker-toggle mb-3">
+                        <h3 class="">Date (Optional)</h3>
+                        <input type="date" class="datepicker-input">
+                    </div>
+                    <div class="d-flex px-3 justify-content-between">
+                        <span class="quickDate today btn btn-outline-info">Today</span>
+                        <span class="quickDate yesterday btn btn-outline-info ">Yesterday</span>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
-        <div class="count_icon col-md-1">
+        <hr class="mb-0 ">
 
-            <label>
-                <input class="sessionType" type="radio" name="TStype" value="GI"/>
-                <img alt="Gi training symbol"  src="{% static 'BJJournal/img/judo2.png' %}">
-            </label>
+        <div class="addSession row justify-content-between mt-3 px-2">
+
+            <div class="col-md-6 sectionLength p-3 justify-content-between px-5">
+                {% include 'BJJournal/BJR_addSession_sessionLength.html' %}
+            </div>
+
+            <div class="sessionLocation col-md-4 text-center d-flex flex-column py-0 align-items-center">
+                <div class="my-auto">
+                    <h2 class="pb-2">Location</h2>
+
+                    <label>
+                        <input class="form-control" type="text" name="TSlocation"/>
+                    </label>
+                </div>
+
+             </div>
         </div>
 
-         <div class="count_icon col-md-1">
+        <div class="addSection sectionTechniques row px-3 justify-content-center mt-3">
+            {% include 'BJJournal/BJR_addSession_Techniques.html' %}
+        </div>
 
-            <label>
-                <input class="sessionType" type="radio" name="TStype" value="GYM"/>
-                <img alt="Gym training symbol"  src="{% static 'BJJournal/img/dumbbell.png' %}">
-            </label>
-         </div>
+        <button type ="submit" name ="save" class="btn btn-outline-primary p-3 mt-5 text-white">Add Session</button>
 
-    </div>
+    </form>
 
-
-        {{ BJRform.as_p}}
-    <button type ="submit" name ="save" class="btn btn-success">Add Session</button>
-
-</form>
-
-
+</div>
 {% block script %}
     <script type="text/javascript" src="{% static 'BJJournal/scripts.js' %}">
     </script>

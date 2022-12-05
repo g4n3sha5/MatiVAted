@@ -1,12 +1,12 @@
 {% load static %}
 
-<div class="container-fluid navContainer d-flex justify-content-between align-items-center  fixed-top p-0 {% if request.path == '/' %} landingNavbar {% endif  %}"
->
+<div class="container-fluid navContainer d-flex justify-content-between align-items-center  fixed-top p-0
+{% if request.path == '/' %} landingNavbar {% endif  %}">
 
     <nav class=" w-100 navbar navbar-expand-lg  navbar-dark  d-lg-block">
             <div class=" container p-0 positionAdjust">
                  <a class="navbar-brand nav-link d-inline p-1" target="_blank" href="/">
-                    <img src=" {% static 'account_register/img/logo.png' %}">
+                    <img src=" {% static 'main/img/logo-removebg.png' %}">
                  </a>
 
                 <button class="navbar-toggler"

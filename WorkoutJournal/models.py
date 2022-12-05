@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+from django.forms import ModelForm
 from datetime import date
 from django.contrib.auth.models import User
 # Create your models here.
@@ -26,25 +27,25 @@ class TrainingSession(models.Model):
     length = models.IntegerField()
     notes = models.CharField(max_length=300)
     techniques = models.ForeignKey(Technique, on_delete=models.CASCADE, null = True)
-    user_session = models.ManyToManyField(User, related_name="user_session", blank=False)
+    addedByUser = models.ManyToManyField(User, related_name="user_session", blank=False)
 
 
     def __str__(self):
         return self.type, self.date
 
 
-
 # form for addSession, addSession.html
-
 class DatePickerInput(forms.DateInput):
+
     input_type = 'datetime'
 
 
-class addSessionForm(forms.Form):
-    # type = forms.ChoiceField(choices=TrainingSession.TStypes, blank=False, max_length=16)
-    length = forms.IntegerField()
-    date = forms.DateTimeField(widget=DatePickerInput)
-    location = forms.CharField(label="Location (optional)", max_length=50, required=False)
-    notes = forms.CharField(max_length=300)
-
-    # techniques = models.ForeignKey(Technique, on_delete=models.CASCADE, null=True)
+class TrainingSessionForm(ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs.update({'class': field.label})
+            # print(field.widget.attrs)
+    class Meta:
+        model = TrainingSession
+        exclude = ('type', 'addedByUser')
