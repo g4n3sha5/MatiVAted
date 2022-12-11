@@ -1,38 +1,43 @@
 {% load static %}
-<div class="wrapper col-md-4  p-0">
+<div class="wrapper  p-0 position-relative ">
 
 {#        <img alt="Technique symbol" src="{% static 'BJJournal/img/technique.png' %}">#}
 {#    </div>#}
      <div class="choice-btn text-white w-100 justify-content-between d-flex p-3 px-4">
-         Choose techniques
-         <i id="arrowdown" class="bi bi-arrow-down-square-fill"
+         <div class="choicePlaceholderWrapper w-100 pt-0">
+             <h4 class="choicePlaceholder">Choose techniques</h4>
+         </div>
+         <i  class="choiceArrowBtn bi bi-arrow-down-square-fill"
             >
 {#             <i id="arrowdown" class="bi bi-arrow-up-square-fill"></i>#}
          </i>
      </div>
 {#        <input multiple      list="techniquesList" id="techniques-choice" name="techniquesChoice">#}
 
-    <div class="techniquesList p-3">
 
-        <div class="techniquesSearch d-flex align-items-center pb-1">
+    <div class="techniquesListWrap p-3 position-absolute w-100">
+        {# SEARCH INPUT    #}
+        <div class="techniquesSearch d-flex align-items-center pb-1 position-relative">
             <i class="bi bi-search"></i>
-            <input class="py-1 " type="text" placeholder="Search ">
+            <input class="searchBox py-1 " type="text" placeholder="Search ">
         </div>
 
-        <ul class="techniquesOptions px-1">
-            <li> valuChocolate</li>
-            <li> valuCoconut</li>
-            <li> valuMint</li>
-            <li> valuMint</li>
-            <li> valuStrawberry</li>
-            <li> valuVanilla</li>
-            <li> valuMint</li>
-            <li> valuStrawberry</li>
-            <li> valuVanilla</li>
-            <li> valuMint</li>
-            <li> valuStrawberry</li>
-            <li> valuVanilla</li>
-        </ul>
+        <select class="select techniquesOptions  w-100 " multiple>
+            {% for technique in techniquesList %}
+                <option value="{{  technique.EnglishName }}" class="TECHNIQUE{{ technique.id }} techniqueOption list-group-item p-2 d-flex
+                 align-items-center justify-content-between mb-1 d-block bg-transparent">
+
+{#                            hx-target = "#singleList"#}
+{#                            hx-get = "/technique/{{ technique.id }}"#}
+{#                        {{ forloop.counter }}.#}
+                    {{  technique.EnglishName  }}
+{#                    </div>#}
+                            <i class="bi bi-plus-square-fill"></i>
+                </option>
+            {% endfor %}
+        </select>
+
+
 
 {#    <datalist id="techniquesList">#}
 {#        <option value="Chocolate">#}

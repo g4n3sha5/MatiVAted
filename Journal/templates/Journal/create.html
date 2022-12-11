@@ -3,12 +3,11 @@
 {% block title %} ToDoList!{% endblock %}
 
 {% block content %}
+<div id ="reloadDiv" class="h-100">
+    {% include 'Journal/create_reloadContent.html' %}
 
-    <div class="card rounded-3 h-100 overflow-hidden">
-        <div id ="reloadDiv" class=" row g-0 h-100">
-            {% include 'Journal/create_reloadContent.html' %}
+</div>
 
-        </div>
-    </div>
+
 {% endblock %}
 

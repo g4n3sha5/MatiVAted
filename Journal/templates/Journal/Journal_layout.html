@@ -11,29 +11,23 @@
 
  {%include "common/navbar.html" %}
 
-        <div class = " container-fluid vh-100 pt-5 pb-1 inputsize ">
-            <div class =" pt-5 row d-flex justify-content-center align-items-center h-100 " >
-                <div class = "col-xl-10 h-100 ">
+        <div class = "container-fluid vh-100 p-0 overflow-hidden ">
+            {% include "common/messages.html" %}
+            {% if user.is_authenticated %}
 
-                                    {% include "common/messages.html" %}
-                                    {% if user.is_authenticated %}
+                {% block content %}
+                {% endblock %}
 
-                                        {% block content %}
-                                        {% endblock %}
+            {% else %}
+                <a href="/login">Login Here to see content</a>
+            {% endif %}
 
-                                    {% else %}
-                                        <a href="/login">Login Here to see content</a>
-                                    {% endif %}
-
-                </div>
-            </div>
         </div>
 
-    {% include "common/footer.html" %}
     <script>
-        document.body.addEventListener('htmx:configRequest', function(evt) {
-            evt.detail.headers['X-CSRFToken] = '{{csrf_token}}'
-        });
+        {#document.body.addEventListener('htmx:configRequest', function(evt) {#}
+        {#    evt.detail.headers['X-CSRFToken] = '{{csrf_token}}'#}
+        {#});#}
     </script>
 </body>
 </html>

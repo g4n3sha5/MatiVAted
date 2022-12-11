@@ -1,10 +1,15 @@
 {% extends 'BJJournal/BJR_layout.html' %}
-
+{%  load static %}
 
 {% block content %}
     <section id="BJR_view" class="container-fluid w-100 h-100 px-0
-      position-relative flex-column d-flex "  >
+      flex-column d-flex "  >
 
     </section>
 
+{% endblock %}
+
+
+{% block script %}
+ <script type="text/javascript" src="{% static 'BJJournal/scripts.js' %}"></script>
 {% endblock %}

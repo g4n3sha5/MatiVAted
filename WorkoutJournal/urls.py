@@ -8,7 +8,9 @@ urlpatterns = [
 ]
 htmx_urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
-    path('addSession/', views.addSession, name="addSession")
+    path('addSession/', views.addSession, name="addSession"),
+    path('techniques/', views.techniques, name="techniques"),
+    path('addTechnique/', views.techniques, name="addTechnique")
 ]
 
 

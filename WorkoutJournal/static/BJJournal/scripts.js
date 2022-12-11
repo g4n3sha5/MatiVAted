@@ -18,14 +18,9 @@
 // }
 //
 
-
-if (document.readyState !== 'loading') {
-   onClickColor()
-    quickDateButtons()
-}
-
 function onClickColor() {
     let addSession = document.getElementsByClassName('addSession')
+
     if (addSession) {
 
         Array.from(addSession).forEach(sessionClass => {
@@ -49,20 +44,112 @@ function onClickColor() {
 }
 function quickDateButtons(){
      let todayBtn = document.querySelector('.today')
-    let yesterdayBtn = document.querySelector('.yesterday')
-    let datePicker = document.querySelector('.datepicker-input')
-    let today = new Date()
-    let yesterday =  new Date(Date.now() - 86400000)
+    if (todayBtn) {
 
 
-    todayBtn.addEventListener('click', (evt) =>{
-       datePicker.valueAsDate = today
+        let yesterdayBtn = document.querySelector('.yesterday')
+        let datePicker = document.querySelector('.datepicker-input')
+        let today = new Date()
+        let yesterday = new Date(Date.now() - 86400000)
+
+
+        todayBtn.addEventListener('click', (evt) => {
+            datePicker.valueAsDate = today
+        })
+
+        yesterdayBtn.addEventListener('click', (evt) => {
+            datePicker.valueAsDate = yesterday
+        })
+    }
+}
+function toggleActive(){
+    let choiceButton = document.querySelector(('.choice-btn'))
+    if (choiceButton){
+        let techniquesListWrap = document.querySelector(('.techniquesListWrap'))
+        let choiceArrowBtn = document.querySelector(('.choiceArrowBtn'))
+        choiceArrowBtn.addEventListener('click', (evt) => {
+        choiceButton.classList.toggle('rotateButton')
+        techniquesListWrap.classList.toggle('ListWrapToggle')
     })
+    }
 
-   yesterdayBtn.addEventListener('click', (evt) =>{
-       datePicker.valueAsDate = yesterday
+
+
+}
+// const getTextTrim = (text) => text.textContent.trim()
+
+let filterList = searchTerm => {
+    let optionsList = document.querySelectorAll('.techniqueOption')
+    searchTerm.toLowerCase()
+
+    optionsList.forEach(option =>{
+        let optionText = option.textContent.trim().toLowerCase()
+        const textIncludes = optionText.includes(searchTerm)
+        option.classList.toggle('d-none', !textIncludes)
     })
 }
-function ro
+
+function searchItem(){
+    let searchBox = document.querySelector(('.searchBox'))
+    if(searchBox) {
+        searchBox.addEventListener('keyup', (evt) => {
+            filterList(evt.target.value)
+        })
+    }
+}
 
 
+function multiSelect(){
+    let techniqueList = document.querySelectorAll('.techniqueOption')
+    let choicePlaceholder = document.querySelector('.choicePlaceholder')
+    let choicePlaceholderWrapper = document.querySelector('.choicePlaceholderWrapper')
+
+     techniqueList.forEach(technique =>{
+
+        technique.addEventListener('click', (evt) =>{
+
+            technique.classList.toggle('d-none')
+            if (choicePlaceholder.textContent === "Choose techniques") choicePlaceholder.textContent = ''
+
+            let TechniqueHTML = `<span data-class='${technique.classList[0]}' class='chosenTechnique'>
+                    ${technique.textContent.trim()}   
+                    <i class="pe-none bi bi-x-octagon" ></i>
+                    </span>`
+
+            choicePlaceholderWrapper.insertAdjacentHTML("beforeend", TechniqueHTML)
+            removeToggle()
+        })
+    })
+
+}
+function removeToggle(){
+    let removeIcon = document.querySelectorAll('.chosenTechnique')
+    removeIcon.forEach(icon =>{
+        icon.addEventListener('click', (evt) =>{
+            let sortAttribute = icon.getAttribute('data-class')
+            let elementToView = document.querySelector(`.${sortAttribute}`)
+            elementToView.classList.remove('d-none')
+            evt.target.remove()
+        })
+    })
+    // if (choicePlaceholder.textContent === '') choicePlaceholder.textContent = "Choose techniques"
+
+
+}
+
+
+if (document.readyState !== 'loading') {
+    allFunctions()
+}
+document.body.addEventListener('htmx:afterOnLoad', event=>{
+    allFunctions()
+})
+
+
+function allFunctions(){
+     multiSelect()
+    onClickColor()
+    quickDateButtons()
+    toggleActive()
+    searchItem()
+}

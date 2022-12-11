@@ -1,20 +1,26 @@
 {% load static %}
 
-<div  class="col-lg-3 h-100 p-5 position-relative card-mother">
+{#<div  class="col-lg-3 h-100 p-5 position-relative card-mother">#}
+{##}
+{#{% include 'Journal/create_formToDo.html' %}#}
+{##}
+{#<div id="listsDisplayer">#}
+{#    {% include 'Journal/create_listsView.html' %}#}
+{#</div>#}
 
-{% include 'Journal/create_formToDo.html' %}
-
-<div id="listsDisplayer">
-    {% include 'Journal/create_listsView.html' %}
-</div>
-
-</div>
-<div class="gradient-custom col-lg-9 d-flex align-items-start  justify-content-center row m-0 p-5 ">
-
-{#    <div class=" mx-auto w-75">#}
-{#        <img class="napis w-75" src="{% static 'account_register/img/napis.png' %}">#}
-{#    </div>#}
-    <div id="singleList" class="w-50 row d-flex ">
+{#</div>#}
+<div class="row h-100">
+    <div class="col-md-2 col-md-2-5 h-100 text-white
+    card-mother sideMenuLayout d-flex justify-content-center px-5  ">
+        {% include "Journal/create_menu.html" %}
     </div>
 
+     <div class="col-md-10 col-md-9-5 gradient-custom h-100
+     justify-content-center  d-flex m-0 px- ">
+        <div id="singleList" class="w-50= row d-flex ">
+        </div>
+     </div>
+
 </div>
+
+

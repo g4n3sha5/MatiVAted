@@ -58,6 +58,7 @@ def formValidator (request):
 
 
 def create(request):
+    pathC = request.get_full_path()[1: -1]
     context = {
         'form': formValidator(request),
         'ListCollection' : ToDoList
@@ -65,8 +66,8 @@ def create(request):
     if request.user.is_authenticated:
         context['ListCollection'] = request.user.user_lists.all()
 
-    return render(request, "Journal/create.html", context)
-
+    # return render(request, "Journal/create.html", context)
+    return render(request, f"Journal/{pathC}.html", context)
 
 
 
