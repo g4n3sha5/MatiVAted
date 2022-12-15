@@ -2,47 +2,60 @@
 
 
 <h2 class="typeH2 text-white text-center pb-3">Technique type</h2>
+{% for choice in TechForm.type %}
 
-<div class="count_icon col-md-2 col-1">
-    <div class="caption">Choke</div>
-    <label>
-        <input class="sessionType" type="radio" name="type" value="choke"/>
-        <img alt="Choke icon" src="{% static 'BJJournal/img/choke-nobg.png' %}">
-    </label>
-</div>
+    <div class="count_icon  col-2 h-100 ">
+        <div class="h-100 ">
+            <div class="caption"> {{ choice.choice_label }}</div>
+            <label>
+                {{ choice.tag }}
+                <img alt="{{ choice.choice_label }} icon"
+                 src="{% static 'BJJournal/img/'%}{{choice.choice_label}}.png">
+            </label>
+        </div>
+    </div>
 
-<div class="count_icon col-md-2 col-1 ">
-    <div class="caption">Throw</div>
-    <label>
-        <input class="sessionType" type="radio" name="type" value="takedown"/>
-        <img alt="Takedown icon"  src="{% static 'BJJournal/img/throw-nobg.png' %}">
-    </label>
-</div>
-
-<div class=" count_icon col-md-2 col-1 ">
-    <div class="caption">Lever / Lock</div>
-    <label>
-        <input class="sessionType" type="radio" name="type" value="lever"/>
-        <img alt="Lever, lock icon"  src="{% static 'BJJournal/img/armbar-nobg.png' %}">
-    </label>
-</div>
-
-<div class=" count_icon col-md-2 col-1 ">
-    <div class="caption">Sweep</div>
-    <label>
-        <input class="sessionType" type="radio" name="type" value="GYM"/>
-        <img alt="Sweep icon"  src="{% static 'BJJournal/img/sweep-nobg.png' %}">
-    </label>
-</div>
-
-<div class=" count_icon col-md-2 col-1 ">
-    <div class="caption">Position / Guard</div>
-    <label>
-        <input class="sessionType" type="radio" name="type" value="GYM"/>
-        <img alt="Guard icon"  src="{% static 'BJJournal/img/guard-nobg.png' %}">
-    </label>
-</div>
+{% endfor %}
 
 
 
+{#<div class="count_icon col-md-2 col-1">#}
+{#    <div class="caption">Choke</div>#}
+{#    <label>#}
+{#        <input class="sessionType" type="radio" name="type" value="choke"/>#}
+{#        <img alt="Choke icon" src="{% static 'BJJournal/img/choke-nobg.png' %}">#}
+{#    </label>#}
+{#</div>#}
 
+{#<div class="count_icon col-md-2 col-1 ">#}
+{#    <div class="caption">Throw</div>#}
+{#    <label>#}
+{#        <input class="sessionType" type="radio" name="type" value="takedown"/>#}
+{#        <img alt="Takedown icon"  src="{% static 'BJJournal/img/throw-nobg.png' %}">#}
+{#    </label>#}
+{#</div>#}
+{##}
+{#<div class=" count_icon col-md-2 col-1 ">#}
+{#    <div class="caption">Lever / Lock</div>#}
+{#    <label>#}
+{#        <input class="sessionType" type="radio" name="type" value="lever"/>#}
+{#        <img alt="Lever, lock icon"  src="{% static 'BJJournal/img/armbar-nobg.png' %}">#}
+{#    </label>#}
+{#</div>#}
+{##}
+{#<div class=" count_icon col-md-2 col-1 ">#}
+{#    <div class="caption">Sweep</div>#}
+{#    <label>#}
+{#        <input class="sessionType" type="radio" name="type" value="GYM"/>#}
+{#        <img alt="Sweep icon"  src="{% static 'BJJournal/img/sweep-nobg.png' %}">#}
+{#    </label>#}
+{#</div>#}
+{##}
+{#<div class=" count_icon col-md-2 col-1 ">#}
+{#    <div class="caption">Position / Guard</div>#}
+{#    <label>#}
+{#        <input class="sessionType" type="radio" name="type" value="GYM"/>#}
+{#        <img alt="Guard icon"  src="{% static 'BJJournal/img/guard-nobg.png' %}">#}
+{#    </label>#}
+{#</div>#}
+{##}

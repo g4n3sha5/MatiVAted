@@ -76,16 +76,23 @@ function toggleActive(){
 
 
 }
-// const getTextTrim = (text) => text.textContent.trim()
 
 let filterList = searchTerm => {
     let optionsList = document.querySelectorAll('.techniqueOption')
+    let techniqueItem = document.querySelectorAll('.techniqueItem')
+
+    let collection = optionsList
+    if (techniqueItem.length > 0){ collection=techniqueItem }
+
     searchTerm.toLowerCase()
 
-    optionsList.forEach(option =>{
+    collection.forEach(option =>{
         let optionText = option.textContent.trim().toLowerCase()
         const textIncludes = optionText.includes(searchTerm)
-        option.classList.toggle('d-none', !textIncludes)
+        if (!option.classList.contains('cantSearch')){
+            option.classList.toggle('d-none', !textIncludes)
+        }
+
     })
 }
 
@@ -94,6 +101,7 @@ function searchItem(){
     if(searchBox) {
         searchBox.addEventListener('keyup', (evt) => {
             filterList(evt.target.value)
+
         })
     }
 }
@@ -108,27 +116,36 @@ function multiSelect(){
 
         technique.addEventListener('click', (evt) =>{
 
-            technique.classList.toggle('d-none')
+            technique.classList.add('d-none', 'cantSearch')
+
             if (choicePlaceholder.textContent === "Choose techniques") choicePlaceholder.textContent = ''
 
-            let TechniqueHTML = `<span data-class='${technique.classList[0]}' class='chosenTechnique'>
-                    ${technique.textContent.trim()}   
-                    <i class="pe-none bi bi-x-octagon" ></i>
+            let TechniqueHTML = `<span data-element='${technique}'
+                                        data-class='${technique.classList[0]}' 
+                                        class='mb-1 chosenTechnique'>
+             
+                        ${technique.textContent.trim()}   
+                        <i class="pe-none bi bi-x-octagon" ></i>
+          
                     </span>`
 
             choicePlaceholderWrapper.insertAdjacentHTML("beforeend", TechniqueHTML)
             removeToggle()
+
         })
+
+
     })
 
 }
 function removeToggle(){
     let removeIcon = document.querySelectorAll('.chosenTechnique')
+    let techniquesOptions = document.querySelector('.techniquesOptions')
     removeIcon.forEach(icon =>{
         icon.addEventListener('click', (evt) =>{
             let sortAttribute = icon.getAttribute('data-class')
             let elementToView = document.querySelector(`.${sortAttribute}`)
-            elementToView.classList.remove('d-none')
+            elementToView.classList.remove('d-none', 'cantSearch')
             evt.target.remove()
         })
     })

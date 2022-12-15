@@ -20,7 +20,12 @@ body{
     border:none;
 }
 
-
+.alert{
+    position:absolute;
+    top:10vh;
+    z-index:35;
+    height:10%;
+}
 /* ============ NAVBAR ============ */
 
 
@@ -31,7 +36,9 @@ body{
 /*navbelt*/
 .navContainer{
     /*background:#1d2951;*/
-    background:#241e6a;
+    /*background:#241e6a;*/
+    background:rgba(36, 30, 106, 0.1888);
+
     /*background:#3C31AE;*/
     /*background: linear-gradient(90deg, rgba(60,9,108,1) 4%, rgba(19,6,18,1) 7%, rgba(19,6,18,1) 18%, rgba(60,9,108,1) 20%);*/
     /*background: linear-gradient(90deg, rgba(105, 48, 195,1) 4%, rgba(19,6,18,1) 7%, rgba(19,6,18,1) 18%, rgba(105, 48, 195,1) 20%);*/
@@ -426,8 +433,11 @@ h2, .h2 {
     flex-grow:1;
     padding-right:0;
    /*background: linear-gradient(135deg, rgba(3, 4, 94 ,1) 26%, rgba(72,149,239,1) 72%);*/
-    background-color:#2e007b;
-    /*background-color:slateblue;*/
+/*background: hsla(197, 100%, 63%, 1);*/
+
+/*background: linear-gradient(90deg, hsla(197, 100%, 63%, 1) 0%, hsla(294, 100%, 55%, 1) 100%);*/
+background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
+/**/
 }
     /*======= SIDEMENU ======= */
 .BJR_sideMenu {
@@ -472,14 +482,14 @@ h2, .h2 {
 }
 .count_icon img, .sessionDate img{
     width:100%;
-    height:100%;
+    height:100% !important;
     margin:auto;
 }
 .count_icon{
     /*background-color:#b0acb0;*/
     background-color:#64dc98;
-    /*padding:3% 4.44% ;*/
-    height:100%;
+
+    height:100% !important;
 }
 
 
@@ -580,6 +590,9 @@ h2, .h2 {
 .type_icon{
     margin-right:-6.5%;
 }
+.type_icon label{
+    padding:0.5vw;
+}
 .BJRnotes{
     background-color:#dee2e6;
 }
@@ -587,13 +600,18 @@ h2, .h2 {
 .sessionLength h3{
     font-weight:800;
 }
+.sessionLength, .type_icon {
+    padding: 0 !important;
+}
 .sessionLength{
+
     /*background-color:#4ccaf0;*/
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+
 .sectionLength, .sessionLocation, .wrapper{
     border-radius:10px;
-    background-color:#6961d0;
+    /*background-color:#6961d0;*/
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px,
     rgba(0, 0, 0, 0.12) 0px 4px 6px,
@@ -656,6 +674,11 @@ h2, .h2 {
     padding:2% 6%;
     text-align:center;
     font-size:0.8rem;
+  /*white-space: nowrap;*/
+    display: inline-block;
+
+
+
 }
 .chosenTechnique i{
     font-size:0.95rem;
@@ -680,15 +703,20 @@ h2, .h2 {
 .choice-btn i{
      transition: transform 0.3s linear;
 }
+.choicePlaceholderWrapper{
+    overflow:hidden;
+}
 .techniquesOptions{
     list-style:none;
     overflow:auto;
+    overflow-x:hidden;
     max-height:15vh;
 }
 .techniqueOption, .techniqueItem{
     white-space: nowrap;
 }
 .techniquesOptions li{
+     transition: transform .2s;
     height:4.6vh;
     padding:0.3vh 0.4vw;
     font-size:1.8rem;
@@ -728,20 +756,30 @@ h2, .h2 {
 /*  background-position: 0 0;*/
 /*}*/
 /*!*=========TECHNIQUES SECTION =====================*!*/
-.techniqueType{
-    height:19%;
-    width:auto;
-    margin-bottom:10%;
-}
+.techniqueType {
+    height:100%;
+    width: auto;
+    margin-bottom: 4%;
+    overflow: hidden;
 
-.lastICON{
-    margin-right:0;
 }
 .techniqueType .count_icon{
+    display:flex !important;
     position:relative;
     padding-top:1.4%;
-    height:100%;
+    /* padding-bottom: 100%;*/
+    /*margin-bottom: -100%;*/
+
 }
+.techniqueType .count_icon img{
+    height:100% !important;
+}
+
+
+
+/*==============ADD TECHNIQUE ===============*/
+
+
 .typeH2{
     font-size:1.8rem;
 }
@@ -757,14 +795,29 @@ h2, .h2 {
     top:-8%;
     left:0;
 }
-.nameSection{
-    background-color:#4ccaf0;
-}
+
 .techNotes{
-    height:16%;
+    min-height:15vh;
+}
+.techNotes textarea{
+    height: 100% !important;
 }
 .techniqueSection .col-lg-8{
     border-right:1px solid #f2f3f4;
+}
+
+.nameSection{
+    background-color:#4361ee;
+
+
+}
+.leftName{
+
+    background-color:#4ccaf0;
+    /*background-color:#4361ee;*/
+}
+.nameSection .form-label{
+    display:none;
 }
 .nameSection h3{
     font-weight:500;
@@ -773,6 +826,35 @@ h2, .h2 {
 .nameSection .h6{
     font-size:0.72rem;
     font-style:italic;
+}
+.nameSection .col-md-6{
+    padding:1.4vh 0.8vw 0.4vh;
+}
+
+
+
+.addTechBtn{
+    opacity:0.8;
+}
+
+.techList{
+height:100%;
+    position:absolute;
+    right:0;
+    top:0;
+    padding-top:16vh;
+background: black;
+}
+.techList h3{
+    font-size:2.1rem;
+}
+.techniqueSection .techniquesOptions{
+    max-height:none;
+}
+.techniqueSection .techniquesOptions li:hover{
+    transform: scale(1.04);
+    cursor:pointer;
+
 }
 
 /*================ LAST SESSIONS =================*/

@@ -1,79 +1,53 @@
 {% load crispy_forms_filters %}
 {%  load static %}
 {%load crispy_forms_tags %}
-<div class="techniqueSection row mt-5 h-100 mb-5">
+<div class="techniqueSection row mt-5 h-100 mb-5 ">
 
 
-    <div class="col-lg-8 h-100 text-white  ">
-        <form method ="post" action ="/addSession/">
+    <div class="leftTechSection col-lg-8 h-100 text-white  ">
+        {{ form.errors }}
+        <form method ="post">
+            {% include 'common/messages.html' %}
             {% csrf_token %}
 
-            {{ TechForm.type | as_crispy_field }}
-
-
-            <h1 class="text-white text-center">Add a technique</h1>
+            <h1 class="text-white text-center py-3">Add a technique</h1>
             <hr class="text-white mx-5 my-3">
 
-            <div class="row addSession techniqueType justify-content-between px-5">
+
+            <div class="row addSession techniqueType pb-2 px-5 justify-content-between d-flex ">
+{#                {% include "common/messages.html" %}#}
                 {% include 'BJJournal/BJR_Techniques_types.html' %}
             </div>
 
-            <div class="nameSection row text-black d-flex justify-content-center p-4 mb-5">
-                <div class="col-md-5 d-flex justify-content-center">
-                    <label>
-                        <h3 class="text-center">English name</h3>
-                        <input class="form-control" type="text" name="EnglishName" required/>
-                    </label>
-                </div>
 
-                <div class="col-md-5 d-flex justify-content-center">
-                    <label>
-                        <h3 class="text-center">Original name <span class="h6">(optional)</span></h3>
-                        <input class="form-control" type="text" name="otherName"/>
-                    </label>
-                </div>
+            <div class="nameSection row text-black d-flex justify-content-center  mb-3">
+                {% include 'BJJournal/BJR_Techniques_names.html' %}
             </div>
 
-            <div class="techNotes d-flex justify-content-center ">
-                    <textarea class ="BJRnotes form-control mx-3 w-75 h-100" name="description" type="text"
-                         placeholder="Technique info / tips..."></textarea>
-            </div>
 
-        </form>
-          <div class="d-flex justify-content-center px-5">
+            <div class="techNotes d-flex justify-content-center my-5">
+                <label class="w-75">
+                    <textarea class ="BJRnotes form-control mx-3 w-100 "
+                        name="description" type="text"
+                        placeholder="Technique info / tips..."></textarea>
+                </label>
+            </div>
+         <div class="d-flex justify-content-center px-5 mt-3 ">
              <button type ="submit"
                      name ="save"
-                     class="btn  btn-outline-primary p-3 mt-5
+                     class="addTechBtn btn  btn-primary p-3 mt-5
                       text-white w-100"
-                    hx-post="{% url 'addTechnique'  %}"
+                    hx-post="{% url 'techniques'  %}"
                     hx-target="#BJR_view">
                  Add Technique</button>
-            </div>
+        </div>
+        </form>
+
+
     </div>
 
-
-
-
-
     <div class="techList col-lg-4 h-100 text-white px-5">
-
-        <h3 class="text-center"> Techniques List</h3>
-        <div class="techniquesSearch d-flex align-items-center pb-1 position-relative">
-            <i class="bi bi-search"></i>
-            <input class="searchBox py-1 " type="text" placeholder="Search ">
-        </div>
-
-        <ul class="select techniquesOptions  w-100 " multiple>
-
-            {% for technique in techniquesList %}
-                <li value="{{  technique.EnglishName }}" class="techniqueItem list-group-item p-2 d-flex
-                 align-items-center justify-content-between mb-1 d-block ">
-                    {{ forloop.counter }}. {{  technique.EnglishName  }}
-                </li>
-            {% endfor %}
-
-        </ul>
-
+        {% include 'BJJournal/BJR_Techniques_List.html' %}
     </div>
 
 

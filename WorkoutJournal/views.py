@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import TrainingSession, TrainingSessionForm, Technique, addTechniqueForm
+from django.contrib import messages
 # Create your views here.
 def BJJournalIndex (request):
 
@@ -43,20 +44,18 @@ def addSession(request):
 def techniques(request):
     if request.method == 'POST':
         form = addTechniqueForm(request.POST)
-        print("aa1")
+
         if form.is_valid():
-            print("aa2")
             form.save()
-            # tp = form.cleaned_data["type"]
-            # leng = form.cleaned_data["length"]
-            # dat = form.cleaned_data["date"]
-            # loc = form.cleaned_data["location"]
-            # ts = TrainingSession(name=n)
-            # ts.save()
-            # t.user_lists.add(request.user)
+            messages.success(request, "Added your technique")
+            return redirect('/techniques')
+
+        else:
+            messages.error(request, "Invalid form. ")
 
     else:
         form = addTechniqueForm()
+
 
     context = {
         'TechForm': form,
@@ -64,6 +63,15 @@ def techniques(request):
     }
     return render(request, "BJJournal/BJR_Techniques.html", context)
 
+
+def singleTechniqueView(request):
+    print("hujj")
+    # technique = Technique.objects.get(pk=id)
+
+    context = {
+        # 'technique': technique
+    }
+    return render(request, "BJJournal/BJR_Techniques_singleTechniqueView.html", context)
 
 # def addTechnique(request):
 #     if request.method == 'POST':

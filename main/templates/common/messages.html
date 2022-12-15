@@ -1,10 +1,18 @@
-{% if messages %}
-    {% for message in messages %}
-        <div class ="alert alert-success px-5 " role ="alert">
+{#{% if messages %}#}
+{#    {% for message in messages %}#}
+{#        <div class ="alert alert-success px-5 position-absolute " role ="alert">#}
 {#            <a href="#" class="close" data-dismiss="alert" aria-label ="close">&times;</a>#}
-           {{ message }}
+{#           {{ message }}#}
 {#            - {{ message.tags }}#}
-        </div>
-
-    {% endfor %}
+{#        </div>#}
+{##}
+{#    {% endfor %}#}
+{#{% endif %}#}
+{% if messages %}
+  {% for msg in messages %}
+    <div class="alert alert-info alert-dismissable w-100 text-center">
+      <button type="button" class="btn btn-outline-dark close float-end" onclick="this.parentNode.remove()" data-dismiss="alert" aria-hidden="true">&times;</button>
+      {{msg.message}}
+    </div>
+  {% endfor %}
 {% endif %}

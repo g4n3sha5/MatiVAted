@@ -1,0 +1,18 @@
+
+{% load crispy_forms_filters %}
+{%  load static %}
+<div class="col-md-6 leftName d-flex justify-content-center">
+        <label>
+            <h3 class="text-center">English name</h3>
+            {{ TechForm.EnglishName | as_crispy_field }}
+    {#                        <input class="form-control" type="text" name="EnglishName" required/>#}
+        </label>
+    </div>
+
+<div class="col-md-6 d-flex justify-content-center">
+    <label>
+        <h3 class="text-center">Original name <span class="h6">(optional)</span></h3>
+{#                        <input class="form-control" type="text" name="otherName"/>#}
+         {{ TechForm.otherName | as_crispy_field }}
+    </label>
+</div>
