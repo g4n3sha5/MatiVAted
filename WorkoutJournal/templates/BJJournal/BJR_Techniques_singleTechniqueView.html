@@ -1,1 +1,100 @@
-{{ technique.EnglishName }}
+{% load crispy_forms_filters %}
+{% load static %}
+<div class="d-flex flex-column align-items-center my-5 singleTechView w-100 p-0 pb-5 ">
+
+
+    <div class="count_icon h-100 position-relative mt-2 mb-4">
+        <div class="h-100 ">
+            <div class="caption"> {{ technique.type }}</div>
+                <img alt="{{ technique.type }} icon"
+                 src="{% static 'BJJournal/img/'%}{{technique.type}}.png">
+        </div>
+    </div>
+
+    <div class="TechName ">
+        <h1 class="py-2 ">    {{ technique.EnglishName }} </h1>
+    </div>
+
+    {% if technique.otherName %}
+        <div class="TechName">
+            <h3 class="py-2">   {{ technique.otherName }} </h3>
+        </div>
+    {% endif %}
+
+
+
+{#    <div class="techDescriptionWrap py-3 px-5 w-100 d-flex flex-column">#}
+    <div class="techDescriptionWrap py-3 px-5 w-100 d-flex flex-column align-items-center">
+        {% if technique.description|length > 3 %}
+
+                {#    ICONS #}
+                {{ SuggestForm.errors }}
+                <div class="w-100 text-center pb-2 position-relative">
+                    <i class="bi bi-info-square fa-2x"></i>
+
+                    <div class="editButton px-2 border d-flex">
+                        <i class="p-0 pencilButton bi bi-pencil-fill "></i>
+                    </div>
+                </div>
+
+                <div class="techEdit w-100">
+                    <div class="techDescription h-100 py-3">
+                        {{ technique.description }}
+
+                    </div>
+
+{#                    <div class="techDescriptionInput d-none ">#}
+{#                        <label class=" d-flex w-100">#}
+{#                            <textarea class =" overflow-hidden  p-2 form-control h-100 w-100 "#}
+{#                            name="description" type="text"#}
+{#                            placeholder="Technique info / tips / video link....">{{ technique.description }}</textarea>#}
+{#                        </label>#}
+{#                    </div> #}
+
+                    <div class="techDescriptionInput d-none ">
+                        <label class=" d-flex w-100 overflow-hidden">
+                            <form method ="post" id="suggestForm" class="d-flex w-100">
+                                {% csrf_token %}
+                                {{ SuggestForm.content }}
+                            </form>
+                        </label>
+                    </div>
+                </div>
+        {% endif %}
+    </div>
+
+    <button   type="button"
+          hx-post="{% url 'singleTechniqueView' technique.id %}"
+            hx-include ='#suggestForm'
+          hx-target=".leftTechSection"
+          class="suggestBtn btn btn-info my-3 d-none">Suggest Description
+    </button>
+
+
+
+    {% if UserSuggestions|length > 0 %}
+
+
+
+        <div class="userSuggestions text-center w-100 mt-3">
+         <H5>You added {{ UserSuggestions|length }} suggestions regarding this technique description</H5>
+            <div class="choice-btn text-white w-100 justify-content-between w-100 ">
+                <div class="choicePlaceholderWrapper w-100 pt-0">
+                    <h4 class="choicePlaceholder">Your Suggestions</h4>
+                </div>
+                <span class="choiceArrowBtn">
+                    <i  class=" bi bi-arrow-down-square-fill"></i>
+                </span>
+
+            </div>
+            <div class="techniquesListWrap p-3  w-100">
+                 {% for item in UserSuggestions %}
+                    <div class="suggestion border-bottom my-1">{{ item.content }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+</div>
+
+

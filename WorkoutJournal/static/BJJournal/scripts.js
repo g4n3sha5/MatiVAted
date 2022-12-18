@@ -42,10 +42,9 @@ function onClickColor() {
         })
     }
 }
-function quickDateButtons(){
-     let todayBtn = document.querySelector('.today')
+function quickDateButtons() {
+    let todayBtn = document.querySelector('.today')
     if (todayBtn) {
-
 
         let yesterdayBtn = document.querySelector('.yesterday')
         let datePicker = document.querySelector('.datepicker-input')
@@ -62,19 +61,24 @@ function quickDateButtons(){
         })
     }
 }
+
 function toggleActive(){
-    let choiceButton = document.querySelector(('.choice-btn'))
-    if (choiceButton){
-        let techniquesListWrap = document.querySelector(('.techniquesListWrap'))
-        let choiceArrowBtn = document.querySelector(('.choiceArrowBtn'))
-        choiceArrowBtn.addEventListener('click', (evt) => {
-        choiceButton.classList.toggle('rotateButton')
-        techniquesListWrap.classList.toggle('ListWrapToggle')
+     let choiceButton = document.querySelectorAll('.choice-btn')
+    let techniquesListWrap = document.querySelectorAll(('.techniquesListWrap'))
+    if (techniquesListWrap){
+        let choiceArrowBtn = document.querySelectorAll(('.choiceArrowBtn'))
+
+        choiceArrowBtn.forEach(btn =>
+            {
+                btn.addEventListener('click', (evt) => {
+                    alert('click')
+                    btn.classList.toggle('rotateButton')
+                    btn.closest('.techniquesListWrap').style.display = 'block'
+            })
+
     })
     }
-
-
-
+//TO BE FIXEDDDDDDDD
 }
 
 let filterList = searchTerm => {
@@ -105,7 +109,6 @@ function searchItem(){
         })
     }
 }
-
 
 function multiSelect(){
     let techniqueList = document.querySelectorAll('.techniqueOption')
@@ -151,8 +154,35 @@ function removeToggle(){
     })
     // if (choicePlaceholder.textContent === '') choicePlaceholder.textContent = "Choose techniques"
 
-
 }
+
+function editDescription(){
+    let editButton = document.querySelector('.editButton')
+    let techDescription = document.querySelector('.techDescription')
+    let techDescriptionInput = document.querySelector('.techDescriptionInput')
+    let suggestBtn = document.querySelector('.suggestBtn')
+    let choiceArrowBtn = document.querySelector('.choiceArrowBtn')
+
+    if (editButton){
+         editButton.addEventListener('click', (evt) =>{
+
+        let descriptionHeight = techDescription.clientHeight
+        editButton.classList.toggle('editing')
+        techDescription.classList.toggle('d-none')
+        techDescriptionInput.classList.toggle('d-none')
+        techDescriptionInput.classList.toggle('d-flex')
+        suggestBtn.classList.toggle('d-none')
+
+        techDescriptionInput.style.maxHeight = descriptionHeight + "px"
+        techDescriptionInput.querySelector('textarea').value = techDescription.textContent.trim()
+
+    })
+}
+}
+
+
+
+
 
 
 if (document.readyState !== 'loading') {
@@ -169,4 +199,7 @@ function allFunctions(){
     quickDateButtons()
     toggleActive()
     searchItem()
+    editDescription()
+
+
 }

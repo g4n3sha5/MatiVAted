@@ -9,7 +9,8 @@
 
     {% for technique in techniquesList %}
         <li  hx-get = "{% url 'singleTechniqueView' technique.id %}"
-            hx-target = "#leftTechSection"
+{#        <li  hx-get = "technique/{{ technique.id }}/"#}
+            hx-target = ".leftTechSection"
 
             value="{{  technique.EnglishName }}"
             class="techniqueItem list-group-item p-2 d-flex

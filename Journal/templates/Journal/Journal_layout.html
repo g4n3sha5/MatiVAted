@@ -11,7 +11,7 @@
 
  {%include "common/navbar.html" %}
 
-        <div class = "container-fluid vh-100 p-0 overflow-hidden ">
+        <div class = "JRLN container-fluid vh-100 p-0 overflow-hidden ">
             {% include "common/messages.html" %}
             {% if user.is_authenticated %}
 
@@ -27,7 +27,7 @@
     <script>
         {#document.body.addEventListener('htmx:configRequest', function(evt) {#}
         {#    evt.detail.headers['X-CSRFToken] = '{{csrf_token}}'#}
-        {#});#}
+
     </script>
 </body>
 </html>
