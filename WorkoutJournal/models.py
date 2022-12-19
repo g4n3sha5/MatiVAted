@@ -25,16 +25,17 @@ class Technique (models.Model):
 
 class TrainingSession(models.Model):
     TStypes = (
-        ('GI', 'Gi'),
-        ('NOGI', 'No Gi'),
-        ('GYM', 'Gym')
+        ('GI', 'GI'),
+        ('NOGI', 'NOGI'),
+        ('GYM', 'GYM')
     )
+    TSlength = [(i,i) for i in range(1, 7)]
 
     type = models.CharField(choices=TStypes, blank=False, max_length=16)
     date = models.DateField(default=date.today)
     location = models.CharField(max_length=50)
-    length = models.IntegerField()
-    notes = models.CharField(max_length=300)
+    length = models.IntegerField(choices=TSlength, blank=False)
+    notes = models.TextField(max_length=2500)
     techniques = models.ForeignKey(Technique, on_delete=models.CASCADE, null = True)
     addedByUser = models.ManyToManyField(User, related_name="user_session", blank=False)
 
@@ -45,5 +46,5 @@ class TrainingSession(models.Model):
 class Suggestion(models.Model):
     addedByUser = models.ManyToManyField(User, related_name="suggestedByUser", default=None)
     technique = models.ForeignKey(Technique, on_delete=models.CASCADE, default=None, null=True, blank=True)
-    content = models.CharField(max_length=2500)
+    content = models.TextField(max_length=2500)
 

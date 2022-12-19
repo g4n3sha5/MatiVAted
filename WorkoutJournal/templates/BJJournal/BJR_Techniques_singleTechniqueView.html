@@ -1,7 +1,7 @@
 {% load crispy_forms_filters %}
 {% load static %}
 <div class="d-flex flex-column align-items-center my-5 singleTechView w-100 p-0 pb-5 ">
-
+    {% include 'common/messages.html' %}
 
     <div class="count_icon h-100 position-relative mt-2 mb-4">
         <div class="h-100 ">
@@ -37,30 +37,30 @@
                     </div>
                 </div>
 
-                <div class="techEdit w-100">
-                    <div class="techDescription h-100 py-3">
-                        {{ technique.description }}
 
-                    </div>
+        {% else %}
 
-{#                    <div class="techDescriptionInput d-none ">#}
-{#                        <label class=" d-flex w-100">#}
-{#                            <textarea class =" overflow-hidden  p-2 form-control h-100 w-100 "#}
-{#                            name="description" type="text"#}
-{#                            placeholder="Technique info / tips / video link....">{{ technique.description }}</textarea>#}
-{#                        </label>#}
-{#                    </div> #}
+            <div class="addButton px-2 position-relative cursor-pointer">
+               <i class="bi bi-plus-circle-fill fa-2x"></i>
+            </div>
 
-                    <div class="techDescriptionInput d-none ">
-                        <label class=" d-flex w-100 overflow-hidden">
-                            <form method ="post" id="suggestForm" class="d-flex w-100">
-                                {% csrf_token %}
-                                {{ SuggestForm.content }}
-                            </form>
-                        </label>
-                    </div>
-                </div>
         {% endif %}
+
+        <div class="techEdit w-100">
+            <div class="techDescription h-100 py-3">
+                {{ technique.description }}
+
+            </div>
+            <div class="techDescriptionInput d-none ">
+                <label class=" d-flex w-100 overflow-hidden">
+                    <form method ="post" id="suggestForm" class="d-flex w-100">
+                        {% csrf_token %}
+                        {{ SuggestForm.content }}
+                    </form>
+                </label>
+            </div>
+        </div>
+
     </div>
 
     <button   type="button"
@@ -74,8 +74,6 @@
 
     {% if UserSuggestions|length > 0 %}
 
-
-
         <div class="userSuggestions text-center w-100 mt-3">
          <H5>You added {{ UserSuggestions|length }} suggestions regarding this technique description</H5>
             <div class="choice-btn text-white w-100 justify-content-between w-100 ">
@@ -87,10 +85,10 @@
                 </span>
 
             </div>
-            <div class="techniquesListWrap p-3  w-100">
+            <div class="techniquesListWrap d-none p-3  w-100">
                  {% for item in UserSuggestions %}
                     <div class="suggestion border-bottom my-1">{{ item.content }}</div>
-                {% endfor %}
+                 {% endfor %}
             </div>
         </div>
     {% endif %}

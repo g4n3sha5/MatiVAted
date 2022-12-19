@@ -11,41 +11,51 @@ class DatePickerInput(forms.DateInput):
 
 
 class TrainingSessionForm(ModelForm):
-    pass
     # def __init__(self, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
     #     for field in self.fields.values():
     #         field.widget.attrs.update({'class': field.label})
     #         # print(field.widget.attrs)
     class Meta:
-        model = TrainingSession
-        exclude = ('type', 'addedByUser')
 
+        model = TrainingSession
+        fields = '__all__'
+
+    type = forms.ChoiceField(choices=TrainingSession.TStypes, widget=forms.RadioSelect())
+
+    notes = forms.CharField(widget=forms.Textarea(attrs={
+            'class': ' BJRnotes form-control mx-3 h-100',
+            'spellcheck': 'false',
+            'placeholder' : 'Training notes...'
+        }))
+
+    date = forms.DateField(widget=forms.DateInput(attrs={
+        'class':'datepicker-input',
+        'type':'date'
+    }))
+
+    length = forms.ChoiceField(choices=TrainingSession.TSlength,
+        widget=forms.RadioSelect())
 
 
 class addTechniqueForm(ModelForm):
     type = forms.ChoiceField(choices=Technique.TechniqueTypes, widget=forms.RadioSelect())
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper()
-
-        self.helper.layout = Layout(
-            # Field('type', css_class='sessionType', template="BJR_Techniques_types.html"),
-            Field('type', css_class='sessionType'),
-            Field('EnglishName', css_class='form-control'),
-            Field('otherName', css_class='form-control'),
-            Field('description', css_class='form-control mb-3')
-        )
-
+    # def __init__(self, *args, **kwargs):
+    #     super().__init__(*args, **kwargs)
+    #     self.helper = FormHelper()
+    #     self.helper.layout = Layout(
+    #         # Field('type', css_class='sessionType', template="BJR_Techniques_types.html"),
+    #         Field('type', css_class='sessionType'),
+    #         Field('EnglishName', css_class='form-control'),
+    #         Field('otherName', css_class='form-control'),
+    #         # Field('description', css_class='form-control mb-3')
+    #     )
 
     class Meta:
         model = Technique
         fields = '__all__'
 
-# class descriptionSuggestion(forms.Form):
-#     # content = forms.CharField(widget=forms.Textarea(attrs={"rows": 10, "cols": 120}))
-#     content = forms.CharField(widget=forms.Textarea(attrs={'class' : ' rounded-2 p-2'}))
 
 class descriptionSuggestion(ModelForm):
     content = forms.CharField(

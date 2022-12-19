@@ -2,13 +2,13 @@
 {%  load static %}
 {%load crispy_forms_tags %}
 <div class="techniqueSection row m-0 p-0 h-100 mb-5 ">
-
+ {% include 'common/messages.html' %}
 
     <div class="col-lg-8 h-100 text-white  border-0 pb-5">
         <div class="leftTechSection   ">
             {{ form.errors }}
             <form method ="post">
-                {% include 'common/messages.html' %}
+
                 {% csrf_token %}
 
                 <h1 class="text-white text-center py-3">Add a technique</h1>
@@ -21,7 +21,7 @@
                 </div>
 
 
-                <div class="nameSection row text-black d-flex justify-content-center  mb-3">
+                <div class="nameSection border-white row text-black d-flex justify-content-center  mb-3">
                     {% include 'BJJournal/BJR_Techniques_names.html' %}
                 </div>
 

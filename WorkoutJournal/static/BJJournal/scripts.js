@@ -65,15 +65,18 @@ function quickDateButtons() {
 function toggleActive(){
      let choiceButton = document.querySelectorAll('.choice-btn')
     let techniquesListWrap = document.querySelectorAll(('.techniquesListWrap'))
-    if (techniquesListWrap){
+    if (choiceButton){
         let choiceArrowBtn = document.querySelectorAll(('.choiceArrowBtn'))
 
         choiceArrowBtn.forEach(btn =>
             {
                 btn.addEventListener('click', (evt) => {
-                    alert('click')
+
                     btn.classList.toggle('rotateButton')
-                    btn.closest('.techniquesListWrap').style.display = 'block'
+                    document.querySelectorAll(('.techniquesListWrap')).forEach(elem => {
+
+                        elem.classList.toggle('d-none')
+                    })
             })
 
     })
@@ -133,7 +136,7 @@ function multiSelect(){
                     </span>`
 
             choicePlaceholderWrapper.insertAdjacentHTML("beforeend", TechniqueHTML)
-            removeToggle()
+            removeToggle(choicePlaceholderWrapper, choicePlaceholder)
 
         })
 
@@ -141,7 +144,7 @@ function multiSelect(){
     })
 
 }
-function removeToggle(){
+function removeToggle(choicePlaceholderWrapper, choicePlaceholder){
     let removeIcon = document.querySelectorAll('.chosenTechnique')
     let techniquesOptions = document.querySelector('.techniquesOptions')
     removeIcon.forEach(icon =>{
@@ -150,7 +153,11 @@ function removeToggle(){
             let elementToView = document.querySelector(`.${sortAttribute}`)
             elementToView.classList.remove('d-none', 'cantSearch')
             evt.target.remove()
+            if (choicePlaceholderWrapper.textContent.trim() === '') choicePlaceholder.textContent = "Choose techniques"
+
         })
+
+
     })
     // if (choicePlaceholder.textContent === '') choicePlaceholder.textContent = "Choose techniques"
 
@@ -158,30 +165,44 @@ function removeToggle(){
 
 function editDescription(){
     let editButton = document.querySelector('.editButton')
+    let addButton = document.querySelector('.addButton')
     let techDescription = document.querySelector('.techDescription')
-    let techDescriptionInput = document.querySelector('.techDescriptionInput')
     let suggestBtn = document.querySelector('.suggestBtn')
-    let choiceArrowBtn = document.querySelector('.choiceArrowBtn')
+    let techDescriptionInput = document.querySelector('.techDescriptionInput')
 
     if (editButton){
-         editButton.addEventListener('click', (evt) =>{
-
-        let descriptionHeight = techDescription.clientHeight
-        editButton.classList.toggle('editing')
-        techDescription.classList.toggle('d-none')
-        techDescriptionInput.classList.toggle('d-none')
-        techDescriptionInput.classList.toggle('d-flex')
-        suggestBtn.classList.toggle('d-none')
-
-        techDescriptionInput.style.maxHeight = descriptionHeight + "px"
-        techDescriptionInput.querySelector('textarea').value = techDescription.textContent.trim()
-
+        editButton.addEventListener('click', (evt) =>{
+            addButton.classList.toggle('d-none')
+            let descriptionHeight = techDescription.clientHeight
+            editButton.classList.toggle('editing')
+            showDescription(techDescription, techDescriptionInput, suggestBtn)
+            techDescriptionInput.style.maxHeight = descriptionHeight + "px"
+            techDescriptionInput.querySelector('textarea').value = techDescription.textContent.trim()
     })
 }
+    if(addButton){
+        addButton.addEventListener('click', (evt) =>{
+            showDescription(techDescription, techDescriptionInput, suggestBtn)
+            techDescriptionInput.style.height = 50 + '%'
+        })
+
+    }
 }
 
 
+const showDescription = (techDesc, techInput, suggestBtn) =>{
+    if(techDesc){
+        techDesc.classList.toggle('d-none')
+    }
+    if (techInput){
+        techInput.classList.toggle('d-none')
+        techInput.classList.toggle('d-flex')
+    }
+    if(suggestBtn){
+       suggestBtn.classList.toggle('d-none')
+    }
 
+}
 
 
 

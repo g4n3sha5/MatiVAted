@@ -13,6 +13,7 @@ body{
 
 .BJR, .JRLN, .navStyling {
     font-family: 'Rajdhani', sans-serif !important;
+    /*300;400;500;600;700*/
     font-weight:600;
 }
 .navStyling{
@@ -48,6 +49,10 @@ body{
     top:10vh;
     z-index:35;
     height:10%;
+}
+/* ========== MESSAGES ========= */
+.alert-info{
+    position:absolute;
 }
 /* ============ NAVBAR ============ */
 
@@ -439,14 +444,22 @@ h2, .h2 {
 
 }
 .BJR_content{
+      background: url("../img/sam-mgrdichian5.png");
     flex-grow:1;
     padding-right:0;
+      /*!*background:#6961d0;*!*/
+    /*background: url("../img/sam-mgrdichian5.png");*/
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center 50%;
+    border:none;
    /*background: linear-gradient(135deg, rgba(3, 4, 94 ,1) 26%, rgba(72,149,239,1) 72%);*/
 /*background: hsla(197, 100%, 63%, 1);*/
-
 /*background: linear-gradient(90deg, hsla(197, 100%, 63%, 1) 0%, hsla(294, 100%, 55%, 1) 100%);*/
-background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);
-/**/
+/*background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);*/
+
+
+    /**/
 }
     /*======= SIDEMENU ======= */
 .BJR_sideMenu {
@@ -513,6 +526,8 @@ background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%
     height:80%;
     margin:auto;
 }
+
+/*============ ADD SESSION ============*/
 .count_item {
     color:#222035;
     padding:0 0.6vw;
@@ -580,6 +595,25 @@ background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%
     height:100%;
 }
 
+.addSessionSection {
+    /*!*background:#6961d0;*!*/
+    /*background: url("../img/sam-mgrdichian5.png");*/
+    /*background-size:     cover;*/
+    /*background-repeat:   no-repeat;*/
+    /*background-position: center 50%;*/
+    /*border:none;*/
+
+}
+.addSessionButtonWrap{
+    position:absolute;
+    bottom:10%;
+    width:100%;
+}
+.addSessionSection h1, .addSessionSection h2{
+    letter-spacing:6px;
+    font-weight:700;
+
+}
 .addSessionSection .count_icon,
 .sessionDate, .techniquesListWrap,
 .techniqueType .count_icon,
@@ -601,8 +635,12 @@ background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%
 .type_icon label{
     padding:0.5vw;
 }
+.BJRnotesWrap{
+    max-height:14vh;
+}
 .BJRnotes{
     background-color:#dee2e6;
+    border:1.4px solid darkblue;
 }
 
 .sessionLength h3{
@@ -612,14 +650,14 @@ background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%
     padding: 0 !important;
 }
 .sessionLength{
-
     /*background-color:#4ccaf0;*/
     /*box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;*/
 }
 
 .sectionLength, .sessionLocation, .wrapper{
-    background-color:rgba(0, 0, 0, 0.44);
-
+    /*background-color:rgba(0, 0, 0, 0.44);*/
+    /*background-color:rgba(0, 180, 216, 1);*/
+    background-color:rgba(60, 51, 173, 0.96);
     border-radius:10px;
     /*background-color:#6961d0;*/
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
@@ -694,9 +732,9 @@ background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%
 }
 
 .techniquesListWrap{
-    display:none;
     /*background-color:#a2d2ff;*/
     margin-top:3px;
+    z-index:4;
 }
 .techniquesListWrap select:focus{
     outline:none !important;
@@ -706,8 +744,12 @@ background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%
 .rotateButton{
     transform: rotate( -180deg );
 }
-.rotateButton{
+.choiceArrowBtn{
+    display:inline-block;
      transition: transform 0.3s linear;
+}
+.addSessTechn .choiceArrowBtn{
+    right:3%;
 }
 .choicePlaceholderWrapper{
     overflow:hidden;
@@ -727,7 +769,7 @@ background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%
     padding:0.3vh 0.4vw;
     font-size:1.8rem;
 }
-.techniquesOptions option:hover{
+.cursor-pointer:hover{
     cursor:pointer;
 }
 .techniquesOptions::-webkit-scrollbar{
@@ -813,6 +855,7 @@ background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%
 }
 .nameSection{
     background-color:#4361ee;
+    border:3px white;
 
 }
 .leftName{
@@ -869,6 +912,8 @@ background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%
     background-color: #00b4d8;
     text-shadow: 1px 1px rgba(0,0,0,0.2);
 }
+
+
 .singleTechView .count_icon{
     width:20%;
 }

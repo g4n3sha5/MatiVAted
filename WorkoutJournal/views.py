@@ -1,15 +1,18 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from .models import TrainingSession, Technique, Suggestion
 from .forms import TrainingSessionForm, addTechniqueForm, descriptionSuggestion
 
 from django.contrib import messages
 # Create your views here.
+
+
 def BJJournalIndex (request):
 
     context = {
         'user' : request.user
     }
     return render(request, "BJJournal/BJR_index.html", context)
+
 
 def dashboard(request):
 
@@ -25,15 +28,12 @@ def addSession(request):
         form = TrainingSessionForm(request.POST)
 
         if form.is_valid():
-            pass
-            # tp = form.cleaned_data["type"]
-            # leng = form.cleaned_data["length"]
-            # dat = form.cleaned_data["date"]
-            # loc = form.cleaned_data["location"]
-            # nots = form.cleaned_data["notes"]
-            # ts = TrainingSession(name=n)
-            # ts.save()
-            # t.user_lists.add(request.user)
+            form.save()
+            messages.success(request, "Added your session")
+            return redirect('/techniques')
+
+        else:
+            messages.error(request, "Invalid form. ")
 
     else:
         form = TrainingSessionForm()
@@ -43,6 +43,7 @@ def addSession(request):
         'techniquesList': Technique.objects.all()
     }
     return render(request, "BJJournal/BJR_addSession.html", context)
+
 
 def techniques(request):
     if request.method == 'POST':
@@ -85,12 +86,11 @@ def singleTechniqueView(request, id):
 
     UserSuggestions = request.user.suggestedByUser.all()
     userObjects = []
-    for x in UserSuggestions:
-        # userObjects.append(Suggestion.objects.filter(id = x.id).values_list('content', flat=True))
-        # userObjects.append(Suggestion.objects.filter(id = x.id).values('content'))
-        userObjects.append(Suggestion.objects.get(id=x.id))
-        # userObjects.append(Suggestion.item_set.all().get(id=x.id))
 
+    for x in UserSuggestions:
+        if x.technique_id == id:
+            userObjects.append(Suggestion.objects.get(id=x.id))
+        # userObjects.append(Suggestion.objects.get(id=x.id))
     context = {
         'technique': techniqueObj,
         'SuggestForm' : form,

@@ -1,15 +1,13 @@
 {% load static %}
-<div class="wrapper  p-0 position-relative ">
+<div class="wrapper p-0 position-relative ">
 
-{#        <img alt="Technique symbol" src="{% static 'BJJournal/img/technique.png' %}">#}
-{#    </div>#}
-     <div class="choice-btn text-white w-100 justify-content-between d-flex p-3 px-4">
-         <div class="choicePlaceholderWrapper w-100 pt-0">
+
+     <div class="addSessTechn choice-btn text-white w-100 justify-content-between d-flex p-3 px-4">
+         <div class="choicePlaceholderWrapper w-100 pt-0 pr-5">
              <h4 class="choicePlaceholder">Choose techniques</h4>
          </div>
-{#         <i  class="choiceArrowBtn bi bi-arrow-down-square-fill"#}
-{#            >#}
-         <span class="choiceArrowBtn">
+
+         <span class="choiceArrowBtn position-absolute">
             <i  class=" bi bi-arrow-down-square-fill"></i>
         </span>
 {#             <i id="arrowdown" class="bi bi-arrow-up-square-fill"></i>#}
@@ -18,7 +16,7 @@
 {#        <input multiple      list="techniquesList" id="techniques-choice" name="techniquesChoice">#}
 
 
-    <div class="techniquesListWrap p-3 position-absolute w-100">
+    <div class="techniquesListWrap d-none p-3 position-absolute w-100">
         {# SEARCH INPUT    #}
         <div class="techniquesSearch d-flex align-items-center pb-1 position-relative">
             <i class="bi bi-search"></i>
@@ -28,14 +26,9 @@
         <select class="select techniquesOptions  w-100 " multiple>
             {% for technique in techniquesList %}
                 <option value="{{  technique.EnglishName }}" class="TECHNIQUE{{ technique.id }} techniqueOption list-group-item p-2 d-flex
-                 align-items-center justify-content-between mb-1 d-block bg-transparent">
-
-{#                            hx-target = "#singleList"#}
-{#                            hx-get = "/technique/{{ technique.id }}"#}
-{#                        {{ forloop.counter }}.#}
+                 align-items-center cursor-pointer justify-content-between mb-1 d-block bg-transparent">
                     {{  technique.EnglishName  }}
-{#                    </div>#}
-                            <i class="bi bi-plus-square-fill"></i>
+                    <i class="bi bi-plus-square-fill"></i>
                 </option>
             {% endfor %}
         </select>
