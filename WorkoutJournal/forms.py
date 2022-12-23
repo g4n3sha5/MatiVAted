@@ -2,40 +2,55 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Fieldset, Submit, Field
 from django import forms
 from django.forms import ModelForm
-from .models import *
+from django.utils.safestring import mark_safe
 
+from .models import *
 
 
 class DatePickerInput(forms.DateInput):
     input_type = 'datetime'
 
 
+class TechniquesCheckBox(forms.CheckboxSelectMultiple):
+    pass
+
 class TrainingSessionForm(ModelForm):
     # def __init__(self, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
-    #     for field in self.fields.values():
-    #         field.widget.attrs.update({'class': field.label})
-    #         # print(field.widget.attrs)
-    class Meta:
+    #     if user is not None:
+    #         self.fields['addedByUser'].initial = user
 
+    class Meta:
         model = TrainingSession
         fields = '__all__'
 
     type = forms.ChoiceField(choices=TrainingSession.TStypes, widget=forms.RadioSelect())
 
     notes = forms.CharField(widget=forms.Textarea(attrs={
-            'class': ' BJRnotes form-control mx-3 h-100',
-            'spellcheck': 'false',
-            'placeholder' : 'Training notes...'
-        }))
+        'class': ' BJRnotes form-control mx-3 h-100',
+        'spellcheck': 'false',
+        'placeholder': 'Training notes...'
+    }), required=False)
 
     date = forms.DateField(widget=forms.DateInput(attrs={
-        'class':'datepicker-input',
-        'type':'date'
-    }))
+        'class': 'datepicker-input',
+        'type': 'date'
+    }), required=False)
+
+    location = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control'
+    }), required=False)
 
     length = forms.ChoiceField(choices=TrainingSession.TSlength,
-        widget=forms.RadioSelect())
+                               widget=forms.RadioSelect())
+
+    techniques = forms.ModelMultipleChoiceField(queryset=Technique.objects.all(),
+                                                widget=forms.CheckboxSelectMultiple(),
+                                                required=False)
+        # widget=forms.CheckboxSelectMultiple(attrs={'class':'techniqueOption list-group-item p-2 d-flex '
+        #                                                  'align-items-center cursor-pointer justify-content-between '
+        #                                                  'mb-1 d-block bg-transparent'}))
+    # widget=TechniquesCheckBox())
 
 
 class addTechniqueForm(ModelForm):
@@ -61,7 +76,7 @@ class descriptionSuggestion(ModelForm):
     content = forms.CharField(
         widget=forms.Textarea(attrs={
             'class': ' rounded-2 p-2',
-            'spellcheck' : 'false'
+            'spellcheck': 'false'
         }))
 
     class Meta:

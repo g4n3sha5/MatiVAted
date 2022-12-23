@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, reverse
-from .models import TrainingSession, Technique, Suggestion
+from .models import TrainingSession, Technique, Suggestion, User
 from .forms import TrainingSessionForm, addTechniqueForm, descriptionSuggestion
 
 from django.contrib import messages
@@ -25,13 +25,13 @@ def dashboard(request):
 
 def addSession(request):
     if request.method == 'POST':
-        form = TrainingSessionForm(request.POST)
+        form = TrainingSessionForm(request.POST, auto_id=True)
 
         if form.is_valid():
-            form.save()
+            sessionInstance = form.save(commit=False)
             messages.success(request, "Added your session")
-            return redirect('/techniques')
-
+            form.save()
+            sessionInstance.addedByUser.add(request.user)
         else:
             messages.error(request, "Invalid form. ")
 
@@ -43,6 +43,15 @@ def addSession(request):
         'techniquesList': Technique.objects.all()
     }
     return render(request, "BJJournal/BJR_addSession.html", context)
+
+
+def yourSessions(request):
+    context = {
+        # 'BJRform': form,
+        'sessionsList': TrainingSession.objects.all()
+    }
+
+    return render(request, "BJJournal/BJR_yourSessions.html", context)
 
 
 def techniques(request):
@@ -96,7 +105,7 @@ def singleTechniqueView(request, id):
         'SuggestForm' : form,
         'UserSuggestions' : userObjects
     }
-    return render(request, "BJJournal/BJR_Techniques_singleTechniqueView.html", context)
+    return render(request, "BJJournal/BJR_Techniques/BJR_Techniques_singleTechniqueView.html", context)
 
    # suggestion.techSuggestion.add(id)
 

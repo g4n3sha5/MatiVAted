@@ -1,0 +1,93 @@
+{% load static %}
+<div class="yourSessionsSection 5 mt-3 h-100 w-100 ">
+    {% for session in sessionsList reversed  %}
+
+        <div class="grid-item img-buddha cursor-pointer">
+            <div class="SessionDate p-2 px-3 d-flex justify-content-between">
+                {% if session.date %}
+                     <h3>
+                        {{ session.date }}
+                     </h3>
+                {% endif %}
+                <h4 class="SessionId">#{{ session.id }}</h4>
+            </div>
+
+
+        <div class="SessionNotes py-0 px-3">
+            <div class="row h-100">
+
+                {% if session.notes != None %}
+
+                    <div class="col-6 SessionNotesLeft p-3">
+                        <h4>{{ session.notes}}.</h4>
+                    </div>
+                    {{ session.techniques }}
+                {% elif session.techniques != None %}
+                    <div class="col-6 p-3">
+                        <h4>Balacha, skrętówka</h4>
+                    </div>
+                 {% endif %}
+
+
+            </div>
+        </div>
+
+            <div class="SessionInfo row  d-flex justify-content-end align-items-center">
+
+{#                /% if club has logo %}#}
+                <div class="col-2 SessionLogo">
+                    <img alt="Club ogo" src="{% static 'BJJournal/img/gblogo.png' %}">
+                </div>
+{#                {% if session.location %}#}
+                <div class="col-2">
+                    <div class="yourSessionsType count_icon ">
+                        <img alt="No Gi training symbol" src="{% static 'BJJournal/img/nogi.png' %}">
+                    </div>
+                </div>
+                <div class="col-2 SessionLength d-flex align-items-center justify-content-center">
+                       <h4> 2h</h4>
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+
+
+{#        <div class="grid-item img-buddha cursor-pointer">#}
+{#            <div class="SessionDate p-2 px-3 d-flex justify-content-between">#}
+{#                <h3>29.04.2022       18:00</h3>#}
+{#                <h4 class="SessionId">#254</h4>#}
+{#            </div>#}
+{##}
+{#            <div class="SessionNotes py-0 px-3">#}
+{#                <div class="row h-100">#}
+{#                    <div class="col-6 SessionNotesLeft p-3">#}
+{#                        <h4>trening u kabana twoja staraa zapierdala...</h4>#}
+{#                    </div>#}
+{#                    <div class="col-6 p-3">#}
+{#                        <h4>Balacha, skrętówka</h4>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div class="SessionInfo row d-flex justify-content-end align-items-center mx-0  ">#}
+{#                <div class="col-4 SessionLogo text-center">#}
+{#                    <h3 class="font-weight-700">Poznań Gracie Barra</h3>#}
+{#                    <img alt="Club ogo" src="{% static 'BJJournal/img/gblogo.png' %}">#}
+{##}
+{#                </div>#}
+{##}
+{#                <div class="col-2">#}
+{#                    <div class="yourSessionsType count_icon p-2">#}
+{#                        <img alt="No Gi training symbol" src="{% static 'BJJournal/img/nogi.png' %}">#}
+{#                    </div>#}
+{#                </div>#}
+{#                <div class="col-2 SessionLength d-flex align-items-center justify-content-center font-weight-600">#}
+{#                       <h4> 2</h4> <h5>h</h5>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{##}
+{#</div>#}
+{##}
+{##}

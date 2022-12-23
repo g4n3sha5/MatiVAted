@@ -36,8 +36,17 @@
                 </a>
             </li>
 
-            <li class="py-3"><a href="#resume" class="nav-link scrollto"><i class="bi bi-collection-fill px-3"></i> <span>Your Sessions</span></a></li>
+            <li class="py-3">
+                <a class="nav-link scrollto"
+                    hx-target="#BJR_view"
+                    hx-get=" {% url 'yourSessions' %}">
+                    <i class="bi bi-collection-fill px-3"></i>
+                    <span>Your Sessions</span></a>
+            </li>
+
+
             <li class="py-3"><a href="#portfolio" class="nav-link scrollto"><i class="bi bi-bullseye px-3"></i> <span>Workout Goals</span></a></li>
+
             {#          <li class="py-3"><a href="#portfolio" class="nav-link scrollto"><i class=" px-3"> <img src="{% static 'BJJournal/img/technique.png' %}"> </i><span>Techniques</span></a></li>#}
             <li class="py-3">
                 <a  class="nav-link scrollto"

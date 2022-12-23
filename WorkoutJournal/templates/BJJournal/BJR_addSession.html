@@ -5,18 +5,18 @@
 
 <div class="addSessionSection p-5 mt-3 h-100 w-100 ">
 
+     {% include 'common/messages.html' %}
+
+
     <h1 class="text-white text-center">Add new session</h1>
     <hr class="text-light">
 
-    <form method ="post" action ="/addSession/">
+{#    <form method ="post" action ="/addSession/">#}
+    <form method ="post">
         {% csrf_token %}
-        {{ BJRform.errors }}
-
-
-
-
+        <div class="text-white">{{ BJRform.errors }}</div>
         <div class="addSession row justify-content-between  px-3 py-2">
-            {%  include 'BJJournal/BJR_addSession_sessionType.html' %}
+            {%  include 'BJJournal/BJR_addSession/BJR_addSession_sessionType.html' %}
 
             <div class="BJRnotesWrap col-md-5">
                 <label class="h-100 w-100">
@@ -47,20 +47,21 @@
 
         <div class="addSession row justify-content-between align-items-start mt-4 px-2 mb-4">
 
-            <div class="col-md-5 sectionLength p-3 justify-content-between px-5">
-                {% include 'BJJournal/BJR_addSession_sessionLength.html' %}
+            <div class="col-md-5 sectionLength p-3 justify-content-between px-5 position-relative">
+
+                {% include 'BJJournal/BJR_addSession/BJR_addSession_sessionLength.html' %}
             </div>
 
             <div class="col-md-5 addSection sectionTechniques px-3
             justify-content-center position-relative">
-                {% include 'BJJournal/BJR_addSession_Techniques.html' %}
+                {% include 'BJJournal/BJR_addSession/BJR_addSession_Techniques.html' %}
             </div>
 
             <div class=" col-md-2 sessionLocation text-center d-flex flex-column py-3 align-items-center">
                 <div class="my-auto">
                     <h2 class="pb-2"><i class="bi bi-geo-fill"></i></h2>
                     <label>
-                        <input class="form-control" type="text" name="TSlocation"/>
+                        {{BJRform.location}}
                     </label>
                 </div>
              </div>
@@ -74,9 +75,9 @@
                          name ="save"
                          class="addSessionButton btn  btn-primary p-3 mt-5
                           text-white w-75 "
-                        hx-post="{% url 'techniques'  %}"
+                        hx-post="{% url 'addSession'  %}"
                         hx-target="#BJR_view">
-                     Add Technique</button>
+                     Add Training Session</button>
 
         </div>
 

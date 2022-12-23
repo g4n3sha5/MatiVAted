@@ -10,9 +10,13 @@
 {#{% endif %}#}
 {% if messages %}
   {% for msg in messages %}
-    <div class="alert alert-info alert-dismissable w-100 text-center">
-      <button type="button" class="btn btn-outline-dark close float-end" onclick="this.parentNode.remove()" data-dismiss="alert" aria-hidden="true">&times;</button>
-      {{msg.message}}
-    </div>
+      <div class=" w-100 position-fixed  justify-content-center mx-5">
+          <div class=" center-block alert alert-info alert-dismissable text-center">
+              <button type="button" class="btn btn-outline-dark close float-end" onclick="this.parentNode.remove()" data-dismiss="alert" aria-hidden="true">&times;</button>
+              {{msg.message}}
+        </div>
+
+      </div>
+
   {% endfor %}
 {% endif %}

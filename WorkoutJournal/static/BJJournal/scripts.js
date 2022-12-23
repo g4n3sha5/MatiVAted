@@ -114,29 +114,33 @@ function searchItem(){
 }
 
 function multiSelect(){
-    let techniqueList = document.querySelectorAll('.techniqueOption')
+    // let techniqueList = document.querySelectorAll('.techniqueOption')
+    let techniqueOptionClick = document.querySelectorAll('.techniqueOptionClick')
     let choicePlaceholder = document.querySelector('.choicePlaceholder')
     let choicePlaceholderWrapper = document.querySelector('.choicePlaceholderWrapper')
 
-     techniqueList.forEach(technique =>{
-
+     techniqueOptionClick.forEach(technique =>{
         technique.addEventListener('click', (evt) =>{
-
-            technique.classList.add('d-none', 'cantSearch')
+            let techniqueOption = technique.closest('.techniqueOption')
+            let checkBox = techniqueOption.querySelector('input')
+            checkBox.checked = true
+            techniqueOption.classList.add('d-none', 'cantSearch')
 
             if (choicePlaceholder.textContent === "Choose techniques") choicePlaceholder.textContent = ''
 
-            let TechniqueHTML = `<span data-element='${technique}'
-                                        data-class='${technique.classList[0]}' 
+            console.log("class", techniqueOption.classList[0])
+            // let TechniqueHTML = `<span data-element='${techniqueOption}'
+            let TechniqueHTML = `<span   
+                                        data-class='${techniqueOption.classList[0]}' 
                                         class='mb-1 chosenTechnique'>
              
                         ${technique.textContent.trim()}   
                         <i class="pe-none bi bi-x-octagon" ></i>
-          
+      
                     </span>`
 
             choicePlaceholderWrapper.insertAdjacentHTML("beforeend", TechniqueHTML)
-            removeToggle(choicePlaceholderWrapper, choicePlaceholder)
+            removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox)
 
         })
 
@@ -144,15 +148,17 @@ function multiSelect(){
     })
 
 }
-function removeToggle(choicePlaceholderWrapper, choicePlaceholder){
+function removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox){
     let removeIcon = document.querySelectorAll('.chosenTechnique')
     let techniquesOptions = document.querySelector('.techniquesOptions')
+
     removeIcon.forEach(icon =>{
         icon.addEventListener('click', (evt) =>{
             let sortAttribute = icon.getAttribute('data-class')
             let elementToView = document.querySelector(`.${sortAttribute}`)
             elementToView.classList.remove('d-none', 'cantSearch')
             evt.target.remove()
+            checkBox.checked = false
             if (choicePlaceholderWrapper.textContent.trim() === '') choicePlaceholder.textContent = "Choose techniques"
 
         })
