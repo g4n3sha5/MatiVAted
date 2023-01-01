@@ -1,0 +1,98 @@
+
+{% load static %}
+
+<div id="modal-backdrop" class="modal-backdrop fade show" style="display:block;"></div>
+
+<div id="MajModal" class="modal modal-lg fade show" tabindex="-1" style="display:block;">
+	<div class="modal-dialog modal-lg modal-dialog-centered">
+	  <div class="modal-content">
+
+		<div class="grid-item img-buddha ">
+
+            <div class="SessionDate p-2 px-3 d-flex justify-content-between w-100">
+                {% if session.date %}
+                     <h3>
+                        {{ session.date }}
+                     </h3>
+                {% endif %}
+                <h4 class="SessionId">#{{ session.id }}</h4>
+            </div>
+
+            <div class="SessionNotes py-lg-1  px-3  ">
+                <div class="row h-100">
+
+                    <div class="col-6 SessionNotesLeft h-100 d-flex align-items-center justify-content-center">
+
+                        {% if session.notes|length > 0 %}
+                             <div class="cut-overflow h-100">
+                               {{ session.notes}}
+                             </div>
+                        {% else %}
+
+                            <div class="addButton mx-auto px-2 position-absolute cursor-pointer">
+                                <i class="bi bi-plus-circle-fill fa-2x"></i>
+                            </div>
+                        {% endif %}
+
+                        <div class="techEdit w-100 h-100">
+{#                            <div class="techDescription  py-3">#}
+{#                                <h3 class="font-weight-700">{{ session.notes }}</h3>#}
+{#                            </div>#}
+
+                            <div class="techDescriptionInput  h-100 ">
+                                <label class=" d-flex w-100 overflow-hidden">
+                                    <form method ="post" id="suggestForm" class="d-flex w-100">
+                                        {% csrf_token %}
+                                        {{ form.notes }}
+                                    </form>
+                                </label>
+                            </div>
+                    </div>
+
+                     </div>
+
+                    <div class="col-6 p-3 h-100">
+                        {% if session.techniques != None %}
+                            <div class="cut-overflow h-100">
+                                {% for technique in session.techniques.all %}
+                                    <h4 class="d-inline sessTechnique">{{technique}}</h4>
+                                {% endfor %}
+                            </div>
+                         {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="SessionInfo overflow-hidden d-flex justify-content-end align-items-stretch mx-0">
+
+                {% include 'BJJournal/BJR_yourSessions/BJR_yourSessions_editLocation.html' %}
+
+                    <div class="w-25 yourSessionsType count_icon d-flex   overflow-hidden p-2 ">
+                        <img alt="No Gi training symbol" src="{% static 'BJJournal/img/'%}{{session.type}}.png">
+                    </div>
+
+                    <div class="w-25  sessionLength d-flex align-items-center p-2 justify-content-center">
+                        <h4> {{ session.length }}h</h4>
+                    </div>
+            </div>
+        </div>
+
+		<div class="modal-footer">
+            REPAIR!!!!!!!!!!!! <--------------------------------
+		  <button
+                  hx-post="{% url 'editSession' session.id %} "
+                  hx-target="#BJR_view"
+                  type="button"
+                  class="btn btn-primary"
+                  onclick="closeModal()">
+              Close and save
+          </button>
+		</div>
+
+	  </div>
+	</div>
+  </div>
+
+
+ {% include 'common/messages.html' %}

@@ -38,7 +38,9 @@ class TrainingSessionForm(ModelForm):
     }), required=False)
 
     location = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control'
+        'class': 'form-control',
+        'placeholder': 'Location...'
+
     }), required=False)
 
     length = forms.ChoiceField(choices=TrainingSession.TSlength,

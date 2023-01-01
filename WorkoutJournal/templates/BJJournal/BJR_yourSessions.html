@@ -1,9 +1,15 @@
 {% load static %}
-<div class="yourSessionsSection 5 mt-3 h-100 w-100 ">
-    {% for session in sessionsList reversed  %}
 
-        <div class="grid-item img-buddha cursor-pointer">
-            <div class="SessionDate p-2 px-3 d-flex justify-content-between">
+ <div id="modalContainer"></div>
+
+<div class="yourSessionsSection 5 mt-3 h-100 w-100 ">
+
+    {% for session in sessionsList reversed  %}
+        <div hx-get="{% url 'singleSessionView' session.id  %}"
+            hx-target="#modalContainer"
+            class="grid-item img-buddha ">
+
+            <div class="SessionDate p-2 px-3 d-flex justify-content-between w-100">
                 {% if session.date %}
                      <h3>
                         {{ session.date }}
@@ -13,46 +19,65 @@
             </div>
 
 
-        <div class="SessionNotes py-0 px-3">
-            <div class="row h-100">
+            <div class="SessionNotes  py-lg-1 px-3 ">
+                <div class="row h-100 ">
 
-                {% if session.notes != None %}
+                    <div class="col-6 SessionNotesLeft h-100 ">
+                        {% if session.notes !=  None %}
+                             <div class="cut-overflow h-100">
+                               {{ session.notes}}.
+                             </div>
+                        {% endif %}
+                     </div>
 
-                    <div class="col-6 SessionNotesLeft p-3">
-                        <h4>{{ session.notes}}.</h4>
+                    <div class="col-6 p-3 h-100">
+                        {% if session.techniques != None %}
+                            <div class="cut-overflow h-100">
+                                {% for technique in session.techniques.all %}
+                                    <h4 class="d-inline sessTechnique">{{technique}}</h4>
+                                {% endfor %}
+                            </div>
+
+                         {% endif %}
                     </div>
-                    {{ session.techniques }}
-                {% elif session.techniques != None %}
-                    <div class="col-6 p-3">
-                        <h4>Balacha, skrętówka</h4>
-                    </div>
-                 {% endif %}
 
-
+                </div>
             </div>
-        </div>
 
-            <div class="SessionInfo row  d-flex justify-content-end align-items-center">
+            <div class="SessionInfo overflow-hidden d-flex justify-content-end align-items-stretch mx-0">
 
 {#                /% if club has logo %}#}
-                <div class="col-2 SessionLogo">
-                    <img alt="Club ogo" src="{% static 'BJJournal/img/gblogo.png' %}">
+{#                <div class="col-2 SessionLogo">#}
+{#                    <img alt="Club ogo" src="{% static 'BJJournal/img/gblogo.png' %}">#}
+{#                </div>  #}
+
+                <div class=" SessionLogo  d-flex align-items-center justify-content-center ">
+{#                    {% if session.location %}#}
+                    <h3 class="font-weight-700">{{ session.location }}</h3>
+{#                    {% endif %}#}
                 </div>
-{#                {% if session.location %}#}
-                <div class="col-2">
-                    <div class="yourSessionsType count_icon ">
-                        <img alt="No Gi training symbol" src="{% static 'BJJournal/img/nogi.png' %}">
+
+
+                    <div class="w-25 yourSessionsType count_icon d-flex   overflow-hidden p-2 ">
+                        <img alt="No Gi training symbol" src="{% static 'BJJournal/img/'%}{{session.type}}.png">
+
                     </div>
-                </div>
-                <div class="col-2 SessionLength d-flex align-items-center justify-content-center">
-                       <h4> 2h</h4>
-                </div>
+
+                    <div class="w-25  sessionLength d-flex align-items-center p-2 justify-content-center">
+                        <h4> {{ session.length }}h</h4>
+                    </div>
+
+{#                {% if session.location %}#}
+
             </div>
+
         </div>
 
     {% endfor %}
 
 
+
+</div>
 {#        <div class="grid-item img-buddha cursor-pointer">#}
 {#            <div class="SessionDate p-2 px-3 d-flex justify-content-between">#}
 {#                <h3>29.04.2022       18:00</h3>#}

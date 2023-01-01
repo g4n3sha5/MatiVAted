@@ -25,10 +25,11 @@
                         <div class=" btn-group">
                             <a type="button" class ="  dropdown-toggle" data-bs-toggle="dropdown"
                             aria-haspopup = "true" aria-expanded ="false">Account</a>
-                            <div class="dropdown-menu">
+                            <div class="dropdown-menu ">
                                 {% if user.is_authenticated %}
 
-                                    <a class="dropdown-item" href="#">Account Details</a>
+                                    <a class="dropdown-item" href="{% url 'myAccount' %}">Account</a>
+                                    <a class="dropdown-item" href="{% url 'myAccount' %}">Profile</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
 

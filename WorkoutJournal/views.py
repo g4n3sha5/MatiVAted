@@ -1,26 +1,26 @@
-from django.shortcuts import render, redirect, reverse
+from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
 from .models import TrainingSession, Technique, Suggestion, User
 from .forms import TrainingSessionForm, addTechniqueForm, descriptionSuggestion
 
 from django.contrib import messages
+
+
 # Create your views here.
 
 
-def BJJournalIndex (request):
-
+def BJJournalIndex(request):
     context = {
-        'user' : request.user
+        'user': request.user
     }
     return render(request, "BJJournal/BJR_index.html", context)
 
 
 def dashboard(request):
-
     context = {
 
     }
 
-    return render (request, "BJJournal/BJR_dashboard.html", context)
+    return render(request, "BJJournal/BJR_dashboard.html", context)
 
 
 def addSession(request):
@@ -32,6 +32,7 @@ def addSession(request):
             messages.success(request, "Added your session")
             form.save()
             sessionInstance.addedByUser.add(request.user)
+            return HttpResponseRedirect('/addSession')
         else:
             messages.error(request, "Invalid form. ")
 
@@ -54,6 +55,29 @@ def yourSessions(request):
     return render(request, "BJJournal/BJR_yourSessions.html", context)
 
 
+def singleSessionView(request, id):
+
+    Session = TrainingSession.objects.get(pk=id)
+    context = {
+        'session': Session,
+        'form': TrainingSessionForm(instance=Session)
+    }
+    return render(request, "BJJournal/BJR_yourSessions/BJR_yourSessions_singleSessionView.html", context)
+
+
+def editSession(request, id):
+    print(request)
+    Session = TrainingSession.objects.get(pk=id)
+    if request.method == 'POST':
+        form = TrainingSessionForm(request.POST, instance=Session, auto_id=True)
+        print(request.POST)
+        if form.is_valid():
+            print("valid")
+            form.save()
+
+    return redirect ('/yourSessions')
+
+
 def techniques(request):
     if request.method == 'POST':
         form = addTechniqueForm(request.POST)
@@ -68,7 +92,6 @@ def techniques(request):
 
     else:
         form = addTechniqueForm()
-
 
     context = {
         'TechForm': form,
@@ -88,7 +111,6 @@ def singleTechniqueView(request, id):
             suggestion.technique_id = id
             suggestion.save()
             suggestion.addedByUser.add(request.user)
-            messages.success(request, "Saved your suggestion")
 
     else:
         form = descriptionSuggestion()
@@ -102,13 +124,12 @@ def singleTechniqueView(request, id):
         # userObjects.append(Suggestion.objects.get(id=x.id))
     context = {
         'technique': techniqueObj,
-        'SuggestForm' : form,
-        'UserSuggestions' : userObjects
+        'SuggestForm': form,
+        'UserSuggestions': userObjects
     }
     return render(request, "BJJournal/BJR_Techniques/BJR_Techniques_singleTechniqueView.html", context)
 
-   # suggestion.techSuggestion.add(id)
-
+# suggestion.techSuggestion.add(id)
 
 
 # def addTechnique(request):
@@ -131,5 +152,3 @@ def singleTechniqueView(request, id):
 #     #     'techniquesList': Technique.objects.all()
 #     # }
 #     return render(request, "BJJournal/BJR_addSession.html", context)
-
-

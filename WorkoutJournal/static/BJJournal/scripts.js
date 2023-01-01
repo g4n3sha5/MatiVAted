@@ -42,6 +42,7 @@ function onClickColor() {
         })
     }
 }
+
 function quickDateButtons() {
     let todayBtn = document.querySelector('.today')
     if (todayBtn) {
@@ -115,32 +116,31 @@ function searchItem(){
 
 function multiSelect(){
     // let techniqueList = document.querySelectorAll('.techniqueOption')
-    let techniqueOptionClick = document.querySelectorAll('.techniqueOptionClick')
+    let techniqueOption = document.querySelectorAll('.techniqueOption')
     let choicePlaceholder = document.querySelector('.choicePlaceholder')
     let choicePlaceholderWrapper = document.querySelector('.choicePlaceholderWrapper')
 
-     techniqueOptionClick.forEach(technique =>{
+     techniqueOption.forEach(technique =>{
         technique.addEventListener('click', (evt) =>{
-            let techniqueOption = technique.closest('.techniqueOption')
-            let checkBox = techniqueOption.querySelector('input')
-            checkBox.checked = true
-            techniqueOption.classList.add('d-none', 'cantSearch')
+            evt.preventDefault()
+            let checkBox = technique.querySelector('input')
+            checkBox.checked=true
+            technique.classList.add('d-none', 'cantSearch')
 
             if (choicePlaceholder.textContent === "Choose techniques") choicePlaceholder.textContent = ''
 
-            console.log("class", techniqueOption.classList[0])
-            // let TechniqueHTML = `<span data-element='${techniqueOption}'
             let TechniqueHTML = `<span   
-                                        data-class='${techniqueOption.classList[0]}' 
-                                        class='mb-1 chosenTechnique'>
-             
+                                    data-class='${technique.classList[0]}' 
+                                    class='mb-1 chosenTechnique'>
                         ${technique.textContent.trim()}   
                         <i class="pe-none bi bi-x-octagon" ></i>
       
                     </span>`
 
             choicePlaceholderWrapper.insertAdjacentHTML("beforeend", TechniqueHTML)
+
             removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox)
+
 
         })
 
@@ -148,12 +148,15 @@ function multiSelect(){
     })
 
 }
-function removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox){
+
+function removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox=false){
+
     let removeIcon = document.querySelectorAll('.chosenTechnique')
     let techniquesOptions = document.querySelector('.techniquesOptions')
 
     removeIcon.forEach(icon =>{
         icon.addEventListener('click', (evt) =>{
+            console.log("remove", checkBox.checked)
             let sortAttribute = icon.getAttribute('data-class')
             let elementToView = document.querySelector(`.${sortAttribute}`)
             elementToView.classList.remove('d-none', 'cantSearch')
@@ -170,33 +173,48 @@ function removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox){
 }
 
 function editDescription(){
-    let editButton = document.querySelector('.editButton')
-    let addButton = document.querySelector('.addButton')
-    let techDescription = document.querySelector('.techDescription')
+    let editButton = document.querySelectorAll('.editButton')
+    let addButton = document.querySelectorAll('.addButton')
+    // let techDescription = document.querySelector('.techDescription')
     let suggestBtn = document.querySelector('.suggestBtn')
     let techDescriptionInput = document.querySelector('.techDescriptionInput')
 
     if (editButton){
-        editButton.addEventListener('click', (evt) =>{
-            addButton.classList.toggle('d-none')
-            let descriptionHeight = techDescription.clientHeight
-            editButton.classList.toggle('editing')
-            showDescription(techDescription, techDescriptionInput, suggestBtn)
-            techDescriptionInput.style.maxHeight = descriptionHeight + "px"
-            techDescriptionInput.querySelector('textarea').value = techDescription.textContent.trim()
-    })
-}
-    if(addButton){
-        addButton.addEventListener('click', (evt) =>{
-            showDescription(techDescription, techDescriptionInput, suggestBtn)
-            techDescriptionInput.style.height = 50 + '%'
-        })
+        Array.from(editButton).forEach(btn => {
+            btn.addEventListener('click', (evt) =>
+            {
+                if(addButton){
+                    addButton.classList.toggle('d-none')
+                }
+                if(suggestBtn) { showDescription(techDescription, techDescriptionInput, suggestBtn)}
+                else { showDescription(techDescription, techDescriptionInput)}
 
+                let descriptionHeight = techDescription.clientHeight
+                editButton.classList.toggle('editing')
+
+                techDescriptionInput.style.maxHeight = descriptionHeight + "px"
+                techDescriptionInput.querySelector('textarea').value = techDescription.textContent.trim()
+            })
+        })
+    }
+
+    if(addButton){
+         Array.from(addButton).forEach(btn => {
+             btn.addEventListener('click', (evt) => {
+                 let techDescriptionInput = btn.parentNode.querySelector('.techDescriptionInput')
+                 let techDescription = btn.parentNode.querySelector('.techDescription')
+
+                 if(suggestBtn){ showDescription(techDescription, techDescriptionInput, suggestBtn)}
+                 else{ showDescription(techDescription, techDescriptionInput)}
+
+                 techDescriptionInput.style.height = 30 + '%'
+
+             })
+         })
     }
 }
 
-
-const showDescription = (techDesc, techInput, suggestBtn) =>{
+const showDescription = (techDesc, techInput, suggestBtn = false) =>{
     if(techDesc){
         techDesc.classList.toggle('d-none')
     }
@@ -210,23 +228,47 @@ const showDescription = (techDesc, techInput, suggestBtn) =>{
 
 }
 
+const showModal = () => {
+    let modalContainer = document.querySelector('#modalContainer')
+    let yourSessionsSection = document.querySelector('.yourSessionsSection')
+    if (yourSessionsSection){
+        yourSessionsSection.addEventListener('htmx:afterOnLoad', evt=>{
+        if (evt.detail.target.id === "modalContainer") {
+            modalContainer.style.display = "block"
+        }
+    })
+    }
 
+
+}
+
+const closeModal = () => {
+
+    let container = document.querySelector('#modalContainer')
+	let backdrop = document.querySelector('#modal-backdrop')
+	let modal = document.querySelector('#MajModal')
+    if(container){
+	container.style.display = "None"
+        }
+	backdrop.classList.remove("show")
+
+}
 
 if (document.readyState !== 'loading') {
     allFunctions()
 }
+
 document.body.addEventListener('htmx:afterOnLoad', event=>{
     allFunctions()
 })
 
 
 function allFunctions(){
-     multiSelect()
+    multiSelect()
     onClickColor()
     quickDateButtons()
     toggleActive()
     searchItem()
     editDescription()
-
-
+    showModal()
 }

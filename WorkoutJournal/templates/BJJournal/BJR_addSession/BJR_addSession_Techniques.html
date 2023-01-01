@@ -23,43 +23,22 @@
             <input class="searchBox py-1 " type="text" placeholder="Search ">
         </div>
 
-{#        <ul class="select techniquesOptions  w-100 px-3 ">#}
-{#            {% for technique in BJRform.techniques %}#}
-{#                <li class='TECHNIQUE{{ technique.id }} techniqueOption list-group-item p-2 d-flex#}
-{#                         align-items-center justify-content-between mb-1 d-block'>#}
-{#                    {{technique.tag}}#}
-{#                    <label class="" for="{{technique.id_for_label}}">#}
-{#                        {{technique.choice_label}}#}
-{#                    </label>#}
-{##}
-{#                </li>#}
-{#            {% endfor %}#}
-{#        </ul>   #}
 
         <ul class="select techniquesOptions  w-100 px-3 ">
             {% for technique in BJRform.techniques %}
 
                 <li class="{{technique.id_for_label}} techniqueOption  list-group-item d-flex
                          align-items-center justify-content-between mb-1 d-block">
-                    {{technique.tag}}
+
+
                     <label class="techniqueOptionClick w-100 h-100" for="{{technique.id_for_label}}">
+                        {{technique.tag}}
                         {{technique.choice_label}}
                     </label>
 
                 </li>
             {% endfor %}
         </ul>
-
-{##}
-{#        <select class="select techniquesOptions  w-100 " multiple>#}
-{#            {% for technique in techniquesList %}#}
-{#                <option value="{{  technique.id }}" class="TECHNIQUE{{ technique.id }} techniqueOption list-group-item p-2 d-flex#}
-{#                 align-items-center cursor-pointer justify-content-between mb-1 d-block bg-transparent">#}
-{#                    {{  technique.EnglishName  }}#}
-{#                    <i class="bi bi-plus-square-fill"></i>#}
-{#                </option>#}
-{#            {% endfor %}#}
-{#        </select>#}
 
 
     </div>

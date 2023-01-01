@@ -29,7 +29,7 @@ class TrainingSession(models.Model):
         ('NOGI', 'NOGI'),
         ('GYM', 'GYM')
     )
-    TSlength = [(i,i) for i in range(1, 7)]
+    TSlength = [(i, i) for i in range(1, 7)]
 
     type = models.CharField(choices=TStypes, blank=False, max_length=16)
     date = models.DateField(default=date.today, blank=True, null=True)

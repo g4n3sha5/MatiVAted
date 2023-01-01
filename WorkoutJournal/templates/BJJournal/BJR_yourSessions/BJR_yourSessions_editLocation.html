@@ -1,0 +1,25 @@
+ <div class=" SessionLogo  d-flex align-items-center justify-content-center ">
+    {% if session.location|length < 1 %}
+
+        <div class="addButton mx-auto px-2 position-absolute cursor-pointer">
+            <i class="bi bi-plus-circle-fill fa-2x"></i>
+        </div>
+
+    {% endif %}
+
+     <div class="techEdit w-100">
+
+        <div class="techDescription h-100 py-3">
+            <h3 class="font-weight-700">{{ session.location }}</h3>
+        </div>
+
+        <div class="techDescriptionInput d-none">
+            <label class=" d-flex w-100 overflow-hidden">
+                <form method ="post" id="suggestForm" class="d-flex w-100">
+                    {% csrf_token %}
+                    {{ form.location }}
+                </form>
+            </label>
+        </div>
+    </div>
+</div>

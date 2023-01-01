@@ -1,7 +1,8 @@
 {% load crispy_forms_filters %}
 {% load static %}
+
 <div class="d-flex flex-column align-items-center my-5 singleTechView w-100 p-0 pb-5 ">
-    {% include 'common/messages.html' %}
+
 
     <div class="count_icon h-100 position-relative mt-2 mb-4">
         <div class="h-100 ">
@@ -64,6 +65,7 @@
 
     </div>
 
+
     <button   type="button"
           hx-post="{% url 'singleTechniqueView' technique.id %}"
             hx-include ='#suggestForm'
@@ -94,6 +96,8 @@
         </div>
     {% endif %}
 
+
 </div>
 
 
+ {% include 'common/messages.html' %}
