@@ -1,66 +1,13 @@
 {% extends "myaccount/base.html" %}
+{% load crispy_forms_filters %}
 
 {% load static %}
 {% block content %}
-
-    <div class="accountcontent d-flex flex-column w-100 h-100 ">
-
-
-        <div class="personalInfo position-relative">
-        <div class="profileBackground w-100"></div>
-            <form>
-                {{ csrf.token }}
-
-                <div class="profileInfo d-flex align-items-end mb-5  ">
-
-                    <div class=" d-flex justify-content-center profile img-fluid rounded-circle p-2 p-lg-4">
-                        <div class="  text-white handleimg">
-                            <img src=" {{ UserProfile.avatar.url }} ">
-                        </div>
-                    </div>
-
-                    <div class="profText d-flex flex-column">
-                        <h1>Profile </h1>
-                        <h2> Update your profile and personal info</h2>
-                    </div>
-
-                </div>
-
-                <div class="yourName d-none">
-                    <h2>Show your Name on profile</h2>
-                    {% include 'myaccount/onOffToggle.html' %}
-                </div>
-
-                <div class="yourBelt d-none w-100">
-                    <h2>Your Belt</h2>
-                    <div class="beltDropdown ">
-                        <ul class="d-flex flex-row">
-
-                            {% for belt in form.belt %}
-
-                                <li class="{{belt.id_for_label}} d-flex flex-column align-items-center
-                                justify-content-center mb-1 d-block">
-                                    <label class="techniqueOptionClick w-100 h-100" for="{{belt.id_for_label}}">
-                                        {{belt.tag}}
-                                        {{ belt.choice_label }}
-                                        <div class=" beltIMG">
-                                            <img alt="{{ belt.choice_label }} icon"
-                                            src="{% static 'account_register/img/'%}{{belt.choice_label|cut:" "}}.png">
-                                        </div>
-                                    </label>
-
-                                </li>
-                            {% endfor %}
-
-
-                        </ul>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-
-
+    <div class="AccountContentWrapper h-100 w-100">
+         {% include 'myaccount/myaccount_reloadContent.html' %}
     </div>
+{% endblock %}
 
+{% block script %}
+    <script type="text/javascript" src="{% static 'account_register/scripts.js' %}"></script>
 {% endblock %}

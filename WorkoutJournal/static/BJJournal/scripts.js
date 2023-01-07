@@ -174,8 +174,8 @@ function removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox=fals
 
 function editDescription(){
     let editButton = document.querySelectorAll('.editButton')
-    let addButton = document.querySelectorAll('.addButton')
-    // let techDescription = document.querySelector('.techDescription')
+    let addButton = document.querySelector('.addButton')
+    let techDescription = document.querySelector('.techDescription')
     let suggestBtn = document.querySelector('.suggestBtn')
     let techDescriptionInput = document.querySelector('.techDescriptionInput')
 
@@ -183,17 +183,19 @@ function editDescription(){
         Array.from(editButton).forEach(btn => {
             btn.addEventListener('click', (evt) =>
             {
+                // let addButton = btn.parentNode.parentNode.querySelector('.addButton')
                 if(addButton){
                     addButton.classList.toggle('d-none')
                 }
+
+                let descriptionHeight = techDescription.clientHeight
+                btn.classList.toggle('editing'
+                )
+                techDescriptionInput.style.maxHeight = descriptionHeight + "px"
+                techDescriptionInput.querySelector('textarea').value = techDescription.textContent.trim()
                 if(suggestBtn) { showDescription(techDescription, techDescriptionInput, suggestBtn)}
                 else { showDescription(techDescription, techDescriptionInput)}
 
-                let descriptionHeight = techDescription.clientHeight
-                editButton.classList.toggle('editing')
-
-                techDescriptionInput.style.maxHeight = descriptionHeight + "px"
-                techDescriptionInput.querySelector('textarea').value = techDescription.textContent.trim()
             })
         })
     }
@@ -219,7 +221,7 @@ const showDescription = (techDesc, techInput, suggestBtn = false) =>{
         techDesc.classList.toggle('d-none')
     }
     if (techInput){
-        techInput.classList.toggle('d-none')
+        // techInput.classList.toggle('d-none')
         techInput.classList.toggle('d-flex')
     }
     if(suggestBtn){
@@ -255,11 +257,13 @@ const closeModal = () => {
 }
 
 if (document.readyState !== 'loading') {
+
     allFunctions()
 }
 
 document.body.addEventListener('htmx:afterOnLoad', event=>{
     allFunctions()
+
 })
 
 

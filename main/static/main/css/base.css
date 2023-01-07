@@ -264,26 +264,32 @@ h2, .h2 {
 
 
 /*================ ACCOUNT / PROFILE SECTION  ================*/
+
 .profileBackground{
-    height:25vh;
+    height:20.2vh;
     /*background-color:#5e71f2;*/
     /*background-color:#2e007b;*/
     background-color:hsla(194, 85%, 62%, 1);
 }
 .accountcontent{
-
     background-color:#4361ee;
     color:white;
 }
+
 /*.accountcontent > * > h2{*/
 /*    display:inline*/
 /*}*/
-.personalInfo{
+.personalInfo{}
+.rightSideProfile{
 
+    /*background-color:#f2f3f4;*/
+    background-color:#3f37c9;
+    /*background-color:#3f37c9;*/
 }
 .toggle {
   display: inline-block;
   cursor: pointer;
+ transform: translate(-50%,-50%);
 }
 
 .toggle__input {
@@ -296,8 +302,8 @@ h2, .h2 {
     background: green;
 }
 .toggle__slider {
-    width: 4em;
-    height: 2em;
+    width: 3em;
+    height: 1.5em;
     background: #ccc;
     padding: .3em;
     border-radius: 2em;
@@ -306,8 +312,8 @@ h2, .h2 {
 }
 .toggle__slider:before {
     content: '';
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
     background: #fff;
     position: absolute;
     top: 50%;
@@ -318,25 +324,43 @@ h2, .h2 {
   }
 
 @media (max-width: 900px) {
-  .profile{
-    width:25%;
+    .profile {
+        width: 50%;
     }
-    .profileInfo{
-    padding-bottom:50px;
-    margin-top:-12% !important;
+
+    .profileInfo {
+        padding-bottom: 50px;
+        margin-top: -16% !important;
     }
-    .profText{
-    margin-bottom:-13% !important;
+
+    .profText {
+        margin-bottom: -13% !important;
+    }
+
+    .beltIMG {
+        max-width: 30vw;
     }
 }
+
 @media (min-width: 900px) {
   .profile{
-    width:11%;
+    width:19%;
+    }
+    .TheContainer{
+    height: 100vh !important;
+    }
+    .beltIMG{
+    max-width:11vw;
+}
+}
+
+@media (min-width: 600px) {
+    .TheContainer{
+    height: auto;
     }
 }
-.beltIMG{
-    max-width:10vw;
-}
+
+
 .profile{
     overflow:hidden;
     border: 3px solid #b3b9bf;
@@ -346,12 +370,22 @@ h2, .h2 {
     background:#f2f3f4;
 }
 .profileInfo{
-    margin-top:-6%;
+    margin-top:-7%;
 }
 .profText{
     margin-bottom:-1%;
 }
+.showOnProfile {
 
+    /*width: 35%;*/
+
+}
+
+.alignToggle{
+    /*margin-right:-5%;*/
+
+
+}
 .profileInfo{
     padding-top:0.5%;
     margin-left:4%;
@@ -364,7 +398,37 @@ h2, .h2 {
     font-size:1.1rem;
     font-weight:400;
 }
+.personalLabel{
+    font-size:1.2rem;
+    text-align:center;
+}
+.smallLabel{
+    font-size:0.82rem;
+}
 
+ .profileBorder{
+    border-bottom: 1px Double #00b4d8;
+     width:70%;
+}
+/*.favGrappler{*/
+/*    border:1px solid white;*/
+/*}*/
+.yourBio{
+    /*background-color:#3f37c9;*/
+    height:14vh;
+    /*flex:1;*/
+}
+.favTechnique .techniquesOptions li{
+    height:4.5vh;
+    font-size:1.3rem;
+}
+.favTechnique .techniquesOptions{
+    height:10vh;
+}
+
+.favTechToggle{
+     text-shadow: 2px 2px rgba(76, 202, 240, 0.6);
+}
 /* ==============================================================*/
 
 /**--------------------------------------------------------------*/
@@ -708,7 +772,8 @@ h2, .h2 {
     border-radius:33%;
 }
 
-.count_icon input[type=radio], .techniqueOption input{
+.count_icon input[type=radio], .techniqueOption input
+,.hideInput input{
     visibility:hidden;
     position:absolute;
     /*display:none;*/
@@ -830,7 +895,8 @@ h2, .h2 {
 
 .techniquesSearch i{
     position:absolute;
-    left:3%;
+    left:5%;
+    color:black;
 }
 .techniquesSearch input{
     padding-left:12%;
@@ -848,14 +914,11 @@ h2, .h2 {
   /*white-space: nowrap;*/
     display: inline-block;
 
-
-
 }
 .chosenTechnique i{
     font-size:0.95rem;
 
 }
-
 .techniquesListWrap{
     /*background-color:#a2d2ff;*/
     margin-top:3px;
@@ -1057,7 +1120,9 @@ h2, .h2 {
     color:whitesmoke;
     text-shadow: 2px 2px 0px rgba(157, 109, 238, 0.3)
 }
-
+.techDescriptionInput{
+    display:none;
+}
 .editButton{
     position:absolute;
     color:black;

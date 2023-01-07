@@ -7,7 +7,38 @@ from .models import *
 
 
 class UserProfileForm(ModelForm):
-    belt = forms.ChoiceField(choices=UserProfile.belts, widget=forms.RadioSelect())
+
     class Meta:
         model = UserProfile
-        fields = '__all__'
+        exclude = ['user']
+
+    bio = forms.CharField(widget=forms.Textarea(attrs={
+        'class': ' form-control p-2 mx-0 h-100',
+        'spellcheck': 'false',
+        'placeholder': 'Write a short bio...'
+    }), required=False)
+
+    firstName = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'First name',
+    }), required=False)
+
+    lastName = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Last name'
+    }), required=False)
+
+    belt = forms.ChoiceField(choices=UserProfile.belts,
+                             widget=forms.RadioSelect(),
+                             required=False)
+
+    favGrappler = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        'placeholder': 'Favourite grappler'
+    }), required=False)
+
+    favTechnique = forms.ModelChoiceField(queryset=Technique.objects.all(),
+                                widget=forms.RadioSelect(),
+                                required=False,
+                                # initial=
+                                          )

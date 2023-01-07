@@ -1,0 +1,35 @@
+{% load static %}
+<div class="chosenBelt text-center w-100">
+    <h2>Your Belt</h2>
+    <li class="d-flex flex-column align-items-center
+                justify-content-center mb-1 d-block">
+        <div class=" beltIMG ">
+            <img alt="{{ UserProfile.belt }} icon"
+            src="{% static 'account_register/img/'%}{{UserProfile.belt|cut:" "}}.png">
+        </div>
+
+    </li>
+</div>
+
+<div class="beltDropdown d-flex  justify-content-center">
+    <ul class="d-flex flex-row flex-wrap justify-content-center w-100 p-0  ">
+
+        {% for belt in form.belt %}
+
+            <li class="  mx-2 text-center  d-flex flex-column align-items-center
+                justify-content-center mb-1 d-block">
+                <label class="cursor-pointer hideInput techniqueOptionClick w-100 h-100" for="{{belt.id_for_label}}">
+                    {{belt.tag}}
+                    {{ belt.choice_label }}
+                    <div class=" beltIMG">
+                        <img alt="{{ belt.choice_label }} icon"
+                        src="{% static 'account_register/img/'%}{{belt.choice_label|cut:" "}}.png">
+                    </div>
+                </label>
+
+            </li>
+        {% endfor %}
+
+
+    </ul>
+</div>

@@ -24,7 +24,8 @@ urlpatterns = [
     path('', include("Journal.urls")),
     path('account/', include('allauth.urls')),
     path('', include("WorkoutJournal.urls")),
-    path('',include("account_register.urls") ),
+    path('', include("Clubs.urls")),
+    path('', include("account_register.urls") )
 
 ]
 htmx_urlpatterns = [
