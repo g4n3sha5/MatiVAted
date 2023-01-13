@@ -4,27 +4,29 @@
 {% if request.path == '/' %} landingNavbar {% endif  %}">
 
     <nav class=" w-100 navbar navbar-expand-lg  navbar-dark  d-lg-block">
-            <div class=" container p-0 positionAdjust">
+            <div class="px-2 container p-0 positionAdjust">
                  <a class="navbar-brand nav-link d-inline p-1" target="_blank" href="/">
                     <img src=" {% static 'main/img/logo-removebg.png' %}">
                  </a>
 
                 <button class="navbar-toggler"
-                data-bs-target=".navbarNav"
-                data-bs-toggle="collapse">
-                    <span class="navbar-toggler-icon fas fa-bars"></span>
+                data-bs-target=".mainNavCollapse"
+                data-bs-toggle="collapse"
+                aria-expanded="false"
+                aria-controls="collapseWrap">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse justify-content-end px-md-4">
-                    <div class=" navbar-nav navbarNav">
+                <div class="collapse mainNavCollapse navbar-collapse justify-content-end px-md-4 text-center text-lg-left">
+                    <div class=" px-2  navbar-nav navbarNav">
                         <a class ="nav-item"  href="/">Home</a>
                         <a class ="nav-item" href="/create">To Do</a>
                         <a class ="nav-item" href="/bjjournal">BJJournal</a>
                         <a class ="nav-item" href="/clubs">Clubs</a>
 
                     {#            ACCOUNT BUTTON        #}
-                        <div class=" btn-group">
-                            <a type="button" class ="  dropdown-toggle" data-bs-toggle="dropdown"
+                        <div class="  nav-item">
+                            <a type="button" class =" text-center dropdown-toggle" data-bs-toggle="dropdown"
                             aria-haspopup = "true" aria-expanded ="false">Account</a>
                             <div class="dropdown-menu ">
                                 {% if user.is_authenticated %}

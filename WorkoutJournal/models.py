@@ -38,7 +38,7 @@ class TrainingSession(models.Model):
     notes = models.TextField(max_length=2500,blank=True, null=True)
     techniques = models.ManyToManyField(Technique, blank=True)
     addedByUser = models.ManyToManyField(User, related_name="addedByUser", blank=True)
-
+    #change to foreign key???????? ^
     def __str__(self):
         return f'{self.type} {self.date}'
 

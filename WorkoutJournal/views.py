@@ -66,13 +66,13 @@ def singleSessionView(request, id):
 
 
 def editSession(request, id):
-    print(request)
+
     Session = TrainingSession.objects.get(pk=id)
+
     if request.method == 'POST':
         form = TrainingSessionForm(request.POST, instance=Session, auto_id=True)
-        print(request.POST)
+
         if form.is_valid():
-            print("valid")
             form.save()
 
     return redirect ('/yourSessions')

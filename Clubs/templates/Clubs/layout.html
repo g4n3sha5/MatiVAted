@@ -14,13 +14,13 @@
   {%include "common/navbar.html" %}
         <div class = "BJR container-fluid vh-100 p-0  overflow-hidden">
 
-            <div class =" row  h-100" >
+            <div class ="p-0 row  h-100" >
 
                     {% if user.is_authenticated %}
 
-                        {% include "BJJournal/BJR_leftsideMenu.html" %}
+                        {% include "Clubs/Clubs_leftSideMenu.html" %}
 
-                        <div class="BJR_content col-lg-10 col-md-9-5  position-relative p-0">
+                        <div class=" col-10 col-md-9-5AA  position-relative p-0">
 
                             {% block content %}
                             {% endblock %}
@@ -33,7 +33,7 @@
 
             </div>
         </div>
-
+        {% include "common/footer.html" %}
 
 {#    {% include "common/foo ter.html" %}#}
     <script>

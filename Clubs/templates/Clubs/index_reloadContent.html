@@ -1,0 +1,106 @@
+{% load static %}
+<div class="personalInfo position-relative h-100 ">
+        <div class="profileBackground w-100 position-relative">
+            {% if success   %}
+                <div class="savedWrap bg-success px-3">
+                    <i class="bi bi-check2 fa-2x"></i>
+                    <h4>Saved correctly</h4>
+                </div>
+            {% endif %}
+        </div>
+
+        <form   enctype="multipart/form-data"
+                class="h-100"
+                hx-target=".Clubscontent"
+                hx-post="."
+                hx-trigger="change delay:400ms, submit">
+                {{ csrf.token }}
+            <div class="row h-100 ">
+                    <div class="col-lg-6 d-flex align-items-center justify-content-start flex-column position-relative">
+                        <div class="profileInfo d-flex w-100 justify-content-start
+                        align-items-end mb-5 position-relative  ">
+
+                            <div onclick="chooseFile()"
+                                    class="circleWrap imgCircle d-inline-flex flex-column
+                                       mx-3 profile position-relative align-items-center justify-content-center overflow-hidden">
+
+                                <div class="overflow-hidden d-flex align-items-center justify-content-center ">
+
+
+                                    <div class=" d-flex justify-content-center align-items-center
+                                      text-white handleimg h-100 w-100 ">
+                                        {% if Club == None or Club.logo.url == None %}
+                                            <img src=" {% static 'Clubs/defaultLogo.png' %}">
+                                        {% else %}
+                                            <img src=" {{ Club.logo.url }} ">
+                                        {% endif %}
+                                        <div class="changeLogo">
+                                            {{ form.logo }}
+                                        </div>
+                                    </div>
+                                 <div class="circleOnHover  d-flex justify-content-center align-items-center">
+                                        <i class=" text-white bi bi-pencil-square"></i>
+                                    </div>
+                                </div>
+
+                               <h3 class=" logoEdit text-center mt-1">Edit your logo </h3>
+                            </div>
+
+                            <div class="profText d-flex flex-column text-white">
+                                <h1>Club </h1>
+                                <h2>  Add your club or update the info</h2>
+                            </div>
+
+                        </div>
+                        <div class="leftColContent w-100   d-flex flex-column align-items-center justify-content-start ">
+
+
+                            <div class="profileBorder py-4 d-flex justify-content-center mx-2 align-items-center  ">
+                                {{ form.name }}
+                            </div>
+
+                            <div class="profileBorder  px-5 py-4 mx-2 d-flex justify-content-center mt-lg-0">
+                                {{ form.estabilished }}
+                            </div>
+
+                            <div class="profileBorder p-2  py-5 my-2 mx-4 d-flex justify-content-center h-50">
+                                {{ form.description }}
+                            </div>
+                        </div>
+
+                 <button
+                         type="button"
+                         class="saveClubBtn btn-outline-primary  btn p-3 mt-5
+                          text-white w-75 "
+                        hx-post="."
+                        hx-target=".Clubscontent">
+                     Save Info</button>
+
+
+                    </div>
+
+                    <div class="rightSideProfile col-md-6 pt-5 px-3 d-flex flex-column align-items-center">
+
+                         <div class="profileBorderDark p-2  py-4 my-2 mx-4 d-flex justify-content-center ">
+                            {{ form.phoneNumber }}
+                        </div>
+
+                        <div class="profileBorderDark p-2 w-75 py-4 my-2 mx-4 d-flex justify-content-center ">
+                            {{ form.email }}
+                        </div>
+
+                          <div class="profileBorderDark locationWrap p-2  py-4 my-2 mx-4 d-flex justify-content-center ">
+                            {{ form.location }}
+                        </div>
+
+                        <div class="profileBorder p-2  py-5 my-2 mx-4 d-flex justify-content-center">
+                            {{ form.website }}
+                        </div>
+                        {{ form.errors }}
+                    </div>
+
+
+
+            </div>
+        </form>
+</div>

@@ -11,7 +11,7 @@ body{
 
 /* ========= FONTS =============*/
 
-.BJR, .JRLN, .navStyling, .accountcontent {
+.BJR, .JRLN, .navStyling, .accountcontent, .Clubscontent {
     font-family: 'Rajdhani', sans-serif !important;
     /*300;400;500;600;700*/
     font-weight:600;
@@ -43,8 +43,7 @@ body{
     box-sizing:border-box;
 }
 .img-buddha, .silhouette img, .bjjimg, .countSection img,
-.wrapper img, .yourSessionsType img, .beltIMG img,
-.handleimg img{
+.wrapper img, .yourSessionsType img, .beltIMG img{
     max-height:100%;
     max-width:100%;
     object-fit:contain;
@@ -78,7 +77,6 @@ body{
 }
     /*navbelt*/
 .navContainer{
-
     /*background:#1d2951;*/
     /*background:#241e6a;*/
     background:rgba(36, 30, 106, 0.1888);
@@ -92,7 +90,7 @@ body{
   text-shadow: -3px 1px 21px rgba(72, 149, 239, 1);
 }
 
-.navStyling, .BJR_sideMenu{
+.navStyling{
     font-weight:500;
     letter-spacing: 0.092em;
  }
@@ -106,6 +104,12 @@ nav a img{
 .dropdown-menu a{
     text-align:center;
     color:black !important;
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media (max-width: 600px){
+    .navContainer {
+        background: rgba(36, 30, 106, 0.98) !important;
+    }
 }
 /* ============ LANDING PAGE ============ */
 
@@ -271,8 +275,23 @@ h2, .h2 {
     /*background-color:#2e007b;*/
     background-color:hsla(194, 85%, 62%, 1);
 }
+.savedWrap{
+    position:absolute;
+    right:4%;
+    bottom:0.555%;
+    color:white;
+}
+.savedWrap h4{
+    /*position:relative;*/
+    /*top:5%;*/
+    font-size:1.05rem;
+    margin-top:-10%;
+}
 .accountcontent{
-    background-color:#4361ee;
+    background-color:#0c0910;
+    /*background-color:#191919;*/
+
+    /*background-color:#4361ee;*/
     color:white;
 }
 
@@ -282,9 +301,12 @@ h2, .h2 {
 .personalInfo{}
 .rightSideProfile{
 
+    /*background-color:#80E2FE;*/
+    background-color:#187DFE;
     /*background-color:#f2f3f4;*/
-    background-color:#3f37c9;
     /*background-color:#3f37c9;*/
+    color:black;
+
 }
 .toggle {
   display: inline-block;
@@ -324,14 +346,9 @@ h2, .h2 {
   }
 
 @media (max-width: 900px) {
-    .profile {
-        width: 50%;
-    }
-
-    .profileInfo {
-        padding-bottom: 50px;
-        margin-top: -16% !important;
-    }
+    /*.profile {*/
+    /*    width: 50%;*/
+    /*}*/
 
     .profText {
         margin-bottom: -13% !important;
@@ -340,12 +357,16 @@ h2, .h2 {
     .beltIMG {
         max-width: 30vw;
     }
+
+    .logoEdit{
+        font-size:3vw !important;
+    }
 }
 
 @media (min-width: 900px) {
-  .profile{
-    width:19%;
-    }
+  /*.profile{*/
+  /*  width:19%;*/
+  /*  }*/
     .TheContainer{
     height: 100vh !important;
     }
@@ -359,20 +380,27 @@ h2, .h2 {
     height: auto;
     }
 }
+.profText{
 
+}
 
 .profile{
-    overflow:hidden;
-    border: 3px solid #b3b9bf;
-    margin-right:3%;
+
+    /*border: 3px solid #b3b9bf;*/
+    /*margin-right:3%;*/
     /*position:absolute;*/
     /*top:10%;*/
-    background:#f2f3f4;
+    /*background:#f2f3f4;*/
+    background:ghostwhite;
 }
 .profileInfo{
-    margin-top:-7%;
+    position:absolute;
+    /*top:-10%;*/
+    top:0;
+    /*margin-top:-7%;*/
 }
 .profText{
+    margin-left:8%;
     margin-bottom:-1%;
 }
 .showOnProfile {
@@ -384,11 +412,21 @@ h2, .h2 {
 .alignToggle{
     /*margin-right:-5%;*/
 
-
 }
 .profileInfo{
-    padding-top:0.5%;
+    /*padding-top:4%;*/
     margin-left:4%;
+   transform:translateY(-50%);
+
+}
+.leftColContent{
+    transform:translateY(-15%);
+}
+.handleimg img{
+    width:100%;
+    height:100%;
+    object-fit: contain;
+    padding:8%;
 }
 .profileInfo h1{
     font-size:2.5rem;
@@ -397,6 +435,11 @@ h2, .h2 {
 .profileInfo h2{
     font-size:1.1rem;
     font-weight:400;
+}
+#collapseWrap {
+    position:absolute;
+    width:100%;
+    /*top:40%;*/
 }
 .personalLabel{
     font-size:1.2rem;
@@ -410,6 +453,10 @@ h2, .h2 {
     border-bottom: 1px Double #00b4d8;
      width:70%;
 }
+ .profileBorderDark{
+      border-bottom: 1px Double #212529;
+     width:70%;
+ }
 /*.favGrappler{*/
 /*    border:1px solid white;*/
 /*}*/
@@ -655,10 +702,10 @@ h2, .h2 {
 .BJR_sideMenu {
     /*background-color:	#10002B;*/
     background-color:	#0b132b;
-
-    padding-top:15vh;
     z-index:25;
-
+}
+.sideMenuLayout{
+    padding:0 !important;
 }
 .BJR_sideMenu *{
        letter-spacing: 0.222em !important;
@@ -1313,6 +1360,16 @@ h2, .h2 {
     flex-basis:62%;
 }
 
+
+
+
+
+
+
+
+
+
+
 /*================LAST SESSIONS =================*/
 .lastSessions {
     padding: 3vh 3vw;
@@ -1342,10 +1399,51 @@ h2, .h2 {
     padding:1vw;
 }
 
+/*=============== CLUBS MODULE ===============*/
+.Clubscontent{
+    background-color:#191919;
+}
+.locationWrap{
+    max-height:14%;
+}
+.changeLogo input{
+    position:absolute;
+    visibility:hidden;
+}
+.circleOnHover{
+    opacity:0;
+    background:black;
+    position:absolute;
+    width:150%;
+    height:50%;
+    bottom:0;
 
+}
+.onHoverfilter{
+    transition: opacity 0.5s;
+    opacity:0.8 !important;
 
+}
+.logoEdit{
+    color:white;
+    font-size:0.6vw;
+    position:fixed;
+    bottom:-15%;
+}
+.circleWrap{
+    border:3px solid black;
+    position:absolute;
+    left:0;
+    height:18vh;
+    width:18vh;
+    border-radius:50%;
 
+}
 
+.saveClubBtn{
+
+    background:blue;
+}
 /*================ TIMELINE =================*/
 
 

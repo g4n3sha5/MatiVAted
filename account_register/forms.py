@@ -42,3 +42,7 @@ class UserProfileForm(ModelForm):
                                 required=False,
                                 # initial=
                                           )
+
+    avatar = forms.ImageField(widget=forms.FileInput(attrs={
+        'class': 'imageInput'
+    }), required=False)

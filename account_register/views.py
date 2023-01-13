@@ -12,13 +12,12 @@ def myAccount(request):
     currentProfile =  UserProfile.objects.get(user=request.user)
     if request.method == 'POST':
         template = 'myaccount_reloadContent'
-        print(currentProfile.firstName)
         form = UserProfileForm(request.POST,
+                               request.FILES,
                                instance = currentProfile,
                                initial = {
                                    'belt' : currentProfile.belt
                                })
-        print(form.errors )
         if form.is_valid():
             form.save()
     else:
