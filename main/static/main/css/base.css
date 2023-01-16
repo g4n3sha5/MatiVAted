@@ -1,4 +1,15 @@
-
+:root{--header-height: 3rem;
+    --nav-width: 68px;
+    --first-color: #5e71f2;
+    /*--first-color: #4723D9;*/
+    --first-color: #5E3EE0;
+    --first-color-light: #CCCCCC;
+    /*--first-color-light: #AFA5D9;\*/
+    --white-color: #F7F6FB;
+    --normal-font-size: 1rem;}
+.navPadding{
+    padding-top:4.5%;
+}
 body{
     font-family: "Roboto", sans-serif;
     /*font-family: 'Rajdhani', sans-serif !important;*/
@@ -17,6 +28,9 @@ body{
     font-weight:600;
 }
 .navStyling{
+
+    font-weight:500;
+    letter-spacing: 0.092em;
     z-index: 100;
     /*!*font-family: 'Roboto', serif*!*/
     /*font-family: 'Source Sans Pro', sans-serif;*/
@@ -28,7 +42,6 @@ body{
         /*SemiBold 600 Italic*/
         /*Bold 700*/
         /**!*/
-    /*font-family: "Open Sans ", serif !important;*/
 }
 .font-weight-600{
     font-weight: 600;
@@ -37,8 +50,8 @@ body{
     font-weight:700;
 }
 /* ============= */
-.col-md-2-5 { width: 20.83333%;}
-.col-md-9-5 { width: 79.16667%; }
+/*.col-md-2-5 { width: 20.83333%;}*/
+/*.col-md-9-5 { width: 79.16667%; }*/
 *, *::before, *::after{
     box-sizing:border-box;
 }
@@ -77,6 +90,7 @@ body{
 }
     /*navbelt*/
 .navContainer{
+    z-index:105 !important;
     /*background:#1d2951;*/
     /*background:#241e6a;*/
     background:rgba(36, 30, 106, 0.1888);
@@ -89,11 +103,10 @@ body{
     color:whitesmoke;
   text-shadow: -3px 1px 21px rgba(72, 149, 239, 1);
 }
+.navCaption{
+    font-size:0.9rem;
+}
 
-.navStyling{
-    font-weight:500;
-    letter-spacing: 0.092em;
- }
 nav a img{
     width:60px;
 }
@@ -107,10 +120,121 @@ nav a img{
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media (max-width: 600px){
+    .navCaption{
+    display:none;
+}
     .navContainer {
         background: rgba(36, 30, 106, 0.98) !important;
     }
 }
+
+
+.header_toggle{
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+.header_toggle span *,
+.navbar-toggler-icon{
+    color:white !important;
+}
+.l-navbar{
+    position: fixed;
+    top: 0;
+    /*left: -30%;*/
+    width: var(--nav-width);
+    height: 100vh;
+    background-color: var(--first-color);
+    padding-top:15vh;
+    transition: all 0.5s ease-in;
+}
+.nav{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden
+}
+.BJR{
+    padding-left: var(--nav-width) !important;
+}
+.nav_name{
+    padding-bottom:0.5rem;
+    position:absolute;
+    opacity:0;
+    width:0;
+    height:0;
+}
+ .nav_name.fade {
+     position:relative;
+    opacity:1 ;
+     width:auto;
+     height:auto;
+
+}
+.nav_logo, .nav_link{
+    /*justify-content: center;*/
+    /*display: grid;*/
+    /*grid-template-columns: max-content  max-content;*/
+    /*align-items: center;*/
+    /*column-gap: 1rem;*/
+}
+
+.nav_link{
+    display: flex;
+    position: relative;
+    align-items:center;
+    color: var(--first-color-light);
+    margin-bottom: 1.5rem;
+}
+
+.nav_icon{
+    font-size:1.88rem;
+
+}
+.nav_icon{
+   padding: 0 0.9vw;
+}
+
+.nav_link:hover {
+    color: var(--white-color)}
+
+.show{
+    left: 0;
+    /*min-width: calc(var(--nav-width) + 15vw)*/
+    width: calc(var(--nav-width) + 15vw)
+}
+
+.active::before{
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 2px;
+    height: 32px;
+    background-color: var(--white-color)
+}
+ @media screen and (max-width: 768px) {
+    .show{
+        width: calc(var(--nav-width) + 50vw)
+        /*min-width: calc(var(--nav-width) + 50vw)*/
+    }
+    .show .nav_icon{
+    padding-left:5vw;
+}
+
+ }
+
+ @media screen and (min-width: 768px) {
+     .l-navbar{left: 0;
+     }
+     .show{
+        width: calc(var(--nav-width) + 19vw)
+     }
+    .show .nav_icon{
+    padding-left:1.5vw;
+}
+ }
+
+
 /* ============ LANDING PAGE ============ */
 
 .landing-page {
@@ -403,16 +527,6 @@ h2, .h2 {
     margin-left:8%;
     margin-bottom:-1%;
 }
-.showOnProfile {
-
-    /*width: 35%;*/
-
-}
-
-.alignToggle{
-    /*margin-right:-5%;*/
-
-}
 .profileInfo{
     /*padding-top:4%;*/
     margin-left:4%;
@@ -588,11 +702,12 @@ h2, .h2 {
     background-size:contain;
 
 }
- a{
+#footer a, .navContainer a{
     padding:6px 8px 6px 16px;
+}
+a{
     text-decoration: none;
 }
-
 
 
 
@@ -676,10 +791,7 @@ h2, .h2 {
 
 
 /*======= BJJournal ======= */
-#BJR_view{
-    padding-top:4.5%;
 
-}
 .BJR_content{
       background: url("../img/sam-mgrdichian5.png");
     flex-grow:1;
@@ -1401,6 +1513,7 @@ h2, .h2 {
 
 /*=============== CLUBS MODULE ===============*/
 .Clubscontent{
+
     background-color:#191919;
 }
 .locationWrap{
@@ -1443,6 +1556,13 @@ h2, .h2 {
 .saveClubBtn{
 
     background:blue;
+}
+.clubsContentPadding{
+    padding-top:12%;
+}
+/*========= CLUBS LIST ============*/
+.clubsListWrap{
+    color:ghostwhite;
 }
 /*================ TIMELINE =================*/
 

@@ -1,0 +1,26 @@
+<div class="clubsListWrap px-5 clubsContentPadding ">
+
+    <h3 class="text-center"> Clubs List</h3>
+     <hr class="text-white mx-5 my-3">
+    <div class="techniquesSearch d-flex align-items-center pb-1 position-relative">
+        <i class="bi bi-search"></i>
+        <input class="searchBox py-1 " type="text" placeholder="Search ">
+    </div>
+
+    <ul class="select h-75 w-100 " multiple>
+
+        {% for club in clubsList %}
+            <li
+    {#        <li  hx-get = "{% url ''  %}"#}
+    {#        <li  hx-get = "technique/{{ technique.id }}/"#}
+                hx-target = ".leftTechSection"
+
+                value="{{  technique.EnglishName }}"
+                class=" cursor-pointer techniqueItem list-group-item p-2 d-flex
+             align-items-center justify-content-between mb-1 d-block ">
+                {{ forloop.counter }}.   {{  club.name  }}
+            </li>
+        {% endfor %}
+
+    </ul>
+</div>

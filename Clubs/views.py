@@ -40,3 +40,24 @@ def ClubsIndex(request):
         template = 'index_reloadContent'
 
     return render(request, f"Clubs/{template}.html", context)
+
+
+
+def clubMembers (request):
+    context={}
+    return render(request, "Clubs/clubMembers.html", context)
+
+def clubsTrainings (request):
+    context={}
+    return render(request, "Clubs/clubsTrainings.html", context)
+
+def clubsSchedule (request):
+    context={}
+    return render(request, "Clubs/clubsSchedule.html", context)
+
+def clubsList (request):
+    context={
+        'clubsList' : Club.objects.all()
+    }
+    return render(request, "Clubs/clubsList.html", context)
+

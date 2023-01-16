@@ -12,15 +12,16 @@
 
 
   {%include "common/navbar.html" %}
+  {% include "BJJournal/BJR_leftsideMenu.html" %}
         <div class = "BJR container-fluid vh-100 p-0  overflow-hidden">
 
             <div class =" row  h-100" >
 
                     {% if user.is_authenticated %}
 
-                        {% include "BJJournal/BJR_leftsideMenu.html" %}
 
-                        <div class="BJR_content col-lg-10 col-md-9-5  position-relative p-0">
+
+                        <div class="BJR_content col  position-relative p-0">
 
                             {% block content %}
                             {% endblock %}

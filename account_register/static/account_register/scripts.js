@@ -20,7 +20,6 @@
 
 const chooseFile = (evt) => {
     document.querySelector('.imageInput').click()
-
 }
 
 const hoverCircle = () =>{
