@@ -5,7 +5,7 @@
     <input class="searchBox py-1 " type="text" placeholder="Search ">
 </div>
 
-<ul class="select techniquesOptions h-75 w-100 " multiple>
+<ul class="select customScroll techniquesOptions h-75 w-100 pb-5 " multiple>
 
     {% for technique in techniquesList %}
         <li  hx-get = "{% url 'singleTechniqueView' technique.id %}"

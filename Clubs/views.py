@@ -61,3 +61,10 @@ def clubsList (request):
     }
     return render(request, "Clubs/clubsList.html", context)
 
+def singleClubView (request, id):
+    myClub = Club.objects.get(pk=id)
+    context={
+        'Club' : myClub
+    }
+    return render(request, "Clubs/singleClubView.html", context)
+

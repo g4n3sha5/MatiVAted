@@ -13,18 +13,18 @@ class UserProfileForm(ModelForm):
         exclude = ['user']
 
     bio = forms.CharField(widget=forms.Textarea(attrs={
-        'class': ' form-control p-2 mx-0 h-100',
+        'class': ' form-control p-2 mx-0 h-100 text-center',
         'spellcheck': 'false',
         'placeholder': 'Write a short bio...'
     }), required=False)
 
     firstName = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control',
+        'class': 'form-control text-center',
         'placeholder': 'First name',
     }), required=False)
 
     lastName = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control',
+        'class': 'form-control text-center',
         'placeholder': 'Last name'
     }), required=False)
 
@@ -33,7 +33,7 @@ class UserProfileForm(ModelForm):
                              required=False)
 
     favGrappler = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control',
+        'class': 'form-control text-center',
         'placeholder': 'Favourite grappler'
     }), required=False)
 

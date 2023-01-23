@@ -1,70 +1,70 @@
 <section id="body-pd">
     <div class="l-navbar navStyling  " id="nav-bar">
-          <div class="header_toggle text-center px-2">
-                <span class='navbar-toggler-icon' >
+        <div class="header_toggle text-center px-2">
+                <span class='navbar-toggler-icon'>
                     <i class="bi bi-list" id="header-toggle"></i>
                     <i class="d-none closeNavIcon bi bi-x-lg"></i>
                 </span>
 
-            </div>
+        </div>
         <nav class="p-0 m-0  pt-5 ">
-{#            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">BBBootstrap</span> </a>#}
+            {#            <div> <a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">BBBootstrap</span> </a>#}
 
 
-                <div class="pt-1 nav_list d-flex flex-column
+            <div class="pt-1 nav_list d-flex flex-column
                 justify-content-center align-items-center">
 
-                    <a  class="nav_link scrollto active"
-                        hx-target="#Clubs_view"
-                        hx-get=" {% url 'clubsIndex' %}">
-                       <i class="bi bi-pencil-square  nav_icon"></i>
-                        <span class=" px-2 nav_name">Add / Edit Club</span>
-{#                        <span class=" px-2 nav_name d-none">Add / Edit Club</span>#}
-                    </a>
+                <a class="nav_link scrollto active"
+                   hx-target="#Clubs_view"
+                   hx-get=" {% url 'clubsIndex' %}">
+                    <i class="bi bi-pencil-square  nav_icon"></i>
+                    <span class=" px-2 nav_name">Add / Edit Club</span>
+                    {#                        <span class=" px-2 nav_name d-none">Add / Edit Club</span>#}
+                </a>
 
 
-                    <a class="nav_link scrollto"
-                        hx-target="#Clubs_view"
-                        hx-get=" {% url 'clubMembers' %}">
-                        <i class="bi bi-people-fill  nav_icon"></i>
-                        <span class=" px-2 nav_name">Club Members</span>
-{#                        <span class=" px-2 nav_name d-none">Club Members</span>#}
-                    </a>
+                <a class="nav_link scrollto"
+                   hx-target="#Clubs_view"
+                   hx-get=" {% url 'clubMembers' %}">
+                    <i class="bi bi-people-fill  nav_icon"></i>
+                    <span class=" px-2 nav_name">Club Members</span>
+                    {#                        <span class=" px-2 nav_name d-none">Club Members</span>#}
+                </a>
 
-                    <a class="nav_link scrollto"
-                        hx-target="#Clubs_view"
-                        hx-get=" {% url 'clubsTrainings' %}">
-                        <i class="bi bi-collection-fill nav_icon"></i>
-                        <span class=" px-2  nav_name">Club Trainings </span></a>
-{#                        <span class=" px-2  nav_name d-none">Club Trainings </span></a>#}
+                <a class="nav_link scrollto"
+                   hx-target="#Clubs_view"
+                   hx-get=" {% url 'clubsTrainings' %}">
+                    <i class="bi bi-collection-fill nav_icon"></i>
+                    <span class=" px-2  nav_name">Club Trainings </span></a>
+                {#                        <span class=" px-2  nav_name d-none">Club Trainings </span></a>#}
 
-                    <a class="nav_link scrollto"
-                     hx-target="#Clubs_view"
-                        hx-get=" {% url 'clubsSchedule' %}">
-                        <i class="bi bi-calendar-week-fill nav_icon" ></i>
-{#                        <span class=" px-2  nav_name d-none">Club Schedule</span>#}
-                        <span class=" px-2  nav_name ">Club Schedule</span>
-                    </a>
+                <a class="nav_link scrollto"
+                   hx-target="#Clubs_view"
+                   hx-get=" {% url 'clubsSchedule' %}">
+                    <i class="bi bi-calendar-week-fill nav_icon"></i>
+                    {#                        <span class=" px-2  nav_name d-none">Club Schedule</span>#}
+                    <span class=" px-2  nav_name ">Club Schedule</span>
+                </a>
 
-                    <a  class="nav_link scrollto"
-                        hx-target="#Clubs_view"
-                        hx-get=" {% url 'clubsList' %}">
-                       <i class="bi bi-list-columns-reverse  nav_icon"></i>
-                        <span class=" px-2  nav_name">Clubs List</span>
-                    </a>
-                </div>
+                <a class="nav_link scrollto"
+                   hx-target="#Clubs_view"
+                   hx-get=" {% url 'clubsList' %}">
+                    <i class="bi bi-list-columns-reverse  nav_icon"></i>
+                    <span class=" px-2  nav_name">Clubs List</span>
+                </a>
+            </div>
 
-{#                    <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i>#}
-{#                        <span class="nav_name">Messages</span> </a>#}
-{#                    <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>#}
-{#                    <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a>#}
-{#                    <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a> </div>#}
-{#            </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>#}
+            {#                    <a href="#" class="nav_link"> <i class='bx bx-message-square-detail nav_icon'></i>#}
+            {#                        <span class="nav_name">Messages</span> </a>#}
+            {#                    <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span class="nav_name">Bookmark</span> </a>#}
+            {#                    <a href="#" class="nav_link"> <i class='bx bx-folder nav_icon'></i> <span class="nav_name">Files</span> </a>#}
+            {#                    <a href="#" class="nav_link"> <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a> </div>#}
+            {#            </div> <a href="#" class="nav_link"> <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">SignOut</span> </a>#}
         </nav>
     </div>
     <!--Container Main start-->
-{#    <div class="height-100 bg-light">#}
-{#        <h4>Main Components</h4>#}
-{#    </div>#}
+    {#    <div class="height-100 bg-light">#}
+    {#        <h4>Main Components</h4>#}
+    {#    </div>#}
     <!--Container Main end-->
-    </section>
+</section>

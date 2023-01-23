@@ -63,56 +63,17 @@ function quickDateButtons() {
     }
 }
 
-function toggleActive(){
-     let choiceButton = document.querySelectorAll('.choice-btn')
-    let techniquesListWrap = document.querySelectorAll(('.techniquesListWrap'))
-    if (choiceButton){
-        let choiceArrowBtn = document.querySelectorAll(('.choiceArrowBtn'))
-
-        choiceArrowBtn.forEach(btn =>
-            {
-                btn.addEventListener('click', (evt) => {
-
-                    btn.classList.toggle('rotateButton')
-                    document.querySelectorAll(('.techniquesListWrap')).forEach(elem => {
-
-                        elem.classList.toggle('d-none')
-                    })
-            })
-
-    })
-    }
-//TO BE FIXEDDDDDDDD
-}
-
-let filterList = searchTerm => {
-    let optionsList = document.querySelectorAll('.techniqueOption')
-    let techniqueItem = document.querySelectorAll('.techniqueItem')
-
-    let collection = optionsList
-    if (techniqueItem.length > 0){ collection=techniqueItem }
-
-    searchTerm.toLowerCase()
-
-    collection.forEach(option =>{
-        let optionText = option.textContent.trim().toLowerCase()
-        const textIncludes = optionText.includes(searchTerm)
-        if (!option.classList.contains('cantSearch')){
-            option.classList.toggle('d-none', !textIncludes)
-        }
-
-    })
-}
-
-function searchItem(){
-    let searchBox = document.querySelector(('.searchBox'))
-    if(searchBox) {
-        searchBox.addEventListener('keyup', (evt) => {
-            filterList(evt.target.value)
-
+function toggleActive() {
+    let choiceButton = document.querySelector('.choice-btn')
+    if (choiceButton) {
+        let choiceArrowBtn = document.querySelector(('.choiceArrowBtn'))
+        choiceArrowBtn.addEventListener('click', (evt) => {
+            choiceArrowBtn.classList.toggle('rotateButton')
         })
+
     }
 }
+
 
 function multiSelect(){
     // let techniqueList = document.querySelectorAll('.techniqueOption')
@@ -257,7 +218,6 @@ const closeModal = () => {
 }
 
 if (document.readyState !== 'loading') {
-
     allFunctions()
 }
 

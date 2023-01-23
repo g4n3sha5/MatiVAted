@@ -43,6 +43,34 @@ const toggleNav = (nav, toggle, closeNavIcon, navName, myNavlist) =>{
 
 
 }
+let filterList = searchTerm => {
+    let optionsList = document.querySelectorAll('.techniqueOption')
+    let techniqueItem = document.querySelectorAll('.techniqueItem')
+
+    let collection = optionsList
+    if (techniqueItem.length > 0){ collection = techniqueItem }
+
+    searchTerm.toLowerCase()
+
+    collection.forEach(option =>{
+        let optionText = option.textContent.trim().toLowerCase()
+        const textIncludes = optionText.includes(searchTerm)
+        if (!option.classList.contains('cantSearch')){
+            option.classList.toggle('d-none', !textIncludes)
+        }
+
+    })
+}
+
+function searchItem(){
+    let searchBox = document.querySelector(('.searchBox'))
+    if(searchBox) {
+        searchBox.addEventListener('keyup', (evt) => {
+            filterList(evt.target.value)
+
+        })
+    }
+}
 
 /*===== LINK ACTIVE =====*/
 const colorClick = () =>{
@@ -67,15 +95,16 @@ const chooseFile = (evt) => {
 }
 
 
-allFunctions()
+allFunctionsMain()
 if (document.readyState !== 'loading') {
-    allFunctions()
+    allFunctionsMain()
 }
 
 document.body.addEventListener('htmx:afterOnLoad', event=>{
-    allFunctions()
+    allFunctionsMain()
 })
-function allFunctions(){
+function allFunctionsMain(){
+    searchItem()
     showNavbar()
     colorClick()
 }

@@ -12,7 +12,7 @@ class ClubForm(ModelForm):
         exclude = ['authorizedUser', 'instructors']
 
     name = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control w-75 text-center',
+        'class': 'form-control w-100 text-center',
         'placeholder': 'Academy name',
         'autocomplete' : 'do-not-autofill',
 
@@ -23,20 +23,25 @@ class ClubForm(ModelForm):
     }), required=False)
 
     description = forms.CharField(widget=forms.Textarea(attrs={
-        'class': ' form-control p-2 mx-0 h-100',
+        'class': ' form-control p-2 mx-0 h-100 text-center  ',
         'spellcheck': 'false',
         'placeholder': 'Write a short description...'
     }), required=False)
 
     estabilished = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control w-50',
+        'class': 'form-control w-100 text-center',
         'placeholder': 'Year of foundation (optional)'
     }), required=False)
 
 
-    location = forms.CharField(widget=forms.Textarea(attrs={
-        'class': 'form-control w-100 ',
-        'placeholder': 'Location of academy...'
+    address = forms.CharField(widget=forms.Textarea(attrs={
+        'class': 'form-control w-100 h-100 text-center',
+        'placeholder': 'Address...'
+    }), required=False)
+
+    city = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control w-100 h-100 text-center',
+        'placeholder': 'Postal code (optional), City'
     }), required=False)
 
     phoneNumber = forms.CharField(widget=forms.TextInput(attrs={
@@ -51,7 +56,7 @@ class ClubForm(ModelForm):
 
     website = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control w-100 text-center ',
-        'placeholder': 'Website (optional)'
+        'placeholder': 'Website (optional) [www.example.com or example.com]'
     }), required=False)
 
 

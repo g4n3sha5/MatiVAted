@@ -90,6 +90,7 @@ body{
 }
     /*navbelt*/
 .navContainer{
+
     z-index:105 !important;
     /*background:#1d2951;*/
     /*background:#241e6a;*/
@@ -109,6 +110,13 @@ body{
 
 nav a img{
     width:60px;
+}
+.accountDropdown{
+    /*position:absolute;*/
+}
+.dropdown-menu{
+    width:55% !important;
+    text-align: center;
 }
 .dropdown-menu:first-child{
     border-bottom:1px solid grey;
@@ -171,14 +179,6 @@ nav a img{
      height:auto;
 
 }
-.nav_logo, .nav_link{
-    /*justify-content: center;*/
-    /*display: grid;*/
-    /*grid-template-columns: max-content  max-content;*/
-    /*align-items: center;*/
-    /*column-gap: 1rem;*/
-}
-
 .nav_link{
     display: flex;
     position: relative;
@@ -393,7 +393,44 @@ h2, .h2 {
 
 /*================ ACCOUNT / PROFILE SECTION  ================*/
 
+/*RESPONSIVE PROFTEXT*/
+
+@media (max-width: 992px) {
+    /*.profile {*/
+    /*    width: 50%;*/
+    /*}*/
+    .profText {
+        /*margin-bottom: -13% !important;*/
+        margin-top: 5%;
+        width: 27%;
+        margin-left: 60% !important;
+    }
+
+    .circleWrap {
+        width: 38vw !important;
+        height: 38vw !important;
+    }
+
+    .profText h2 {
+        font-size: 1.1rem !important;
+    }
+
+    .profText h1 {
+        font-size: 1.7rem !important;
+    }
+
+    .profileBackground {
+        height: 24vh !important;
+    }
+}
+.formIcon{
+    position:relative;
+    display:flex;
+    align-items: center;
+}
+
 .profileBackground{
+    position:relative;
     height:20.2vh;
     /*background-color:#5e71f2;*/
     /*background-color:#2e007b;*/
@@ -412,9 +449,8 @@ h2, .h2 {
     margin-top:-10%;
 }
 .accountcontent{
-    background-color:#0c0910;
+    background-color:#191919;
     /*background-color:#191919;*/
-
     /*background-color:#4361ee;*/
     color:white;
 }
@@ -422,7 +458,6 @@ h2, .h2 {
 /*.accountcontent > * > h2{*/
 /*    display:inline*/
 /*}*/
-.personalInfo{}
 .rightSideProfile{
 
     /*background-color:#80E2FE;*/
@@ -469,14 +504,19 @@ h2, .h2 {
     transition: 300ms cubic-bezier(0.785, 0.135, 0.150, 0.860);
   }
 
-@media (max-width: 900px) {
+@media (max-width: 600px){
+    /*   .profText {*/
+    /*    !*margin-bottom: -13% !important;*!*/
+    /*    margin-top:5%;*/
+    /*    width:30%;*/
+    /*    margin-left:50% !important;*/
+    /*}*/
+}
+
+@media (max-width: 992px) {
     /*.profile {*/
     /*    width: 50%;*/
     /*}*/
-
-    .profText {
-        margin-bottom: -13% !important;
-    }
 
     .beltIMG {
         max-width: 30vw;
@@ -504,37 +544,24 @@ h2, .h2 {
     height: auto;
     }
 }
-.profText{
-
-}
 
 .profile{
-
-    /*border: 3px solid #b3b9bf;*/
-    /*margin-right:3%;*/
-    /*position:absolute;*/
-    /*top:10%;*/
-    /*background:#f2f3f4;*/
     background:ghostwhite;
 }
 .profileInfo{
-    position:absolute;
+    /*position:absolute;*/
     /*top:-10%;*/
     top:0;
     /*margin-top:-7%;*/
-}
-.profText{
-    margin-left:8%;
-    margin-bottom:-1%;
-}
-.profileInfo{
-    /*padding-top:4%;*/
+        /*padding-top:4%;*/
     margin-left:4%;
-   transform:translateY(-50%);
 
 }
+.profText{
+    margin-left:28%;
+}
 .leftColContent{
-    transform:translateY(-15%);
+    /*transform:translateY(-15%);*/
 }
 .handleimg img{
     width:100%;
@@ -596,6 +623,7 @@ h2, .h2 {
 /*# Footer*/
 /*--------------------------------------------------------------*!*/
 #footer {
+
   background: 	#101010;
   padding: 60px 0 30px 0;
   color: #fff;
@@ -932,7 +960,7 @@ a{
 }
 
 .count_icon input[type=radio], .techniqueOption input
-,.hideInput input{
+,.hideInput input, .hideInput input[type=radio]{
     visibility:hidden;
     position:absolute;
     /*display:none;*/
@@ -1052,9 +1080,9 @@ a{
     cursor:pointer;
 }
 
-.techniquesSearch i{
+.techniquesSearch i, .formIcon i{
     position:absolute;
-    left:5%;
+    left:3%;
     color:black;
 }
 .techniquesSearch input{
@@ -1107,7 +1135,7 @@ a{
     overflow-x:hidden;
     max-height:15vh;
 }
-.techniqueOption, .techniqueItem{
+.techniqueOption, .techniqueItem, .nowrap{
     white-space: nowrap;
 }
 .techniquesOptions li{
@@ -1120,15 +1148,15 @@ a{
 .cursor-pointer:hover{
     cursor:pointer;
 }
-.techniquesOptions::-webkit-scrollbar{
+.customScroll::-webkit-scrollbar{
     width:6px;
 }
-.techniquesOptions::-webkit-scrollbar-track{
+.customScroll::-webkit-scrollbar-track{
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background-color:#6961d0;
     border-radius: 15px;
 }
-.techniquesOptions::-webkit-scrollbar-thumb{
+.customScroll::-webkit-scrollbar-thumb{
     border-radius: 15px;
     background-color:white;
 }
@@ -1151,9 +1179,11 @@ a{
 /*  background-image: linear-gradient(135deg,  #05d9e8 25%, transparent 25%), linear-gradient(225deg, #2c3e50 25%, transparent 25%);*/
 /*  background-position: 0 0;*/
 /*}*/
+
+/*====================================================*/
 /*!*=========TECHNIQUES SECTION =====================*!*/
 .techniqueType {
-    height:100%;
+    padding:0 5vw;
     width: auto;
     margin-bottom: 4%;
     overflow: hidden;
@@ -1170,7 +1200,9 @@ a{
 .techniqueType .count_icon img{
     height:100% !important;
 }
-
+.leftSideTechnique{
+    padding-bottom:10%;
+}
 
 
 /*==============ADD TECHNIQUE ===============*/
@@ -1473,15 +1505,6 @@ a{
 }
 
 
-
-
-
-
-
-
-
-
-
 /*================LAST SESSIONS =================*/
 .lastSessions {
     padding: 3vh 3vw;
@@ -1513,11 +1536,10 @@ a{
 
 /*=============== CLUBS MODULE ===============*/
 .Clubscontent{
-
     background-color:#191919;
 }
 .locationWrap{
-    max-height:14%;
+    height:8vh;
 }
 .changeLogo input{
     position:absolute;
@@ -1543,14 +1565,35 @@ a{
     position:fixed;
     bottom:-15%;
 }
-.circleWrap{
-    border:3px solid black;
+.imgCircle{
+    height: 11vw;
+    width: 11vw;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    display:inline-flex;
+     border: 3px solid black;
+    align-items: center;
+    flex-direction: column;
+    justify-content:center;
+    overflow:hidden;
+}
+.circleWrap {
     position:absolute;
-    left:0;
-    height:18vh;
-    width:18vh;
-    border-radius:50%;
+    left: 0;
+    top:0;
 
+     transform:translateY(-50%);
+}
+.accountcontent .circleWrap{
+  background-position: center 25%;
+  background-size: cover;
+}
+.clubProfile .imgCircle{
+  background-position: center;
+  background-size: contain;
+}
+.clubProfile{
+    min-height:120vh;
 }
 
 .saveClubBtn{
@@ -1558,16 +1601,96 @@ a{
     background:blue;
 }
 .clubsContentPadding{
-    padding-top:12%;
+    padding-top:8%;
 }
 /*========= CLUBS LIST ============*/
 .clubsListWrap{
+    background-color:#187DFE;
     color:ghostwhite;
+}
+.clubsListWrapper{
+    padding:0 3vw;
+    height:75%;
+}
+.clubsList{
+    overflow:auto;
+
+}
+.clubsList li{
+    border-bottom:2px solid #4ccaf0;
+    width:100%;
+    text-shadow: 1px 1px 1px rgba(41, 224, 218, 1);
+
+}
+.clubsTextWrap{
+    padding:0 1vw;
+}
+
+/*================ singleClubView / clubProfile =========================*/
+.clubProfileName{
+    font-size:3rem;
+    font-weight:700;
+}
+.singleClubView{
+    color:ghostwhite;
+}
+.estabilished{
+    font-weight: 400;
+    font-size:1.25rem;
+}
+.clubProfileInfo *{
+    letter-spacing:0.07em;
+}
+.clubProfileInfo{
+    background:#dee2e6;
+    /*background:ghostwhite;*/
+    color:black;
+}
+.clubProfileInfo h4 {
+    font-weight:400;
+    font-size:1.32rem;
+}
+.clubProfileInfo h3{
+    font-weight:700;
+    font-size:1.5rem;
+}
+.clubProfileInfo h2{
+    font-weight:600;
+    font-size:1.3rem;
+}
+.clubProfileInfo a{
+    font-weight:700 !important;
+}
+.clubProfileReverseStyle{
+    background-color:black;
+    color:white;
+    width:30%;
+      text-align: center;
+}
+.clubProfileNumber a{
+    color:black;
+
+}
+.clubProfileWebsite a{
+    color:white;
+    letter-spacing: 0.062em;
+     font-size:1.45rem;
+
+
+}
+.clubProfileDescription{
+    color:#e9ecef;
+    width:100%;
+    /*background-color:#e9ecef;*/
+}
+.clubProfileEmail{
+
 }
 /*================ TIMELINE =================*/
 
 
 .BJR_timeline{
+    color:
     position:absolute;
     bottom:40vh;
     padding:1vw;

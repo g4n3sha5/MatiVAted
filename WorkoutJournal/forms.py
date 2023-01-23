@@ -11,8 +11,6 @@ class DatePickerInput(forms.DateInput):
     input_type = 'datetime'
 
 
-class TechniquesCheckBox(forms.CheckboxSelectMultiple):
-    pass
 
 class TrainingSessionForm(ModelForm):
     # def __init__(self, *args, **kwargs):

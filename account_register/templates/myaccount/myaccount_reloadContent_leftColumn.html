@@ -1,0 +1,42 @@
+<div class="leftColContent w-100   d-flex flex-column align-items-center justify-content-start
+">
+    <div class="profileBorder py-2 yourName d-flex justify-content-center mx-2 align-items-center flex-wrap ">
+
+        <div class=" py-2 yourName d-flex  px-3">
+            <div class="formIcon firstName  py-1">
+                <i class="bi bi-card-heading"></i>
+                {{ form.firstName }}
+            </div>
+        </div>
+        <div class=" py-2 yourName d-flex px-3 ">
+            <div class="formIcon lastName py-1">
+                <i class="bi bi-card-heading"></i>
+
+                {{ form.lastName }}
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="profileBorder yourBio  px-5 p-3 mx-2 d-flex justify-content-center mt-lg-0">
+        <div class="formIcon  py-1 w-100">
+            <i class="bi bi-file-text-fill pt-1"></i>
+            {{ form.bio }}
+        </div>
+    </div>
+
+    <div class="profileBorder favGrappler p-2  py-4 my-2 mx-4 d-flex justify-content-center align-items-center flex-column  ">
+        <h2 class="smallLabel">Favourite Grappler</h2>
+        <div class="formIcon  py-1  w-75">
+
+            <i class="bi bi-person-bounding-box"></i>
+            {{ form.favGrappler }}
+        </div>
+
+    </div>
+
+    <div class="favTechnique position-relative py-3 mt-2 d-flex justify-content-center flex-wrap flex-column w-75">
+        {% include 'myaccount/myaccount_favTechnique.html' %}
+    </div>
+</div>

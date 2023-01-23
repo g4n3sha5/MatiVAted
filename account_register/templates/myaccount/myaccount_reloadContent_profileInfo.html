@@ -1,0 +1,27 @@
+<div class="profileInfo d-flex w-100 justify-content-start
+                        align-items-end mb-5 position-relative   ">
+
+    <div onclick="chooseFile()"
+         class="circleWrap imgCircle  mx-3 profile  "
+         style="background-image: url({{ UserProfile.avatar.url }})">
+
+        <div class="overflow-hidden d-flex align-items-center justify-content-center ">
+            <div class=" d-flex justify-content-center align-items-center
+                                      text-white handleimg h-100 w-100 ">
+                {#                                            <img src=" {{ UserProfile.avatar.url }} ">#}
+            </div>
+            <div class="changeLogo">
+                {{ form.avatar }}
+            </div>
+            <div class="circleOnHover  d-flex justify-content-center align-items-center">
+                <i class=" text-white bi bi-pencil-square"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="profText d-flex flex-column">
+        <h1>Profile </h1>
+        <h2> Update your profile and personal info</h2>
+    </div>
+
+</div>

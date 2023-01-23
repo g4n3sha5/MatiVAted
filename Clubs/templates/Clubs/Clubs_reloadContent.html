@@ -1,0 +1,49 @@
+{% load static %}
+<div class="clubProfile clubContent position-relative  overflow-hidden ">
+
+    <div class="profileBackground w-100 ">
+        {% if success %}
+            <div class="savedWrap bg-success px-3">
+                <i class="bi bi-check2 fa-2x"></i>
+                <h4>Saved correctly</h4>
+            </div>
+        {% endif %}
+    </div>
+
+    <form enctype="multipart/form-data"
+          class="h-100"
+          hx-target=".Clubscontent"
+          hx-post="."
+          hx-trigger="change delay:400ms, submit">
+        {{ csrf.token }}
+
+        <div class="row h-100  ">
+
+            <div class="col-md-6 d-flex align-items-center justify-content-start flex-column position-relative">
+                    {% include 'Clubs/Clubs_reloadContent_profileInfo.html' %}
+
+
+                    {% include 'Clubs/clubs_reloadContent_leftColumn.html' %}
+
+
+            </div>
+
+
+                {#                                    <button#}
+                {#                                            type="button"#}
+                {#                                            class="saveClubBtn btn-outline-primary  btn p-3 mt-5#}
+                {#                                          text-white w-75 "#}
+                {#                                            hx-post="."#}
+                {#                                            hx-target=".Clubscontent">#}
+                {#                                        Save Info#}
+                {#                                    </button>#}
+
+                <div class="rightSideProfile col-md-6 pt-5 px-3 d-flex flex-column align-items-center">
+
+                    {% include 'Clubs/Clubs_reloadContent_rightColumn.html' %}
+                    {{ form.errors }}
+                </div>
+            </div>
+
+    </form>
+</div>

@@ -10,6 +10,13 @@ from WorkoutJournal.models import Technique
 #
 def myAccount(request):
     currentProfile =  UserProfile.objects.get(user=request.user)
+    form = UserProfileForm(instance=currentProfile)
+    context = {
+        'form': form,
+        'UserProfile': currentProfile
+        # 'techniques' : Technique.objects.all()
+    }
+
     if request.method == 'POST':
         template = 'myaccount_reloadContent'
         form = UserProfileForm(request.POST,
@@ -18,17 +25,13 @@ def myAccount(request):
                                initial = {
                                    'belt' : currentProfile.belt
                                })
+
         if form.is_valid():
             form.save()
+            context['success'] = True
     else:
         template = 'myaccount'
-        form = UserProfileForm(instance = currentProfile)
-
     # UserProfile.objects.get(user=request.user)
-    context = {
-        'form' : form,
-        'UserProfile' : currentProfile
-        # 'techniques' : Technique.objects.all()
-    }
+
 
     return render (request, f"myaccount/{template}.html", context)

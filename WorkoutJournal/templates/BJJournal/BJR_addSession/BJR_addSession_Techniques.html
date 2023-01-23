@@ -7,7 +7,11 @@
              <h4 class="choicePlaceholder">Choose techniques</h4>
          </div>
 
-         <span class="choiceArrowBtn position-absolute">
+        <span     data-bs-target=".techniquesListWrap"
+                data-bs-toggle="collapse"
+                aria-expanded="false"
+                aria-controls="collapseWrap"
+                 class="choiceArrowBtn position-absolute">
             <i  class=" bi bi-arrow-down-square-fill"></i>
         </span>
 {#             <i id="arrowdown" class="bi bi-arrow-up-square-fill"></i>#}
@@ -16,7 +20,7 @@
 {#        <input multiple      list="techniquesList" id="techniques-choice" name="techniquesChoice">#}
 
 
-    <div class="techniquesListWrap d-none p-3 position-absolute w-100">
+    <div class="collapse techniquesListWrap p-3 position-absolute w-100">
         {# SEARCH INPUT    #}
         <div class="techniquesSearch d-flex align-items-center pb-1 position-relative">
             <i class="bi bi-search"></i>
@@ -24,7 +28,7 @@
         </div>
 
 
-        <ul class="select techniquesOptions  w-100 px-3 ">
+        <ul class="select  customScroll techniquesOptions  w-100 px-3 ">
             {% for technique in BJRform.techniques %}
 
                 <li class="{{technique.id_for_label}} techniqueOption  list-group-item d-flex

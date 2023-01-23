@@ -6,7 +6,8 @@ class Club(models.Model):
     name = models.CharField(blank=False, max_length=100, unique=True)
     logo = models.ImageField(default='defaultLogo.png', upload_to='clubs_logo',  blank=True, null=True)
     estabilished = models.CharField(max_length=15, blank=True, null=True)
-    location = models.CharField(max_length=50, blank=True, null=True)
+    address = models.CharField(max_length=50, blank=True, null=True)
+    city = models.TextField(max_length=50, blank=True, null=True)
     description = models.TextField(max_length=2500, blank=True, null=True)
     phoneNumber = models.TextField(max_length=100, blank=True, null=True)
     email = models.TextField(max_length=100, blank=True, null=True)
@@ -16,5 +17,30 @@ class Club(models.Model):
     authorizedUser = models.ForeignKey(User, related_name= "authorizedUser",on_delete=models.CASCADE, null=True, blank=True)
     creator = models.ForeignKey(User, related_name="clubCreator", on_delete=models.CASCADE, null=True, blank=True)
 
+
+    def numbers_list(self):
+        if self.phoneNumber:
+            return self.phoneNumber.split(',')
+
     def __str__(self):
         return f'{self.name} {self.estabilished}'
+
+class Membership(models.Model):
+    MEMBER_TYPES = (
+        ('Creator', 'creator'),
+        ('Instructor', 'instructor'),
+        ('Student', 'student')
+    )
+    slug = models.SlugField(null=True, blank=True)
+    memberType = models.CharField(choices = MEMBER_TYPES)
+
+class UserMembership(models.Model):
+    AUTHORIZED = (
+        ('YES', 'YES'),
+        ('NO', 'NO'),
+        ('TRAININGS', 'TRAININGS')
+
+    )
+    user = models.OneToOneField(User, related_name="userMembership", on_delete=models.CASCADE)
+    membership = models.OneToOneField(User, related_name="userMembership", on_delete=models.CASCADE)
+    authorized = models.charField()

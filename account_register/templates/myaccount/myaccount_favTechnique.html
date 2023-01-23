@@ -18,12 +18,12 @@
             <input class="searchBox py-1 " type="text" placeholder="Search ">
         </div>
 
-         <ul class="select techniquesOptions  w-100 px-3 ">
+         <ul class="select customScroll techniquesOptions  w-100 px-3 ">
             {% for x in form.favTechnique %}
-                <li class="text-center techniqueOption  list-group-item d-flex
+                <li class="text-center searchItem techniqueItem  list-group-item d-flex
                 align-items-center justify-content-between mb-1 d-block">
 
-                    <label class=" w-100 h-100">
+                    <label class="hideInput  w-100 h-100">
                         {{x.tag}}
                         {{x.choice_label}}
                     </label>
