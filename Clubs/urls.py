@@ -13,7 +13,8 @@ htmx_urlpatterns = [
     path('clubs/trainings', views.clubsTrainings, name="clubsTrainings"),
     path('clubs/schedule', views.clubsSchedule, name="clubsSchedule"),
     path('clubs/list', views.clubsList, name="clubsList"),
-    path('clubs/<int:id>', views.singleClubView, name="singleClubView")
+    path('clubs/<int:id>', views.singleClubView, name="singleClubView"),
+    # path('clubs/join/<int:id>', views.joinClub, name="joinClub")
 
 
 ]

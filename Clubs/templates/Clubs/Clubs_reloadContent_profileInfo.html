@@ -3,41 +3,32 @@
                         align-items-end mb-5 position-relative   ">
 
 
-
-    {% if Club == None or Club.logo.url == None %}
-
-        <div onclick="chooseFile()"
-             class="circleWrap imgCircle d-inline-flex flex-column
+    <div onclick="chooseFile()"
+         class="circleWrap imgCircle d-inline-flex flex-column
                                             mx-3 profile  align-items-center justify-content-center overflow-hidden"
-             style="background-image: url({% static 'Clubs/defaultLogo.png' %}"
+            {% if Club == None or Club.logo.url == None %}
+         style="background-image: url({% static 'Clubs/defaultLogo.png' %}"
+            {% else %}
+                style="background-image: url({{ Club.logo.url }})"
+            {% endif %}
         >
 
-    {% else %}
+            <div class=" overflow-hidden d-flex align-items-center justify-content-center">
 
-        <div onclick="chooseFile()"
-             class="circleWrap  imgCircle  mx-3 profile"
-             style="background-image: url({{ Club.logo.url }})"
-        >
-
-    {% endif %}
-
-
-            <div class="overflow-hidden d-flex align-items-center justify-content-center ">
-
-                <div class=" d-flex justify-content-center align-items-center
+    <div class=" d-flex justify-content-center align-items-center
                                                                   text-white handleimg h-100 w-100 ">
-                    <div class="changeLogo">
-                        {{ form.logo }}
-                    </div>
-                </div>
-                <div class="circleOnHover  d-flex justify-content-center align-items-center">
-                    <i class=" text-white bi bi-pencil-square"></i>
-                </div>
-            </div>
+        <div class="changeLogo">
+            {{ form.logo }}
+        </div>
+    </div>
+    <div class="circleOnHover  d-flex justify-content-center align-items-center">
+        <i class=" text-white bi bi-pencil-square"></i>
+    </div>
+</div>
 
-        </div>
-        <div class="profText d-flex flex-column text-white">
-            <h1>Club </h1>
-            <h2> Add your club or update the info</h2>
-        </div>
+</div>
+<div class="profText d-flex flex-column text-white">
+    <h1>Club </h1>
+    <h2> Add your club or update the info</h2>
+</div>
 </div>

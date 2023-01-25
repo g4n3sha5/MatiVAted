@@ -13,8 +13,6 @@ class Club(models.Model):
     email = models.TextField(max_length=100, blank=True, null=True)
     website = models.TextField(max_length=100, blank=True, null=True)
     # GRAFIK!!
-    instructors = models.TextField(max_length=100, blank=True, null=True)
-    authorizedUser = models.ForeignKey(User, related_name= "authorizedUser",on_delete=models.CASCADE, null=True, blank=True)
     creator = models.ForeignKey(User, related_name="clubCreator", on_delete=models.CASCADE, null=True, blank=True)
 
 
@@ -25,22 +23,32 @@ class Club(models.Model):
     def __str__(self):
         return f'{self.name} {self.estabilished}'
 
-class Membership(models.Model):
-    MEMBER_TYPES = (
-        ('Creator', 'creator'),
-        ('Instructor', 'instructor'),
-        ('Student', 'student')
-    )
-    slug = models.SlugField(null=True, blank=True)
-    memberType = models.CharField(choices = MEMBER_TYPES)
-
 class UserMembership(models.Model):
+    MEMBER_TYPES = (
+        ('Head', 'Head'),
+        ('Instructor', 'Instructor'),
+        ('Professor', 'Professor'),
+        ('Student', 'Student')
+    )
     AUTHORIZED = (
+        ('FULL', 'FULL'),
+        ('TRAININGS', 'TRAININGS'),
+        ('NO', 'NO')
+
+    )
+
+    user = models.OneToOneField(User, related_name="userMembership", on_delete=models.CASCADE)
+    authorized = models.CharField(choices=AUTHORIZED, max_length=30)
+    memberType = models.CharField(choices=MEMBER_TYPES, max_length=40, default='Student')
+    slug = models.SlugField(null=True, blank=True)
+    club = models.ForeignKey(Club, related_name='membersClub', on_delete=models.CASCADE, null=True)
+class Request (models.Model):
+    ACCEPTED = (
         ('YES', 'YES'),
         ('NO', 'NO'),
-        ('TRAININGS', 'TRAININGS')
-
+        ('REJECTED', 'REJECTED'),
     )
-    user = models.OneToOneField(User, related_name="userMembership", on_delete=models.CASCADE)
-    membership = models.OneToOneField(User, related_name="userMembership", on_delete=models.CASCADE)
-    authorized = models.charField()
+    club = models.OneToOneField(Club, related_name ="request", on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name = "userRequest", on_delete=models.CASCADE)
+    status = models.CharField(choices = ACCEPTED, max_length=30)
+

@@ -2,6 +2,18 @@
 {% load static %}
 
 <div class="clubProfile navPadding singleClubView d-flex align-items-center flex-column w-100 pb-5 ">
+    <form>
+        {% csrf_token %}
+        <div class="clubProfileBtn text-center">
+            <button {% if alreadySent %} disabled {% endif %}
+                                         hx-post="{% url 'singleClubView'  Club.id %}"
+                                         hx-target="#Clubs_view"
+                                         class=" btn btn-outline-primary">
+                Join Club (request)
+            </button>
+            <h3> {% if alreadySent %} Request already sent{% endif %}</h3>
+        </div>
+    </form>
 
 
     <div class="d-flex flex-column  position-relative mt-2  align-items-center">
@@ -17,9 +29,12 @@
     <div class="d-flex flex-column align-items-center w-100 clubProfileInfo">
 
         <i class="bi bi-geo-alt-fill pt-2"></i>
-        <h4 class="py-2 ">    {{ Club.address }} </h4>
-        <h3>    {{ Club.city }} </h3>
-
+        {% if Club.address %}
+            <h4 class="py-2 ">    {{ Club.address }} </h4>
+        {% endif %}
+        {% if Club.city %}
+            <h3>    {{ Club.city }} </h3>
+        {% endif %}
         <h2 class="clubProfileWebsite clubProfileReverseStyle p-3 px-5">
             <i class="bi bi-globe px-3"></i>
             <a href="//{{ Club.website }}">{{ Club.website }}</a>

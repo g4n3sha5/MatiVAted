@@ -100,6 +100,7 @@ body{
     /*background: linear-gradient(90deg, rgba(105, 48, 195,1) 4%, rgba(19,6,18,1) 7%, rgba(19,6,18,1) 18%, rgba(105, 48, 195,1) 20%);*/
 
 }
+
 .navContainer .navbarNav a{
     color:whitesmoke;
   text-shadow: -3px 1px 21px rgba(72, 149, 239, 1);
@@ -233,6 +234,17 @@ nav a img{
     padding-left:1.5vw;
 }
  }
+.bellIcon{
+    position:relative;
+    left:6%;
+
+}
+.bellIcon{
+    font-size:25px !important;
+}
+.notificationDropdown{
+    margin-top:100px;
+}
 
 
 /* ============ LANDING PAGE ============ */
@@ -545,9 +557,7 @@ h2, .h2 {
     }
 }
 
-.profile{
-    background:ghostwhite;
-}
+
 .profileInfo{
     /*position:absolute;*/
     /*top:-10%;*/
@@ -1519,8 +1529,8 @@ a{
   font-weight: 700;
   background-image: linear-gradient(to left, black, white);
   color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
+  /*background-clip: text;*/
+  /*-webkit-background-clip: text;*/
 }
 .lastSessions .card{
     background-image: linear-gradient(-225deg, #3D4E81 0%, #5753C9 48%, #6E7FF3 100%);
@@ -1565,26 +1575,29 @@ a{
     position:fixed;
     bottom:-15%;
 }
+.profile{
+     flex-direction: column;
+
+    justify-content:center;
+     align-items: center;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+
+}
 .imgCircle{
+    background:ghostwhite;
     height: 11vw;
     width: 11vw;
-    background-repeat: no-repeat;
-    border-radius: 50%;
-    display:inline-flex;
      border: 3px solid black;
-    align-items: center;
-    flex-direction: column;
-    justify-content:center;
     overflow:hidden;
 }
 .circleWrap {
     position:absolute;
     left: 0;
     top:0;
-
      transform:translateY(-50%);
 }
-.accountcontent .circleWrap{
+ .profilePicture{
   background-position: center 25%;
   background-size: cover;
 }
@@ -1607,6 +1620,7 @@ a{
 .clubsListWrap{
     background-color:#187DFE;
     color:ghostwhite;
+    width:70%;
 }
 .clubsListWrapper{
     padding:0 3vw;
@@ -1614,7 +1628,6 @@ a{
 }
 .clubsList{
     overflow:auto;
-
 }
 .clubsList li{
     border-bottom:2px solid #4ccaf0;
@@ -1627,6 +1640,23 @@ a{
 }
 
 /*================ singleClubView / clubProfile =========================*/
+.clubProfileBtn{
+    position:absolute;
+    top:15%;
+    right:9%;
+    color:white;
+    font-weight:600;
+
+}
+.clubProfileBtn h3{
+    font-size:15px;
+}
+.clubProfileBtn button{
+       background-color:#F5F5F5;
+}
+.clubProfile:disabled{
+    display:none !important;
+}
 .clubProfileName{
     font-size:3rem;
     font-weight:700;
@@ -1686,11 +1716,49 @@ a{
 .clubProfileEmail{
 
 }
+/*================ Club Members =================*/
+.membersWrap{
+    width:70%;
+}
+
+.memberItem h1{
+    font-size:35px;
+    margin:0;
+    padding:0 1vw;
+    font-weight:700;
+}
+.memberItem *{
+    letter-spacing: 0.015em;
+}
+.memberItem h2{
+    font-size:29px;
+    margin:0;
+    padding:0 0.1vw;
+    font-weight:500;
+}
+.smallProfile{
+    width:57px;
+    height:57px;
+    overflow:hidden;
+    margin-right:2vw;
+
+}
+
+.listName{
+
+}
+.memberType{
+    position:absolute;
+    right:0;
+    width:35%;
+}
+.profileBelt{
+    padding-right: 15%;
+}
 /*================ TIMELINE =================*/
 
 
 .BJR_timeline{
-    color:
     position:absolute;
     bottom:40vh;
     padding:1vw;

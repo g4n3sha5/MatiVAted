@@ -28,6 +28,7 @@ def myAccount(request):
 
         if form.is_valid():
             form.save()
+            context['form'] = form
             context['success'] = True
     else:
         template = 'myaccount'

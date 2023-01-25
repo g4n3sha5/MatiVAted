@@ -1,26 +1,49 @@
-<div class="clubsListWrap px-5 clubsContentPadding vh-100 overflow-hidden ">
+{#{% if %}#}
+<div class="clubsListWrap membersWrap px-5 clubsContentPadding vh-100 overflow-hidden pb-5">
 
-    <div class="clubsListWrapper d-flex flex-column align-items-center">
+    <div class="clubsListWrapper h-100 d-flex flex-column align-items-center">
 
-        <h3 class="text-center"> Clubs List</h3>
-         <hr class="text-white mx-5 my-3">
+        <h3 class="text-center"> Club Members</h3>
+        <hr class="text-white mx-5 my-3">
         <div class="techniquesSearch d-flex align-items-center pb-1 position-relative w-75 pb-3">
             <i class="bi bi-search"></i>
             <input class="searchBox py-1 " type="text" placeholder="Search ">
         </div>
 
-        <ul class=" customScroll  clubsList h-75 w-100 px-5 d-flex flex-column align-items-center " multiple>
+        <ul class=" customScroll  h-100 w-100 px-5 d-flex flex-column align-items-center overflow-auto" multiple>
 
-            {% for club in clubsList %}
-                <li  hx-get = "{% url 'singleClubView' club.id %}"
-                    hx-target = "#Clubs_view"
-{#                    value="{{  technique.EnglishName }}"#}
-                    class=" techniqueOption nowrap cursor-pointer  list-group-item p-2 d-flex
-                 align-items-center justify-content-between mb-1 d-block ">
-                <h4 class="clubsTextWrap">
-                    {{ forloop.counter }}.   {{  c }}
-                </h4>
+            {% for profile, member in profiles.items   %}
+                <li
+                        hx-target="#Clubs_view"
+                        {#                    value="{{  technique.EnglishName }}"#}
+                        class="memberItem techniqueOption nowrap cursor-pointer
+                          w-100 list-group-item p-2 d-flex align-items-center mb-1 d-block position-relative">
+                                        <h1>{{ forloop.counter }}.</h1>
+
+                    <div class=" profilePicture smallProfile  profile  "
+                         style="background-image: url({{ profile.avatar.url }})">
+
+                    </div>
+
+                    <h2 class="listName">
+                        {% if profile.firstName %}
+                            {{ profile.firstName }}
+                        {% endif %}
+                        {% if profile.lastName %}
+                            {{ profile.lastName }}
+                        {% endif %}
+                        {% if not profile.lastName and not profile.firstName %}
+                            User Anonymous
+                        {% endif %}</h2>
+
+                    <div class="memberType d-flex justify-content-between">
+                        <h2 class="profileBelt">{{ profile.belt }}</h2>
+                        <h2 class="">{{ member.memberType }}</h2>
+                    </div>
                 </li>
+
+                {#                {% endfor %}#}
+
             {% endfor %}
 
         </ul>

@@ -13,6 +13,7 @@
 
   {%include "common/navbar.html" %}
    {% include "Clubs/Clubs_leftSideMenuExperiment.html" %}
+
         <div class = "BJR container-fluid  p-0  ">
 
             <div class ="p-0 row  h-100" >
@@ -22,7 +23,7 @@
 
 
                         <div class="myContent col  position-relative p-0">
-
+                              {% include "common/messages.html" %}
                             {% block content %}
                             {% endblock %}
                         </div>

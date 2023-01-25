@@ -8,10 +8,12 @@ const showNavbar = () => {
     if (toggle && nav && closeNavIcon ) {
         closeNavIcon.addEventListener('click', () =>  {
             toggleNav(nav, toggle, closeNavIcon, navName, myNavlist)
+
         })
 
         toggle.addEventListener('click', () => {
             // show navbar
+
             toggleNav(nav, toggle, closeNavIcon, navName, myNavlist)
         })
     }
@@ -19,7 +21,7 @@ const showNavbar = () => {
 
 const toggleNav = (nav, toggle, closeNavIcon, navName, myNavlist) =>{
     navName.forEach(el =>{
-        console.log(getComputedStyle(el).opacity)
+
         if (getComputedStyle(el).opacity != 1 ){
             setTimeout(fade, 450);
             function fade() {
@@ -101,7 +103,7 @@ if (document.readyState !== 'loading') {
 }
 
 document.body.addEventListener('htmx:afterOnLoad', event=>{
-    allFunctionsMain()
+    // allFunctionsMain()
 })
 function allFunctionsMain(){
     searchItem()

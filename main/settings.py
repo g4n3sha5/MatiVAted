@@ -39,6 +39,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'main',
+    'Notifications',
     'Journal',
     'WorkoutJournal',
     'Clubs',

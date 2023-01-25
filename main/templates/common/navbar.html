@@ -24,6 +24,7 @@
                     <a class="nav-item" href="/bjjournal">BJJournal</a>
                     <a class="nav-item" href="/clubs">Clubs</a>
 
+
                     {#            ACCOUNT BUTTON        #}
                     <div class="  nav-item position-relative ">
                         <a type="button"
@@ -33,7 +34,7 @@
                            aria-haspopup="true"
                            aria-expanded="false">Account</a>
                         <div class="accountDropdown dropdown-menu  ">
-{#                        <div class="dropdown-menu accountDropdown">#}
+                            {#                        <div class="dropdown-menu accountDropdown">#}
                             {% if user.is_authenticated %}
 
                                 <a class="dropdown-item" href="{% url 'myAccount' %}">Account</a>
@@ -48,8 +49,25 @@
                         </div>
                     </div>
 
+                    {#BELL#}
+                    {% if user.is_authenticated %}
+                        <div class="nav-item bellIcon d-flex justify-content-center align-items-center">
+                            <a data-bs-target=".notificationDropdown"
+                               data-bs-toggle="collapse"
+                               aria-haspopup="true"
+                               aria-expanded="false"
+                               class=" p-0 dropdown-toggle m-0">
+                                <i class="bi bi-bell-fill "></i>
+                            </a>
+
+                            <div class="notificationDropdown dropdown-menu  ">
+                                <h4>Show all notifications</h4>
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
+
         </div>
 
     </nav>

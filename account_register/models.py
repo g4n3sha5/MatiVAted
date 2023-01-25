@@ -9,12 +9,12 @@ from WorkoutJournal.models import Technique
 
 class UserProfile(models.Model):
     belts = (
-        ('NoInfo', 'No Info'),
-        ('WhiteBelt', 'White Belt'),
-        ('BlueBelt', 'Blue Belt'),
-        ('PurpleBelt', 'Purple Belt'),
-        ('BrownBelt', 'Brown Belt'),
-        ('BlackBelt', 'Black Belt')
+        ('No Info', 'No Info'),
+        ('White Belt', 'White Belt'),
+        ('Blue Belt', 'Blue Belt'),
+        ('Purple Belt', 'Purple Belt'),
+        ('Brown Belt', 'Brown Belt'),
+        ('Black Belt', 'Black Belt')
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     firstName = models.CharField(max_length=20, blank=True, null=True)

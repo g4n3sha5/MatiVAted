@@ -5,6 +5,7 @@ from .models import UserProfile
 from allauth.account.signals import user_signed_up
 
 
+# create user profile on register
 @receiver(user_signed_up)
 def create_profile(sender, **kwargs):
     myuser = kwargs['user']
