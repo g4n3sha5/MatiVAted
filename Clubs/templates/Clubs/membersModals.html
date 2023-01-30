@@ -1,0 +1,46 @@
+<div id="leaveClub" data-backdrop="false" class="modal w-100 overflow-hidden " tabindex="-1" role="dialog"
+     aria-labelledby="leaveClubModal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Are you sure you want to leave the Club?</h5>
+                <form method="post">
+                    {% csrf_token %}
+                    <button data-dismiss="modal" class="btn-close aria-label=" Close
+                    ">
+                </form>
+                    </button>
+            </div>
+            <div class="modal-footer">
+                <button
+                        onclick="location.href='{% url 'leaveClub' %}'"
+                        type="button"
+                        class="btn btn-danger ">Leave
+                </button>
+                <button type="button" class="btn btn-secondary w-50" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div id="cantLeave" data-backdrop="false" class="modal w-100 overflow-hidden " tabindex="-1" role="dialog"
+     aria-labelledby="leaveClubModal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Head can't leave the club.</h5>
+                <button data-dismiss="modal" class="btn-close aria-label=" Close
+                ">
+                </button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary w-50" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</div>

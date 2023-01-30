@@ -4,16 +4,29 @@ from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
 # from django.contrib import messages
 from .forms import UserProfileForm
 from .models import UserProfile
+from Clubs.models import Club, UserMembership
 from WorkoutJournal.models import Technique
 # # Create your views here.
 #
 #
 def myAccount(request):
+    try:
+        # yourClub = Club.objects.get(creator=request.user)
+
+        # yourClub = UserMembership.getMyUsersClub(request)
+        membership = UserMembership.objects.get(user_id=request.user.id)
+        yourClub = Club.objects.get(id = membership.club_id)
+
+    except:
+        print("nope")
+        yourClub = None
+
     currentProfile =  UserProfile.objects.get(user=request.user)
     form = UserProfileForm(instance=currentProfile)
     context = {
         'form': form,
-        'UserProfile': currentProfile
+        'UserProfile': currentProfile,
+        'club' : yourClub
         # 'techniques' : Technique.objects.all()
     }
 

@@ -41,9 +41,11 @@ INSTALLED_APPS = [
     'main',
     'Notifications',
     'Journal',
+
     'WorkoutJournal',
     'Clubs',
     'django_static_fontawesome',
+    'daphne',
     'fontawesome',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -126,7 +128,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+ASGI_APPLICATION = 'main.asgi.application'
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 

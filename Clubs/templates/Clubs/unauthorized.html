@@ -1,0 +1,30 @@
+{% load static %}
+<div class="profileInfo d-flex w-100 justify-content-start
+                        align-items-end mb-5 position-relative   ">
+
+
+    <div class="circleWrap imgCircle d-inline-flex flex-column
+                                            mx-3 profile  align-items-center justify-content-center overflow-hidden"
+            {% if Club == None or Club.logo.url == None %}
+         style="background-image: url({% static 'Clubs/defaultLogo.png' %}"
+            {% else %}
+         style="background-image: url({{ Club.logo.url }})"
+            {% endif %}
+    >
+
+        <div class=" overflow-hidden d-flex align-items-center justify-content-center">
+
+            <div class=" d-flex justify-content-center align-items-center
+                                                                  text-white handleimg h-100 w-100 ">
+                <div class="changeLogo">
+                    {{ form.logo }}
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="unauthorized d-flex flex-column text-white mt-2 mt-lg-3">
+        <h1>Club <i class="bi bi-lock"></i></h1>
+        <h2> You are not authorized to edit your club info</h2>
+    </div>
+</div>

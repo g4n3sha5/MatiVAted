@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Club, UserMembership, Request
+from Notifications.models import Notification
 from account_register.models import UserProfile
 from .forms import ClubForm
 from django.db.models import Case, When, Value
@@ -9,8 +10,16 @@ from django.contrib import messages
 
 # Create your views here.
 def ClubsIndex(request):
+    authorized = True
     try:
-        yourClub = Club.objects.get(creator=request.user)
+        # yourClub, membership = UserMembership.getMyUsersClub(request)
+
+        # find what club is the user in
+        membership = UserMembership.objects.get(user_id=request.user.id)
+        yourClub = Club.objects.get(id=membership.club_id)
+        # yourClub = Club.objects.get(creator=request.user)
+        if membership.authorized != 'FULL':
+            authorized = False
 
     except:
         yourClub = None
@@ -21,15 +30,18 @@ def ClubsIndex(request):
         'form': form,
         'Club': yourClub,
         'user': request.user,
+        'authorized': authorized
     }
     if request.method == 'POST':
-        yourClub, created = Club.objects.get_or_create(creator=request.user)
+        yourClub, created = Club.objects.get_or_create(id=membership.club_id)
+        # yourClub, created = Club.objects.get_or_create(creator=request.user)
         form = ClubForm(request.POST, request.FILES, instance=yourClub)
 
         if form.is_valid():
             instance = form.save(commit=False)
-            yourClub.creator = request.user
-            UserMembership(user=request.user, authorized='FULL', memberType='Head', club=yourClub).save()
+            if not membership:
+                yourClub.creator = request.user
+                UserMembership(user=request.user, authorized='FULL', memberType='Head', club=yourClub).save()
             instance.save()
 
             context['form'] = form
@@ -59,34 +71,54 @@ def clubMembers(request):
         When(memberType='Professor', then=Value(3)),
         When(memberType='Student', then=Value(4)),
     )
-    try:
-        yourClub = Club.objects.get(creator=request.user)
-        # membersList = UserMembership.objects.filter(club=yourClub).order_by('memberType').values()
-        membersList = UserMembership.objects.filter(club=yourClub).order_by(MEMBER_ORDER)
-    except:
-        yourClub = None
-        membersList = None
-        print("YOU DONT HAVE A CLUB!")
-
-
     profilesDict = {
 
     }
+    requestsDict = {
 
-    for profile in UserProfile.objects.all().order_by(BELT_ORDER):
-        for member in membersList:
-            if profile.user_id == member.user_id:
-                profilesDict[profile] = member
+    }
+    authorized = False
+    try:
+        membership = UserMembership.objects.get(user_id=request.user.id)
+        yourClub = Club.objects.get(id=membership.club_id)
+        if membership.authorized == 'FULL':
+            authorized = True
+        # membersList = UserMembership.objects.filter(club=yourClub).order_by('memberType').values()
+        membersList = UserMembership.objects.filter(club=yourClub).order_by(MEMBER_ORDER)
+        requestList = Request.objects.filter(club=yourClub)
 
-    print(profilesDict)
-    # UserProfile.objects.all().order_by('belt')
+    except:
+        yourClub, membersList, isMember, requestList = None, None, None, None
+
+    userProfiles = UserProfile.objects.all()
+    if yourClub and membersList:
+        for profile in userProfiles.order_by(BELT_ORDER):
+            for member in membersList:
+                if profile.user_id == member.user.id:
+                    profilesDict[profile] = member
+
+    if requestList:
+        for userRequest in requestList:
+            requestProfile = userProfiles.get(user_id = userRequest.user_id)
+            requestsDict[requestProfile] = userRequest
+
+        # for profile in UserProfile.objects.all().order_by(BELT_ORDER):
+        #     for member in membersList:
+        #         if profile.user_id == member.user_id:
+        #             # if profile.user_id == request.user_id:
+        #             #     profilesDict[profile] = [member, request]
+
+        # profilesDict[profile] = [member]
+
     context = {
         'membersList': membersList,
-        'profiles' : profilesDict
+        'profiles': profilesDict,
+        'Club': yourClub,
+        'authorized': authorized,
+        'requestsDict' : requestsDict
+
     }
 
-    # for x in context['profiles']:
-    #     print(x.belt)
     return render(request, "Clubs/clubMembers.html", context)
 
 
@@ -111,28 +143,37 @@ def clubsList(request):
 def singleClubView(request, id):
     myClub = Club.objects.get(pk=id)
     context = {
-        'Club': myClub
+        'Club': myClub,
+        'userHasClub' : False
     }
 
-    userRequest = Request.objects.filter(user=request.user, club=myClub)
+    userMembership = UserMembership.objects.filter(user=request.user)
+    userRequest = Request.objects.filter(user=request.user)
+    if userMembership:
+        context['userHasClub'] = True
     if userRequest:
         context['alreadySent'] = True
+        
         return render(request, "Clubs/singleClubView.html", context)
 
-    if request.method == 'POST':
-        userRequest = Request(status='NO', user=request.user, club=myClub)
-        userRequest.save()
+    else:
+        if request.method == 'POST':
+            userRequest = Request(status='NO', user=request.user, club=myClub)
+            userRequest.save()
 
     return render(request, "Clubs/singleClubView.html", context)
 
+
+def leaveClub(request):
+    membership = UserMembership.objects.get(user_id=request.user.id)
+    membership.delete()
+
+    return redirect('/clubs/')
 # def joinClub (request, id):
 #     myClub = Club.objects.get(pk=id)
 #     context = {
 #         'Club': myClub
 #     }
-#
-#
-#
 #
 #     return render(request, "Clubs/singleClubView.html", context)
 #

@@ -1,0 +1,21 @@
+<a data-bs-target=".notificationDropdown"
+   data-bs-toggle="collapse"
+   aria-haspopup="true"
+   aria-expanded="false"
+   hx-trigger="every 800ms"
+
+   class=" p-0 dropdown-toggle m-0">
+    <i class="bi bi-bell-fill "></i>
+</a>
+
+<div class="notificationDropdown dropdown-menu  ">
+    {% if notifications %}
+        {% for item in notifications %}
+            <h2>{{ item.message }}</h2>
+            <h2>{{ item.timestamp }}</h2>
+            <h2>{{ item.is_read }}</h2>
+        {% endfor %}
+    {% endif %}
+
+    <h4>Show all notifications</h4>
+</div>

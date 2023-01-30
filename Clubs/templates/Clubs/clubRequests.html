@@ -1,0 +1,45 @@
+<table class=" h-100 w-100 px-5 align-items-center  " multiple>
+    {% for userRequest in requestsDict %}
+        {% if userRequest.status != 'REJECTED' %}
+{#                {% if userRequest.user_id == profile.user_id %}#}
+                    <tr
+                            hx-target="#Clubs_view"
+                            class="my-1  nowrap cursor-pointer
+                          w-100 list-group-item p-2  d-flex align-items-center justify-content-between mb-1 position-relative">
+                        <th class="requesth1 px-1">{{ forloop.counter }}.</th>
+
+                        <th class=" profilePicture smallProfile requestsmallProfile  profile  "
+                            style="background-image: url({{ profile.avatar.url }})">
+
+                        </th>
+
+                        <th class=" requesth1 listName d-flex align-items-center ">
+
+
+
+                                    {% if userRequest.firstName %}
+                                        {{ userRequest.firstName }}
+                                    {% endif %}
+                                    {% if userRequest.lastName %}
+                                        {{ userRequest.lastName }}
+                                    {% endif %}
+                                    {% if not userRequest.lastName and not userRequest.firstName %}
+                                        User Anonymous
+                                    {% endif %}
+
+
+                        </th>
+
+                        <th class="memberType d-flex justify-content-between">
+                            <h2 class="requesth2">{{ userRequest.belt }}</h2>
+                        </th>
+                        <th class="requestIcon d-flex px-3">
+                            <i class="bi bi-person-check"></i>
+                            <i class="bi bi-person-dash"></i>
+                        </th>
+                    </tr>
+
+        {% endif %}
+    {% endfor %}
+
+</table>

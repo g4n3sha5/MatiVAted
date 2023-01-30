@@ -29,7 +29,7 @@ urlpatterns = [
 
 ]
 htmx_urlpatterns = [
-
+    path('', include("Notifications.urls")),
 ]
 
 urlpatterns += htmx_urlpatterns

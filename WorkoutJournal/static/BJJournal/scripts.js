@@ -201,8 +201,6 @@ const showModal = () => {
         }
     })
     }
-
-
 }
 
 const closeModal = () => {

@@ -415,9 +415,12 @@ h2, .h2 {
         /*margin-bottom: -13% !important;*/
         margin-top: 5%;
         width: 27%;
-        margin-left: 60% !important;
+        margin-left: 55% !important;
     }
-
+    .unauthorized{
+        margin-left: 55% !important;
+        width:25%;
+    }
     .circleWrap {
         width: 38vw !important;
         height: 38vw !important;
@@ -569,6 +572,9 @@ h2, .h2 {
 }
 .profText{
     margin-left:28%;
+}
+.unauthorized{
+    margin-left:15%;
 }
 .leftColContent{
     /*transform:translateY(-15%);*/
@@ -1622,8 +1628,33 @@ a{
     color:ghostwhite;
     width:70%;
 }
+#leaveClub, #cantLeave{
+    padding-top:30vh;
+}
+.modal-content{
+    background:black;
+    border:5px solid white !important;
+     color:ghostwhite;
+}
+.modal-dialog{
+    height:100%;
+}
+.modal-content{
+    height:25vh;
+}
+.modal-header{
+    height:60% !important;
+}
+.modal-footer{
+    height:40% !important;
+}
+.btn-close{
+    position:absolute;
+    top:5%;
+    right:3%;
+}
 .clubsListWrapper{
-    padding:0 3vw;
+    padding: 0 3vw 8vh 3vw;
     height:75%;
 }
 .clubsList{
@@ -1721,31 +1752,42 @@ a{
     width:70%;
 }
 
-.memberItem h1{
-    font-size:35px;
+.memberItem h1, .memberh1{
+    font-size:36px;
     margin:0;
     padding:0 1vw;
-    font-weight:700;
+    font-weight:300;
+}
+.memberh1{
+    width:5%
 }
 .memberItem *{
     letter-spacing: 0.015em;
 }
-.memberItem h2{
+.memberItem h2, .memberh2{
     font-size:29px;
     margin:0;
     padding:0 0.1vw;
     font-weight:500;
 }
 .smallProfile{
+    position:absolute;
+    left:5%;
     width:57px;
     height:57px;
     overflow:hidden;
-    margin-right:2vw;
+    margin:0 1vw;
 
 }
-
+.personIcon{
+    width:30px;
+    font-size:22px;
+    margin-right:2%;
+}
 .listName{
-
+    position:absolute;
+    left:15%;
+    width:30%;
 }
 .memberType{
     position:absolute;
@@ -1754,6 +1796,47 @@ a{
 }
 .profileBelt{
     padding-right: 15%;
+}
+.leaveBtn i {
+font-size:30px;
+    padding:0;
+}
+.leaveBtn{
+    background-color:ghostwhite;
+    color:black;
+    width:auto;
+    max-height:13%;
+    padding:20px;
+    transition:all 0.2s;
+}
+.leaveBtn:hover{
+    transform: scale(1.03);
+}
+/**===MEMBER REQUESTS===== !*/
+.clubRequests .listName{
+    position:absolute;
+    left:25%;
+
+}
+
+.clubRequests th{
+    font-weight:500;
+
+}
+
+.requesth1, .requesth2{
+    font-size:15px;
+}
+.requestIcon i{
+    font-size:30px;
+    margin:0 5%;
+}
+.requestIcon{
+    margin-left:35px;
+}
+.requestsmallProfile{
+    width:40px;
+    height:40px;
 }
 /*================ TIMELINE =================*/
 
