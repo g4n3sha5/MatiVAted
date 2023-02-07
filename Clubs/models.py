@@ -49,7 +49,7 @@ class UserMembership(models.Model):
     #     return yourClub, membership
 
     user = models.OneToOneField(User, related_name="userMembership", on_delete=models.CASCADE)
-    authorized = models.CharField(choices=AUTHORIZED, max_length=30)
+    authorized = models.CharField(choices=AUTHORIZED, max_length=30, default = "NO")
     memberType = models.CharField(choices=MEMBER_TYPES, max_length=40, default='Student')
     slug = models.SlugField(null=True, blank=True)
     club = models.ForeignKey(Club, related_name='membersClub', on_delete=models.CASCADE, null=True)

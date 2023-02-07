@@ -3,11 +3,11 @@ from . import views
 
 
 urlpatterns = [
-
+    path('notifications/', views.notifications, name="notifications"),
 
 ]
 htmx_urlpatterns = [
-    path('notifications', views.notifications, name="notifications"),
+
 
 ]
 urlpatterns += htmx_urlpatterns

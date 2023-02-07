@@ -1,10 +1,10 @@
 {% load crispy_forms_filters %}
 {%  load static %}
 {%load crispy_forms_tags %}
-<div class="techniqueSection row m-0 p-0 h-100 mb-5 ">
+<div class="techniqueSection row m-0 p-0   ">
  {% include 'common/messages.html' %}
 
-    <div class="leftSideTechnique col-lg-8 h-100 text-white  border-0 ">
+    <div class="leftSideTechnique col-12 col-lg-8 h-100 text-white  border-0 navPadding">
 
 
         <div class="leftTechSection   ">
@@ -17,10 +17,10 @@
                 <hr class="text-white mx-5 my-3">
 
 
-                <div class="row addSession techniqueType pb-2 justify-content-between d-flex ">
+
     {#                {% include "common/messages.html" %}#}
                     {% include 'BJJournal/BJR_Techniques/BJR_Techniques_types.html' %}
-                </div>
+
 
 
                 <div class="nameSection border-white row text-black d-flex justify-content-center  mb-3">
@@ -50,7 +50,7 @@
         </div>
     </div>
 
-    <div class="techList   col-lg-4 h-100 text-white px-5">
+    <div class="techList col-12 col-lg-4 h-100 text-white px-5">
         {% include 'BJJournal/BJR_Techniques/BJR_Techniques_List.html' %}
     </div>
 

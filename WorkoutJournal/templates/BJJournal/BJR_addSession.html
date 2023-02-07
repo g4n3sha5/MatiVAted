@@ -3,9 +3,9 @@
 
 {% load static %}
 
-<div class="addSessionSection p-5 mt-3 h-100 w-100 ">
+<div class="addSessionSection px-5  navPadding mt-3 h-100 w-100 ">
 
-     {% include 'common/messages.html' %}
+
 
 
     <h1 class="text-white text-center">Add new session</h1>
@@ -16,6 +16,7 @@
         {% csrf_token %}
         <div class="text-white">{{ BJRform.errors }}</div>
         <div class="addSession row justify-content-between  px-3 py-2">
+             {% include 'common/messages.html' %}
             {%  include 'BJJournal/BJR_addSession/BJR_addSession_sessionType.html' %}
 
             <div class="BJRnotesWrap col-lg-5 col-7 mt-5 mt-lg-0">
@@ -24,7 +25,7 @@
                 </label>
             </div>
                 {#    DATE        #}
-            <div class="col-lg-2 col-4 position-relative sessionDate mt-5 mt-lg-0 overflow-hidden">
+            <div class="col-lg-2 col-4 position-relative SessionDate mt-5 mt-lg-0 overflow-hidden">
                 <div class=" w-100 h-100 text-center p-3 ">
 
                     <div class="datepicker-toggle mb-3">

@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
 from .models import TrainingSession, Technique, Suggestion, User
 from .forms import TrainingSessionForm, addTechniqueForm, descriptionSuggestion
-
+from django.core.paginator import Paginator
 from django.contrib import messages
-
+import json
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 
 # Create your views here.
 
@@ -47,22 +49,45 @@ def addSession(request):
 
 
 def yourSessions(request):
-    context = {
-        # 'BJRform': form,
-        'sessionsList': TrainingSession.objects.all()
-    }
+    sessionsList = TrainingSession.objects.all().order_by('-date')
+    is_ajax = request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+    n = 3
+    # sessions = None
+    for index, item  in  enumerate(reversed(sessionsList), start=1):
+        setattr(item, 'orderIndex', index)
 
+    if is_ajax:
+        data = json.load(request)
+        size = data.get('device')
+        if(size == 'small'):
+            n = 3
+        if(size == 'big'):
+            n = 9
+
+    p = Paginator(sessionsList, n)
+    page = request.GET.get('page')
+    sessions = p.get_page(page)
+
+    form = TrainingSessionForm()
+
+    context = {
+        'BJRform': form,
+        'sessionsList': sessions
+    }
+    # html = render_to_string('BJJournal/BJR_yourSessions.html', context)
+    # return JsonResponse(html, safe=False)
     return render(request, "BJJournal/BJR_yourSessions.html", context)
 
 
-def singleSessionView(request, id):
-
+def singleSessionView(request, id, orderIndex):
+    print(orderIndex)
     Session = TrainingSession.objects.get(pk=id)
     context = {
         'session': Session,
+        'orderIndex' : orderIndex,
         'form': TrainingSessionForm(instance=Session)
     }
-    return render(request, "BJJournal/BJR_yourSessions/BJR_yourSessions_singleSessionView.html", context)
+    return render(request, "BJJournal/BJR_yourSessions/singleSessionView.html", context)
 
 
 def editSession(request, id):

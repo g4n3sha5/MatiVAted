@@ -8,3 +8,4 @@ def notifications (request):
     context = {
         'notifications' : myNotifications
     }
+    return render

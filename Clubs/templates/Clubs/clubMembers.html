@@ -1,7 +1,8 @@
 {#{% if %}#}
 {% include 'CLubs/membersModals.html' %}
-<div class="row ">
-    <div class="clubsListWrap col-lg-8 h-100 clubsContentPadding membersWrap px-5  vh-100 overflow-hidden pb-5">
+<div class="row">
+    <div class="clubsListWrap px-lg-5 px-2  col-xs-12 col-lg-8 h-100 navPadding membersWrap
+    vh-100 overflow-hidden pb-5">
         {% if Club.name %}
             <span class="text-center">
             <h2 class=" font-weight-600">
@@ -13,7 +14,8 @@
 
 
 
-        <div class="clubsListWrapper h-100 d-flex flex-column align-items-center overflow-auto  customScroll">
+        <div class="clubsListWrapper h-100 d-flex flex-column  px-3
+        align-items-center overflow-auto  customScroll">
 
 
             <hr class="text-white mx-5 my-3">
@@ -72,24 +74,28 @@
             {#        </ul>#}
             {#        #}
 
-            <table class=" h-100 w-100 px-5 align-items-center  " multiple>
+            <table class="w-100 membersTable h-100  px-lg-5 overflow-hidden">
 
                 {% for profile, member in profiles.items %}
 
 
                     <tr
                             hx-target="#Clubs_view"
-                            class="my-2 profileBorder memberItem techniqueOption nowrap cursor-pointer
-                          w-100 list-group-item p-2 d-flex align-items-center mb-1 position-relative">
-                        <th class="memberh1 px-1">{{ forloop.counter }}.</th>
+                            class="my-2 proBorder memberItem techniqueOption  nowrap cursor-pointer
+{#                          align-items-center mb-1 position-relative">#}
+                           d-flex flex-wrap align-items-center mb-1 position-relative overflow-hidden">
+                        <th class="memberh1 px-1 p-lg-1  mb-lg-0 memberCounter">{{ forloop.counter }}.</th>
 
-                        <th class=" profilePicture smallProfile  profile  "
-                            style="background-image: url({{ profile.avatar.url }})">
-
-                        </th>
-
-                        <th class="memberh2 listName d-flex ">
-                            <div class="personIcon d-flex flex-column">
+                        {#                        <th/>#}
+                        {##}
+                        {#                        </th>#}
+                        <th class="memberh2 listName d-flex align-items-center
+                        flex-row flex-xl-row position-relative">
+                            <div class=" profilePicture smallProfile  profile  "
+                                 style="background-image: url({{ profile.avatar.url }})">
+                            </div>
+                        <div class="nameIcon flex-column flex-md-row ">
+                            <div class="personIcon text-center">
                                 {% if authorized %}
                                     {% if member.authorized == 'FULL' %}
                                         <i class="bi bi-person-fill-gear"></i>
@@ -101,20 +107,15 @@
                                 {% endif %}
                             </div>
 
-                            {% if profile.firstName %}
+                            <h2 class="memberName text-left ">
                                 {{ profile.firstName }}
-                            {% endif %}
-                            {% if profile.lastName %}
                                 {{ profile.lastName }}
-                            {% endif %}
-                            {% if not profile.lastName and not profile.firstName %}
-                                User Anonymous
-                            {% endif %}
-
+                            </h2>
+</div>
 
                         </th>
 
-                        <th class="memberType d-flex justify-content-between">
+                        <th class="memberType d-flex justify-content-around">
                             <h2 class="profileBelt">{{ profile.belt }}</h2>
                             <h2 class="">{{ member.memberType }}</h2>
                         </th>
@@ -129,24 +130,27 @@
         </div>
     </div>
 
-    <div class="col-lg-3 clubsContentPadding text-white d-flex justify-content-center d-flex
-flex-column align-items-center">
+    <div class="col-lg-4 col-12 rightMembersCol navPadding text-white d-flex
+flex-column align-items-center px-1 px-lg-5">
 
         {% if Club %}
-        <button type="button"
+            <button type="button"
+                    class="btn w-50 btn-primary leaveBtn text-center"
+                    data-toggle="modal"
+                    {% if not authorized %} data-target="#leaveClub" {% endif %}
+                    {% if authorized %} data-target="#cantLeave" {% endif %}
+            >
+                <i class="bi bi-box-arrow-right"></i>
+                <h3>Leave Club</h3>
 
-                class="btn w-50 btn-primary leaveBtn text-center"
-                data-toggle="modal"
-                {% if not authorized %} data-target="#leaveClub" {% endif %}
-                {% if authorized %} data-target="#cantLeave" {% endif %}
-        >
-            <i class="bi bi-box-arrow-right"></i>
-            <h3>Leave Club</h3>
-
-        </button>
+            </button>
             <div class="clubRequests w-100 text-center mt-2 mt-lg-4">
-                <h1> Request</h1>
-                {% include 'Clubs/clubRequests.html' %}
+                {% if authorized %}
+                    {% if requestsDict|length > 0  %}
+                        <h1> Request</h1>
+                    {% endif %}
+                    {% include 'Clubs/clubRequests.html' %}
+                {% endif %}
             </div>
         {% endif %}
     </div>

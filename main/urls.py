@@ -25,11 +25,12 @@ urlpatterns = [
     path('account/', include('allauth.urls')),
     path('', include("WorkoutJournal.urls")),
     path('', include("Clubs.urls")),
-    path('', include("account_register.urls") )
+    path('', include("account_register.urls")),
+    path('', include("Notifications.urls"))
 
 ]
 htmx_urlpatterns = [
-    path('', include("Notifications.urls")),
+
 ]
 
 urlpatterns += htmx_urlpatterns

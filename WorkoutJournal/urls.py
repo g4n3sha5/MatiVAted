@@ -12,7 +12,7 @@ htmx_urlpatterns = [
     path('yourSessions/', views.yourSessions, name="yourSessions"),
     path('techniques/', views.techniques, name="techniques"),
     path('technique/<int:id>/', views.singleTechniqueView, name="singleTechniqueView"),
-    path('session/<int:id>/', views.singleSessionView, name="singleSessionView"),
+    path('session/<int:id>/<int:orderIndex>/', views.singleSessionView, name="singleSessionView"),
     path('session/<int:id>/edit', views.editSession, name="editSession"),
 
 

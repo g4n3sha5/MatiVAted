@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from .models import Club, UserMembership, Request
 from Notifications.models import Notification
 from account_register.models import UserProfile
@@ -9,11 +9,24 @@ from django.contrib import messages
 
 
 # Create your views here.
+
+def checkRequests():
+
+    requests =  Request.objects.filter(status = 'YES')
+    for item in requests:
+        newMember = UserMembership(user_id=item.user_id,
+                                 club_id=item.club_id,
+                                   )
+        newMember.save()
+        print(newMember)
+        print(item)
+        item.delete()
+
+
 def ClubsIndex(request):
+
     authorized = True
     try:
-        # yourClub, membership = UserMembership.getMyUsersClub(request)
-
         # find what club is the user in
         membership = UserMembership.objects.get(user_id=request.user.id)
         yourClub = Club.objects.get(id=membership.club_id)
@@ -57,6 +70,9 @@ def ClubsIndex(request):
 
 
 def clubMembers(request):
+    print("index")
+    checkRequests()
+
     BELT_ORDER = Case(
         When(belt='Black Belt', then=Value(1)),
         When(belt='Brown Belt', then=Value(2)),
@@ -99,8 +115,9 @@ def clubMembers(request):
 
     if requestList:
         for userRequest in requestList:
-            requestProfile = userProfiles.get(user_id = userRequest.user_id)
-            requestsDict[requestProfile] = userRequest
+            if userRequest.status != 'REJECTED':
+                requestProfile = userProfiles.get(user_id=userRequest.user_id)
+                requestsDict[requestProfile] = userRequest
 
         # for profile in UserProfile.objects.all().order_by(BELT_ORDER):
         #     for member in membersList:
@@ -115,7 +132,7 @@ def clubMembers(request):
         'profiles': profilesDict,
         'Club': yourClub,
         'authorized': authorized,
-        'requestsDict' : requestsDict
+        'requestsDict': requestsDict
 
     }
 
@@ -144,31 +161,51 @@ def singleClubView(request, id):
     myClub = Club.objects.get(pk=id)
     context = {
         'Club': myClub,
-        'userHasClub' : False
+        'userHasClub': False
     }
 
-    userMembership = UserMembership.objects.filter(user=request.user)
-    userRequest = Request.objects.filter(user=request.user)
-    if userMembership:
+    try:
+        userMembership = UserMembership.objects.get(user=request.user)
         context['userHasClub'] = True
-    if userRequest:
+    except:
+        userMembership = None
+
+    try:
+        userRequest = Request.objects.get(user=request.user)
         context['alreadySent'] = True
-        
-        return render(request, "Clubs/singleClubView.html", context)
+        # return render(request, "Clubs/singleClubView.html", context)
+    except:
+        userRequest = False
 
-    else:
-        if request.method == 'POST':
-            userRequest = Request(status='NO', user=request.user, club=myClub)
-            userRequest.save()
 
+    if request.method == 'POST':
+        userRequest = Request(status='NO', user=request.user, club=myClub)
+        userRequest.save()
+        context['alreadySent'] = True
     return render(request, "Clubs/singleClubView.html", context)
 
 
 def leaveClub(request):
     membership = UserMembership.objects.get(user_id=request.user.id)
     membership.delete()
-
     return redirect('/clubs/')
+
+
+def handleRequest(request, requestID):
+    myrequest = Request.objects.get(id=requestID)
+
+    if request.method == 'POST':
+        myrequest.status = 'YES'
+        myrequest.save()
+    if request.method == 'DELETE':
+        myrequest.status = 'REJECTED'
+        myrequest.save()
+
+    return clubMembers(request)
+    # return reverse('/clubMembers')
+
+
+
 # def joinClub (request, id):
 #     myClub = Club.objects.get(pk=id)
 #     context = {

@@ -18,6 +18,48 @@
 // }
 //
 
+function responsiveBackend() {
+        // alert("work")
+        const smallScreens = window.matchMedia('(max-width: 768px)')
+        const bigScreens = window.matchMedia('(min-width: 768px)')
+        // const BJRview = document.querySelector('#BJR_view')
+        let xhttp = new XMLHttpRequest();
+        let screen = false
+        let token = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        if (smallScreens.matches) {
+            screen = 'small'
+        }
+        if (bigScreens.matches) {
+            screen = 'big'
+        }
+
+        fetch('/yourSessions/', {
+            method: 'POST',
+            headers: {
+                'contentType': 'application/json',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRFToken': token,
+            },
+            body: JSON.stringify({'device': screen})
+
+        })
+
+        // .then(response => response.json())
+
+    // $.ajax({
+    //     url: "/yourSessions/",
+    //     type:"POST",
+    //     data: {
+    //         'X-CSRFToken': token,
+    //         'screen' : screen
+    //     },
+    //     dataType: "json",
+    //
+    // })
+
+
+}
+
 function onClickColor() {
     let addSession = document.getElementsByClassName('addSession')
 
@@ -31,7 +73,7 @@ function onClickColor() {
                         sessionClass.querySelectorAll('.activeType')
                             .forEach(element => {
                                 element.classList.remove("activeType")
-                                })
+                            })
 
                         evt.target
                             .closest('.count_icon')
@@ -63,29 +105,32 @@ function quickDateButtons() {
     }
 }
 
-function toggleActive() {
-    let choiceButton = document.querySelector('.choice-btn')
-    if (choiceButton) {
-        let choiceArrowBtn = document.querySelector(('.choiceArrowBtn'))
-        choiceArrowBtn.addEventListener('click', (evt) => {
-            choiceArrowBtn.classList.toggle('rotateButton')
-        })
+// function toggleActive() {
+//     let choiceButton = document.querySelector('.choice-btn')
+//     let techniquesListWrap = document.querySelector('.techniquesListWrap')
+//     if (choiceButton) {
+//         let choiceArrowBtn = document.querySelector(('.choiceArrowBtn'))
+//         choiceArrowBtn.addEventListener('click', (evt) => {
+//             choiceArrowBtn.classList.toggle('rotateButton')
+//             techniquesListWrap.classList.toggle('d-none')
+//
+//         })
+//
+//     }
+// }
 
-    }
-}
 
-
-function multiSelect(){
+function multiSelect() {
     // let techniqueList = document.querySelectorAll('.techniqueOption')
     let techniqueOption = document.querySelectorAll('.techniqueOption')
     let choicePlaceholder = document.querySelector('.choicePlaceholder')
     let choicePlaceholderWrapper = document.querySelector('.choicePlaceholderWrapper')
 
-     techniqueOption.forEach(technique =>{
-        technique.addEventListener('click', (evt) =>{
+    techniqueOption.forEach(technique => {
+        technique.addEventListener('click', (evt) => {
             evt.preventDefault()
             let checkBox = technique.querySelector('input')
-            checkBox.checked=true
+            checkBox.checked = true
             technique.classList.add('d-none', 'cantSearch')
 
             if (choicePlaceholder.textContent === "Choose techniques") choicePlaceholder.textContent = ''
@@ -110,13 +155,13 @@ function multiSelect(){
 
 }
 
-function removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox=false){
+function removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox = false) {
 
     let removeIcon = document.querySelectorAll('.chosenTechnique')
     let techniquesOptions = document.querySelector('.techniquesOptions')
 
-    removeIcon.forEach(icon =>{
-        icon.addEventListener('click', (evt) =>{
+    removeIcon.forEach(icon => {
+        icon.addEventListener('click', (evt) => {
             console.log("remove", checkBox.checked)
             let sortAttribute = icon.getAttribute('data-class')
             let elementToView = document.querySelector(`.${sortAttribute}`)
@@ -133,60 +178,68 @@ function removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox=fals
 
 }
 
-function editDescription(){
+function editDescription() {
     let editButton = document.querySelectorAll('.editButton')
     let addButton = document.querySelector('.addButton')
     let techDescription = document.querySelector('.techDescription')
     let suggestBtn = document.querySelector('.suggestBtn')
     let techDescriptionInput = document.querySelector('.techDescriptionInput')
 
-    if (editButton){
+    if (editButton) {
         Array.from(editButton).forEach(btn => {
-            btn.addEventListener('click', (evt) =>
-            {
+            btn.addEventListener('click', (evt) => {
                 // let addButton = btn.parentNode.parentNode.querySelector('.addButton')
-                if(addButton){
+                if (addButton) {
                     addButton.classList.toggle('d-none')
                 }
 
                 let descriptionHeight = techDescription.clientHeight
                 btn.classList.toggle('editing'
                 )
+                // techDescriptionInput.style.transform = `scaleX(100% + ${descriptionHeight} + px)`
                 techDescriptionInput.style.maxHeight = descriptionHeight + "px"
                 techDescriptionInput.querySelector('textarea').value = techDescription.textContent.trim()
-                if(suggestBtn) { showDescription(techDescription, techDescriptionInput, suggestBtn)}
-                else { showDescription(techDescription, techDescriptionInput)}
+                if (suggestBtn) {
+                    showDescription(techDescription, techDescriptionInput, suggestBtn)
+                } else {
+                    showDescription(techDescription, techDescriptionInput)
+                }
 
             })
         })
     }
 
-    if(addButton){
-         Array.from(addButton).forEach(btn => {
-             btn.addEventListener('click', (evt) => {
-                 let techDescriptionInput = btn.parentNode.querySelector('.techDescriptionInput')
-                 let techDescription = btn.parentNode.querySelector('.techDescription')
+    if (addButton) {
+        addButton.addEventListener('click', (evt) => {
+            let techDescriptionInput = addButton.parentNode.querySelector('.techDescriptionInput')
+            let techDescription = addButton.parentNode.querySelector('.techDescription')
 
-                 if(suggestBtn){ showDescription(techDescription, techDescriptionInput, suggestBtn)}
-                 else{ showDescription(techDescription, techDescriptionInput)}
+            if (suggestBtn) {
+                showDescription(techDescription, techDescriptionInput, suggestBtn)
+            } else {
+                showDescription(techDescription, techDescriptionInput)
+            }
 
-                 techDescriptionInput.style.height = 30 + '%'
+            // techDescriptionInput.style.height = 30 + '%'
 
-             })
-         })
+        })
     }
 }
 
-const showDescription = (techDesc, techInput, suggestBtn = false) =>{
-    if(techDesc){
+const showDescription = (techDesc, techInput, suggestBtn = false) => {
+
+    if (techDesc) {
         techDesc.classList.toggle('d-none')
     }
-    if (techInput){
+    if (techInput) {
+        let wrapp = document.querySelector('.techDescriptionWrap')
         // techInput.classList.toggle('d-none')
         techInput.classList.toggle('d-flex')
+
+
     }
-    if(suggestBtn){
-       suggestBtn.classList.toggle('d-none')
+    if (suggestBtn) {
+        suggestBtn.classList.toggle('d-none')
     }
 
 }
@@ -194,24 +247,24 @@ const showDescription = (techDesc, techInput, suggestBtn = false) =>{
 const showModal = () => {
     let modalContainer = document.querySelector('#modalContainer')
     let yourSessionsSection = document.querySelector('.yourSessionsSection')
-    if (yourSessionsSection){
-        yourSessionsSection.addEventListener('htmx:afterOnLoad', evt=>{
-        if (evt.detail.target.id === "modalContainer") {
-            modalContainer.style.display = "block"
-        }
-    })
+    if (yourSessionsSection) {
+        yourSessionsSection.addEventListener('htmx:afterOnLoad', evt => {
+            if (evt.detail.target.id === "modalContainer") {
+                modalContainer.style.display = "block"
+            }
+        })
     }
 }
 
 const closeModal = () => {
 
     let container = document.querySelector('#modalContainer')
-	let backdrop = document.querySelector('#modal-backdrop')
-	let modal = document.querySelector('#MajModal')
-    if(container){
-	container.style.display = "None"
-        }
-	backdrop.classList.remove("show")
+    let backdrop = document.querySelector('#modal-backdrop')
+    let modal = document.querySelector('#MajModal')
+    if (container) {
+        container.style.display = "None"
+    }
+    backdrop.classList.remove("show")
 
 }
 
@@ -219,17 +272,16 @@ if (document.readyState !== 'loading') {
     allFunctions()
 }
 
-document.body.addEventListener('htmx:afterOnLoad', event=>{
+document.body.addEventListener('htmx:afterOnLoad', event => {
     allFunctions()
 
 })
 
 
-function allFunctions(){
+function allFunctions() {
     multiSelect()
     onClickColor()
     quickDateButtons()
-    toggleActive()
     searchItem()
     editDescription()
     showModal()

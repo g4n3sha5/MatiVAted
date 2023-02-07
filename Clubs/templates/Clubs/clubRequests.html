@@ -1,43 +1,56 @@
 <table class=" h-100 w-100 px-5 align-items-center  " multiple>
-    {% for userRequest in requestsDict %}
-        {% if userRequest.status != 'REJECTED' %}
-{#                {% if userRequest.user_id == profile.user_id %}#}
-                    <tr
-                            hx-target="#Clubs_view"
-                            class="my-1  nowrap cursor-pointer
+    {% for userRequest in requestsDict.items%}
+        {% if userRequest.1.status != 'REJECTED' %}
+            {#                {% if userRequest.user_id == profile.user_id %}#}
+            <tr
+                    hx-target="#Clubs_view"
+                    class="my-1  nowrap cursor-pointer
                           w-100 list-group-item p-2  d-flex align-items-center justify-content-between mb-1 position-relative">
-                        <th class="requesth1 px-1">{{ forloop.counter }}.</th>
+                <th class="requesth1 px-1">{{ forloop.counter }}.</th>
 
-                        <th class=" profilePicture smallProfile requestsmallProfile  profile  "
-                            style="background-image: url({{ profile.avatar.url }})">
+                <th class=" profilePicture smallProfile requestsmallProfile  profile  "
+                    style="background-image: url({{ userRequest.0.avatar.url }})">
 
-                        </th>
+                </th>
 
-                        <th class=" requesth1 listName d-flex align-items-center ">
-
-
-
-                                    {% if userRequest.firstName %}
-                                        {{ userRequest.firstName }}
-                                    {% endif %}
-                                    {% if userRequest.lastName %}
-                                        {{ userRequest.lastName }}
-                                    {% endif %}
-                                    {% if not userRequest.lastName and not userRequest.firstName %}
-                                        User Anonymous
-                                    {% endif %}
+                <th class=" requesth1 listName d-flex align-items-center justify-content-between  ">
 
 
-                        </th>
+                    {% if userRequest.0.firstName %}
+                        <h2 class="requesth2">
+                            {{ userRequest.0.firstName }}
+                            {{ userRequest.0.lastName }}
+                        </h2>
+                    {% endif %}
+{#                    {% if not userRequest.0.lastName and not userRequest.0.firstName %}#}
+{#                        <h2 class="reque sth2"> User Anonymous</h2>#}
+{#                    {% endif %}#}
+                    <h2 class="requesth2 memberType">{{ userRequest.0.belt }}</h2>
 
-                        <th class="memberType d-flex justify-content-between">
-                            <h2 class="requesth2">{{ userRequest.belt }}</h2>
-                        </th>
-                        <th class="requestIcon d-flex px-3">
-                            <i class="bi bi-person-check"></i>
-                            <i class="bi bi-person-dash"></i>
-                        </th>
-                    </tr>
+                </th>
+
+                {#                <th class="memberType d-flex justify-content-between">#}
+                {#                    #}
+                {#                </th>#}
+                <th class="requestIcon ">
+                    <form class="d-flex justify-content-around">
+                        {% csrf_token %}
+                        <div id="acceptRequest iconScale  h-100"
+                             hx-post="{% url 'handleRequest' userRequest.1.id %}"
+                             hx-target="#Clubs_view"
+                        >
+                            <i class="bi  px-2 bi-person-check w-100 h-100"></i>
+                        </div>
+                        <div id="rejectRequest iconScale  h-100"
+                             hx-delete="{% url 'handleRequest' userRequest.1.id %}"
+                             hx-target="#Clubs_view"
+                        >
+                            <i class="bi  bi-person-dash w-100 h-100"></i>
+                        </div>
+
+                    </form>
+                </th>
+            </tr>
 
         {% endif %}
     {% endfor %}
