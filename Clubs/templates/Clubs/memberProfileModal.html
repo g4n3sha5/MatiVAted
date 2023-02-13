@@ -1,0 +1,56 @@
+{% for profile, member in profiles.items %}
+
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button data-dismiss="modal" class="btn-close aria-label=" Close
+                "></button>
+            </div>
+            <div class="modal-body">
+                <div class=" profilePicture smallProfile  profile  "
+                     style="background-image: url({{ profile.avatar.url }})">
+                </div>
+                {{ profile.firstName }}
+                {{ profile.lastName }}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary w-50" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class=" profilePicture smallProfile  profile  "
+         style="background-image: url({{ profile.avatar.url }})">
+    </div>
+    <div class="nameIcon flex-column flex-md-row ">
+        <div class="personIcon text-center">
+            {% if authorized %}
+                {% if member.authorized == 'FULL' %}
+                    <i class="bi bi-person-fill-gear"></i>
+                    <i class="bi bi-person-fill-add"></i>
+                {% endif %}
+                {% if member.authorized == 'TRAININGS' %}
+                    <i class="bi bi-person-fill-add"></i>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <h2 class="memberName text-left ">
+            {{ profile.firstName }}
+            {{ profile.lastName }}
+        </h2>
+    </div>
+
+
+
+    <div class="memberType d-flex justify-content-between">
+        <h2 class="profileBelt">{{ profile.belt }}</h2>
+        <h2 class="">{{ member.memberType }}</h2>
+    </div>
+
+
+    {#                {% endfor %}#}
+
+{% endfor %}

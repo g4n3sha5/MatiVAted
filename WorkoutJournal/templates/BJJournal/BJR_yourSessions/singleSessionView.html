@@ -1,6 +1,8 @@
 {% load static %}
 <div class=" d-flex justify-content-center align-items-center w-100 h-100">
-    <div id="modal-backdrop" class="modal-backdrop fade show w-100 h-100" style="display:block;"></div>
+    <div id="modal-backdrop"
+          onclick="closeModal()"
+         class="modal-backdrop fade show w-100 h-100" style="display:block;"></div>
 
     <div id="MajModal"
          class="   overflow-hidden"
@@ -8,15 +10,15 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
 
-            <div class="smallmodal">
+                <div class="smallmodal">
 
-            </div>
+                </div>
                 <div class="grid-item img-buddha ">
 
                     <div class="sessionDate p-2 px-3 d-flex justify-content-between w-100">
                         {% if session.date %}
                             <h3>
-                                {{ session.date  }}
+                                {{ session.date }}
                             </h3>
                         {% endif %}
                         <h4 class="SessionId">
@@ -27,33 +29,14 @@
                     <div class="SessionNotes py-lg-1  px-3  ">
                         <div class="row h-100">
 
-                            <div class="col-6 SessionNotesLeft h-100
-                            d-flex align-items-center justify-content-center">
+                            <div class="col-6 SessionNotesLeft h-100 ">
 
                                 {% if session.notes|length > 0 %}
                                     <div class="cut-overflow h-100">
                                         {{ session.notes }}
                                     </div>
-                                {% else %}
-
-                                    <div class="addButton mx-auto px-2 position-absolute cursor-pointer">
-                                        <i class="bi bi-plus-circle-fill fa-2x"></i>
-                                    </div>
                                 {% endif %}
-
-                                <div class="techEdit w-100 h-100">
-                                    <div class="techDescriptionInput  h-100 ">
-                                        <label class=" d-flex w-100 overflow-hidden">
-                                            <form method="post" id="suggestForm" class="d-flex w-100">
-                                                {% csrf_token %}
-                                                {{ form.notes }}
-                                            </form>
-                                        </label>
-                                    </div>
-                                </div>
-
                             </div>
-
                             <div class="col-6 p-3 h-100">
                                 {% if session.techniques != None %}
                                     <div class="cut-overflow h-100">
@@ -67,36 +50,70 @@
                         </div>
                     </div>
 
-                    <div class="SessionInfo overflow-hidden d-flex justify-content-end align-items-stretch mx-0">
+                  <div class="SessionInfo overflow-hidden d-flex
+        justify-content-end align-items-stretch mx-0">
 
-                        {% include 'BJJournal/BJR_yourSessions/BJR_yourSessions_editLocation.html' %}
+            {#                /% if club has logo %}#}
+            {#                <div class="col-2 SessionLogo">#}
+            {#                    <img alt="Club ogo" src="{% static 'BJJournal/img/gblogo.png' %}">#}
+            {#                </div>  #}
 
-                        <div class="w-25 yourSessionsType count_icon d-flex   overflow-hidden p-2 ">
-                            <img alt="No Gi training symbol" src="{% static 'BJJournal/img/' %}{{ session.type }}.png">
-                        </div>
-
-                        <div class="w-25 sessionLength d-flex position-relative align-items-center p-2 justify-content-center">
-                            <h4> {{ session.length }}h</h4>
-                            <i class="editIcon bi bi-pencil-square"></i>
-                        </div>
-
-
+            <div class=" SessionLogo  d-flex align-items-center justify-content-center ">
+                {#                    {% if session.location %}#}
+                <h3 class="font-weight-700">{{ session.location }}</h3>
+                {#                    {% endif %}#}
+            </div>
 
 
-                    </div>
+            <div class=" yourSessionsType count_icon d-flex   overflow-hidden p-2 ">
+                <img alt="{{ session.type }} symbol" src="{% static 'BJJournal/img/' %}{{ session.type }}.png">
+
+            </div>
+
+            <div class="  sessionLength d-flex align-items-center justify-content-between">
+                <h4 class="w-100"> {{ session.hoursLength }}h&nbsp;{{ session.minutesLength}}min
+                </h4>
+                <div class="sessionFight">
+                     <h6> {{ session.fightTime }} min fight</h6>
                 </div>
 
+            </div>
 
-                <div class="modal-footer">
+            {#                {% if session.location %}#}
+
+        </div>
+
+    </div>
+
+
+                <div class="modal-footer editSessionFooter">
                     <button
-                            hx-post="{% url 'editSession' session.id %} "
+                            hx-delete="{% url 'removeSession' session.id  %} "
                             hx-target="#BJR_view"
                             type="button"
-                            class="btn btn-primary"
+                             onclick="closeModal()"
+                            class="sessionRemoveBtn btn btn-danger">
+                        Remove
+                    </button>
+
+                    <button
+                            hx-get="{% url 'editSession' session.id orderIndex %} "
+                            hx-target="#BJR_view"
+                            type="button"
+                            class="sessionEditBtn btn btn-secondary">
+                        Edit
+                    </button>
+
+                    <button
+                            {#                            hx-post="{% url 'editSession' session.id  %} "#}
+                            {#                            hx-target="#BJR_view"#}
+                            type="button"
+                            class="btn btn-primary w-25 "
                             onclick="closeModal()">
-                        Close and save
+                        Close
                     </button>
                 </div>
+
 
             </div>
         </div>

@@ -1,0 +1,93 @@
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+<div class="addSessionSection px-5  navPadding mt-3 min-h-100 w-100 ">
+
+
+    <h1 class="text-white text-center">Add new session</h1>
+    <hr class="text-light">
+
+    {#    <form method ="post" action ="/addSession/">#}
+    <form method="post">
+        {% csrf_token %}
+        <div class="text-white">{{ BJRform.errors }}</div>
+        <div class="addSession row
+        justify-content-md-between justify-content-center align-items-center
+        py-2  overflow-hidden ">
+            {% include 'common/messages.html' %}
+            {% include 'BJJournal/BJR_addSession/BJR_addSession_sessionType.html' %}
+
+
+                <div class=" mx-auto BJRnotesWrap mx-xl-0 order-3 order-xl-2 col-xl-5 col-9  mt-2 mt-xl-0">
+                    <label class="h-100 w-100">
+                        {{ BJRform.notes }}
+                    </label>
+                </div>
+                {#    DATE        #}
+                <div class="col-xl-2 col-lg-3 col-7 mx-auto mx-lg-0 order order-xl-3
+            position-relative SessionDate mt-5 mt-lg-0 overflow-hidden">
+                    <div class=" w-100 h-100 text-center p-3 overflow-hidden">
+
+                        <div class="datepicker-toggle mb-3 w-100">
+                            <h3 class="">Date</h3>
+                            <label class="w-100">
+                                {{ BJRform.date }}
+                            </label>
+                        </div>
+
+                        <div class="quickDateWrap d-flex  justify-content-around">
+                            <span class="quickDate today btn btn-outline-primary">Today</span>
+                            <span class="quickDate yesterday btn btn-outline-primary ">Yesterday</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+        <hr class="text-light  ">
+
+        <div class="addSession row justify-content-between align-items-start mt-4 px-2 mb-4">
+
+
+            {% include 'BJJournal/BJR_addSession/BJR_addSession_sessionLength.html' %}
+
+            <div class="col-xl-4 addSection sectionTechniques px-3
+            justify-content-center position-relative">
+                {% include 'BJJournal/BJR_addSession/BJR_addSession_Techniques.html' %}
+            </div>
+
+            <div data-club ="{{ Club.name }}"
+                    class=" col-xl-2 col-7 sessionLocation mx-auto mx-xl-0 mt-3
+             mt-xl-0 text-center d-flex flex-column py-3 align-items-center">
+                <div class="my-auto">
+                    <h2 class="pb-2"><i class="bi bi-geo-fill"></i></h2>
+                    <label>
+                        {{ BJRform.location }}
+                    </label>
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="addSessionButtonWrap d-flex justify-content-center  ">
+            <button
+                    type="button"
+                    name="save"
+                    class="addSessionButton btn  btn-primary p-3 mt-5
+                          text-white w-75 "
+                    hx-post="{% url 'addSession' %}"
+                    hx-target="#BJR_view">
+                Add Training Session
+            </button>
+
+        </div>
+
+
+    </form>
+
+</div>

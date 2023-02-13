@@ -80,7 +80,10 @@
 
 
                     <tr
-                            hx-target="#Clubs_view"
+                            data-toggle="modal"
+                            data-target="#memberProfile"
+                            hx-target="#memberProfile"
+                            hx-get="{% url 'memberProfile' profile.user_id %}"
                             class="my-2 proBorder memberItem techniqueOption  nowrap cursor-pointer
 {#                          align-items-center mb-1 position-relative">#}
                            d-flex flex-wrap align-items-center mb-1 position-relative overflow-hidden">
@@ -90,7 +93,7 @@
                         {##}
                         {#                        </th>#}
                         <th class="memberh2 listName d-flex align-items-center
-                        flex-row flex-xl-row position-relative">
+                        flex-row flex-xl-row position-relative justify-content-xl-start">
                             <div class=" profilePicture smallProfile  profile  "
                                  style="background-image: url({{ profile.avatar.url }})">
                             </div>
@@ -115,7 +118,7 @@
 
                         </th>
 
-                        <th class="memberType d-flex justify-content-around">
+                        <th class="memberType d-flex justify-content-between">
                             <h2 class="profileBelt">{{ profile.belt }}</h2>
                             <h2 class="">{{ member.memberType }}</h2>
                         </th>
@@ -146,10 +149,11 @@ flex-column align-items-center px-1 px-lg-5">
             </button>
             <div class="clubRequests w-100 text-center mt-2 mt-lg-4">
                 {% if authorized %}
+                     <h1> Requests</h1>
                     {% if requestsDict|length > 0  %}
-                        <h1> Request</h1>
+                       {% include 'Clubs/clubRequests.html' %}
                     {% endif %}
-                    {% include 'Clubs/clubRequests.html' %}
+
                 {% endif %}
             </div>
         {% endif %}

@@ -1,11 +1,11 @@
 {% load static %}
 
 
-<h2 class="text-light">What kind of?</h2>
+<h2 class="text-light kindOf">What kind of?</h2>
 
 {% for sessionType in BJRform.type %}
 
-    <div class="type_icon count_icon col-lg-1 col-4">
+    <div class="type_icon count_icon col-xl-1 col-md-2 col-3 ">
         <label>
             {{ sessionType.tag }}
             <img alt="{{ sessionType.choice_label }} icon"

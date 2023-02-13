@@ -31,7 +31,7 @@ class TrainingSessionForm(ModelForm):
     }), required=False)
 
     date = forms.DateField(widget=forms.DateInput(attrs={
-        'class': 'datepicker-input',
+        'class': 'datepicker-input w-100',
         'type': 'date'
     }), required=False)
 
@@ -41,8 +41,24 @@ class TrainingSessionForm(ModelForm):
 
     }), required=False)
 
-    length = forms.ChoiceField(choices=TrainingSession.TSlength,
-                               widget=forms.RadioSelect())
+    hoursLength = forms.ChoiceField(choices=TrainingSession.HOURS_LENGTH,
+                                    widget=forms.RadioSelect())
+
+    minutesLength = forms.ChoiceField(choices=TrainingSession.MINUTES_LENGTH,
+                                      widget=forms.RadioSelect(),
+                                      required=False)
+
+    fightTime = forms.IntegerField(required = False,
+                                   widget=forms.NumberInput(
+                                       attrs={
+                                           'class': 'fightTimeInput form-control',
+                                            'min': 0,
+                                            'max': 400,
+                                            'value' : 0,
+                                           'type': 'number'
+                                           # 'placeholder': 'min'
+                                       }))
+
 
     techniques = forms.ModelMultipleChoiceField(queryset=Technique.objects.all(),
                                                 widget=forms.CheckboxSelectMultiple(),

@@ -3,8 +3,22 @@ from django.contrib.auth.models import User
 from Notifications.models import Notification
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-
+from django.db.models import Case, When, Value
 # Create your models here.
+MEMBER_ORDER = Case(
+    When(memberType='Head', then=Value(1)),
+    When(memberType='Instructor', then=Value(2)),
+    When(memberType='Professor', then=Value(3)),
+    When(memberType='Student', then=Value(4)),
+)
+BELT_ORDER = Case(
+    When(belt='Black Belt', then=Value(1)),
+    When(belt='Brown Belt', then=Value(2)),
+    When(belt='Purple Belt', then=Value(3)),
+    When(belt='Blue Belt', then=Value(4)),
+    When(belt='White Belt', then=Value(5)),
+    When(belt='No Info', then=Value(6)),
+)
 class Club(models.Model):
     name = models.CharField(blank=False, max_length=100, unique=True)
     logo = models.ImageField(default='defaultLogo.png', upload_to='clubs_logo',  blank=True, null=True)
@@ -25,8 +39,12 @@ class Club(models.Model):
     def authorizedMembers(self):
         return UserMembership.objects.filter(authorized = 'FULL', club_id = self.id )
 
+    def membersList (self):
+        return UserMembership.objects.filter(club=self).order_by(MEMBER_ORDER)
     def __str__(self):
         return f'{self.name} {self.estabilished}'
+
+
 
 class UserMembership(models.Model):
     MEMBER_TYPES = (

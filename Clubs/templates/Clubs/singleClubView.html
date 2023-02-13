@@ -12,10 +12,13 @@
                         class=" btn btn-outline-primary">
                     Join Club (request)
                 </button>
-                <h3> {% if alreadySent %} Request already sent{% endif %}</h3>
+
+
             </div>
         </form>
     {% endif %}
+
+    {% if alreadySent %} <h3 class="clubProfileBtn">Request already sent</h3>{% endif %}
 
     <div class="d-flex flex-column  position-relative mt-2  align-items-center">
         <div class="  imgCircle position-relative mx-3 profile  mb-0"

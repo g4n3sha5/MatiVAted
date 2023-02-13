@@ -18,70 +18,81 @@
 // }
 //
 
+/*
 function responsiveBackend() {
-        // alert("work")
-        const smallScreens = window.matchMedia('(max-width: 768px)')
-        const bigScreens = window.matchMedia('(min-width: 768px)')
-        // const BJRview = document.querySelector('#BJR_view')
-        let xhttp = new XMLHttpRequest();
-        let screen = false
-        let token = document.querySelector('[name=csrfmiddlewaretoken]').value;
-        if (smallScreens.matches) {
-            screen = 'small'
-        }
-        if (bigScreens.matches) {
-            screen = 'big'
-        }
+    const smallScreens = window.matchMedia('(max-width: 768px)')
+    const bigScreens = window.matchMedia('(min-width: 768px)')
+    // const BJRview = document.querySelector('#BJR_view')
+    let xhttp = new XMLHttpRequest();
+    let screen = false
+    let token = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    if (smallScreens.matches) {
+        screen = 'small'
+    }
+    if (bigScreens.matches) {
+        screen = 'big'
+    }
 
-        fetch('/yourSessions/', {
-            method: 'POST',
-            headers: {
-                'contentType': 'application/json',
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRFToken': token,
-            },
-            body: JSON.stringify({'device': screen})
+    fetch('/yourSessions/', {
+        method: 'POST',
+        headers: {
+            'contentType': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': token,
+        },
+        body: JSON.stringify({'device': screen})
 
-        })
+    })
+*/
 
-        // .then(response => response.json())
+// .then(response => response.json())
 
-    // $.ajax({
-    //     url: "/yourSessions/",
-    //     type:"POST",
-    //     data: {
-    //         'X-CSRFToken': token,
-    //         'screen' : screen
-    //     },
-    //     dataType: "json",
-    //
-    // })
+// $.ajax({
+//     url: "/yourSessions/",
+//     type:"POST",
+//     data: {
+//         'X-CSRFToken': token,
+//         'screen' : screen
+//     },
+//     dataType: "json",
+//
+// })
 
 
-}
+// }
 
 function onClickColor() {
-    let addSession = document.getElementsByClassName('addSession')
+    const addSession = document.querySelector('.addSessionSection')
+    const count_icon = document.querySelectorAll('.count_icon')
+    // let lengthTYPE = document.querySelector('.lengthTYPE')
 
-    if (addSession) {
+    if (count_icon) {
+        Array.from(count_icon)
 
-        Array.from(addSession).forEach(sessionClass => {
-            Array.from(sessionClass.querySelectorAll('.count_icon'))
-                .forEach(count_icon => {
+            .forEach(count_icon => {
+                let checkbox = count_icon.querySelector('input[type=radio]')
+                if (checkbox) {
+                    if (checkbox.checked) {
+                        count_icon.classList.add("activeType");
+                    }
+                }
 
-                    count_icon.addEventListener('click', (evt) => {
-                        sessionClass.querySelectorAll('.activeType')
-                            .forEach(element => {
-                                element.classList.remove("activeType")
-                            })
+                count_icon.addEventListener('click', (evt) => {
+                    let parent = count_icon.parentNode
+                    if (parent.classList.contains('countWrap')) {
+                        parent = count_icon.parentNode.parentNode
+                    }
+                    parent.querySelectorAll('.activeType')
+                        .forEach(element => {
+                            element.classList.remove("activeType")
+                        })
 
-                        evt.target
-                            .closest('.count_icon')
-                            .classList.add("activeType");
-                    }, true);
-
+                    evt.target
+                        .closest('.count_icon')
+                        .classList.add("activeType");
                 }, true);
-        })
+
+            }, true);
     }
 }
 
@@ -105,19 +116,23 @@ function quickDateButtons() {
     }
 }
 
-// function toggleActive() {
-//     let choiceButton = document.querySelector('.choice-btn')
-//     let techniquesListWrap = document.querySelector('.techniquesListWrap')
-//     if (choiceButton) {
-//         let choiceArrowBtn = document.querySelector(('.choiceArrowBtn'))
-//         choiceArrowBtn.addEventListener('click', (evt) => {
-//             choiceArrowBtn.classList.toggle('rotateButton')
-//             techniquesListWrap.classList.toggle('d-none')
-//
-//         })
-//
-//     }
-// }
+function toggleActive() {
+    let choiceButton = document.querySelector('.choice-btn')
+    let techniquesListWrap = document.querySelector('.techniquesListWrap')
+
+    if (choiceButton) {
+        let choiceArrowBtn = document.querySelector(('.choiceArrowBtn'))
+        choiceArrowBtn.addEventListener('click', (evt) => {
+            choiceArrowBtn.classList.toggle('rotateButton')
+            if(techniquesListWrap.parentNode.classList.contains('userSuggestions')){
+                techniquesListWrap.classList.toggle('d-none')
+            }
+
+
+        })
+
+    }
+}
 
 
 function multiSelect() {
@@ -127,15 +142,8 @@ function multiSelect() {
     let choicePlaceholderWrapper = document.querySelector('.choicePlaceholderWrapper')
 
     techniqueOption.forEach(technique => {
-        technique.addEventListener('click', (evt) => {
-            evt.preventDefault()
-            let checkBox = technique.querySelector('input')
-            checkBox.checked = true
-            technique.classList.add('d-none', 'cantSearch')
-
-            if (choicePlaceholder.textContent === "Choose techniques") choicePlaceholder.textContent = ''
-
-            let TechniqueHTML = `<span   
+        let checkBox = technique.querySelector('input')
+        let TechniqueHTML = `<span   
                                     data-class='${technique.classList[0]}' 
                                     class='mb-1 chosenTechnique'>
                         ${technique.textContent.trim()}   
@@ -143,10 +151,21 @@ function multiSelect() {
       
                     </span>`
 
-            choicePlaceholderWrapper.insertAdjacentHTML("beforeend", TechniqueHTML)
+        if (checkBox.checked) {
 
+            technique.classList.add('d-none', 'cantSearch')
+            if (choicePlaceholder.textContent === "Choose techniques") choicePlaceholder.textContent = ''
+            choicePlaceholderWrapper.insertAdjacentHTML("beforeend", TechniqueHTML)
             removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox)
 
+        }
+        technique.addEventListener('click', (evt) => {
+            evt.preventDefault()
+            checkBox.checked = true
+            technique.classList.add('d-none', 'cantSearch')
+            if (choicePlaceholder.textContent === "Choose techniques") choicePlaceholder.textContent = ''
+            choicePlaceholderWrapper.insertAdjacentHTML("beforeend", TechniqueHTML)
+            removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox)
 
         })
 
@@ -162,7 +181,6 @@ function removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox = fa
 
     removeIcon.forEach(icon => {
         icon.addEventListener('click', (evt) => {
-            console.log("remove", checkBox.checked)
             let sortAttribute = icon.getAttribute('data-class')
             let elementToView = document.querySelector(`.${sortAttribute}`)
             elementToView.classList.remove('d-none', 'cantSearch')
@@ -268,6 +286,49 @@ const closeModal = () => {
 
 }
 
+function quickFightTimeButtons() {
+    let fightTime = document.querySelector('.fightTime')
+    let fightTimeInput = document.querySelector('.fightTimeInput')
+    let plusWrap = document.querySelector('.plusWrap')
+    let minusWrap = document.querySelector('.minusWrap')
+
+    if (fightTime) {
+
+        plusWrap.addEventListener('click', evt => {
+            fightTimeInput.stepUp()
+        })
+        minusWrap.addEventListener('click', evt => {
+            fightTimeInput.stepDown()
+        })
+        for (let x of Array(41).keys()) {
+            if (x % 5 === 0) {
+                let html = ` <div class="count_icon addSessionLength cursor-pointer addSessionFight text-center">
+                    <div class=" py-1">
+                        <h3 class="m-0">
+                            ${x}
+                            <h4 class="m-0 smallCapt">min</h4>
+                        </h3>
+                    </div>
+            </div>`;
+
+                fightTime.insertAdjacentHTML('beforeend', html)
+                fightTime.lastChild.addEventListener('click', evt => {
+                    // evt.target.classList.o
+                    fightTimeInput.value = x
+                })
+            }
+        }
+    }
+}
+
+const populateInput = () => {
+    let sessionLocation = document.querySelector('.sessionLocation')
+    if (sessionLocation) {
+        let vari = sessionLocation.getAttribute('data-club')
+        sessionLocation.querySelector('input').value = vari
+    }
+}
+
 if (document.readyState !== 'loading') {
     allFunctions()
 }
@@ -285,4 +346,7 @@ function allFunctions() {
     searchItem()
     editDescription()
     showModal()
+    toggleActive()
+    quickFightTimeButtons()
+    populateInput()
 }

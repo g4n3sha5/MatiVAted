@@ -1,22 +1,25 @@
-<h3 class="text-center"> Techniques List</h3>
- <hr class="text-white mx-5 my-3">
-<div class="techniquesSearch d-flex align-items-center pb-1 position-relative">
-    <i class="bi bi-search"></i>
-    <input class="searchBox py-1 " type="text" placeholder="Search ">
-</div>
+<div class="techList col-12 col-lg-4 h-100 text-white px-5 overflow-hidden">
 
-<ul class="select customScroll techniquesOptions h-75 w-100 pb-5 " multiple>
+    <h3 class="text-center"> Techniques List</h3>
+    <hr class="text-white mx-5 my-3">
+    <div class="techniquesSearch d-flex align-items-center pb-1 position-relative">
+        <i class="bi bi-search"></i>
+        <input class="searchBox py-1 " type="text" placeholder="Search ">
+    </div>
 
-    {% for technique in techniquesList %}
-        <li  hx-get = "{% url 'singleTechniqueView' technique.id %}"
-{#        <li  hx-get = "technique/{{ technique.id }}/"#}
-            hx-target = ".leftTechSection"
+    <ul class="select suggestionsList customScroll techniquesOptions w-100  " multiple>
 
-            value="{{  technique.EnglishName }}"
-            class=" cursor-pointer techniqueItem list-group-item p-2 d-flex
+        {% for technique in techniquesList %}
+            <li hx-get="{% url 'singleTechniqueView' technique.id %}"
+                    {#        <li  hx-get = "technique/{{ technique.id }}/"#}
+                hx-target=".leftTechSection"
+
+                value="{{ technique.EnglishName }}"
+                class=" cursor-pointer techniqueItem list-group-item p-2 d-flex
          align-items-center justify-content-between mb-1 d-block ">
-            {{ forloop.counter }}.   {{  technique.EnglishName  }}
-        </li>
-    {% endfor %}
+                {{ forloop.counter }}. {{ technique.EnglishName }}
+            </li>
+        {% endfor %}
 
-</ul>
+    </ul>
+</div>

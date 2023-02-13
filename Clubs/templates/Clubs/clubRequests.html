@@ -1,17 +1,19 @@
 <table class=" h-100 w-100 px-5 align-items-center  " multiple>
-    {% for userRequest in requestsDict.items%}
+    {% for userRequest in requestsDict.items %}
         {% if userRequest.1.status != 'REJECTED' %}
             {#                {% if userRequest.user_id == profile.user_id %}#}
             <tr
                     hx-target="#Clubs_view"
                     class="my-1  nowrap cursor-pointer
                           w-100 list-group-item p-2  d-flex align-items-center justify-content-between mb-1 position-relative">
-                <th class="requesth1 px-1">{{ forloop.counter }}.</th>
 
-                <th class=" profilePicture smallProfile requestsmallProfile  profile  "
-                    style="background-image: url({{ userRequest.0.avatar.url }})">
+                <th class="w-25 requesth1 px-1 d-flex justify-content-around align-items-center">{{ forloop.counter }}.
 
+                    <div class=" profilePicture smallProfile requestsmallProfile  profile  "
+                         style="background-image: url({{ userRequest.0.avatar.url }})">
+                    </div>
                 </th>
+
 
                 <th class=" requesth1 listName d-flex align-items-center justify-content-between  ">
 
@@ -22,9 +24,9 @@
                             {{ userRequest.0.lastName }}
                         </h2>
                     {% endif %}
-{#                    {% if not userRequest.0.lastName and not userRequest.0.firstName %}#}
-{#                        <h2 class="reque sth2"> User Anonymous</h2>#}
-{#                    {% endif %}#}
+                    {#                    {% if not userRequest.0.lastName and not userRequest.0.firstName %}#}
+                    {#                        <h2 class="reque sth2"> User Anonymous</h2>#}
+                    {#                    {% endif %}#}
                     <h2 class="requesth2 memberType">{{ userRequest.0.belt }}</h2>
 
                 </th>

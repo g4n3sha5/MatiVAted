@@ -65,17 +65,19 @@ singleTechView w-100 p-0 pb-5 ">
             </div>
         </div>
 
+
+        <button   type="button"
+          hx-post="{% url 'singleTechniqueView' technique.id %}"
+            hx-include ='#suggestForm'
+          hx-target=".leftTechSection"
+          class="suggestBtn btn text-white btn-dark my-3 d-none">Suggest Description
+    </button>
     </div>
 
 
 
 
-    <button   type="button"
-          hx-post="{% url 'singleTechniqueView' technique.id %}"
-            hx-include ='#suggestForm'
-          hx-target=".leftTechSection"
-          class="suggestBtn btn btn-info my-3 d-none">Suggest Description
-    </button>
+
 </div>
 
 
@@ -92,7 +94,7 @@ singleTechView w-100 p-0 pb-5 ">
                 </span>
 
             </div>
-            <div class="techniquesListWrap d-none p-3  w-100">
+            <div class="techniquesListWrap customScroll d-none p-3  w-100">
                  {% for item in UserSuggestions %}
                     <div class="suggestion border-bottom my-1">{{ item.content }}</div>
                  {% endfor %}

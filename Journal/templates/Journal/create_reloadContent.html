@@ -9,17 +9,63 @@
 {#</div>#}
 
 {#</div>#}
-<div class="row h-100">
-    <div class="navStyling col-md-2 col-md-2-5 h-100 text-white
-    card-mother sideMenuLayout d-flex justify-content-center px-5  ">
-        {% include "Journal/create_menu.html" %}
+<div class="row vh-100 m-0 p-0">
+
+    <div class="col-lg-8 col-12 h-100 justify-content-center  d-flex ">
+        <div id="singleList" class="w-50 row d-flex py-5 ">
+        </div>
     </div>
 
-     <div class="col-md-10 col-md-9-5 gradient-custom h-100
-     justify-content-center  d-flex m-0 px- ">
-        <div id="singleList" class="w-50= row d-flex ">
+    <div class="techList col-12 col-lg-4 h-100 text-white px-5 overflow-hidden">
+        {% load static %}
+
+        <div class="d-flex flex-column">
+    <h1>To do manager</h1>
+{#            <div class="profile">#}
+{#                <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">#}
+{#                <h1 class="text-light"><a href="index.html"></a>{{ user.username }}</h1>#}
+{#                <div class="mt-3 text-center">#}
+{#                    <a href="#">A</a>#}
+{#                    <a href="#">B</a>#}
+{#                    <a href="#">C</a>#}
+{#                    <a href="#"><i class="bx bxl-skype"></i></a>#}
+{#                    <a href="#"><i class="bx bxl-linkedin"></i></a>#}
+{#                </div>#}
+{#            </div>#}
+
+
+            <nav id="navbar" class="nav-menu navbar">
+                <ul class="list-unstyled px-3">
+                    <form method="post" action="/create/">
+                        <div class="input-group mb-3 p-0">
+
+                            <div class="input-group-prepend p-0">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button hx-post="{% url 'create_menu' %}"
+                                        hx-target=".card-mother"
+                                        name="save" class="btn btn-success">
+                                    Create To Do List
+                                </button>
+                            </div>
+
+                        </div>
+                    </form>
+
+                    <div id="listsDisplayer">
+                        {% include 'Journal/create_listsView.html' %}
+                    </div>
+                    {##}
+                    {#          <li class="py-3"><a href="#resume" class="nav-link scrollto"><i class="bi bi-collection-fill px-2"></i> <span>Your Sessions</span></a></li>#}
+                    {#          <li class="py-3"><a href="#portfolio" class="nav-link scrollto"><i class="bi bi-bullseye px-2"></i> <span>Workout Goals</span></a></li>#}
+
+                </ul>
+            </nav>
+
+
         </div>
-     </div>
+
+    </div>
 
 </div>
 
