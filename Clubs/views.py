@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect, reverse
-from .models import Club, UserMembership, Request, BELT_ORDER
+from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
+from .models import Club, UserMembership, Request, BELT_ORDER, MEMBER_ORDER
 from Notifications.models import Notification
 from account_register.models import UserProfile
-from .forms import ClubForm
+from .forms import ClubForm, MemberForm
 
 
 from django.contrib import messages
@@ -22,7 +22,6 @@ def checkRequests():
 
 
 def ClubsIndex(request):
-
     authorized = True
     try:
         # find what club is the user in
@@ -69,6 +68,13 @@ def ClubsIndex(request):
 userProfiles = UserProfile.objects.all()
 
 
+# def getProfilesDict(memberList, profilesDict = {}):
+#     for member in memberList:
+#         for profile in userProfiles.order_by(BELT_ORDER):
+#             if profile.user_id == member.user_id:
+#                 profilesDict[profile] = member
+#
+#     return profilesDict
 
 def clubMembers(request):
     checkRequests()
@@ -79,32 +85,29 @@ def clubMembers(request):
         yourClub = Club.objects.get(id=membership.club_id)
         if membership.authorized == 'FULL':
             authorized = True
-        membersList = Club.membersList
-        # membersList = UserMembership.objects.filter(club=yourClub).order_by(MEMBER_ORDER)
-        requestList = Request.objects.filter(club=yourClub)
+        membersListT = UserMembership.objects.filter(club=yourClub).order_by(MEMBER_ORDER)
+        # membersListT = yourClub.membersList().order_by(MEMBER_ORDER)
+        requestListT = yourClub.requestList()
 
     except:
-        yourClub, membersList, isMember, requestList = None, None, None, None
+        yourClub, membersListT, isMember, requestListT = None, None, None, None
 
+    if membersListT:
+        # profilesDict = getProfilesDict(membersListT)
+        for member in membersListT:
+            for profile in userProfiles.order_by(BELT_ORDER):
+                if profile.user_id == member.user_id:
+                    profilesDict[profile] = member
 
-    if yourClub and membersList:
-        profilesDict = getProfilesDict(membersList)
-        # for profile in userProfiles.order_by(BELT_ORDER):
-        #     for member in membersList:
-        #         if profile.user_id == member.user.id:
-        #             profilesDict[profile] = member
-
-    if requestList:
-        for userRequest in requestList:
+    if requestListT:
+        for userRequest in requestListT:
             if userRequest.status != 'REJECTED':
                 requestProfile = userProfiles.get(user_id=userRequest.user_id)
                 requestsDict[requestProfile] = userRequest
 
 
-
-
     context = {
-        'membersList': membersList,
+        'membersList': membersListT,
         'profiles': profilesDict,
         'Club': yourClub,
         'authorized': authorized,
@@ -114,14 +117,56 @@ def clubMembers(request):
 
     return render(request, "Clubs/clubMembers.html", context)
 
-def getProfilesDict( membersList, profilesDict = {}):
+def memberRemove(request, id):
+    userDel = UserMembership.objects.get(pk=id)
+    userDel.delete()
+    return HttpResponseRedirect(reverse('clubMembers'))
 
-    for profile in userProfiles.order_by(BELT_ORDER):
-        for member in membersList:
-            if profile.user_id == member.user.id:
-                profilesDict[profile] = member
 
-    return profilesDict
+# def editMemberPermissions(request, memberID, form):
+#
+#     return HttpResponseRedirect(reverse('clubMembers'))
+#
+
+def profileMemberMatcher (userID):
+
+    profile = UserProfile.objects.get(user_id=userID)
+    membership = UserMembership.objects.get(user_id=userID)
+    return [profile, membership]
+
+
+
+def memberProfile(request, clubID, userID):
+    profileDict = {}
+    authorizedRequest, myProfile = False, False
+    ARR = profileMemberMatcher(userID)
+    requestUserAuthorized = profileMemberMatcher(request.user.id)[1]
+    # profile, member = profileMemberMatcher(userID)
+
+    # user profile and membership that has been clicked
+    profile, member = ARR[0], ARR[1]
+    profileDict[profile] = member
+
+    if request.method == 'POST':
+        form = MemberForm(request.POST, instance=member)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(reverse('clubMembers'))
+    else:
+         form = MemberForm(instance=member)
+
+    if requestUserAuthorized.authorized == 'FULL':
+        authorizedRequest = True
+    if userID == request.user.id:
+        myProfile = True
+
+    context = {
+        'profile': profileDict,
+        'authorizedRequest': authorizedRequest,
+        'myProfile' : myProfile,
+        'form' : form
+    }
+    return render(request, "Clubs/memberProfileModal.html", context)
 
 def clubsTrainings(request):
     context = {}
@@ -187,12 +232,7 @@ def handleRequest(request, requestID):
 
     return clubMembers(request)
     # return reverse('/clubMembers')
-def memberProfile(request, id):
 
-    context = {
-
-    }
-    return render(request, "Clubs/memberProfileModal.html", context)
     # return reverse('/clubMembers')
 
 

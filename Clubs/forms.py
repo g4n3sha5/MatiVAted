@@ -59,10 +59,16 @@ class ClubForm(ModelForm):
         'placeholder': 'Website (optional) [www.example.com or example.com]'
     }), required=False)
 
+class MemberForm(ModelForm):
+    class Meta:
+        model = UserMembership
+        fields = ['authorized', 'memberType']
 
-
-
-    # favGrappler = forms.CharField(widget=forms.TextInput(attrs={
+    authorized = forms.ChoiceField(choices = UserMembership.AUTHORIZED,
+                                   required=False)
+    memberType = forms.ChoiceField(choices = UserMembership.MEMBER_TYPES,
+                                   required=False)
+    # favGrappler = forms.CharField(widget=form.TextInput(attrs={
     #     'class': 'form-control',
     #     'placeholder': 'Favourite grappler'
     # }), required=False)

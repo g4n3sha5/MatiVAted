@@ -1,85 +1,113 @@
 {% load crispy_forms_filters %}
 {% load static %}
 
-<div class="clubProfile navPadding singleClubView d-flex align-items-center flex-column w-100 pb-5 ">
-    {% if not userHasClub and not alreadySent %}
-        <form>
-            {% csrf_token %}
-            <div class="clubProfileBtn text-center">
-                <button
-                        hx-post="{% url 'singleClubView'  Club.id %}"
-                        hx-target="#Clubs_view"
-                        class=" btn btn-outline-primary">
-                    Join Club (request)
-                </button>
+<div class="clubProfile clubContent position-relative  overflow-hidden ">
+
+    <div class="profileBackground w-100 ">
+
+        {% if not userHasClub and not alreadySent %}
+            <form>
+                {% csrf_token %}
+                <div class="clubProfileBtn text-center">
+                    <button
+                            hx-post="{% url 'singleClubView'  Club.id %}"
+                            hx-target="#Clubs_view"
+                            class=" btn btn-outline-primary">
+                        Join Club (request)
+                    </button>
+                </div>
+            </form>
+        {% endif %}
+        {% if alreadySent %} <h3 class="clubProfileBtn">Request already sent</h3>{% endif %}
 
 
+    </div>
+
+    <div class="row h-100  ">
+
+        <div class="leftSingleClub col-md-6 d-flex align-items-center justify-content-start
+        flex-column position-relative">
+
+            <div class="profileInfo d-flex w-100 justify-content-start
+                        align-items-end mb-5 position-relative   ">
+                <div class=" circleWrap imgCircle d-inline-flex flex-column
+                                            mx-3 profile  align-items-center justify-content-center
+                                            overflow-hidden"
+                     style="background-image: url({{ Club.logo.url }})">
+                </div>
+                <div class="profText d-flex flex-column text-white">
+                    <h1 class="clubProfileName">  {{ Club.name }} </h1>
+                    {% if Club.estabilished %}
+                        <h3 class="estabilished">Since {{ Club.estabilished }}</h3>
+                    {% endif %}
+                </div>
             </div>
-        </form>
-    {% endif %}
 
-    {% if alreadySent %} <h3 class="clubProfileBtn">Request already sent</h3>{% endif %}
 
-    <div class="d-flex flex-column  position-relative mt-2  align-items-center">
-        <div class="  imgCircle position-relative mx-3 profile  mb-0"
-             style="background-image: url({{ Club.logo.url }})">
+            {% if Club.description %}
+                <div class="border-bottom clubProfileDescription  text-center p-3 px-5  ">
+                    <i class="bi bi-file-text-fill pt-1"></i>
+                    <h3 class="py-2">   {{ Club.description }} </h3>
+                </div>
+
+            {% endif %}
+
         </div>
-        <h1 class="clubProfileName">  {{ Club.name }} </h1>
-        {% if Club.estabilished %}
-            <h3 class="estabilished">Since {{ Club.estabilished }}</h3>
+
+
+        <div class="rightSideProfile px-0 col-md-6 d-flex flex-column
+         align-items-center clubProfileInfo">
+
+        <div class="w-100 d-flex flex-column align-items-center adresSingleProfile">
+
+            {% if Club.address %}
+                       <i class="bi bi-geo-alt-fill pt-2 text-white"></i>
+                <h4 class="py-2  ">    {{ Club.address }} </h4>
+            {% endif %}
+
+            {% if Club.city %}
+                <h3 class="text-white">    {{ Club.city }} </h3>
+            {% endif %}
+
+        </div>
+            {% if Club.website %}
+                <h2 class="clubProfileWebsite clubProfileReverseStyle p-3 px-5">
+                    <i class="bi bi-globe px-3 text-white"></i>
+                    <a href="//{{ Club.website }}">{{ Club.website }}</a>
+                </h2>
+            {% endif %}
+
+            {% if Club.numbers_list %}
+                <h3 class="clubProfileNumber p-2 px-5 ">
+                    {% for number in Club.numbers_list %}
+                        <i class="bi bi-phone-fill px-3 "></i>
+                        <a href="tel+{{ number }}">{{ number }}</a>
+                    {% endfor %}
+                </h3>
+            {% endif %}
+
+            {% if Club.email %}
+                <h2 class="clubProfileEmail clubProfileReverseStyle p-3 px-5">
+                    <i class="bi  bi-envelope-at-fill px-3"></i>
+                    {{ Club.email }}
+                </h2>
+            {% endif %}
+
+
+        </div>
+
+
+
+        {% if Club.instructors %}
+            <div class="border-bottom clubProfileDescription  text-center p-3">
+                <i class="bi bi-file-text-fill pt-1"></i>
+                <h3 class="py-2">   {{ Club.description }} </h3>
+            </div>
+
         {% endif %}
+
+
     </div>
-
-    <div class="d-flex flex-column align-items-center w-100 clubProfileInfo">
-
-        <i class="bi bi-geo-alt-fill pt-2"></i>
-        {% if Club.address %}
-            <h4 class="py-2 ">    {{ Club.address }} </h4>
-        {% endif %}
-        {% if Club.city %}
-            <h3>    {{ Club.city }} </h3>
-        {% endif %}
-        <h2 class="clubProfileWebsite clubProfileReverseStyle p-3 px-5">
-            <i class="bi bi-globe px-3"></i>
-            <a href="//{{ Club.website }}">{{ Club.website }}</a>
-        </h2>
-
-        {% if Club.numbers_list %}
-            <h3 class="clubProfileNumber p-2 px-5">
-                {% for number in Club.numbers_list %}
-                    <i class="bi bi-phone px-3"></i>
-                    <a href="tel+{{ number }}">{{ number }}</a>
-                {% endfor %}
-            </h3>
-        {% endif %}
-
-        {% if Club.email %}
-            <h2 class="clubProfileEmail clubProfileReverseStyle p-3 px-5">
-                <i class="bi  bi-envelope-at-fill px-3"></i>
-                {{ Club.email }}
-            </h2>
-        {% endif %}
-
-    </div>
-
-    {% if Club.description %}
-        <div class="border-bottom clubProfileDescription  text-center p-3">
-            <i class="bi bi-file-text-fill pt-1"></i>
-            <h3 class="py-2">   {{ Club.description }} </h3>
-        </div>
-
-    {% endif %}
-
-    {% if Club.instructors %}
-        <div class="border-bottom clubProfileDescription  text-center p-3">
-            <i class="bi bi-file-text-fill pt-1"></i>
-            <h3 class="py-2">   {{ Club.description }} </h3>
-        </div>
-
-    {% endif %}
-
-
 </div>
-
 
 {% include 'common/messages.html' %}

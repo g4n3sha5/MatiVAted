@@ -1,3 +1,7 @@
+{#<div id="modal-backdrop"#}
+{#          onclick="closeModal()"#}
+{#         class="modal-backdrop   w-100 h-100"></div>#}
+
 <div id="leaveClub" data-backdrop="false"
      class="modal w-100 overflow-hidden " tabindex="-1" role="dialog"
      aria-labelledby="leaveClubModal"
@@ -30,8 +34,8 @@
 <div id="cantLeave" data-backdrop="false" class="modal w-100  overflow-hidden " tabindex="-1" role="dialog"
      aria-labelledby="leaveClubModal"
      aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
+    <div class="modal-dialog w-100 h-100" role="document">
+        <div class="modal-content w-100 h-100">
             <div class="modal-header">
                 <h5 class="modal-title">Head can't leave the club.</h5>
                 <button data-dismiss="modal" class="btn-close aria-label=" Close
@@ -47,7 +51,9 @@
 </div>
 
 
-<div id="memberProfile" data-backdrop="false" class="modal w-100 overflow-hidden " tabindex="-1" role="dialog"
+<div id="memberProfile" data-backdrop="false"
+     class="modal w-100 overflow-hidden h-100 "
+     tabindex="-1" role="dialog"
      aria-labelledby="leaveClubModal"
      aria-hidden="true">
 

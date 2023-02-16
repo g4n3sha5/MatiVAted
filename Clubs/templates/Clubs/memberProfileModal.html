@@ -1,56 +1,103 @@
-{% for profile, member in profiles.items %}
+{% for profile, member in profile.items %}
 
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
+    <div class="modal-dialog overflow-hidden profileModal" role="document">
+        <div class="modal-content h-100 w-100">
 
-            <div class="modal-header">
+            <div class="modal-header profileModalHeader d-flex align-items-center">
+                {% if authorizedRequest and not myProfile %}
+                    <div class="profileModalRemove">
+
+
+                        <button type="button"
+                                class="btn btn-danger areYouSureBTN">
+                            Remove Member
+                        </button>
+
+                        <form class="d-flex surePrompt d-none">
+                            Are you sure?
+
+                            <button
+                                    hx-target="#Clubs_view"
+                                    hx-delete="{% url 'memberRemove' member.id %}"
+                                    class=" px-3 btn btn-danger mx-1">YES
+                            </button>
+
+                            <button class=" px-3 btn btn-secondary cancelBtn">CANCEL</button>
+
+
+                        </form>
+
+                    </div>
+                {% endif %}
+
                 <button data-dismiss="modal" class="btn-close aria-label=" Close
                 "></button>
+
             </div>
-            <div class="modal-body">
-                <div class=" profilePicture smallProfile  profile  "
-                     style="background-image: url({{ profile.avatar.url }})">
+            <div class="modal-body position-relative row">
+                <div class="col-8 px-3">
+
+
+                    <div class=" profilePicture mediumProfile  profile  "
+                         style="background-image: url({{ profile.avatar.url }})">
+                    </div>
+                    {{ profile.firstName }}
+                    {{ profile.lastName }}
+                    <hr class="myHR ml-1">
+                    {{ profile.bio }}
+                    {% if profile.bio %}
+                        <hr class="myHR ml-1"> {% endif %}
+                    <div class="profileBelt">
+                        <h2 class="">{{ profile.belt }}</h2>
+
+
+                        {% if authorizedRequest %}
+                            {{ member.authorized }}
+                            {{ form.authorized }}
+                            {% if member.authorized == 'FULL' %}
+                                <i class="bi bi-person-fill-gear"></i>
+                                <i class="bi bi-person-fill-add"></i>
+                            {% endif %}
+
+                            {% if member.authorized == 'TRAININGS' %}
+                                <i class="bi bi-person-fill-add"></i>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+
                 </div>
-                {{ profile.firstName }}
-                {{ profile.lastName }}
+                <div class="col-4 pl-4 position-relative d-flex flex-column justify-content-end">
+                    {{ form.errors }}
+                    {% if profile.favGrappler %}
+                        <h4>Favourite Grappler:<br>
+                            <span class="font-weight-700">{{ profile.favGrappler }}</span>
+                        </h4>
+                    {% endif %}
+                    {% if profile.favTechnique %}
+                        <h4>Favourite Technique:<br>
+                            <span class="font-weight-700">{{ profile.favTechnique }}</span>
+                        </h4>
+                    {% endif %}
+                    <div class="memberModalType">
+                        {{ member.memberType }}
+                        {% if authorizedRequest %}
+                            {{ form.memberType }}
+                        {% endif %}
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary w-50" data-dismiss="modal">Cancel</button>
+                <form class="h-100 w-100"
+                      method="post">{% csrf_token %}
+                    <button type="button"
+                            class="btn btn-light w-25"
+                            hx-post="{% url 'memberProfile' member.club_id  profile.user_id %}"
+                            hx-target="#Clubs_view"
+                            data-dismiss="modal">Save and leave
+                    </button>
+                </form>
             </div>
         </div>
     </div>
-
-
-    <div class=" profilePicture smallProfile  profile  "
-         style="background-image: url({{ profile.avatar.url }})">
-    </div>
-    <div class="nameIcon flex-column flex-md-row ">
-        <div class="personIcon text-center">
-            {% if authorized %}
-                {% if member.authorized == 'FULL' %}
-                    <i class="bi bi-person-fill-gear"></i>
-                    <i class="bi bi-person-fill-add"></i>
-                {% endif %}
-                {% if member.authorized == 'TRAININGS' %}
-                    <i class="bi bi-person-fill-add"></i>
-                {% endif %}
-            {% endif %}
-        </div>
-
-        <h2 class="memberName text-left ">
-            {{ profile.firstName }}
-            {{ profile.lastName }}
-        </h2>
-    </div>
-
-
-
-    <div class="memberType d-flex justify-content-between">
-        <h2 class="profileBelt">{{ profile.belt }}</h2>
-        <h2 class="">{{ member.memberType }}</h2>
-    </div>
-
-
-    {#                {% endfor %}#}
-
 {% endfor %}
+</form>

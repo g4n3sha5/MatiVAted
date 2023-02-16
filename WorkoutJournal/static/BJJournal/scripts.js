@@ -349,4 +349,5 @@ function allFunctions() {
     toggleActive()
     quickFightTimeButtons()
     populateInput()
+
 }

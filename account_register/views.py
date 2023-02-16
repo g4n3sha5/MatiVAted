@@ -18,7 +18,6 @@ def myAccount(request):
         yourClub = Club.objects.get(id = membership.club_id)
 
     except:
-        print("nope")
         yourClub = None
 
     currentProfile =  UserProfile.objects.get(user=request.user)
@@ -34,10 +33,10 @@ def myAccount(request):
         template = 'myaccount_reloadContent'
         form = UserProfileForm(request.POST,
                                request.FILES,
-                               instance = currentProfile,
-                               initial = {
-                                   'belt' : currentProfile.belt
-                               })
+                               instance = currentProfile)
+                               # initial = {
+                               #     'belt' : currentProfile.belt
+                               # })
 
         if form.is_valid():
             form.save()

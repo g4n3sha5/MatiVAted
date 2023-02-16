@@ -5,7 +5,8 @@
 
     <div onclick="chooseFile()"
          class="circleWrap imgCircle d-inline-flex flex-column
-                                            mx-3 profile  align-items-center justify-content-center overflow-hidden"
+                                            mx-3 profile  align-items-center justify-content-center
+                                            overflow-hidden"
             {% if Club == None or Club.logo.url == None %}
          style="background-image: url({% static 'Clubs/defaultLogo.png' %}"
             {% else %}
@@ -28,7 +29,7 @@
 
 </div>
 <div class="profText d-flex flex-column text-white">
-    <h1>Club </h1>
+    <h1 class="text-sm-right">Club </h1>
     <h2> Add your club or update the info</h2>
 </div>
 </div>
