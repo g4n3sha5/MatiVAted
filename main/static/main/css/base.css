@@ -8,6 +8,7 @@
     /*--first-color-light: #AFA5D9;\*/
     --white-color: #F7F6FB;
     --normal-font-size: 1rem;
+    --darkPurple:#3A0CA3;
     --SMgridHeight: 26.5vh !important;
     --MDgridHeight: 28vh !important;
     --XLgridHeight: 26vh !important;
@@ -906,7 +907,10 @@ a {
 /*    object-fit: contain;z*/
 /*}*/
 
-
+.ToDoItem{
+    width:75%;
+    display:flex;
+}
 .card-mother * {
     color: #3ede93;
 }
@@ -979,6 +983,21 @@ a {
 
 #singleList {
     color: black !important;
+}
+.toDoItem{
+    background-color:white;
+    min-width:45vw;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius:10px;
+    padding:10px 1vw;
+}
+.toDoItem input[type=checkbox]{
+    color:black;
+}
+.singleListView button{
+
 }
 
 
@@ -1216,8 +1235,9 @@ a {
 
 .BJRnotesWrap {
 
-    height: 12vh;
+    height: 15vh;
     /*padding:0 60px;*/
+
     /*height:100%;*/
 }
 
@@ -1241,7 +1261,7 @@ a {
 
 .addSessionLength {
     /*background-color:#4003D4 !important;*/
-    background-color: #3A0CA3 !important;
+    background-color: var(--darkPurple) !important;
     color: white;
     width: 10%;
     letter-spacing: 1px !important;
@@ -1328,13 +1348,8 @@ a {
     font-size: 15px;
 }
 
-.sectionLength, .sessionLocation, .wrapper {
-    /*background-color:rgba(0, 0, 0, 0.44);*/
-    /*background-color:#04D2F8;*/
-    /*background-color:#3060FC;*/
-    /*background-color: rgba(60, 51, 173, 0.96);*/
+.boxShadow {
     border-radius: 10px;
-    background-color: #0190DD;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px,
     rgba(0, 0, 0, 0.12) 0px 4px 6px,
@@ -1343,7 +1358,15 @@ a {
 rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 
 }
-
+.sectionLength{
+        /*background-color:#3060FC;*/
+      /*background-color:rgba(0, 0, 0, 0.44);*/
+    background-color:#04D2F8;
+    /*background-color: rgba(60, 51, 173, 0.96);*/
+}
+.sectionLength img{
+    width:50px;
+}
 .sectionLength .lengthH2 {
     letter-spacing: 2px;
     font-weight: 400;
@@ -1355,15 +1378,16 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     font-weight: 400;
     font-size: 22px;
 }
-
-.sessionLocation {
-    color: white;
-    /*background-color:#2e2686*/
+.wrapper{
+    z-index:15;
 }
 
+.addSessTechn{
+      background-color: #1BD8FB;
+}
 .SessionDate {
     background-color: #1BD8FB;
-    border-radius: 8%;
+    border-radius: 4%;
 }
 
 .datepicker-toggle h3 {
@@ -1384,13 +1408,33 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 }
 
 .quickDate {
-    background-color: #3A0CA3;
+    background-color: var(--darkPurple);
     color: white;
     border-radius: 7px;
     font-size: 15px;
-
-
 }
+.timeStampLabel input{
+    text-align: center;
+    font-weight:700;
+    font-size:25px;
+}
+.timeStampBtn {
+    width:25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 2px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    padding:2px 7px;
+    margin:0 10px;
+        background-color: var(--darkPurple) !important;
+    border: 2px solid white;
+}
+
+
+
 
 .choice-btn {
     font-size: 1.49rem;
@@ -1439,7 +1483,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 
 .techniquesListWrap {
     /*background-color: #3295d7;*/
-    background-color: #0190DD;
+  background-color: #1BD8FB;
     margin-top: 3px;
     z-index: 4;
 }
@@ -1480,9 +1524,10 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 .techniquesOptions li {
     transition: transform .2s;
     height: 4.6vh;
-    padding: 0.3vh 0.4vw;
+    padding: 0.3vh 0;
+    /*padding: 0.3vh 0.4vw;*/
     font-size: 1.8rem;
-    border-bottom: 1px solid #D3D3D3;
+    border-bottom: 1px solid blue;
 }
 
 .cursor-pointer:hover {
@@ -2454,7 +2499,9 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     font-size: 22px;
     /*margin-right: 2%;*/
 }
-
+  .memberName{
+      margin-left:12px !important;
+  }
 .tooltip {
     display: flex !important;
     position: relative;
@@ -2651,6 +2698,21 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     width: 50%;
     color: #2e007b;
 }
+
+
+/*=== CLUB SCHEDULE ====*/
+.clubSchedule .month{
+    text-align: center;
+}
+.clubSchedule table{
+width:100%;
+}
+.clubSchedule th{
+    padding:20px 5px;
+    text-align: center;
+    border:1px solid white;
+}
+
 
 /*================ TIMELINE =================*/
 .BJR_timeline {

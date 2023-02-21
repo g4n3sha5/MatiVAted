@@ -5,6 +5,7 @@ from account_register.models import UserProfile
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.db.models import Case, When, Value
+
 # Create your models here.
 MEMBER_ORDER = Case(
     When(memberType='Head', then=Value(1)),
@@ -21,9 +22,10 @@ BELT_ORDER = Case(
     When(belt='No Info', then=Value(6)),
 )
 
+
 class Club(models.Model):
     name = models.CharField(blank=False, max_length=100, unique=True)
-    logo = models.ImageField(default='defaultLogo.png', upload_to='clubs_logo',  blank=True, null=True)
+    logo = models.ImageField(default='defaultLogo.png', upload_to='clubs_logo', blank=True, null=True)
     estabilished = models.CharField(max_length=15, blank=True, null=True)
     address = models.CharField(max_length=50, blank=True, null=True)
     city = models.TextField(max_length=50, blank=True, null=True)
@@ -39,17 +41,16 @@ class Club(models.Model):
             return self.phoneNumber.split(',')
 
     def authorizedMembers(self):
-        return UserMembership.objects.filter(authorized = 'FULL', club_id = self.id )
+        return UserMembership.objects.filter(authorized='FULL', club_id=self.id)
 
-    def membersList (self):
+    def membersList(self):
         return UserMembership.objects.filter(club=self).order_by(MEMBER_ORDER)
-    def requestList (self):
-        return Request.objects.filter(club=self)
 
+    def requestList(self):
+        return Request.objects.filter(club=self)
 
     def __str__(self):
         return f'{self.name} {self.estabilished}'
-
 
 
 class UserMembership(models.Model):
@@ -67,23 +68,25 @@ class UserMembership(models.Model):
     )
 
     user = models.ForeignKey(User, related_name="userMembership", on_delete=models.CASCADE)
-    authorized = models.CharField(choices=AUTHORIZED, max_length=30, default = "NON-AUTHORIZED")
+    authorized = models.CharField(choices=AUTHORIZED, max_length=30, default="NON-AUTHORIZED")
     memberType = models.CharField(choices=MEMBER_TYPES, max_length=40, default='Student')
     slug = models.SlugField(null=True, blank=True)
     club = models.ForeignKey(Club, related_name='membersClub', on_delete=models.CASCADE, null=True)
-class Request (models.Model):
+
+
+class Request(models.Model):
     ACCEPTED = (
         ('YES', 'YES'),
         ('NO', 'NO'),
         ('REJECTED', 'REJECTED'),
     )
-    club = models.ForeignKey(Club, related_name ="request", on_delete=models.CASCADE)
-    user = models.OneToOneField(User, related_name = "userRequest", on_delete=models.CASCADE)
-    status = models.CharField(choices = ACCEPTED, max_length=30)
+    club = models.ForeignKey(Club, related_name="request", on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name="userRequest", on_delete=models.CASCADE)
+    status = models.CharField(choices=ACCEPTED, max_length=30)
 
     def save(self, *args, **kwargs):
         clubID = self.club.id
-        receiverClub = Club.objects.get(id = clubID)
+        receiverClub = Club.objects.get(id=clubID)
         authorizedMembers = receiverClub.authorizedMembers()
         for member in authorizedMembers:
             myNotification = Notification(
@@ -97,6 +100,21 @@ class Request (models.Model):
         super(Request, self).save(*args, **kwargs)
 
 
+class Schedule(models.Model):
+    # *DAY = {
+    # 'GI' : '18:00'
+    # 'GI' '19:00'
+    # 'GI' '20:00'
+    # 'GI' '21:00'
+
+    monday =    models.JSONField(default=dict)
+    tuesday =   models.JSONField(default=dict)
+    wednesday = models.JSONField(default=dict)
+    thursday =  models.JSONField(default=dict)
+    friday =    models.JSONField(default=dict)
+    saturday =  models.JSONField(default=dict)
+    sunday =    models.JSONField(default=dict)
+    ownerClub = models.ForeignKey(Club, on_delete=models.CASCADE)
 
 # @receiver(post_save, sender=Request)
 # def create_notification(sender, instance, created, **kwargs):

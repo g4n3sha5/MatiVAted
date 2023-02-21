@@ -64,15 +64,6 @@ let filterList = searchTerm => {
     })
 }
 
-function searchItem(){
-    let searchBox = document.querySelector(('.searchBox'))
-
-    if(searchBox) {
-        searchBox.addEventListener('keyup', (evt) => {
-            filterList(evt.target.value)
-        })
-    }
-}
 
 allFunctions()
 if (document.readyState !== 'loading') {
@@ -85,7 +76,7 @@ document.body.addEventListener('htmx:afterOnLoad', event=>{
 
 
 function allFunctions(){
-    searchItem()
+
     hoverCircle()
     messageSuccess()
 }

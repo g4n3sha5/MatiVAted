@@ -39,6 +39,7 @@ class TrainingSession(models.Model):
 
     type = models.CharField(choices=TStypes, blank=False, max_length=16)
     date = models.DateField(default=date.today, blank=True, null=True)
+    timestamp = models.TimeField(blank = True, null = True)
     location = models.CharField(max_length=50, blank=True, null=True)
     hoursLength = models.IntegerField(blank=False, null=True)
     minutesLength = models.IntegerField(blank=False, null=True, default = 00)
@@ -55,12 +56,16 @@ class TrainingSession(models.Model):
         return hoursToMins + minutes
 
     def clean(self):
-        if (self.fightTime > self.parseMinutes(self.hoursLength, self.minutesLength)):
+        if self.fightTime > self.parseMinutes(self.hoursLength, self.minutesLength):
             raise ValidationError("Sparring Time is longer than training!")
+
     def save(self, *args, **kwargs):
         self.totalLength = self.parseMinutes(self.hoursLength, self.minutesLength)
-        print(self.totalLength)
         super(TrainingSession, self).save(*args, **kwargs)
+
+
+
+
 
 
 

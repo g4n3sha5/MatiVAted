@@ -95,31 +95,29 @@
                             <div class=" profilePicture smallProfile  profile  "
                                  style="background-image: url({{ profile.avatar.url }})">
                             </div>
-                            <div class="nameIcon flex-column flex-md-row ">
-                                <div class="personIcon text-center">
+                            <div class="nameIcon ">
+                                <div class="personIcon text-center d-flex flex-column">
                                     {% if authorized %}
                                         {% if member.authorized == 'FULL' %}
-                                            <div class="tooltip">
+
                                               <i class="bi bi-person-fill-gear"></i>
-                                                <i class="bi bi-person-fill-gear"></i>
-                                                <div class="tooltiptext">
-                                                    ABCDFGG
-                                                </div>
-                                            </div>
-                                            <div class="tooltip">
+
+
+
                                                 <i class="bi bi-person-fill-add"></i>
-                                            </div>
+
                                         {% endif %}
                                         {% if member.authorized == 'TRAININGS' %}
-                                            <div class="tooltip">
+
                                                 <i class="bi bi-person-fill-add"></i>
-                                            </div>
+
                                         {% endif %}
                                     {% endif %}
                                 </div>
 
                                 <h2 class="memberName text-left ">
                                     {{ profile.firstName }}
+
                                     {{ profile.lastName }}
                                 </h2>
                             </div>

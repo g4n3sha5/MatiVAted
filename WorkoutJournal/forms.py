@@ -35,6 +35,14 @@ class TrainingSessionForm(ModelForm):
         'type': 'date'
     }), required=False)
 
+    # time = forms.TimeField(widget = forms.TimeInput(attrs={
+    #     'input_type' : 'time'}))
+    timestamp = forms.DateField(widget=forms.TimeInput(attrs={
+        'class':'timepicker',
+        'type' :'time'
+    }))
+
+
     location = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control',
         'placeholder': 'Location...'

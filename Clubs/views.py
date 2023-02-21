@@ -148,9 +148,11 @@ def memberProfile(request, clubID, userID):
     profileDict[profile] = member
 
     if request.method == 'POST':
+
         form = MemberForm(request.POST, instance=member)
         if form.is_valid():
             form.save()
+
             return HttpResponseRedirect(reverse('clubMembers'))
     else:
          form = MemberForm(instance=member)
@@ -173,9 +175,6 @@ def clubsTrainings(request):
     return render(request, "Clubs/clubsTrainings.html", context)
 
 
-def clubsSchedule(request):
-    context = {}
-    return render(request, "Clubs/clubsSchedule.html", context)
 
 
 def clubsList(request):
@@ -231,6 +230,11 @@ def handleRequest(request, requestID):
         myrequest.save()
 
     return clubMembers(request)
+
+
+
+
+
     # return reverse('/clubMembers')
 
     # return reverse('/clubMembers')

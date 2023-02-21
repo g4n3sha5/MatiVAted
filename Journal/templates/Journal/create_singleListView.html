@@ -1,64 +1,78 @@
+<div class=" navPadding">
+    <form method="POST"
+          class="input-group w-100 singleListView d-flex flex-column align-items-center ">
+        {% csrf_token %}
+        <h1 class="text-center text-white">{{ checklist.name }} </h1>
+        <hr class="solid">
+        {##}
+        {#    {% csrf_token %}#}
+        {#<div id="singleListView">#}
 
-<h1>{{ checklist.name }} </h1>
-<hr class="solid">
-{##}
-{#    {% csrf_token %}#}
-{#<div id="singleListView">#}
+        <div id="item-list w-100">
+            {% for item in checklist.item_set.all %}
 
-<div id="item-list">
-    {% for item in checklist.item_set.all %}
-        <div class ="input-group mb-3 border-primary">
+                <div class="toDoItem  mb-3 border-primary w-100">
 
-            {#            checkbox if task is done#}
-            <div class="input-group-prepend input-group-text  ">
-                {%  if item.checked == True %}
-                    <input type="checkbox" value ="clicked" name ="c{{item.id}}" checked>
-                {% else %}
-                    <input type="checkbox" value ="clicked" name ="c{{item.id}}">
-                {% endif %}
-            </div>
+                    {#            checkbox if task is done#}
+                    <div class=" input-group-prepend  ">
+                        {% if item.checked == True %}
+                            <input type="checkbox" value="clicked" name="c{{ item.id }}" checked>
+                        {% else %}
+                            <input type="checkbox"
+                                   value="clicked"
+                                   name="c{{ item.id }}">
+                        {% endif %}
+                        {#                    {{ form }}#}
+                        {#                        {{ form.checked }}#}
 
-            <input class="itemTextField p-1 px-3"  type="text" value="{{ item.text }}" class="form-control">
+                    </div>
 
-            {#            bin symbol to delete task#}
-            <span
-                class="input-group-text"
-                hx-delete="{% url 'removeItem' checklist.id item.id   %}"
-                hx-target="#singleList">
+                    {#                    <input class="itemTextField p-1 px-3" type="text" value="{{ item.text }}" class="form-control">#}
+                    <h3 class="itemTextField p-1 px-3">{{ item.text }}</h3>
+                    {#                     {{ form.text }}#}
+                    {#            bin symbol to delete task#}
+                    <span
+                            class=""
+                            hx-delete="{% url 'removeItem' checklist.id item.id %}"
+                            hx-target="#singleList">
                     <i class="float-end binbut fa fa-lg fa-trash"> </i>
-            </span>
+                     </span>
 
+                </div>
+
+
+
+
+            {% endfor %}
         </div>
 
+        <div class="addItemWrap d-flex  justify-content-center align-items-center mt-5">
 
 
+            <input class="form-control mx-3 rounded-1" placeholder="What to do?" type="text" name="newItemText">
 
-    {% endfor %}
-</div>
-
-<div >
-
-
-                <form class="input-group w-100">
-                    {% csrf_token %}
-                        <input class ="form-control mx-3" type="text" name ="newItemText">
-
-                    <span class="input-group-btn">
+            <span class="input-group-btn w-50">
                         <button
-                            hx-post="{% url 'listManager' checklist.id %}"
-                            hx-target="#singleList"
-                            class = "btn btn-outline-info"
-                            type="submit"
-                            >
+                                hx-post="{% url 'listManager' checklist.id %}"
+                                hx-target="#singleList"
+                                class="btn btn-primary border-white"
+                                type="submit"
+                                name="additem"
+                        >
                             Add Item
                         </button>
                     </span>
 
-                </form>
+
+        </div>
 
 
+        <button class="btn btn-success mt-2"
+                hx-post="{% url 'listManager' checklist.id %}"
+                hx-target="#singleList"
+
+        >Save
+        </button>
+    </form>
 
 </div>
-
-
-<button class = "btn btn-success mt-2" type="submit" name="save" value="save">Save</button>

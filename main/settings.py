@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'main',
     'Notifications',
     'Journal',
-
     'WorkoutJournal',
     'Clubs',
     'django_static_fontawesome',

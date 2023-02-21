@@ -46,25 +46,7 @@ const areYouSure = () => {
         })
     }
 }
-const formIcon = () => {
-    let formIcon = document.querySelectorAll('.formIcon')
-    if(formIcon){
 
-        formIcon.forEach(icon =>{
-            let iconInput = icon.querySelector('input')
-            let textarea = icon.querySelector('textarea')
-
-            if(textarea){iconInput=textarea}
-
-            iconInput.addEventListener("focusin", function () {
-                icon.querySelector('i').style.display = 'none'
-            });
-            iconInput.addEventListener("focusout", function () {
-                icon.querySelector('i').style.display = 'block'
-            });
-                })
-    }
-}
 
 allFunctions()
 if (document.readyState !== 'loading') {
@@ -80,5 +62,5 @@ function allFunctions() {
     messageSuccess()
     showModal()
     areYouSure()
-     formIcon()
+
 }

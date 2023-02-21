@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from . import views, views_schedule
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -13,7 +13,7 @@ htmx_urlpatterns = [
     path('clubs/members', views.clubMembers, name="clubMembers"),
     path('clubs/removemember/<int:id>', views.memberRemove, name="memberRemove"),
     path('clubs/trainings', views.clubsTrainings, name="clubsTrainings"),
-    path('clubs/schedule', views.clubsSchedule, name="clubsSchedule"),
+    path('clubs/schedule', views_schedule.clubsSchedule, name="clubsSchedule"),
     path('clubs/list', views.clubsList, name="clubsList"),
     path('clubs/<int:id>', views.singleClubView, name="singleClubView"),
     path('clubs/request/<int:requestID>', views.handleRequest, name="handleRequest"),

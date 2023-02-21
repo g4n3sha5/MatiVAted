@@ -45,25 +45,25 @@ const toggleNav = (nav, toggle, closeNavIcon, navName, myNavlist) =>{
 
 
 }
-let filterList = searchTerm => {
-    let optionsList = document.querySelectorAll('.techniqueOption')
-    let techniqueItem = document.querySelectorAll('.techniqueItem')
-
-    let collection = optionsList
-    if (techniqueItem.length > 0){ collection = techniqueItem }
-
-    searchTerm.toLowerCase()
-
-    collection.forEach(option =>{
-        let optionText = option.textContent.trim().toLowerCase()
-        const textIncludes = optionText.includes(searchTerm)
-        if (!option.classList.contains('cantSearch')){
-            option.classList.toggle('d-none', !textIncludes)
-        }
-
-    })
-}
-
+// let filterList = searchTerm => {
+//     let optionsList = document.querySelectorAll('.techniqueOption')
+//     let techniqueItem = document.querySelectorAll('.techniqueItem')
+//
+//     let collection = optionsList
+//     if (techniqueItem.length > 0){ collection = techniqueItem }
+//
+//     searchTerm.toLowerCase()
+//
+//     collection.forEach(option =>{
+//         let optionText = option.textContent.trim().toLowerCase()
+//         const textIncludes = optionText.includes(searchTerm)
+//         if (!option.classList.contains('cantSearch')){
+//             option.classList.toggle('d-none', !textIncludes)
+//         }
+//
+//     })
+// }
+//
 function searchItem(){
     let searchBox = document.querySelector(('.searchBox'))
     if(searchBox) {
@@ -91,11 +91,26 @@ function colorLink(linkColor){
     this.classList.add('active')
 }
 
-const chooseFile = (evt) => {
-    document.querySelector('.imageInput').click()
 
+const formIcon = () => {
+    let formIcon = document.querySelectorAll('.formIcon')
+    if(formIcon){
+
+        formIcon.forEach(icon =>{
+            let iconInput = icon.querySelector('input')
+            let textarea = icon.querySelector('textarea')
+
+            if(textarea){iconInput=textarea}
+
+            iconInput.addEventListener("focusin", function () {
+                icon.querySelector('i').style.display = 'none'
+            });
+            iconInput.addEventListener("focusout", function () {
+                icon.querySelector('i').style.display = 'block'
+            });
+                })
+    }
 }
-
 
 allFunctionsMain()
 if (document.readyState !== 'loading') {
@@ -106,7 +121,8 @@ document.body.addEventListener('htmx:afterOnLoad', event=>{
     // allFunctionsMain()
 })
 function allFunctionsMain(){
-    searchItem()
+searchItem()
     showNavbar()
     colorClick()
+    formIcon()
 }

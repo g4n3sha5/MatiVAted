@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-
-import Journal.models
-from .models import ToDoList, Item, CreateNewList
+from .models import ToDoList, Item, CreateNewList, singleListForm
 
 # Create your views here.
 
@@ -23,22 +21,27 @@ def listManager(request, id):
         clickedList = userLists.get(pk=id)
     except:
         return redirect('/create')
-
     checklist = ToDoList.objects.get(pk=id)
+
     context = {
         'checklist': checklist,
-        'id': id
+        'id': id,
+
     }
     if request.method =="POST":
-        newTaskToDo(request, checklist)
+        if request.POST.get("newItemText"):
+            newTaskToDo(request, checklist)
 
-        if request.POST.get("save"):
-            for item in checklist.item_set.all():
-                if request.POST.get("c" + str(item.id)) == "clicked":
-                    item.checked = True
-                else:
-                    item.checked = False
-                item.save()
+        for item in checklist.item_set.all():
+            if request.POST.get("c" + str(item.id)) == "clicked":
+                item.checked = True
+            else:
+                item.checked = False
+
+
+
+
+            item.save()
 
 
 
@@ -68,7 +71,8 @@ def create(request):
 
     # return render(request, "Journal/create.html", context)
     return render(request, f"Journal/{pathC}.html", context)
-
+def saveItem (request):
+    pass
 
 
 #removing list at /create/

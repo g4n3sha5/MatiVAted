@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<div class="row">
+    <div class="clubSchedule h-100 navPadding leftNavPadding
+    vh-100 overflow-hidden pb-5 text-white">
+        {% if userHasClub %}
+        <h2> Club Schedule</h2>
+        {{ cal}}
+        {% endif %}
 
-</body>
-</html>
+    </div>
+</div>

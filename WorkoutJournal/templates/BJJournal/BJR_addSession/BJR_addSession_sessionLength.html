@@ -1,5 +1,5 @@
 {% load static %}
-<div class="col-xl-6 sectionLength p-3 justify-content-between px-5 position-relative">
+<div class="col-xl-5 sectionLength boxShadow p-3 justify-content-between px-5 position-relative">
 
     <h2 class="text-center lengthH2 ">Total Length</h2>
     <hr class="mx-auto mt-1 mb-3">
@@ -42,40 +42,44 @@
 
         {% endfor %}
     </div>
-    <hr class="text-white mx-3 my-5">
-<div class="w-100 d-flex flex-column align-items-center justify-content-center">
-    <img class="" src="{% static 'BJJournal/img/katana.png' %}">
-    <h2 class="text-center lengthH3 ">Sparring Time</h2>
-</div>
 
+
+</div>
+<div class="col-xl-5 sectionLength boxShadow p-3 justify-content-between px-5 position-relative mt-5 mt-lg-0">
+
+    <div class="w-100 d-flex flex-column align-items-center justify-content-center">
+        <img class="" src="{% static 'BJJournal/img/katana.png' %}">
+        <h2 class="text-center lengthH3 ">Sparring Time</h2>
+    </div>
 
 
     <div class="lengthType fightTime d-flex mt-2 px-xl-2 px-1 p-0 justify-content-between align-items-around flex-wrap">
 
     </div>
-<div class="fightInput w-100 d-flex justify-content-center mt-2">
-    <div class="d-flex align-items-center">
-        <div class="minusWrap mathWrap ">
-            <i class="bi bi-dash"></i>
-        </div>
-
-        <div class="formFight d-flex  justify-content-center ">
-{#            fightTimeInput#}
-            {{ BJRform.fightTime }}
-            <div class ="placeholder">
-                min
+    <div class="fightInput w-100 d-flex justify-content-center mt-2">
+        <div class="d-flex align-items-center">
+            <div class="minusWrap mathWrap ">
+                <i class="bi bi-dash"></i>
             </div>
-        </div>
+
+            <div class="formFight d-flex  justify-content-center ">
+                {#            fightTimeInput#}
+                {{ BJRform.fightTime }}
+                <div class="placeholder">
+                    min
+                </div>
+            </div>
 
 
-         <div class="plusWrap mathWrap">
-            <i class="bi bi-plus"></i>
+            <div class="plusWrap mathWrap">
+                <i class="bi bi-plus"></i>
+            </div>
+
         </div>
+
 
     </div>
 
-
-</div>
 
 </div>
 

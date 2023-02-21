@@ -1,5 +1,6 @@
 from django.db import models
 from django import forms
+
 from django.contrib.auth.models import User
 
 
@@ -27,3 +28,15 @@ class Item(models.Model):
 class CreateNewList(forms.Form):
     name = forms.CharField(label="List name", max_length=200)
     checked = forms.BooleanField(required=False)
+
+class singleListForm(forms.ModelForm):
+    class Meta:
+        model = Item
+        fields = ['text', 'checked']
+
+    text = forms.CharField(widget = forms.TextInput(attrs={
+        'class' : 'form-control'
+    }), required=False)
+    checked = forms.BooleanField(widget=forms.CheckboxInput(attrs={
+        'class' : 'checkbox '
+    }), required=False)
