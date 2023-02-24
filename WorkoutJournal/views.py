@@ -4,18 +4,49 @@ from Clubs.models import UserMembership, Club
 from .forms import TrainingSessionForm, addTechniqueForm, descriptionSuggestion
 from django.core.paginator import Paginator
 from django.contrib import messages
+from datetime import datetime, timedelta
 import json
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 
+
 # Create your views here.
 
+# def countAllHours (user):
+#
 
+#     return myDict
 def BJJournalIndex(request):
+    # count = countAllHours(request.user)
+    user = request.user
+    total = TrainingSession.objects.filter(user_id=user.id).count()
+    gi = TrainingSession.objects.filter(user_id=user.id, type="GI").count()
+    nogi = TrainingSession.objects.filter(user_id=user.id, type="NOGI").count()
+    gym = TrainingSession.objects.filter(user_id=user.id, type="GYM").count()
+    LAST_MONTH = datetime.today() - timedelta(days=30)
+    last30days = TrainingSession.objects.filter(user_id=user.id, date__gte=LAST_MONTH).count()
+
     context = {
-        'user': request.user
+        'total': total,
+        'gi': gi,
+        'nogi': nogi,
+        'gym': gym,
+        'last30days': last30days
     }
     return render(request, "BJJournal/BJR_index.html", context)
+
+    # context = {
+    #     'user': request.user,
+    #     'total' : count['total'],
+    #     'gi' : count['gi'],
+    #     'nogi' : count['nogi'],
+    #     'gym' : count['gym'],
+    #     'last30days' : count['last30days'],}}
+    #
+    # }
+
+
+
 
 
 def dashboard(request):
@@ -35,15 +66,13 @@ def addSession(request):
     if request.method == 'POST':
         form = TrainingSessionForm(request.POST, auto_id=True)
 
-
         if form.is_valid():
             instance = form.save(commit=False)
-
-
-
+            print(instance.timestamp)
+            instance.user = request.user
+            instance.save()
             messages.success(request, "Added your session")
-            form.save()
-            instance.addedByUser.add(request.user)
+            # instance.addedByUser.add(request.user)
             return HttpResponseRedirect('/addSession')
         else:
             messages.error(request, "Invalid form. ")
@@ -51,17 +80,16 @@ def addSession(request):
     else:
         form = TrainingSessionForm()
 
-
-
     context = {
         'BJRform': form,
-        'Club' : yourClub,
+        'Club': yourClub,
         'techniquesList': Technique.objects.all()
     }
 
     return render(request, "BJJournal/BJR_addSession/BJR_addSession.html", context)
 
-def editSession (request, id = None, orderIndex = None):
+
+def editSession(request, id=None, orderIndex=None):
     try:
         membership = UserMembership.objects.get(user_id=request.user.id)
         yourClub = Club.objects.get(id=membership.club_id)
@@ -80,23 +108,24 @@ def editSession (request, id = None, orderIndex = None):
 
     context = {
         'Club': yourClub,
-        'id' : id,
+        'id': id,
         'BJRform': form,
-        'orderIndex' : orderIndex,
+        'orderIndex': orderIndex,
         'techniquesList': Technique.objects.all()
     }
     return render(request, "BJJournal/BJR_editSession.html", context)
 
 
-def removeSession (request, id):
+def removeSession(request, id):
     session = TrainingSession.objects.get(pk=id)
     session.delete()
-    return  HttpResponseRedirect('/yourSessions')
+    return HttpResponseRedirect('/yourSessions')
+
 
 def yourSessions(request):
     sessionsList = TrainingSession.objects.all().order_by('-id')
 
-    for index, item  in  enumerate(reversed(sessionsList), start=1):
+    for index, item in enumerate(reversed(sessionsList), start=1):
         setattr(item, 'orderIndex', index)
 
     p = Paginator(sessionsList, 6)
@@ -118,12 +147,10 @@ def singleSessionView(request, id, orderIndex):
     Session = TrainingSession.objects.get(pk=id)
     context = {
         'session': Session,
-        'orderIndex' : orderIndex,
+        'orderIndex': orderIndex,
         'form': TrainingSessionForm(instance=Session)
     }
     return render(request, "BJJournal/BJR_yourSessions/singleSessionView.html", context)
-
-
 
 
 def techniques(request):

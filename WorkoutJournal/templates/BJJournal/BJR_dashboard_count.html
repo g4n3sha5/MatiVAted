@@ -1,0 +1,101 @@
+{% load static %}
+
+
+<div class="countItems d-flex flex-column">
+    <h1 class="text-white mx-2"> Your Statistics</h1>
+
+
+    <div class="count_item">
+        <div class="text-center h-100 w-100 d-flex ">
+            <div class="hours_count ">
+                <div class="hours_count-wrap">
+                    <h1 class="statisticsNumber">{{ gi }}</h1>
+                    <h3> Gi</h3>
+                </div>
+            </div>
+
+            <div class="count_icon ">
+                <img src="{% static 'BJJournal/img/GI.png' %}">
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="count_item ">
+        <div class=" text-center h-100 w-100  d-flex ">
+
+            <div class="hours_count ">
+                <div class="hours_count-wrap">
+                    <h1 class="statisticsNumber">{{ nogi }}</h1>
+                    <h3>No Gi</h3>
+                </div>
+            </div>
+
+            <div class="count_icon ">
+                <img src="{% static 'BJJournal/img/NOGI.png' %}">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="count_item ">
+        <div class=" text-center h-100 w-100  d-flex">
+            <div class="hours_count ">
+                <div class="hours_count-wrap">
+                    <h1 class="statisticsNumber">{{ gym }}</h1>
+                    <h3>Gym</h3>
+                </div>
+            </div>
+            <div class="count_icon ">
+                <img src="{% static 'BJJournal/img/GYM.png' %}">
+
+            </div>
+
+        </div>
+    </div>
+    <div class="count_item">
+        <div class=" text-center  h-100 w-100 d-flex ">
+            <div class="hours_count ">
+                <div class="hours_count-wrap">
+                    <h1 class="statisticsNumber">{{ total }}</h1>
+                    <h3>Total</h3>
+                </div>
+            </div>
+            <div class="count_icon ">
+                <img src="{% static 'BJJournal/img/time.png' %}">
+            </div>
+
+
+        </div>
+    </div>
+    <div class="count_item ">
+        <div class=" text-center p-0 h-100 w-100 d-flex">
+            <div class="hours_count">
+                <div class="hours_count-wrap">
+
+                    <h1 class="statisticsNumber">{{ last30days }}</h1>
+                    <h3>30 days</h3>
+                </div>
+            </div>
+
+            <div class="count_icon ">
+                <img src="{% static 'BJJournal/img/calendar.png' %}">
+
+            </div>
+
+        </div>
+    </div>
+
+    {#        <div class="count_Add w-100">#}
+    {#            <div class=" align-items-center  ">#}
+    {#                <div class="count_AddIcon"#}
+    {#                     hx-target="#BJR_view"#}
+    {#                     hx-get=" {% url 'addSession' %}">>#}
+    {#                    <img src="{% static 'BJJournal/img/plus.png' %}">#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+
+
+</div>

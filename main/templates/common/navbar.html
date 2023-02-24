@@ -1,63 +1,84 @@
 {% load static %}
 
-<div class="container-fluid navStyling navContainer d-flex justify-content-between align-items-center  fixed-top p-0
-{% if request.path == '/' %} landingNavbar {% endif %}">
 
-    <nav class=" w-100 navbar navbar-expand-lg  navbar-dark  d-lg-block">
-        <div class="px-2 container p-0 positionAdjust">
-            <a class="navbar-brand nav-link d-inline p-1" target="_blank" href="/">
-                <img src=" {% static 'main/img/logo-removebg.png' %}">
-            </a>
+<nav id="header" class="  fixed-top
+ navStyling navContainer navbar d-flex  align-items-center navbar-dark navbar-expand-lg ">
+    <a class="ml-5 navbar-brand nav-link position-absolute d-inline p-1" target="_blank" href="/">
+        <img src=" {% static 'main/img/logo-removebg.png' %}">
+    </a>
 
-            <button class="navbar-toggler"
-                    data-bs-target=".mainNavCollapse"
-                    data-bs-toggle="collapse"
-                    aria-expanded="false"
-                    aria-controls="collapseWrap">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+     <button class="navbar-toggler  position-absolute"
 
-            <div class="collapse mainNavCollapse navbar-collapse justify-content-end px-md-4 text-center text-lg-left">
-                <div class=" px-2  navbar-nav navbarNav">
-                    <a class="nav-item" href="/">Home</a>
-                    <a class="nav-item" href="/bjjournal">BJJournal</a>
-                    <a class="nav-item" href="/clubs">Clubs</a>
+                data-bs-target=".mainNavCollapse"
+                data-bs-toggle="collapse"
+                aria-expanded="false"
+                aria-controls="collapseWrap">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
+    <div class=" mainNavCollapse collapse navbar-collapse   align-items-center
+    justify-content-center justify-content-lg-end px-5">
+        <div class="navbar-nav  d-flex px-md-4 text-center  justify-content-lg-end">
+            <a class="nav-item" href="/">Home</a>
+            <a class="nav-item" href="/bjjournal">BJJournal</a>
+            <a class="nav-item" href="/clubs">Clubs</a>
 
-                    {#            ACCOUNT BUTTON        #}
-                    <div class="  nav-item position-relative ">
-                        <a type="button"
-                           class=" text-center dropdown-toggle"
-                           data-bs-target=".accountDropdown"
-                           data-bs-toggle="collapse"
-                           aria-haspopup="true"
-                           aria-expanded="false">Account</a>
-                        <div class="accountDropdown dropdown-menu  ">
-                            {#                        <div class="dropdown-menu accountDropdown">#}
-                            {% if user.is_authenticated %}
+            {#                                ACCOUNT BUTTON#}
+            <div class="  nav-item position-relative ">
+                <a type="button"
+                   class=" text-center dropdown-toggle"
+                   data-bs-target=".accountDropdown"
+                   data-bs-toggle="collapse"
+                   aria-haspopup="true"
+                   aria-expanded="false">Account</a>
+                <div class="accountDropdown dropdown-menu  ">
+                    <div class="dropdown-menu accountDropdown">
+                        {% if user.is_authenticated %}
 
-                                <a class="dropdown-item" href="{% url 'myAccount' %}">Account</a>
-                                <a class="dropdown-item" href="{% url 'myAccount' %}">Profile</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
+                            <a class="dropdown-item" href="{% url 'myAccount' %}">Account</a>
+                            <a class="dropdown-item" href="{% url 'myAccount' %}">Profile</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
 
-                            {% else %}
-                                <a class="dropdown-item" href="{% url 'account_login' %}">Log In</a>
-                                <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
-                            {% endif %}
-                        </div>
+                        {% else %}
+                            <a class="dropdown-item" href="{% url 'account_login' %}">Log In</a>
+                            <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
+                        {% endif %}
                     </div>
-
-                    {#BELL#}
-                    {% if user.is_authenticated %}
-
-                           {% include 'Notifications/notificationIcon.html' %}
-
-                    {% endif %}
                 </div>
+
             </div>
+            {% if user.is_authenticated %}
+
+                {% include 'Notifications/notificationIcon.html' %}
+
+            {% endif %}
 
         </div>
+</nav>
 
-    </nav>
-</div>
+
+{#<div class="container-fluid navStyling navContainer mx-0 p-0#}
+{#m-0 d-flex justify-content-between align-items-center  fixed-top#}
+{#{% if request.path == '/' %} landingNavbar {% endif %}">#}
+{##}
+{##}
+{#    <nav class=" w-100 navbar  navbar-dark m-0 px-0 py-0  d-block">#}
+{#        <div class=" container p-0 positionAdjust h-100 p-0">#}
+{#        <div class="px-2 m-0  ">#}
+{#            <button class="navbar-toggler position-absolute"#}
+{#                    data-bs-target=".mainNavCollapse"#}
+{#                    data-bs-toggle="collapse"#}
+{#                    aria-expanded="false"#}
+{#                    aria-controls="collapseWrap">#}
+{#                <span class="navbar-toggler-icon"></span>#}
+{#            </button>#}
+{##}
+{#            #}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#        </div>#}
+{##}
+{#    </nav>#}
+{#</div>#}

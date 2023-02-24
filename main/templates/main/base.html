@@ -2,26 +2,27 @@
 {% load static %}
 <html lang="en">
 <head>
-     {% include 'main/../common/load_basic_scripts.html' %}
+    {% include 'main/../common/load_basic_scripts.html' %}
     <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
     <title> {% block title %}  Mativation {% endblock %} </title>
 </head>
 
-<body  hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     {% include "common/navbar.html" %}
 
-            {% block content %}
+    <div class="min-vh-100 vw-100 container-fluid mx-0  p-0">
+        {% block content %}
 
-            {% endblock %}
+        {% endblock %}
+    </div>
 
 
-
-{% include "common/footer.html" %}
+    {% include "common/footer.html" %}
 
     <script>
-    document.body.addEventListener('htmx:configRequest', function(evt) {
-        evt.detail.headers['X-CSRFToken] = '{{csrf_token}}'
-    });
+        document.body.addEventListener('htmx:configRequest', function (evt) {
+            evt.detail.headers['X-CSRFToken] = '{{csrf_token}}'
+        });
     </script>
 
 </body>

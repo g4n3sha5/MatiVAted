@@ -1,55 +1,54 @@
 {% extends 'main/base.html' %}
 {% load static %}
 {% block title %}
-Home
+    Home
 {% endblock %}
 {% block content %}
-    <main class="page landing-page">
+    <main class="page landing-page ">
+
         <section class="clean-block clean-hero position-relative p-5">
             <div class="wave">
-                <svg width="100%" height="355px" viewBox="0 0 1920 355" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+                <svg width="100%" height="355px"
+                     viewBox="0 0 1920 355" version="1.1"
+                     xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FAF9F6">
-                        <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,757 L1017.15166,757 L0,757 L0,439.134243 Z" id="Path"></path>
+                        <g id="Apple-TV" transform="translate(0.000000, -402.000000)" fill="#FAF9F6">
+                            <path d="M0,439.134243 C175.04074,464.89273 327.944386,477.771974 458.710937,477.771974 C654.860765,477.771974 870.645295,442.632362 1205.9828,410.192501 C1429.54114,388.565926 1667.54687,411.092417 1920,477.771974 L1920,757 L1017.15166,757 L0,757 L0,439.134243 Z"
+                                  id="Path"></path>
+                        </g>
                     </g>
-                </g>
-            </svg>
+                </svg>
             </div>
 
-            <div class=" w-100 text1 position-absolute py-4 text-white">
-                <h2>Do you love Jiu Jitsu? This app is created for you!</h2>
-                <p>Know your needs - manage your habits!</p>
-                <button class="btn btn-outline-light btn-lg" type="button">Learn More</button>
+            <div class=" w-100 text1 position-absolute py-4 px-0 text-white">
+                <h2 class="px-4">Do you love Jiu Jitsu? This app is created for you!</h2>
+                <p class="px-2">Know your needs - manage your habits!</p>
+                <a class="btn btn-outline-light btn-lg"
+                   type="button"
+                   href="#bubble"
+                >Learn More</a>
             </div>
+
         </section>
 
 
-        <section class="clean-block clean-info dark">
-            {# four bubbles section                #}
-            <div class="container-fluid bubbleContainer">
+        <section class="clean-block clean-info dark w-100">
+            {#             four bubbles section#}
+            <div id="bubble" class="container-fluid bubbleContainer navStyling">
                 {% include 'main/indexElements/bubbleSection.html' %}
             </div>
-            <div class="container-fluid silhouettecontainer">
-                <div class="row py-5">
+            <div class="container-fluid silhouetteContainer w-100">
+                <div class="d-flex justify-content-center align-items-center py-5">
                     <div class="silhouette">
                         {% include 'main/svg/svgele2.svg' %}
                     </div>
                 </div>
             </div>
-            {#             buddha section#}
-            <div class="container-fluid buddha-fluid p-5">
+            {#                         buddha section#}
+            <div class="container-fluid buddha-fluid p-lg-5 p-2">
                 {% include 'main/indexElements/buddhaSection.html' %}
             </div>
-
-               {# black belt section#}
-                {#<div class="container-fluid position-relative p-2">#}
-
-                {#                <div class=" text position-relative py-4 text-white my-auto">#}
-                {#                    <h2>Do you love Jiu Jitsu? This app is created for you!</h2>#}
-                {#                      <p>Know your needs - manage your habits!</p>#}
-                {#                    <button class="btn btn-outline-light btn-lg" type="button">Learn More</button>#}
-                {#                </div>#}
-                {#                </div>#}
 
 
         </section>
@@ -57,70 +56,79 @@ Home
         <section class="clean-block features">
             <div class="container">
                 <div class="block-heading">
-                    <h2 class="text-info">Features</h2>
-                    <p>Product is offering few functionalities related to productivity and Brazilian Jiu Jitsu overall.<p>
+                    <h2 class="text-info ">Features</h2>
+                    <p>Product is offering few functionalities related to productivity and Brazilian Jiu Jitsu overall.
+                    <p>
                 </div>
                 <div class="row justify-content-center">
+                    <div class="col-md-5 feature-box">
+                        <i class="bi bi-collection-fill"></i>
+                        <h4>Training Sessions </h4>
+                        <p> Save training type, length, techniques etc. in BJJournal. Measure your progress and check statistics.</p>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="bi bi-people-fill"></i>
+                        <h4>Clubs / Social app</h4>
+                        <p>Join Club with your sparring partners. Create your profile and let others see you!
+                            Set Schedule & create Club Training Sessions, so others can attend.</p>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="bi  bi-diagram-3-fill"></i>
+                        <h4>Techniques Base</h4>
+                        <p>BJJ / Judo / Grappling Techniques open database. Every user can add up to 5 techniques before
+                            verification. </p>
+                    </div>
                     <div class="col-md-5 feature-box"><i class="fas fa-helicopter"></i>
-                        <h4>News </h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
+                        <h4>Quotes</h4>
+                        <p>Create profile of your favourite thinker and add inspirational quotes.</p>
                     </div>
-                    <div class="col-md-5 feature-box"><i class="fas fa-pencil-alt"></i>
-                        <h4>Customizable</h4>
-                        <p>LBAAAAAAAAAAit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
-                    </div>
-                    <div class="col-md-5 feature-box"><i class="fas fa-helicopter"></i>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
-                    </div>
-                    <div class="col-md-5 feature-box"><i class="fas fa-helicopter"></i>
-                        <h4>All Browser Compatibility</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>
-                    </div>
+{#                    <div class="col-md-5 feature-box"><i class="fas fa-helicopter"></i>#}
+{#                        <h4>Quotes</h4>#}
+{#                        <p>Create profile of your favourite thinker and add inspirational quotes.</p>#}
+{#                    </div>#}
                 </div>
             </div>
         </section>
-{#        <section class="clean-block slider dark">#}
-{#            <div class="container">#}
-{#                <div class="block-heading">#}
-{#                    <h2 class="text-info">Slider</h2>#}
-{#                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>#}
-{#                </div>#}
-{#                <div id="carousel-1" class="carousel slide" data-bs-ride="carousel">#}
-{#                    <div class="carousel-inner">#}
-{#                        <div class="carousel-item active"><img class="w-100 d-block" src="scenery/image1.jpg" alt="Slide Image" /></div>#}
-{#                        <div class="carousel-item"><img class="w-100 d-block" src="scenery/image4.jpg" alt="Slide Image" /></div>#}
-{#                        <div class="carousel-item"><img class="w-100 d-block" src="scenery/image6.jpg" alt="Slide Image" /></div>#}
-{#                    </div>#}
-{#                    <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>#}
-{#                    <ol class="carousel-indicators">#}
-{#                        <li class="active" data-bs-target="#carousel-1" data-bs-slide-to="0"></li>#}
-{#                        <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>#}
-{#                        <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>#}
-{#                    </ol>#}
-{#                </div>#}
-{#            </div>#}
-{#        </section>#}
-{#        <section class="clean-block about-us">#}
-{#            <div class="container">#}
-{#                <div class="block-heading">#}
-{#                    <h2 class="text-info">About </h2>#}
-{#                    <p>This is a non-commercial product created by a single person. If you like the product and would like to support: Go to </p>#}
-{#                    Support#}
-{#                </div>#}
-{#                <div class="row justify-content-center">#}
-{#                    <div class="col-sm-6 col-lg-4">#}
-{#                        <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="avatars/avatar3.jpg" />#}
-{#                            <div class="card-body info">#}
-{#                                <h4 class="card-title">Ally Sanders</h4>#}
-{#                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>#}
-{#                                <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </section>#}
-</main>
+        {#        <section class="clean-block slider dark">#}
+        {#            <div class="container">#}
+        {#                <div class="block-heading">#}
+        {#                    <h2 class="text-info">Slider</h2>#}
+        {#                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam urna, dignissim nec auctor in, mattis vitae leo.</p>#}
+        {#                </div>#}
+        {#                <div id="carousel-1" class="carousel slide" data-bs-ride="carousel">#}
+        {#                    <div class="carousel-inner">#}
+        {#                        <div class="carousel-item active"><img class="w-100 d-block" src="scenery/image1.jpg" alt="Slide Image" /></div>#}
+        {#                        <div class="carousel-item"><img class="w-100 d-block" src="scenery/image4.jpg" alt="Slide Image" /></div>#}
+        {#                        <div class="carousel-item"><img class="w-100 d-block" src="scenery/image6.jpg" alt="Slide Image" /></div>#}
+        {#                    </div>#}
+        {#                    <div><a class="carousel-control-prev" href="#carousel-1" role="button" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span><span class="visually-hidden">Previous</span></a><a class="carousel-control-next" href="#carousel-1" role="button" data-bs-slide="next"><span class="carousel-control-next-icon"></span><span class="visually-hidden">Next</span></a></div>#}
+        {#                    <ol class="carousel-indicators">#}
+        {#                        <li class="active" data-bs-target="#carousel-1" data-bs-slide-to="0"></li>#}
+        {#                        <li data-bs-target="#carousel-1" data-bs-slide-to="1"></li>#}
+        {#                        <li data-bs-target="#carousel-1" data-bs-slide-to="2"></li>#}
+        {#                    </ol>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </section>#}
+        {#        <section class="clean-block about-us">#}
+        {#            <div class="container">#}
+        {#                <div class="block-heading">#}
+        {#                    <h2 class="text-info">About </h2>#}
+        {#                    <p>This is a non-commercial product created by a single person. If you like the product and would like to support: Go to </p>#}
+        {#                    Support#}
+        {#                </div>#}
+        {#                <div class="row justify-content-center">#}
+        {#                    <div class="col-sm-6 col-lg-4">#}
+        {#                        <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="avatars/avatar3.jpg" />#}
+        {#                            <div class="card-body info">#}
+        {#                                <h4 class="card-title">Ally Sanders</h4>#}
+        {#                                <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>#}
+        {#                                <div class="icons"><a href="#"><i class="icon-social-facebook"></i></a><a href="#"><i class="icon-social-instagram"></i></a><a href="#"><i class="icon-social-twitter"></i></a></div>#}
+        {#                            </div>#}
+        {#                        </div>#}
+        {#                    </div>#}
+        {#                </div>#}
+        {#            </div>#}
+        {#        </section>#}
+    </main>
 
 
 

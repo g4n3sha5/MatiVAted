@@ -1,9 +1,9 @@
 {% load static %}
 <div class="container buddhasection ">
     <div class="row align-items-start mt-4 g-5 ">
-        <div class="col-md-5 my-auto "><img class="img-buddha" src="{% static 'main/img/amit-kumar.jpg' %}" /></div>
+        <div class="col-lg-5  p-4 p-lg-1 img-buddha-wrap"><img class="img-buddha" src="{% static 'main/img/amit-kumar.jpg' %}" /></div>
 
-        <div class="col-md-7">
+        <div class="col-lg-7 ">
             <div class="card quotecard m-0 " style="border-radius: 15px;">
                 <div class="card-body p-4">
                     <div class="text-center pt-0 mb-1 pb-2">
@@ -31,8 +31,10 @@
                 <p>As science proves, the best way to achieve our goals is to create a system, that will make us embrace the routine without obsessing
                     over the final objective. <br>
                     The best way to boost your motivation is focus on these small wins. Every small step you accomplish gives you a feeling of power.
-                    <h2> STAY MATIVATED.</h2></p>
-            </div><button class="btn btn-outline-primary btn-lg" type="button">Join Now</button>
+                    <h2 class="navStyling font-weight-700 my-2 "> STAY MATIVATED.</h2></p>
+            </div><a href="{% url 'account_signup' %}"
+                class="btn btn-outline-primary text-white btn-lg my-2"
+                type="button">Join Now</a>
         </div>
     </div>
 </div>

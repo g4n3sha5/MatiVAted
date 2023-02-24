@@ -47,18 +47,21 @@ class TrainingSession(models.Model):
     notes = models.TextField(max_length=2500,blank=True, null=True)
     techniques = models.ManyToManyField(Technique, blank=True)
     fightTime = models.IntegerField(blank=True, null=True)
-    addedByUser = models.ManyToManyField(User, related_name="addedByUser", blank=True)
+    user = models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
     #change to foreign key???????? ^
     def __str__(self):
         return f'{self.type} {self.date}'
     def parseMinutes(self, hours, minutes):
+
         hoursToMins = hours * 60
         return hoursToMins + minutes
 
     def clean(self):
-        if self.fightTime > self.parseMinutes(self.hoursLength, self.minutesLength):
-            raise ValidationError("Sparring Time is longer than training!")
-
+        if self.hoursLength and self.minutesLength:
+            if self.fightTime > self.parseMinutes(self.hoursLength, self.minutesLength):
+                raise ValidationError("Sparring Time is longer than training!")
+        else:
+            return self.hoursLength
     def save(self, *args, **kwargs):
         self.totalLength = self.parseMinutes(self.hoursLength, self.minutesLength)
         super(TrainingSession, self).save(*args, **kwargs)

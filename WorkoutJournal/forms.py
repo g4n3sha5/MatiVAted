@@ -37,10 +37,10 @@ class TrainingSessionForm(ModelForm):
 
     # time = forms.TimeField(widget = forms.TimeInput(attrs={
     #     'input_type' : 'time'}))
-    timestamp = forms.DateField(widget=forms.TimeInput(attrs={
+    timestamp = forms.TimeField(widget=forms.TimeInput(attrs={
         'class':'timepicker',
         'type' :'time'
-    }))
+    }), required=False)
 
 
     location = forms.CharField(widget=forms.TextInput(attrs={
