@@ -1,10 +1,143 @@
-<div class="row">
-    <div class="clubSchedule h-100 navPadding leftNavPadding
-    vh-100 overflow-hidden pb-5 text-white">
-        {% if userHasClub %}
-        <h2> Club Schedule</h2>
-        {{ cal}}
-        {% endif %}
+{% load static %}
+{% load Clubs_tags %}
+<div id="scheduleModal"
 
+     data-backdrop="false"
+     class="modal w-100   h-100 navPadding "
+     tabindex="-1" role="dialog"
+     aria-labelledby="scheduleModal"
+     aria-hidden="true">
+
+</div>
+
+<div class="row w-100"
+>
+    <div id="clubSchedule"
+         class=" clubSchedule h-100 navPadding
+    overflow-hidden pb-5 text-white">
+        {#        {% if not userHasClub %}#}
+        <h2 class="text-center mb-3">Your Club Schedule</h2>
+
+
+        <div class="overflow-auto outer calendar px-5">
+
+            {{ scheduleForm.errors }}
+            <table >
+
+                <tr>
+                    {% for day in days %}
+                        <th> {{ day }} </th>
+                    {% endfor %}
+                    {#                            <th>Monday</th>#}
+                    {#                            <th>Tuesday</th>#}
+                    {#                            <th>Wednesday</th>#}
+                    {#                            <th>Thursday</th>#}
+                    {#                            <th>Friday</th>#}
+                    {#                            <th>Saturday</th>#}
+                    {#                            <th>Sunday</th>#}
+                </tr>
+
+                {% for timeHour, sessionsArray in hoursDict %}
+
+                    <tr>
+                    {% for day in days %}
+                        <td class="position-relative">
+                            <div class="tdWRAP w-100">
+
+
+                                {% for session in sessionsArray %}
+                                    {% if session.0 == day %}
+
+
+
+                                        {#                                    time #}
+                                        {% for info in session.2 %}
+                                            {% if info == 'GI' or info == 'NOGI' or info == 'GYM' %}
+                                                <div class="{{info}}schedule trainIcon d-flex flex-column justify-content-center p-2">
+                                                    <img class="fitIMG  "
+                                                         src="{% static 'BJJournal/img/' %}{{ info }}.png">
+                                                    {{ info }}
+                                                </div>
+
+                                                <div class="d-flex justify-content-center align-items-center scheduleTD p-0 pt-1">
+                                                    <h1>{{ session.1 }}</h1>
+                                                </div>
+                                            {% else %}
+                                                <p class="scheduleTD">
+                                                    {{ info }}
+                                                </p>
+                                            {% endif %}
+                                            <div class="deleteTD">
+                                                <i class="bi bi-x"></i>
+                                            </div>
+
+                                        {% endfor %}
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </td>
+                    {% endfor %}
+                    {##}
+                {% endfor %}
+                {#                    </tr>#}
+
+
+                {#                    <tr>#}
+                {#                        {% for day in days %}#}
+                {#                            {% get_obj_attr club day as dayDict %}#}
+                {##}
+                {#                                {% for time, info in dayDict %}#}
+                {##}
+                {#                                {% endfor %}#}
+                {##}
+                {#                            {% endfor %}#}
+                {#                    </tr>#}
+
+                <tr>
+                    {% for day in days %}
+
+                        <td class="pt-1 px-1">
+                            <div class="w-100 d-flex justify-content-between">
+                                <div
+
+                                        data-toggle="modal"
+                                        data-target="#scheduleModal"
+                                        hx-target="#scheduleModal"
+                                        hx-get="{% url 'addTrainingModal' 'GI' day %}"
+                                        class="scheduleIcon w-25 p-1">
+                                    <img class="fitIMG"
+                                         src="{% static 'BJJournal/img/GI.png' %}">
+                                </div>
+
+                                <div data-toggle="modal"
+                                     data-target="#scheduleModal"
+                                     hx-target="#scheduleModal"
+                                     hx-get="{% url 'addTrainingModal' 'NOGI' day %}"
+                                     class="scheduleIcon w-25 p-1">
+                                    <img class="fitIMG"
+                                         src="{% static 'BJJournal/img/NOGI.png' %}">
+                                </div>
+
+                                <div
+                                        data-toggle="modal"
+                                        data-target="#scheduleModal"
+                                        hx-target="#scheduleModal"
+                                        hx-get="{% url 'addTrainingModal' 'GYM' day %}"
+                                        class="scheduleIcon w-25 p-1">
+                                    <img class="fitIMG"
+                                         src="{% static 'BJJournal/img/GYM.png' %}">
+                                </div>
+                            </div>
+
+                        </td>
+                    {% endfor %}
+                </tr>
+
+            </table>
+        </div>
     </div>
+
+
+    {#        {% endif %}#}
+    {##}
 </div>

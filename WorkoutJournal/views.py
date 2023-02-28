@@ -68,7 +68,7 @@ def addSession(request):
 
         if form.is_valid():
             instance = form.save(commit=False)
-            print(instance.timestamp)
+
             instance.user = request.user
             instance.save()
             messages.success(request, "Added your session")

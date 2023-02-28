@@ -71,6 +71,10 @@ body {
     font-weight: 700;
 }
 
+.font-weight-800 {
+    font-weight: 700;
+}
+
 /* ============= */
 /*.col-md-2-5 { width: 20.83333%;}*/
 /*.col-md-9-5 { width: 79.16667%; }*/
@@ -78,7 +82,7 @@ body {
     box-sizing: border-box;
 }
 
-.img-buddha, .silhouette img, .bjjimg, .countSection img,
+.fitIMG, .img-buddha, .silhouette img, .bjjimg, .countSection img,
 .wrapper img, .yourSessionsType img, .beltIMG img {
     max-height: 100%;
     max-width: 100%;
@@ -115,9 +119,11 @@ body {
     /*padding-top:0 !important;*/
     /*padding:0 14vw;*/
 }
-.navContainer .navbar-brand{
-    margin-left:12vw;
+
+.navContainer .navbar-brand {
+    margin-left: 12vw;
 }
+
 .landingNavbar {
     background: rgba(42, 50, 75, 0.01);
     /*background: transparent !important;*/
@@ -150,9 +156,10 @@ body {
         background: rgba(36, 30, 106, 0.9488);
         /*width: 100%;*/
     }
+
     .navContainer {
-    padding:0;
-}
+        padding: 0;
+    }
 }
 
 /*position: absolute;*/
@@ -164,7 +171,7 @@ body {
 /*top:calc(var(--navHeight) + 25px)*/
 
 
-.navContainer  a {
+.navContainer a {
     color: whitesmoke;
     text-shadow: -3px 1px 21px rgba(72, 149, 239, 0.65);
 }
@@ -363,25 +370,15 @@ nav a img {
     background-image: radial-gradient(farthest-corner, rgba(16, 0, 43, 0.4), rgba(72, 12, 168, 0.8));
 }
 
-.text {
-    background: /*black belt gradient*/ linear-gradient(90deg,
-    rgba(0, 12, 12, 1) 2%,
-    rgba(255, 255, 255, 1) 4%,
-    rgba(255, 255, 255, 1) 5%,
-    rgba(219, 19, 18, 1) 7%,
-    rgba(219, 19, 18, 1) 28%,
-    rgba(255, 255, 255, 1) 32%,
-    rgba(255, 255, 255, 1) 33%,
-    rgba(0, 8, 8, 1) 34%,
-    rgba(0, 13, 13, 1) 36%,
-    rgba(0, 0, 0, 1) 87%);,
+
+.feature-box i {
+    font-size: 50px;
 }
-.feature-box i{
-    font-size:50px;
-}
-.feature-box h4{
+
+.feature-box h4 {
     font-weight: 700;
 }
+
 .clean-hero::before {
     content: " ";
     position: absolute;
@@ -414,8 +411,9 @@ nav a img {
 .section-heading {
     color: #240046;
 }
-.navbar-toggler-icon *, .closeNavIcon{
-    color:white !important;
+
+.navbar-toggler-icon *, .closeNavIcon {
+    color: white !important;
 }
 
 @media (min-width: 576px) {
@@ -447,25 +445,31 @@ h2, .h2 {
 
 .bubbleContainer {
     background-color: #f2f3f4;
-    min-height:50vh;
+    min-height: 35vh;
+
 }
-.silhouetteContainer{
-    height:55vh;
+
+.silhouetteContainer {
+    height: 55vh;
 }
+
 .bubbleSection p {
     color: black !important;
 }
-.feature-1{
-    margin:0 15px;
-    height:90%;
-    display:flex;
+
+.feature-1 {
+    margin: 0 15px;
+    height: 90%;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
 
 }
-.feature-1:first-child{
-    margin-bottom:15px;
+
+.feature-1:first-child {
+    margin-bottom: 15px;
 }
+
 .feature-1 .wrap-icon {
     color: white;
     font-size: 2rem;
@@ -474,7 +478,7 @@ h2, .h2 {
     width: 100px;
     border-radius: 50%;
     position: relative;
-    margin-bottom: 17px;
+    margin-bottom: 15.55px;
     box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.25);
     display: inline-flex;
     align-items: center;
@@ -485,11 +489,17 @@ h2, .h2 {
     /*background: linear-gradient(-55deg, #5753C9, #2d71a2);*/
     background: linear-gradient(45deg, hsla(271, 100%, 14%, 1) 17%, hsla(271, 85%, 23%, 1) 64%);
 }
-.feature-1 h3{
+
+.feature-1 h3 {
     font-weight: 800;
-    padding:0 25px;
-    height:80px;
+    padding: 0 17px;
+    height: 55.55px;
+    /*margin-bottom:15px;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+
 .feature-1 p {
     color: white;
     letter-spacing: 1px;
@@ -501,12 +511,32 @@ h2, .h2 {
 
 .silhouette, .silhouette svg {
     max-height: 45vh;
-    max-width:80vw;
+    max-width: 80vw;
 }
-.buddhasection .col-lg-7{
-    padding-left:60px !important;
+
+@media (min-width: 800px) {
+    .buddhasection .col-lg-7 {
+        padding-left: 60px !important;
+    }
 }
+
+. rajdhani {
+    font-family: Rajdhani, serif !important;
+}
+
+.MATIVATED {
+    font-family: Rajdhani, serif;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 1px rgba(231, 231, 235, 1);
+    font-weight: 800;
+}
+
+.getting-started-info h2 {
+    font-size: 50px;
+}
+
 .quotecard {
+
     box-shadow: rgba(58, 12, 163, 0.25) 0px 45px 45px, rgba(58, 12, 163, 0.22) 0px -12px 30px,
     rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(72, 12, 168, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     /*box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;*/
@@ -518,6 +548,7 @@ h2, .h2 {
 .quotecard blockquote {
     border-top: solid 1px lightgray;
     border-bottom: solid 1px lightgray;
+
 }
 
 .buddha-fluid {
@@ -525,16 +556,44 @@ h2, .h2 {
     /*background: linear-gradient(90deg, rgba(60,9,108,1) 5%, rgba(16,0,43,0.99) 50%, rgba(60,9,108,1) 95%);*/
     /*background-image: linear-gradient(#10002B, #480CA8);*/
 }
-.getting-started-info h2{
-font-size:45px;
 
- }
-.img-buddha-wrap{
-    margin-top:100px;
+.text {
+    background: /*black belt gradient*/ linear-gradient(90deg,
+    rgba(0, 12, 12, 1) 2%,
+    rgba(255, 255, 255, 1) 4%,
+    rgba(255, 255, 255, 1) 5%,
+    rgba(219, 19, 18, 1) 7%,
+    rgba(219, 19, 18, 1) 28%,
+    rgba(255, 255, 255, 1) 32%,
+    rgba(255, 255, 255, 1) 33%,
+    rgba(0, 8, 8, 1) 34%,
+    rgba(0, 13, 13, 1) 36%,
+    rgba(0, 0, 0, 1) 87%);,
 }
+
+.img-buddha-wrap {
+    margin-top: 100px;
+}
+
 .img-buddha {
     box-shadow: rgba(67, 97, 238, 0.25) 0px 54px 55px, rgba(72, 149, 239, 0.22) 0px -12px 30px,
     rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(72, 12, 168, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.features {
+    background-color: #2e007b;
+    color: white;
+}
+
+.block-heading h2 {
+    font-size: 60px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*background-color:black;*/
+    color: white;
+    margin-bottom: 35px;
 }
 
 
@@ -602,6 +661,7 @@ font-size:45px;
 }
 
 @media (max-width: 480px) {
+
     .circleWrap {
         width: 42vw !important;
         height: 42vw !important;
@@ -889,16 +949,19 @@ font-size:45px;
 
 #footer .social-links a {
     font-size: 18px;
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: #262626;
     color: #fff;
     line-height: 1;
     padding: 8px 0;
     border-radius: 50%;
     text-align: center;
-    width: 36px;
-    height: 36px;
+    width: 55px;
+    height: 55px;
     transition: 0.3s;
+    margin: 0 2px;
 }
 
 #footer .social-links a:hover {
@@ -949,7 +1012,7 @@ font-size:45px;
 }
 
 .footer-links a:hover {
-    color: #eb4444;
+    color: #4ccaf0;
 }
 
 #footer .footer-tops {
@@ -1304,8 +1367,8 @@ a {
 
 .addSessionSection {
     height: 100vh;
-    scale:0.8;
-    padding-top:calc(var(--navHeight) / 2);
+    scale: 0.8;
+    padding-top: calc(var(--navHeight) / 2);
     /*min-height: 121vh;*/
 
     /*!*background:#6961d0;*!*/
@@ -2844,8 +2907,80 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     text-align: center;
     border: 1px solid white;
 }
+.clubSchedule td{
+    border:1px solid white;
+    padding:0 10px;
+}
+/*================= CLUBS SCHEDULE ===========*/
+.calendar td {
+    text-align: center !important;
+}
+.clubSchedule{
+    height:200vh;
+}
+.tdWRAP {
+    height:100px !important;
+    overflow:hidden;
+    width:10vw;
+}
+.tdWRAP h1{
+    font-size:28px;
+    font-weight:800;
+    text-align: center;
+}
+.scheduleIcon{
+    background-color:#04D2F8;
+    /*padding:7px;*/
 
+}
+#scheduleModal{
+    z-index:25;
+    position: absolute;
+    /*left:0;*/
+    /*right:0;*/
+    /*top:0;*/
+    /*bottom:0;*/
+}
+.scheduleModalIcon{
+    background-color: #04D2F8;
+    position:absolute;
+    top:8px;
+    padding:7px;
+    right:8px;
+    width:50px;
+    height:50px;
+}
 
+.scheduleTD{
+    margin-left:35% !important;
+}
+.trainIcon{
+    width:35%;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+
+}
+.deleteTD{
+    position:b
+}
+.trainIcon img{
+    height:64%;
+    margin-top:5px;
+}
+.calendar td p{
+    font-size:12px;
+}
+.GIschedule{
+    background-color: #4ccaf0.
+}
+.NOGIschedule{
+    background-color: #4361ee;
+}
+.GYMschedule{
+    background-color: #3d4e81;
+}
 /*================ TIMELINE =================*/
 .BJR_timeline {
     position: absolute;

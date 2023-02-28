@@ -1,0 +1,71 @@
+{% load static %}
+{##}
+
+
+<div class="modal-dialog overflow-hidden" role="document">
+    <div class="modal-content h-100 ">
+        <div class="modal-header d-flex flex-column">
+
+            <div class="scheduleModalIcon">
+                <img class="fitIMG"
+                     src="{% static 'BJJournal/img/' %}{{ type }}.png">
+            </div>
+            You are adding training for {{ day }}<br>
+            What time is the training?
+            {{ scheduleForm.description }}
+            <div class="timeLabel my-2">
+                {{ scheduleForm.time }}
+            </div>
+
+            <div class="quickDateWrap d-flex  justify-content-around w-100 my-2">
+                <span class="quickDate quickTimeBtn btn btn-outline-primary">6:00</span>
+                <span class="quickDate quickTimeBtn btn btn-outline-primary ">9:00</span>
+                <span class="quickDate quickTimeBtn btn btn-outline-primary ">12:00</span>
+                <span class="quickDate quickTimeBtn btn btn-outline-primary ">18:00</span>
+                <span class="quickDate quickTimeBtn btn btn-outline-primary ">20:00</span>
+            </div>
+
+            <div class=" mb-3 w-100 ">
+
+                <div class=" w-100 d-flex flex-column  justify-content-center align-items-center">
+
+
+                    <div class="timeStampWrap d-flex  w-100 justify-content-between">
+                        <div class=" timeStampBtn">
+                            <i class="bi bi-dash"></i>1h
+                        </div>
+                        <div class=" timeStampBtn">
+                            <i class="bi bi-plus"></i>5min
+                        </div>
+                        <div class=" timeStampBtn">
+                            <i class="bi bi-plus"></i>15min
+                        </div>
+
+                        <div class=" timeStampBtn">
+                            <i class="bi bi-plus"></i>1h
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer d-flex justify-content-between">
+            <button
+                    data-dismiss="modal"
+                    type="button"
+                    class="btn btn-secondary ">cancel
+            </button>
+
+            <form class=""
+                  method="POST">
+                {% csrf_token %}
+                <button hx-post="{% url 'addTrainingModal' type day %}"
+                        hx-target="#Clubs_view"
+                        type="button"
+                        class="btn btn-success">save
+                    {#                        data-dismiss="modal">Save#}
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -73,3 +73,19 @@ class MemberForm(ModelForm):
     #     'placeholder': 'Favourite grappler'
     # }), required=False)
 
+class ScheduleForm(forms.Form):
+    # NIE DZIALA????????????
+    time = forms.CharField(
+        widget=forms.TimeInput(
+
+        attrs={
+            'class': 'timepicker',
+            'type': 'time',
+
+    }),  required=True)
+
+    description = forms.CharField(widget=forms.TextInput(attrs={
+        'class': 'form-control w-100 h-100 text-center',
+        'placeholder': 'Short description...',
+        'maxlength' : 60
+    }), required=False)

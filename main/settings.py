@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account_register.apps.UsersConfig',
+    # 'django.template.loaders.app_directories.load_template_source',
     'crispy_forms',
     'crispy_bootstrap5',
     'allauth',

@@ -73,7 +73,8 @@ class UserMembership(models.Model):
     slug = models.SlugField(null=True, blank=True)
     club = models.ForeignKey(Club, related_name='membersClub', on_delete=models.CASCADE, null=True)
 
-
+def userClub( userID):
+    return UserMembership.objects.get(user_id=userID).club
 class Request(models.Model):
     ACCEPTED = (
         ('YES', 'YES'),
@@ -106,15 +107,16 @@ class Schedule(models.Model):
     # 'GI' '19:00'
     # 'GI' '20:00'
     # 'GI' '21:00'
-
-    monday =    models.JSONField(default=dict)
-    tuesday =   models.JSONField(default=dict)
-    wednesday = models.JSONField(default=dict)
-    thursday =  models.JSONField(default=dict)
-    friday =    models.JSONField(default=dict)
-    saturday =  models.JSONField(default=dict)
-    sunday =    models.JSONField(default=dict)
-    ownerClub = models.ForeignKey(Club, on_delete=models.CASCADE)
+    days = ['Monday', 'Tuesday', 'Wednesday',
+            'Thursday', 'Friday', 'Saturday', 'Sunday']
+    Monday =  models.JSONField(default=dict)
+    Tuesday =   models.JSONField(default=dict)
+    Wednesday = models.JSONField(default=dict)
+    Thursday =  models.JSONField(default=dict)
+    Friday =    models.JSONField(default=dict)
+    Saturday =  models.JSONField(default=dict)
+    Sunday =    models.JSONField(default=dict)
+    club = models.ForeignKey(Club, on_delete=models.CASCADE)
 
 # @receiver(post_save, sender=Request)
 # def create_notification(sender, instance, created, **kwargs):

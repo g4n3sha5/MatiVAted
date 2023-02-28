@@ -170,7 +170,7 @@ def memberProfile(request, clubID, userID):
     }
     return render(request, "Clubs/memberProfileModal.html", context)
 
-def clubsTrainings(request):
+def clubTrainings(request):
     context = {}
     return render(request, "Clubs/clubsTrainings.html", context)
 

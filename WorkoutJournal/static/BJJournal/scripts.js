@@ -116,68 +116,9 @@ function quickDateButtons() {
     }
 }
 
-function quickTimeButtons() {
-    let quickTimeBtn = document.querySelectorAll('.quickTimeBtn')
-    let timeStampBtn = document.querySelectorAll('.timeStampBtn')
-    let timeInput = document.querySelector('.timeLabel input')
-    if (quickTimeBtn) {
-        quickTimeBtn.forEach(btn => {
-            let btnValue = btn.textContent
-            if (btnValue.length === 4) {
-                btnValue = '0' + btnValue
-            }
-            btn.addEventListener('click', (evt) => {
-                timeInput.value = btnValue
-            })
-        })
-    }
 
-    if (timeStampBtn) {
-        timeStampBtn.forEach(btn => {
-            btn.addEventListener('click', evt => {
-                let minus = btn.querySelector('.bi-dash')
-                let timeStampValue = btn.textContent
-                let time = timeInput.value
-                if (!time) {
-                    time = '00:00'
-                }
-                let hours = time.slice(0, -3)
-                let minutes = time.slice(-2)
 
-                if (timeStampValue.includes('h')) {
-                    if (minus){ hours = parseInt(hours) - parseInt(timeStampValue)}
-                    else{
-                         hours = parseInt(hours) + parseInt(timeStampValue)
-                    }
 
-                }
-                if (timeStampValue.includes('min')) {
-                    minutes = parseInt(minutes) + parseInt(timeStampValue)
-
-                    if (minutes >= 60) {
-                        let hoursLeft = Math.floor(minutes / 60)
-                        let minutesLeft = minutes % 60
-                        hours = parseInt(hours) + hoursLeft
-
-                        minutes = minutesLeft
-                    }
-                }
-                hours = zeroCheck(hours)
-                minutes = zeroCheck(minutes)
-                timeInput.value = hours + ':' + minutes
-            })
-
-        })
-    }
-}
-
-const zeroCheck = (digit) => {
-    let x = digit.toString()
-    if (x.length === 1) {
-        x = '0' + digit.toString()
-    }
-    return x
-}
 
 function toggleActive() {
     let choiceButton = document.querySelector('.choice-btn')
@@ -406,7 +347,7 @@ function allFunctions() {
     multiSelect()
     onClickColor()
     quickDateButtons()
-    quickTimeButtons()
+
 
     editDescription()
     showModal()
