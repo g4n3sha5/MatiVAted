@@ -4,42 +4,44 @@
 <head>
     <title> {% block title %}  MATivation {% endblock %} </title>
     {% include 'main/../../../main/templates/common/load_basic_scripts.html' %}
-    <link rel="stylesheet" href="{% static 'account_register/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
 </head>
 
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-         {% include "common/navbar.html" %}
+{% include "common/navbar.html" %}
 
-        <div class="container-fluid vh-100 pt-5 pb-1 inputsize">
+<div class="container-fluid min-vh-100  p-0 m-0 navStyling overflow-hidden">
 
-            <div class=" py-5 row d-flex justify-content-center align-items-center h-100 " >
-                <div class = "col-xl-11 h-100">
-                    <div class="card rounded-3 h-100 overflow-hidden">
-                        <div class="row g-0 h-100">
-                            <div class="navStyling col-lg-6 h-100 p-0 position-relative card-mother">
-                                    {% include "common/messages.html" %}
 
-                                    {% block content %}
-                                    {% endblock %}
+    <div class="row g-0 h-100 w-100 p-0 ">
+        <div class=" col-lg-6 h-100 p-0 position-relative card-mother navPadding min-vh-100">
+            {% include "common/messages.html" %}
 
-                            </div>
+            {% block content %}
+            {% endblock %}
 
-                            <div class="col-lg-6 d-flex align-items-center banner-image">
-                                <img class="napis" src="{% static 'account_register/img/napis.png' %}">
-                                <div class="text-white font-weight-bold px-3 py-4 p-md-5 mx-md-4" >
-                                    <h2 class="mb-4">Every Journey begins with a single step <step></step></h2>
-                                    <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
 
+        <div
+                style="background-image: url({% static 'main/img/sam-mgrdichian5.png' %}"
+                class="col-lg-6 d-flex flex-column  banner-image h-100 navPadding min-vh-100 align-items-center">
+
+            {#                                <img class="napis" src="{% static 'account_register/img/napis.png' %}">#}
+            <div class="text-white   font-weight-bold px-5  w-100">
+                <h2 class="mb-3 everyJourney "> Every Journey begins with a single step
+
+                </h2>
+                <h2 class="trainJitsu -center mb-0 px-1">Train jiu-jitsu, save your progress and advance faster.</h2>
+            </div>
+
+
+            <img src="{% static 'account_register/img/yyang2.png' %}">
+
+        </div>
+
+    </div>
+</div>
+{% include "common/footer.html" %}
 
 </body>
 </html>

@@ -14,6 +14,8 @@ htmx_urlpatterns = [
     path('clubs/removemember/<int:id>', views.memberRemove, name="memberRemove"),
     path('clubs/trainings', views.clubTrainings, name="clubTrainings"),
     path('clubs/schedule', views_schedule.clubSchedule, name="clubSchedule"),
+    path('clubs/schedule/delete/<str:type>/<str:day>/<str:hour>/<int:clubID>',
+         views_schedule.removeTrainingSchedule, name="removeTrainingSchedule"),
     path('clubs/schedule/add/<str:type>/<str:day>', views_schedule.addTrainingModal, name="addTrainingModal"),
     # path('clubs/schedule/add/<str:type>/<str:day>', views_schedule.scheduleAddTraining, name="scheduleAddTraining"),
     path('clubs/list', views.clubsList, name="clubsList"),

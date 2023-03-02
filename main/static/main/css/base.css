@@ -33,7 +33,8 @@ body {
     /*font-family: 'Rajdhani', sans-serif !important;*/
     /*font-weight:600;*/
     font-size: 22px;
-    background-color: #f2f3f4;
+    /*background-color: #f2f3f4;*/
+    background-color: #240046;
     width: 100vw;
     overflow-x: hidden;
 }
@@ -116,12 +117,13 @@ body {
 
 .navContainer {
     height: var(--navHeight);
-    /*padding-top:0 !important;*/
-    /*padding:0 14vw;*/
+    /*!*padding-top:0 !important;*!*/
+    padding:0 10vw;
+
 }
 
 .navContainer .navbar-brand {
-    margin-left: 12vw;
+    margin-left: 4vw;
 }
 
 .landingNavbar {
@@ -158,10 +160,9 @@ body {
     }
 
     .navContainer {
-        padding: 0;
+        padding: 0 !important;
     }
 }
-
 /*position: absolute;*/
 /*right:0;*/
 /*left:0;*/
@@ -226,6 +227,7 @@ nav a img {
 .l-navbar {
     position: fixed;
     top: 0;
+    bottom:0;
     /*left: -30%;*/
     width: var(--nav-width);
     height: 100vh;
@@ -449,9 +451,7 @@ h2, .h2 {
 
 }
 
-.silhouetteContainer {
-    height: 55vh;
-}
+
 
 .bubbleSection p {
     color: black !important;
@@ -508,9 +508,12 @@ h2, .h2 {
 .wrap-icon i {
     font-weight: bold;
 }
+.silhouetteContainer {
+    height:65vh;
 
+}
 .silhouette, .silhouette svg {
-    max-height: 45vh;
+    max-height: 55vh;
     max-width: 80vw;
 }
 
@@ -728,8 +731,10 @@ h2, .h2 {
     /*background-color:#f2f3f4;*/
     /*background-color:#3f37c9;*/
     color: black;
-    padding-bottom: 150px;
-
+    /*padding-bottom: 150px;*/
+    height:100%;
+    justify-content: center;
+    padding-bottom:20vh;
 }
 
 .toggle {
@@ -774,6 +779,7 @@ h2, .h2 {
 }
 
 .profText {
+    margin-top:7px;
     margin-left: 29%;
     padding: 0 20px;
 }
@@ -971,11 +977,12 @@ h2, .h2 {
 }
 
 #footer h4 {
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 22px;
+    font-weight: 700;
     color: #fff;
     position: relative;
     padding-bottom: 12px;
+    margin-left:4px;
 }
 
 
@@ -1023,7 +1030,7 @@ h2, .h2 {
 }
 
 .bjjimg {
-    background: transparent url('../img/bjjcartoontr3.png') no-repeat;
+    background: transparent url('../img/brucelee.png') no-repeat;
     background-size: contain;
 
 }
@@ -1037,32 +1044,26 @@ a {
 }
 
 
-/*TO DO LIST JOURNAL*/
-
-/*.inputsize {*/
-/*    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);*/
-/*    !*background:url("../img/10.jpg");*!*/
-/*    object-fit: contain;z*/
-/*}*/
-
 .ToDoItem {
     width: 75%;
     display: flex;
 }
 
-.card-mother * {
-    color: #3ede93;
+.formContent * {
+    color: #51e19e;
+
+
 }
 
 .card-mother {
-    background-color: #10002B;
+    background-color: #342ea9;
+    /*background-color: #3f37c9;*/
+    /*background-color: #10002B;*/
     /*padding-top: 15vh;*/
     z-index: 25;
 
     /*background-image: linear-gradient(-225deg, #22E1FF 0%, #1D8FE1 48%, #625EB1 100%);*/
-    /*background-image: linear-gradient(-225deg, #3D4E81 0%, #5753C9 48%, #6E7FF3 100%);*/
-    /*background:url("../img/10aa.jpg");*/
-    /*background:#4000AB;*/
+
 
 }
 
@@ -1075,19 +1076,48 @@ a {
     transform: scale(1.2);
 }
 
-.formContent {
-    font-size: 1.4vw;
+/* ================== ACCOUNT REGISTER ===========*/
+.formContent *{
+    font-size: 28px;
 }
+.everyJourney{
+    font-size:36px;
+    font-weight:600;
+    letter-spacing:2px;
+}
+.napis{
+    /*background-color:#2e007b;*/
+    color:white;
+    /*position:absolute;*/
+    /*right:0;*/
+    /*left:0;*/
+    padding:25px 0;
 
+}
+.napis h2{
+     font-weight:600 !important;
+}
+.banner-image{
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.banner-image img{
+    margin-top:85px;
+    margin-bottom:15px;
+    width:58%
+}
 .formContent .btn {
     box-shadow: 0 1px 3px 1px #ddd;
-    font-size: 1.02vw
+    font-size: 19px;
+}
+.trainJitsu {
+    font-size:27px;
 }
 
-.btn-google {
-    color: #545454;
-    background-color: #ffffff;
-}
+/*.btn-google {*/
+/*    color: #545454;*/
+/*    background-color: #ffffff;*/
+/*}*/
 
 .or-container {
     align-items: center;
@@ -2335,14 +2365,16 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 .locationWrap {
     height: 8vh;
 }
-
+ .clubProfile input[type=text] {
+        height: 85px;
+    }
 @media screen and (max-width: 900px) {
     .clubProfile input[type=text] {
-        height: 13vh;
+        height: 55px;
     }
 
     .locationWrap {
-        height: 16vh;
+        height: 10vh;
     }
 }
 
@@ -2409,11 +2441,18 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     background-position: center;
     background-size: contain;
 }
-
-.clubProfile {
-    min-height: 100vh;
+@media screen and (min-width: 765px) {
+    .clubProfile {
+    height: 100vh;
 }
+}
+/*.clubProfile {*/
+/*    min-height: 100vh;*/
+/*}*/
+.clubProfile .col-md-6{
+    height:100vh !important;
 
+}
 .saveClubBtn {
     background: blue;
 }
@@ -2963,7 +3002,9 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 
 }
 .deleteTD{
-    position:b
+    position:absolute;
+    top:5px;
+    right:10px;
 }
 .trainIcon img{
     height:64%;
@@ -2973,7 +3014,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     font-size:12px;
 }
 .GIschedule{
-    background-color: #4ccaf0.
+    background-color: #4ccaf0;
 }
 .NOGIschedule{
     background-color: #4361ee;

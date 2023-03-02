@@ -1,15 +1,39 @@
 {% extends 'account/base.html' %}
 {% load static %}
 {% block title %}
-Login here
+    Login here
 {% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <form method="post" class= "form-group">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="btn btn-success p-2">Login</button>
-         <p class="text-center"> Don't have an account? <a href="/register"> Register </a></p>
-    </form>
+
+    <div class="card-body border-0 mx-md-2 h-100 mb-5  p-0">
+
+        <div class="napis w-100  text-center ">
+            <h2> Log in to your account </h2>
+        </div>
+
+        {# login / register forms #}
+        <form method="POST" class="mt-3 form-group px-4 ">
+            <div class="formContent px-lg-5  pt-2">
+
+                <div class="input-group d-flex flex-column px-4 ">
+                    <form method="post" class="form-group">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <button type="submit" class="btn text-white btn-primary p-2 mt-4">Login</button>
+                        <p class="text-center mt-2"> Don't have an account?
+                            <a class="text-white font-weight-700" href="{% url 'account_signup' %}">
+                            Register </a></p>
+                    </form>
+                </div>
+
+
+            </div>
+        </form>
+
+
+    </div>
+
+
 
 {% endblock %}

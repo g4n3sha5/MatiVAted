@@ -1,5 +1,6 @@
 {% load static %}
-<div class="clubProfile clubContent position-relative  overflow-hidden  ">
+<div class="clubProfile clubContent position-relative  overflow-hidden
+ min-vh-100  ">
 
     <div class="profileBackground w-100  ">
         {% if success %}
@@ -11,13 +12,13 @@
     </div>
     {% if authorized %}
         <form enctype="multipart/form-data"
-              class="h-100"
+              class="min-vh-100 h-100"
               hx-target=".Clubscontent"
               hx-post="."
               hx-trigger="change delay:600ms, submit">
             {{ csrf.token }}
 
-            <div class="row h-100  ">
+            <div class="row h-100 min-vh-100 ">
 
                 <div class="col-md-6 d-flex align-items-center justify-content-start
                  flex-column position-relative">
@@ -39,7 +40,7 @@
                 {#                                        Save Info#}
                 {#                                    </button>#}
 
-                <div class="rightSideProfile col-md-6 pt-5 px-3 d-flex flex-column align-items-center">
+                <div class="rightSideProfile col-md-6  px-3 d-flex flex-column align-items-center">
 
                     {% include 'Clubs/Clubs_reloadContent_rightColumn.html' %}
                     {{ form.errors }}

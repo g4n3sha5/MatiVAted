@@ -10,10 +10,6 @@ from django.utils.safestring import mark_safe
 
 def clubSchedule(request):
     days = Schedule.days
-
-    if request.method == 'DELETE':
-        pass
-
     # userHasClub = False
     myClub = userClub(request.user.id)
     try:
@@ -35,6 +31,10 @@ def clubSchedule(request):
                 hoursDict[timeHours].append([day, time, info])
     hoursDict = sorted(hoursDict.items())
 
+    authorized = False
+    membership = UserMembership.objects.get(user_id=request.user.id)
+    if membership.authorized == 'FULL':
+        authorized = True
 
     # for timeHour, sessionsArray in hoursDict:
     #     print(timeHour, sessionsArray)
@@ -43,6 +43,7 @@ def clubSchedule(request):
         # 'userHasClub' : UserMembership.objects.get(user_id = request.user.id),
         # 'cal' : mark_safe(HTMLcal),
         # 'dayDict' : dayDict,
+        'authorized' : authorized,
         'club' : userClub(request.user.id),
         'days' : days,
         'hoursDict' : hoursDict
@@ -52,7 +53,7 @@ def clubSchedule(request):
     return render(request, 'Clubs/clubsSchedule.html', context)
 
 
-def addTrainingModal(request, type, day ):
+def addTrainingModal(request, type, day):
     form = ScheduleForm()
     myClub = userClub(request.user.id)
 
@@ -77,8 +78,18 @@ def addTrainingModal(request, type, day ):
     return render(request, 'Clubs/clubsScheduleModal.html', context)
 
 
-def scheduleAddTraining(request, type, day):
-    pass
+def removeTrainingSchedule(request, type, day, hour, clubID):
+    mySchedule = Schedule.objects.get(club_id=clubID)
+    dayField = getattr(mySchedule, day)
+    print(dayField.items())
+    for hourDB, info in dayField.items():
+        if hourDB == hour:
+            del dayField[hourDB]
+            mySchedule.save()
+            break
+    return HttpResponseRedirect(reverse('clubSchedule'))
+
+
 # def get_date(req_day):
 #     if req_day:
 #         year, month = (int(x) for x in req_day.split('-'))

@@ -59,10 +59,10 @@
             <form class=""
                   method="POST">
                 {% csrf_token %}
-                <button hx-post="{% url 'addTrainingModal' type day %}"
+                <button hx-post="{% url 'clubSchedule' type day %}"
                         hx-target="#Clubs_view"
                         type="button"
-                        class="btn btn-success">save
+                        class="btn btn-success">Save
                     {#                        data-dismiss="modal">Save#}
                 </button>
             </form>

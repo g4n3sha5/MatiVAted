@@ -14,15 +14,15 @@
   {%include "common/navbar.html" %}
    {% include "Clubs/Clubs_leftSideMenu.html" %}
 
-        <div class = "leftNavPadding BJR container-fluid  p-0  ">
+        <div class = "leftNavPadding BJR container-fluid  p-0 overflow-hidden   ">
 
-            <div class ="p-0 row  h-100" >
+            <div class ="p-0   min-vh-100" >
 
                     {% if user.is_authenticated %}
 
 
 
-                        <div class="myContent col  position-relative p-0">
+                        <div class="myContent position-relative p-0">
                               {% include "common/messages.html" %}
                             {% block content %}
                             {% endblock %}

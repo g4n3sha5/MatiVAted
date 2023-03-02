@@ -22,7 +22,7 @@
         <div class="overflow-auto outer calendar px-5">
 
             {{ scheduleForm.errors }}
-            <table >
+            <table>
 
                 <tr>
                     {% for day in days %}
@@ -38,7 +38,7 @@
                 </tr>
 
                 {% for timeHour, sessionsArray in hoursDict %}
-
+                    {#                    backend provides dictionary, where key is hour, when trainings happen, and key is all info#}
                     <tr>
                     {% for day in days %}
                         <td class="position-relative">
@@ -46,30 +46,44 @@
 
 
                                 {% for session in sessionsArray %}
+
                                     {% if session.0 == day %}
+                                        {# DAY #}
 
-
-
-                                        {#                                    time #}
                                         {% for info in session.2 %}
                                             {% if info == 'GI' or info == 'NOGI' or info == 'GYM' %}
-                                                <div class="{{info}}schedule trainIcon d-flex flex-column justify-content-center p-2">
+                                                <div class="{{ info }}schedule trainIcon d-flex flex-column justify-content-center p-2">
                                                     <img class="fitIMG  "
                                                          src="{% static 'BJJournal/img/' %}{{ info }}.png">
                                                     {{ info }}
+                                                    {#  TYPE#}
                                                 </div>
 
                                                 <div class="d-flex justify-content-center align-items-center scheduleTD p-0 pt-1">
                                                     <h1>{{ session.1 }}</h1>
+                                                    {#  HOUR#}
                                                 </div>
+
+                                                {% if authorized %}
+
+                                                    <form class="deleteTD">
+                                                        {% csrf_token %}
+                                                        <span
+                                                                hx-delete="{% url 'removeTrainingSchedule' info session.0 session.1 club.id %}"
+                                                                hx-target="#Clubs_view"
+                                                                class="p-2 border-0">
+                                                        <i class="bi bi-x"></i>
+                                                    </span>
+                                                    </form>
+                                                {% endif %}
+
                                             {% else %}
                                                 <p class="scheduleTD">
                                                     {{ info }}
+                                                    {#  DESCRIPTON #}
                                                 </p>
                                             {% endif %}
-                                            <div class="deleteTD">
-                                                <i class="bi bi-x"></i>
-                                            </div>
+
 
                                         {% endfor %}
                                     {% endif %}

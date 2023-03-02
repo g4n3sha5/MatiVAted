@@ -9,24 +9,24 @@
 {% block content %}
 
 {#    container div for everything on this page#}
-     <div class="card-body pt-5 mx-md-4 h-100 mb-5 ">
+     <div class="card-body border-0 mx-md-2 h-100 mb-5  p-0">
 
-        <div class="napis napisReg  bg-gray text-center py-auto bg-light d-flex align-items-center justify-content-center">
-            <h2> Register your account</h2>
-        </div>.
+        <div class="napis w-100  text-center ">
+            <h2> Register your free account</h2>
+        </div>
 
         {# login / register forms #}
-        <form method = "POST" class = "mt-3 form-group p-5 ">
-            <div class = "formContent px-3">
+        <form method = "POST" class = "mt-3 form-group px-4 ">
+            <div class = "formContent px-5 pt-2">
 
-                    <div class = "input-group d-flex flex-column ">
+                    <div class = "input-group d-flex flex-column px-4 ">
                         {% csrf_token %}
                         {{form|crispy}}
                     </div>
 
                     {#buttons section#}
                         <div class="d-flex pb-2 mx-auto px-5 flex-column mt-3">
-                            <button type ="submit" name ="save" class="btn btn-primary mx-2 ">Create Account</button>
+                            <button type ="submit" name ="save" class="btn btn-primary text-white mx-2 ">Create Account</button>
 
                              {#google button#}
                             {% get_providers as socialaccount_providers %}
@@ -34,13 +34,14 @@
 
                                 <div class="or-container"><div class="line-separator"></div> <div class="or-label">or</div><div class="line-separator"></div></div>
 
-                                <a class="btn mx-2 btn-google btn-outline" href="{% provider_login_url 'google' %}">
+                                <a class="btn mx-2 btn-google btn-outline text-white" href="{% provider_login_url 'google' %}">
                                 <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
                                       &nbsp; Sign Up Using Google
                                 </a>
                             {% endif %}
 
-                            <p class="text-center mt-1"> Already have an account? <a href="/login" class="text-decoration-none text-primary"> Log In </a></p>
+                            <p class="text-center mt-1 font-weight-700"> Already have an account?
+                                <a href="{% url 'account_login' %}" class="text-decoration-none text-white "> Log In </a></p>
                         </div>
             </div>
         </form>

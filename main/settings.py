@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-q$h-7xe*!yo(u8wr-het-!8ybcp%wmyw-(mc+j^3(r7%&obof$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'Journal',
     'WorkoutJournal',
     'Clubs',
+    'Presentation',
     'django_static_fontawesome',
     'daphne',
     'fontawesome',

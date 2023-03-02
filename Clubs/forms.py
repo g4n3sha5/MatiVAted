@@ -35,18 +35,18 @@ class ClubForm(ModelForm):
 
 
     address = forms.CharField(widget=forms.Textarea(attrs={
-        'class': 'form-control w-100 h-100 text-center',
+        'class': 'form-control w-100 h-100 text-center ',
         'placeholder': 'Address...'
     }), required=False)
 
     city = forms.CharField(widget=forms.TextInput(attrs={
-        'class': 'form-control w-100 h-100 text-center',
+        'class': 'form-control w-100  text-center',
         'placeholder': 'Postal code (optional), City'
     }), required=False)
 
     phoneNumber = forms.CharField(widget=forms.TextInput(attrs={
         'class': 'form-control w-100 text-center',
-        'placeholder': 'Contact phone number(s)'
+        'placeholder': 'Phone number(s) 615 515 242, 555 555 555 '
     }), required=False)
 
     email = forms.CharField(widget=forms.TextInput(attrs={
