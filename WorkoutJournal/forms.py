@@ -25,7 +25,7 @@ class TrainingSessionForm(ModelForm):
     type = forms.ChoiceField(choices=TrainingSession.TStypes, widget=forms.RadioSelect())
 
     notes = forms.CharField(widget=forms.Textarea(attrs={
-        'class': ' BJRnotes form-control mx-3 h-100',
+        'class': ' BJRnotes form-control  h-100',
         'spellcheck': 'false',
         'placeholder': 'Training notes...'
     }), required=False)
@@ -71,9 +71,11 @@ class TrainingSessionForm(ModelForm):
     techniques = forms.ModelMultipleChoiceField(queryset=Technique.objects.all(),
                                                 widget=forms.CheckboxSelectMultiple(),
                                                 required=False)
-        # widget=forms.CheckboxSelectMultiple(attrs={'class':'techniqueOption list-group-item p-2 d-flex '
-        #                                                  'align-items-center cursor-pointer justify-content-between '
-        #                                                  'mb-1 d-block bg-transparent'}))
+
+
+    # widget=forms.CheckboxSelectMultiple(attrs={'class':'techniqueOption list-group-item p-2 d-flex '
+    #                                                  'align-items-center cursor-pointer justify-content-between '
+    #                                                  'mb-1 d-block bg-transparent'}))
     # widget=TechniquesCheckBox())
 
 

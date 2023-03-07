@@ -4,85 +4,90 @@
 <div class="yourSessionsSection  w-100 navPadding ">
 
     {% for session in sessionsList %}
-    {#    {% for session in sessionsList reversed %}#}
-    <div hx-get="{% url 'singleSessionView' session.id session.orderIndex %}"
-         hx-target="#modalContainer"
-         class="grid-item img-buddha cursor-pointer ">
+        {#    {% for session in sessionsList reversed %}#}
+        <div hx-get="{% url 'singleSessionView' session.id session.orderIndex %}"
+             hx-target="#modalContainer"
+             class="grid-item img-buddha cursor-pointer ">
 
-        <div class="sessionDate p-2 px-3 d-flex justify-content-between w-100">
-            {% if session.date %}
-                <h3>
-                    {{ session.date }}
-                </h3>
-            {% endif %}
-            <h4 class="SessionId">
-                #{{ session.orderIndex }}
-            </h4>
-        </div>
-
-
-        <div class="SessionNotes  py-lg-1 px-3 ">
-            <div class="row h-100 ">
-
-                <div class="col-6 SessionNotesLeft h-100 ">
-                    {% if session.notes !=  None %}
-                        <div class="cut-overflow h-100">
-                            {{ session.notes }}.
-                        </div>
-                    {% endif %}
-                </div>
-
-                <div class="col-6 p-3 h-100">
-                    {% if session.techniques != None %}
-                        <div class="cut-overflow h-100">
-                            {% for technique in session.techniques.all %}
-                                <h4 class="d-inline sessTechnique">{{ technique }}</h4>
-                            {% endfor %}
-                        </div>
-
-                    {% endif %}
-                </div>
-
-            </div>
-        </div>
-
-        <div class="SessionInfo overflow-hidden d-flex
-        justify-content-end align-items-stretch mx-0">
-
-            {#                /% if club has logo %}#}
-            {#                <div class="col-2 SessionLogo">#}
-            {#                    <img alt="Club ogo" src="{% static 'BJJournal/img/gblogo.png' %}">#}
-            {#                </div>  #}
-
-            <div class=" SessionLogo  d-flex align-items-center justify-content-center ">
-                {#                    {% if session.location %}#}
-                <h3 class="font-weight-700">{{ session.location }}</h3>
-                {#                    {% endif %}#}
+            <div class="sessionDate p-2 px-3 d-flex justify-content-between w-100">
+                {% if session.date %}
+                    <h3>
+                        {{ session.date }}
+                    </h3>
+                {% endif %}
+                <h4 class="SessionId">
+                    #{{ session.orderIndex }}
+                </h4>
             </div>
 
-            <div class="restSession d-flex ">
-                <div class=" yourSessionsType count_icon d-flex   overflow-hidden p-2 ">
-                    <img alt="{{ session.type }} symbol" src="{% static 'BJJournal/img/' %}{{ session.type }}.png">
 
-                </div>
+            <div class="SessionNotes  py-lg-1 px-3 ">
+                <div class="row h-100 ">
 
-                <div class="  sessionLength d-flex align-items-center justify-content-between">
-                    <h4 class="w-100"> {{ session.hoursLength }}:{% if session.minutesLength == 0 %}00 h{% else %}{{ session.minutesLength }} h
+                    <div class="col-6 SessionNotesLeft h-100 ">
+                        {% if session.notes %}
+                            <div class="cut-overflow h-100">
+                                {{ session.notes }}
+                            </div>
                         {% endif %}
+                    </div>
 
-                    </h4>
-                    <div class="sessionFight d-flex flex-column pt-1">
-                        <h6> {{ session.fightTime }} min</h6>
-                        <img class="fightIcon" src="{% static 'BJJournal/img/katana.png' %}">
+                    <div class="col-6 p-3 h-100">
+
+                        {% if session.techniques %}
+
+
+                            <div class="cut-overflow h-100 pb-1">
+                                {% for technique in session.techniques.all %}
+                                    <h4 class="d-inline sessTechnique">{{ technique }}</h4>
+                                {% endfor %}
+
+                            </div>
+
+                        {% endif %}
                     </div>
 
                 </div>
             </div>
-            {#                {% if session.location %}#}
+
+            <div class="SessionInfo overflow-hidden d-flex
+        justify-content-end align-items-stretch mx-0">
+
+                {#                /% if club has logo %}#}
+                {#                <div class="col-2 SessionLogo">#}
+                {#                    <img alt="Club ogo" src="{% static 'BJJournal/img/gblogo.png' %}">#}
+                {#                </div>  #}
+
+                <div class=" SessionLogo  d-flex align-items-center justify-content-center ">
+                    {#                    {% if session.location %}#}
+                    <h3 class="font-weight-700">{{ session.location }}</h3>
+                    {#                    {% endif %}#}
+                </div>
+
+                <div class="restSession d-flex ">
+                    <div class=" yourSessionsType count_icon d-flex   overflow-hidden p-lg-3 p-2 ">
+                        <img alt="{{ session.type }} symbol" src="{% static 'BJJournal/img/' %}{{ session.type }}.png">
+
+                    </div>
+
+                    <div class="  sessionLength d-flex align-items-center justify-content-between">
+                        <h4 class="w-100"> {{ session.hoursLength }}:{% if session.minutesLength == 0 %}00 h
+                            {% else %}{{ session.minutesLength }} h
+                        {% endif %}
+
+                        </h4>
+                        <div class="sessionFight d-flex flex-column pt-1 ">
+                            <h6> {{ session.fightTime }} min</h6>
+                            <img class="fightIcon" src="{% static 'BJJournal/img/katana.png' %}">
+                        </div>
+
+                    </div>
+                </div>
+                {#                {% if session.location %}#}
+
+            </div>
 
         </div>
-
-    </div>
 
     {% endfor %}
 

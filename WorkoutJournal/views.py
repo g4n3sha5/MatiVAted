@@ -72,7 +72,10 @@ def addSession(request):
             instance.user = request.user
             instance.save()
             messages.success(request, "Added your session")
-            # instance.addedByUser.add(request.user)
+            techn = form.cleaned_data.get('techniques')
+            for t in techn:
+                instance.techniques.add(t.id)
+
             return HttpResponseRedirect('/addSession')
         else:
             messages.error(request, "Invalid form. ")
@@ -100,8 +103,14 @@ def editSession(request, id=None, orderIndex=None):
 
     if request.method == 'POST':
         form = TrainingSessionForm(request.POST, instance=Session)
+        instance = form.save(commit=False)
         if form.is_valid():
-            form.save()
+            instance.techniques.clear()
+            techn = form.cleaned_data.get('techniques')
+            for t in techn:
+                instance.techniques.add(t.id)
+            instance.user = request.user
+            instance.save()
             return HttpResponseRedirect('/yourSessions')
     else:
         form = TrainingSessionForm(instance=Session)

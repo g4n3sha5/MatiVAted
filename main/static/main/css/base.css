@@ -1,6 +1,6 @@
 :root {
     --navHeight: 90px;
-    --nav-width: 68px;
+    --nav-width: 80px;
     --first-color: #5e71f2;
     /*--first-color: #4723D9;*/
     --first-color: #5E3EE0;
@@ -28,6 +28,12 @@
     /*padding-top: var(--navHeight);*/
 }
 
+body, html {
+    overflow-x: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
 body {
     font-family: "Roboto", sans-serif;
     /*font-family: 'Rajdhani', sans-serif !important;*/
@@ -36,7 +42,7 @@ body {
     /*background-color: #f2f3f4;*/
     background-color: #240046;
     width: 100vw;
-    overflow-x: hidden;
+
 }
 
 /* ========= FONTS =============*/
@@ -118,7 +124,7 @@ body {
 .navContainer {
     height: var(--navHeight);
     /*!*padding-top:0 !important;*!*/
-    padding:0 10vw;
+    padding: 0 10vw;
 
 }
 
@@ -163,6 +169,7 @@ body {
         padding: 0 !important;
     }
 }
+
 /*position: absolute;*/
 /*right:0;*/
 /*left:0;*/
@@ -227,10 +234,11 @@ nav a img {
 .l-navbar {
     position: fixed;
     top: 0;
-    bottom:0;
+    bottom: 0;
     /*left: -30%;*/
     width: var(--nav-width);
-    height: 100vh;
+    height: 100%;
+    /*height: 100vh;*/
     background-color: var(--first-color);
     padding-top: 15vh;
     transition: all 0.5s ease-in;
@@ -452,7 +460,6 @@ h2, .h2 {
 }
 
 
-
 .bubbleSection p {
     color: black !important;
 }
@@ -508,10 +515,12 @@ h2, .h2 {
 .wrap-icon i {
     font-weight: bold;
 }
+
 .silhouetteContainer {
-    height:65vh;
+    height: 65vh;
 
 }
+
 .silhouette, .silhouette svg {
     max-height: 55vh;
     max-width: 80vw;
@@ -732,9 +741,9 @@ h2, .h2 {
     /*background-color:#3f37c9;*/
     color: black;
     /*padding-bottom: 150px;*/
-    height:100%;
+    height: 100%;
     justify-content: center;
-    padding-bottom:20vh;
+    padding-bottom: 20vh;
 }
 
 .toggle {
@@ -779,7 +788,7 @@ h2, .h2 {
 }
 
 .profText {
-    margin-top:7px;
+    margin-top: 7px;
     margin-left: 29%;
     padding: 0 20px;
 }
@@ -982,7 +991,7 @@ h2, .h2 {
     color: #fff;
     position: relative;
     padding-bottom: 12px;
-    margin-left:4px;
+    margin-left: 4px;
 }
 
 
@@ -1077,41 +1086,48 @@ a {
 }
 
 /* ================== ACCOUNT REGISTER ===========*/
-.formContent *{
+.formContent * {
     font-size: 28px;
 }
-.everyJourney{
-    font-size:36px;
-    font-weight:600;
-    letter-spacing:2px;
+
+.everyJourney {
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: 2px;
 }
-.napis{
+
+.napis {
     /*background-color:#2e007b;*/
-    color:white;
+    color: white;
     /*position:absolute;*/
     /*right:0;*/
     /*left:0;*/
-    padding:25px 0;
+    padding: 25px 0;
 
 }
-.napis h2{
-     font-weight:600 !important;
+
+.napis h2 {
+    font-weight: 600 !important;
 }
-.banner-image{
+
+.banner-image {
     background-repeat: no-repeat;
     background-position: center;
 }
-.banner-image img{
-    margin-top:85px;
-    margin-bottom:15px;
-    width:58%
+
+.banner-image img {
+    margin-top: 85px;
+    margin-bottom: 15px;
+    width: 58%
 }
+
 .formContent .btn {
     box-shadow: 0 1px 3px 1px #ddd;
     font-size: 19px;
 }
+
 .trainJitsu {
-    font-size:27px;
+    font-size: 27px;
 }
 
 /*.btn-google {*/
@@ -1267,6 +1283,15 @@ a {
 
 }
 
+@media (min-width: 800px) {
+    .sessionType .count_icon {
+        height: 12vh !important;
+        width: 12vh;
+    }
+
+
+}
+
 .countItems .count_item {
     width: 90%;
 }
@@ -1376,8 +1401,10 @@ a {
     padding: 1rem;
     border-radius: 33%;
 }
-
-.count_icon input[type=radio], .techniqueOption input, .hideInput input, .hideInput input[type=radio] {
+/*CHECKBOX INVISIBLE*/
+.count_icon input[type=radio],
+.techniqueOption input,
+.hideInput input, .hideInput input[type=radio] {
     visibility: hidden;
     position: absolute;
     /*display:none;*/
@@ -1389,15 +1416,64 @@ a {
     height: 100%;
 }
 
-@media (max-width: 1100px) {
-    .addSessionSection {
-        height: 200vh;
-    }
-}
 
+
+
+/*@media screen and (min-width: 700px) and (max-width: 900px){*/
+/*    .addSessionSection {*/
+/*        height: 255vh !important;*/
+/*    }*/
+/*}*/
+/*@media screen and (min-width: 700px) and (max-width: 900px) and (min-height:1000px){*/
+/*    .addSessionSection {*/
+/*        height: 200vh !important;*/
+/*    }*/
+/*}*/
+
+/*@media screen and (min-width: 900px) and (max-width:1290px)*/
+/*    and (min-height:750px) {*/
+/*    .addSessionSection {*/
+/*        height: 210vh !important;*/
+/*    }*/
+/*}*/
+/*@media screen and (min-width: 1024px) and (max-height: 1024px){*/
+/*    .addSessionSection {*/
+/*        height: 208vh !important;*/
+/*    }*/
+/*}*/
+
+/*@media screen and (min-width: 1024px) and (min-height:1024px) {*/
+/*    .addSessionSection {*/
+/*        height: 125vh !important;*/
+/*    }*/
+/*}*/
+/*@media screen and (min-width: 400px) and (max-width: 700px){*/
+/*    .addSessionSection {*/
+/*        height: 270vh !important;*/
+/*    }*/
+/*}*/
+/*@media screen and (min-width: 400px) and (max-width: 700px) and (max-height:850px){*/
+/*    .addSessionSection {*/
+/*        height: 335vh !important;*/
+/*    }*/
+/*}*/
+
+/*@media (max-width: 400px) {*/
+/*    .addSessionSection {*/
+/*        height: 335vh !important;*/
+/*    }*/
+/*}*/
+/*@media screen and (max-width: 500px) and (min-height:700px){*/
+/*    .addSessionSection {*/
+/*        height: 310vh !important;*/
+/*    }*/
+/*}*/
 .addSessionSection {
-    height: 100vh;
-    scale: 0.8;
+    /*height: 250vh;*/
+    min-height:125vh;
+    padding-bottom:15px;
+    overflow:hidden;
+    /*scale: 0.8;*/
     padding-top: calc(var(--navHeight) / 2);
     /*min-height: 121vh;*/
 
@@ -1410,6 +1486,7 @@ a {
     /*border:none;*/
 
 }
+
 
 .addSession {
     padding: 0 4vw;
@@ -1450,7 +1527,7 @@ a {
 
 .BJRnotesWrap {
 
-    height: 15vh;
+    height: 12vh;
     /*padding:0 60px;*/
 
     /*height:100%;*/
@@ -1579,6 +1656,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     /*background-color:rgba(0, 0, 0, 0.44);*/
     background-color: #04D2F8;
     /*background-color: rgba(60, 51, 173, 0.96);*/
+
 }
 
 .sectionLength img {
@@ -1632,6 +1710,11 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     color: white;
     border-radius: 7px;
     font-size: 15px;
+
+}
+
+.quickTimeBtn {
+    width: 19%;
 }
 
 .timeStampLabel input {
@@ -1641,7 +1724,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 }
 
 .timeStampBtn {
-    width: 25%;
+    width: 23%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1650,12 +1733,36 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     border-radius: 8px;
     cursor: pointer;
     padding: 2px 7px;
-    margin: 0 10px;
+    margin: 0 2px;
+    font-size: 17px;
     background-color: var(--darkPurple) !important;
     border: 2px solid white;
 }
 
+.min {
+    font-size: 12px;
+    letter-spacing: 1px;
+}
 
+@media (max-width: 900px) {
+    .timeStampBtn {
+        width: 40%;
+        margin: 4px;
+    }
+
+    .quickTimeBtn {
+        width: 30%;
+    }
+    .sectionLength .addSessionLength{
+        width:10%; !important;
+        margin:2px 5px;
+    }
+}
+@media (max-width: 600px) {
+.sectionLength .addSessionLength{
+        width:18%; !important;
+    }
+}
 .choice-btn {
     font-size: 1.49rem;
     letter-spacing: 0.09rem;
@@ -1743,7 +1850,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 
 .techniquesOptions li {
     transition: transform .2s;
-    height: 4.6vh;
+    min-height: 45px;
     padding: 0.3vh 0;
     /*padding: 0.3vh 0.4vw;*/
     font-size: 1.8rem;
@@ -1762,7 +1869,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 
 @media (max-width: 600px) {
     .customScroll::-webkit-scrollbar {
-        width: 23px;
+        width: 12px;
     }
 }
 
@@ -2139,14 +2246,16 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 }
 
 .yourSessionsType {
-    width: 25%;
+    width: 29%;
     background-color: #00b4d8;
 }
 
 .yourSessionsSection .sessionLength {
     width: 70%;
     flex: 1;
+}
 
+.sessionLength {
     background: #1BD8FB !important;
 }
 
@@ -2158,6 +2267,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     text-align: center;
     background-color: #1E6AE1;
     font-size: 15px;
+    justify-content: center;
 }
 
 .fightIcon {
@@ -2190,7 +2300,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 }
 
 .cut-overflow * {
-    font-size: 65%;
+    font-size: 89%;
 !important;
 }
 
@@ -2365,9 +2475,11 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 .locationWrap {
     height: 8vh;
 }
- .clubProfile input[type=text] {
-        height: 85px;
-    }
+
+.clubProfile input[type=text] {
+    height: 45px;
+}
+
 @media screen and (max-width: 900px) {
     .clubProfile input[type=text] {
         height: 55px;
@@ -2441,18 +2553,21 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     background-position: center;
     background-size: contain;
 }
+
 @media screen and (min-width: 765px) {
     .clubProfile {
-    height: 100vh;
+        height: 100vh;
+    }
 }
-}
+
 /*.clubProfile {*/
 /*    min-height: 100vh;*/
 /*}*/
-.clubProfile .col-md-6{
-    height:100vh !important;
+.clubProfile .col-md-6 {
+    height: 100vh !important;
 
 }
+
 .saveClubBtn {
     background: blue;
 }
@@ -2946,82 +3061,98 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     text-align: center;
     border: 1px solid white;
 }
-.clubSchedule td{
-    border:1px solid white;
-    padding:0 10px;
+
+.clubSchedule td {
+    border: 1px solid white;
+    padding: 0 10px;
 }
+
 /*================= CLUBS SCHEDULE ===========*/
 .calendar td {
     text-align: center !important;
 }
-.clubSchedule{
-    height:200vh;
+
+.clubSchedule {
+    height: 200vh;
 }
+
 .tdWRAP {
-    height:100px !important;
-    overflow:hidden;
-    width:10vw;
+    height: 100px !important;
+    overflow: hidden;
+    width: 10vw;
 }
-.tdWRAP h1{
-    font-size:28px;
-    font-weight:800;
+
+.tdWRAP h1 {
+    font-size: 28px;
+    font-weight: 800;
     text-align: center;
 }
-.scheduleIcon{
-    background-color:#04D2F8;
+
+.scheduleIcon {
+    background-color: #04D2F8;
     /*padding:7px;*/
 
 }
-#scheduleModal{
-    z-index:25;
+
+#scheduleModal {
+    z-index: 25;
     position: absolute;
     /*left:0;*/
     /*right:0;*/
     /*top:0;*/
     /*bottom:0;*/
 }
-.scheduleModalIcon{
+
+.scheduleModalIcon {
     background-color: #04D2F8;
-    position:absolute;
-    top:8px;
-    padding:7px;
-    right:8px;
-    width:50px;
-    height:50px;
+    position: absolute;
+    top: 8px;
+    padding: 7px;
+    right: 8px;
+    width: 50px;
+    height: 50px;
 }
 
-.scheduleTD{
-    margin-left:35% !important;
+.scheduleTD {
+    margin-left: 35% !important;
 }
-.trainIcon{
-    width:35%;
-    position:absolute;
-    top:0;
-    bottom:0;
-    left:0;
+
+.trainIcon {
+    width: 35%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
 
 }
-.deleteTD{
-    position:absolute;
-    top:5px;
-    right:10px;
+
+.deleteTD {
+    position: absolute;
+    top: 5px;
+    right: 10px;
 }
-.trainIcon img{
-    height:64%;
-    margin-top:5px;
+
+.trainIcon img {
+    height: 64%;
+    margin-top: 5px;
 }
-.calendar td p{
-    font-size:12px;
+
+.calendar td p {
+    font-size: 12px;
 }
-.GIschedule{
+
+.GIschedule {
     background-color: #4ccaf0;
 }
-.NOGIschedule{
+
+.NOGIschedule {
     background-color: #4361ee;
 }
-.GYMschedule{
+
+.GYMschedule {
     background-color: #3d4e81;
 }
+
 /*================ TIMELINE =================*/
 .BJR_timeline {
     position: absolute;

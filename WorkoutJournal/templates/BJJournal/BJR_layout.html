@@ -8,46 +8,46 @@
 
 </head>
 
-<body  hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
 
   {%include "common/navbar.html" %}
   {% include "BJJournal/BJR_leftsideMenu.html" %}
-        <div class = "leftNavPadding BJR container-fluid p-0 min-vh-100
-         overflow-hidden">
 
-            <div class ="  min-vh-100" >
-
-                    {% if user.is_authenticated %}
+<div class=" BJR container-fluid p-0 min-vh-100
+         overflow-hidden m-0 leftNavPadding ">
 
 
+    <div class="  min-vh-100">
 
-                        <div class="BJR_content position-relative p-0">
-
-                            {% block content %}
-                            {% endblock %}
-                        </div>
+        {% if user.is_authenticated %}
 
 
-                    {% else %}
-                        <a href="/login">Login Here to see content</a>
-                    {% endif %}
 
+            <div class="BJR_content position-relative p-0">
+
+                {% block content %}
+                {% endblock %}
             </div>
-        </div>
-    {% include "common/footer.html" %}
+
+
+        {% else %}
+            <a href="/login">Login Here to see content</a>
+        {% endif %}
+
+    </div>
+</div>
+{% include "common/footer.html" %}
 
 {#    {% include "common/foo ter.html" %}#}
-    <script>
-        document.body.addEventListener('htmx:configRequest', function(evt) {
-            evt.detail.headers['X-CSRFToken'] = '{{csrf_token}}'
-        });
-    </script>
+<script>
+    document.body.addEventListener('htmx:configRequest', function (evt) {
+        evt.detail.headers['X-CSRFToken'] = '{{csrf_token}}'
+    });
+</script>
 
-        {% block script %}
+{% block script %}
 
-        {% endblock %}
-
+{% endblock %}
 
 
 </body>

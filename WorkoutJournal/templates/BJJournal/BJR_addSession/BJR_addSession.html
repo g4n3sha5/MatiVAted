@@ -3,30 +3,30 @@
 
 {% load static %}
 
-<div class="addSessionSection px-5  min-h-100 w-100 ">
+<div class="addSessionSection px-lg-5 min-h-100 px-1 w-100 navPadding d-flex justify-content-center   ">
 
-
-    <h1 class="text-white text-center">Add new session</h1>
-    <hr class="text-light">
 
     {#    <form method ="post" action ="/addSession/">#}
-    <form method="post">
+    <form method="post" class="container-fluid">
         {% csrf_token %}
+        <h1 class="text-white text-center">Add new session</h1>
+        <hr class="text-light">
+
         <div class="text-white">{{ BJRform.errors }}</div>
-        <div class="addSession row
-        justify-content-md-between justify-content-center align-items-start
-        py-2   ">
+        <div class="addSession row sessionType
+        justify-content-around justify-content-xl-between  align-items-start
+        py-2  gx-1  ">
             {% include 'common/messages.html' %}
             {% include 'BJJournal/BJR_addSession/BJR_addSession_sessionType.html' %}
 
 
-            <div class=" mx-auto BJRnotesWrap mx-xl-0 order-3 order-xl-2 col-xl-4 col-9  mt-2 mt-xl-0">
+            <div class=" mx-auto BJRnotesWrap mt-5 mt-lg-2 mx-xl-0 order-2  col-lg-4  col-md-6 col-10 mt-xl-0">
                 <label class="h-100 w-100">
                     {{ BJRform.notes }}
                 </label>
             </div>
-            <div class="col-xl-4 order-xl-3 sectionTechniques px-3
-            justify-content-center position-relative mt-">
+            <div class="col-xl-4 col-12 order-xl-3 sectionTechniques px-lg-3
+            justify-content-center position-relative mt-3 mt-xl-0">
                 {% include 'BJJournal/BJR_addSession/BJR_addSession_Techniques.html' %}
             </div>
             {#    DATE        #}
@@ -34,9 +34,8 @@
         </div>
         <hr class="text-light mt-5 mb-2 ">
         <div class="addSession row
-        justify-content-md-around py-3 justify-content-center align-items-center
-        py-2   ">
-            <div class="col-xl-3 col-lg-3 col-7 mx-auto mx-lg-0 order order-xl-3
+        justify-content-md-around py-3 justify-content-center align-items-center  ">
+            <div class="col-xl-3 col-md-4 col-12 mx-auto mx-lg-0 order order-xl-3
             position-relative SessionDate mt-5 mt-lg-0 overflow-hidden">
                 <div class=" w-100 h-100 text-center p-3 overflow-hidden">
 
@@ -55,7 +54,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-3 col-lg-3 col-8 mx-auto mx-lg-0 order order-xl-3
+            <div class="col-xl-3 col-lg-7 col-md-5  col-12 mx-auto mx-lg-0 order order-xl-3
             position-relative SessionDate timeLabel mt-5 mt-lg-0 overflow-hidden">
                 <div class=" w-100 h-100 text-center p-3 overflow-hidden">
                     <h3 class="">Time</h3>
@@ -63,7 +62,7 @@
                         {{ BJRform.timestamp }}
                     </label>
 
-                    <div class="quickDateWrap d-flex  justify-content-around my-2">
+                    <div class="quickDateWrap d-flex flex-wrap justify-content-around my-2">
                         <span class="quickDate quickTimeBtn btn btn-outline-primary">6:00</span>
                         <span class="quickDate quickTimeBtn btn btn-outline-primary ">9:00</span>
                         <span class="quickDate quickTimeBtn btn btn-outline-primary ">12:00</span>
@@ -76,15 +75,15 @@
                         <div class=" w-100 d-flex flex-column  justify-content-center align-items-center">
 
 
-                            <div class="timeStampWrap d-flex  w-100 justify-content-around">
-                                <div class=" timeStampBtn">
+                            <div class="timeStampWrap d-flex  w-100 flex-wrap justify-content-center ">
+                                <div class=" timeStampBtn ">
                                     <i class="bi bi-dash"></i>1h
                                 </div>
                                 <div class=" timeStampBtn">
-                                    <i class="bi bi-plus"></i>5min
+                                    <i class="bi bi-plus"></i>5<span class="min">min</span>
                                 </div>
                                 <div class=" timeStampBtn">
-                                    <i class="bi bi-plus"></i>15min
+                                    <i class="bi bi-plus"></i>15<span class="min">min</span>
                                 </div>
 
                                 <div class=" timeStampBtn">
@@ -100,7 +99,7 @@
             </div>
 
             <div data-club="{{ Club.name }}"
-                 class=" col-xl-2 col-7 sessionLocation boxShadow    mx-auto mx-xl-0 mt-3
+                 class=" col-xl-2 col-10 sessionLocation boxShadow    mx-auto mx-xl-0 mt-3
              mt-xl-0 text-center d-flex flex-column py-3 align-items-center SessionDate">
                 <div class="my-auto">
                     <h2 class="pb-2"><i class="bi bi-geo-fill"></i></h2>

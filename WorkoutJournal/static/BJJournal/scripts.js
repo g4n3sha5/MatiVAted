@@ -117,9 +117,6 @@ function quickDateButtons() {
 }
 
 
-
-
-
 function toggleActive() {
     let choiceButton = document.querySelector('.choice-btn')
     let techniquesListWrap = document.querySelector('.techniquesListWrap')
@@ -140,6 +137,7 @@ function toggleActive() {
 
 
 function multiSelect() {
+
     // let techniqueList = document.querySelectorAll('.techniqueOption')
     let techniqueOption = document.querySelectorAll('.techniqueOption')
     let choicePlaceholder = document.querySelector('.choicePlaceholder')
@@ -157,39 +155,45 @@ function multiSelect() {
 
         if (checkBox.checked) {
 
-            technique.classList.add('d-none', 'cantSearch')
+            // technique.classList.add('d-none', 'cantSearch')
             if (choicePlaceholder.textContent === "Choose techniques") choicePlaceholder.textContent = ''
             choicePlaceholderWrapper.insertAdjacentHTML("beforeend", TechniqueHTML)
-            removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox)
+            // removeToggle(choicePlaceholderWrapper, choicePlaceholder, technique)
 
         }
         technique.addEventListener('click', (evt) => {
             evt.preventDefault()
-            checkBox.checked = true
-            technique.classList.add('d-none', 'cantSearch')
+            technique.querySelector('input').checked = true
+            // console.log()
+            // technique.classList.add('d-none', 'cantSearch')
+
             if (choicePlaceholder.textContent === "Choose techniques") choicePlaceholder.textContent = ''
             choicePlaceholderWrapper.insertAdjacentHTML("beforeend", TechniqueHTML)
-            removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox)
+            removeToggle(choicePlaceholderWrapper, choicePlaceholder)
+            // removeToggle(choicePlaceholderWrapper, choicePlaceholder, technique)
 
         })
 
-
     })
+     removeToggle(choicePlaceholderWrapper, choicePlaceholder)
 
 }
 
-function removeToggle(choicePlaceholderWrapper, choicePlaceholder, checkBox = false) {
+function removeToggle(choicePlaceholderWrapper, choicePlaceholder, technique=false) {
 
     let removeIcon = document.querySelectorAll('.chosenTechnique')
-    let techniquesOptions = document.querySelector('.techniquesOptions')
+    // let techniquesOptions = document.querySelector('.techniquesOptions')
 
     removeIcon.forEach(icon => {
+
         icon.addEventListener('click', (evt) => {
+            evt.stopPropagation()
             let sortAttribute = icon.getAttribute('data-class')
             let elementToView = document.querySelector(`.${sortAttribute}`)
             elementToView.classList.remove('d-none', 'cantSearch')
             evt.target.remove()
-            checkBox.checked = false
+            elementToView.querySelector('input').checked = false
+            // checkBox.checked = false
             if (choicePlaceholderWrapper.textContent.trim() === '') choicePlaceholder.textContent = "Choose techniques"
 
         })
@@ -347,8 +351,6 @@ function allFunctions() {
     multiSelect()
     onClickColor()
     quickDateButtons()
-
-
     editDescription()
     showModal()
     toggleActive()
