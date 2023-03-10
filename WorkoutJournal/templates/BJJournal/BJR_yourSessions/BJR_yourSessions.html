@@ -32,14 +32,16 @@
                         {% endif %}
                     </div>
 
-                    <div class="col-6 p-3 h-100">
+                    <div class="col-6 p-xl-2 h-100">
 
                         {% if session.techniques %}
 
 
                             <div class="cut-overflow h-100 pb-1">
                                 {% for technique in session.techniques.all %}
-                                    <h4 class="d-inline sessTechnique">{{ technique }}</h4>
+                                    <h4 class="d-inline sessTechnique">{{ technique }}</h4>{% if session.techniques.all|length > 1  and forloop.counter < session.techniques.all|length%},{% endif %}
+
+
                                 {% endfor %}
 
                             </div>
@@ -58,27 +60,27 @@
                 {#                    <img alt="Club ogo" src="{% static 'BJJournal/img/gblogo.png' %}">#}
                 {#                </div>  #}
 
-                <div class=" SessionLogo  d-flex align-items-center justify-content-center ">
+                <div class=" SessionLogo  d-flex align-items-center justify-content-center px-1 py-lg-2 py-1 ">
                     {#                    {% if session.location %}#}
                     <h3 class="font-weight-700">{{ session.location }}</h3>
                     {#                    {% endif %}#}
                 </div>
 
                 <div class="restSession d-flex ">
-                    <div class=" yourSessionsType count_icon d-flex   overflow-hidden p-lg-3 p-2 ">
+                    <div class=" yourSessionsType count_icon d-flex   overflow-hidden p-xl-3 p-1  ">
                         <img alt="{{ session.type }} symbol" src="{% static 'BJJournal/img/' %}{{ session.type }}.png">
 
                     </div>
 
-                    <div class="  sessionLength d-flex align-items-center justify-content-between">
-                        <h4 class="w-100"> {{ session.hoursLength }}:{% if session.minutesLength == 0 %}00 h
+                    <div class="  sessionLength d-flex align-items-center justify-content-between pt-0 ">
+                        <h4 class="w-100 px-1"> {{ session.hoursLength }}:{% if session.minutesLength == 0 %}00 h
                             {% else %}{{ session.minutesLength }} h
                         {% endif %}
 
                         </h4>
-                        <div class="sessionFight d-flex flex-column pt-1 ">
+                        <div class="sessionFight d-flex flex-column py-lg-1 ">
                             <h6> {{ session.fightTime }} min</h6>
-                            <img class="fightIcon" src="{% static 'BJJournal/img/katana.png' %}">
+                            <img class="fightIcon mt-lg-2 mt-1" src="{% static 'BJJournal/img/katana.png' %}">
                         </div>
 
                     </div>
@@ -92,7 +94,7 @@
     {% endfor %}
 
     {% if sessionsList.has_next or sessionsList.has_previous %}
-        <div class="d-flex justify-content-center w-100 pagiNav">
+        <div class="d-flex justify-content-center w-100 mx-2 pagiNav ">
 
             <nav class=" text-center" aria-label="Page navigation example">
                 <h1 class="pagiCap"> Page {{ sessionsList.number }}
@@ -107,7 +109,7 @@
                             <a class="page-link"
                                hx-get="{% url 'yourSessions' %}?page={{ sessionsList.number| add:"-1" }}"
                                hx-target="#BJR_view"
-                            >Previous
+                            >Prev
                             </a>
                         </li>
                     {% endif %}

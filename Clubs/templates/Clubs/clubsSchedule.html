@@ -13,8 +13,8 @@
 <div class="row w-100"
 >
     <div id="clubSchedule"
-         class=" clubSchedule h-100 navPadding
-    overflow-hidden pb-5 text-white">
+         class=" clubSchedule  min-vh-100 h-100 navPadding
+    overflow-hidden pb-5 ">
         {#        {% if not userHasClub %}#}
         <h2 class="text-center mb-3">Your Club Schedule</h2>
 
@@ -41,8 +41,8 @@
                     {#                    backend provides dictionary, where key is hour, when trainings happen, and key is all info#}
                     <tr>
                     {% for day in days %}
-                        <td class="position-relative">
-                            <div class="tdWRAP w-100">
+                        <td class="position-relative p-0">
+                            <div class="tdWRAP w-100 ">
 
 
                                 {% for session in sessionsArray %}
@@ -52,18 +52,18 @@
 
                                         {% for info in session.2 %}
                                             {% if info == 'GI' or info == 'NOGI' or info == 'GYM' %}
-                                                <div class="{{ info }}schedule trainIcon d-flex flex-column justify-content-center p-2">
+                                                <div class="{{ info }}schedule trainIcon h-100  p-2">
+                                                <div class="imgschedule  justify-content-center d-flex flex-column">
                                                     <img class="fitIMG  "
                                                          src="{% static 'BJJournal/img/' %}{{ info }}.png">
                                                     {{ info }}
-                                                    {#  TYPE#}
                                                 </div>
-
+                                                {#  TYPE#}
                                                 <div class="d-flex justify-content-center align-items-center scheduleTD p-0 pt-1">
                                                     <h1>{{ session.1 }}</h1>
+
                                                     {#  HOUR#}
                                                 </div>
-
                                                 {% if authorized %}
 
                                                     <form class="deleteTD">
@@ -78,11 +78,18 @@
                                                 {% endif %}
 
                                             {% else %}
+
                                                 <p class="scheduleTD">
+
                                                     {{ info }}
                                                     {#  DESCRIPTON #}
                                                 </p>
                                             {% endif %}
+
+
+                                        </div>
+
+
 
 
                                         {% endfor %}

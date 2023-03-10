@@ -33,7 +33,7 @@ SECRET_KEY = 'django-insecure-q$h-7xe*!yo(u8wr-het-!8ybcp%wmyw-(mc+j^3(r7%&obof$
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-
+LOCKDOWN_PASSWORDS = ('game:MARYLAND:language:96!')
 
 # Application definition
 
@@ -66,6 +66,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -104,7 +105,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 WSGI_APPLICATION = 'main.wsgi.application'
-ASGI_APPLICATION = 'main.asgi.application'
+# ASGI_APPLICATION = 'main.asgi.application'
 
 
 # Database
@@ -157,6 +158,7 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+LOGIN_URL = '/account/login/'
 LOGIN_REDIRECT_URL = "/"
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 SITE_ID = 1

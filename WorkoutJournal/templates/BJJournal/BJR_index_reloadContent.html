@@ -1,0 +1,73 @@
+<div class=" row w-100 min-vh-100 p-0 m-0">
+            <div class=" mt-0 navPadding justify-content-center text-center mx-0 g-4
+                BJRdashboard  col-10 row ">
+                <div class="col ">
+                    <div class="feature-2 text-center "
+                         hx-target="#BJR_view"
+                        hx-get=" {% url 'bjjournal' %}">
+                        <div class="wrap-icon icon-1 hoverScale">
+                            <i class="bi bi-border-all "></i>
+                        </div>
+                        <h3 class="mb-3">Dashboard</h3>
+                        {#                <p> </p>#}
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="feature-2 text-center"
+                     hx-target="#BJR_view"
+                        hx-get=" {% url 'addSession' %}">
+                        <div class="wrap-icon icon-1 hoverScale">
+                            <i class="bi bi-file-earmark-plus-fill "></i>
+                        </div>
+                        <h3 class="mb-3">Add Session</h3>
+                        {#                <p>Save your Training Sessions. </p>#}
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="feature-2 text-center"
+                    hx-target="#BJR_view"
+                        hx-get=" {% url 'yourSessions' %}">
+                        <div class="wrap-icon icon-1 hoverScale">
+                            <i class="bi bi-collection-fill"></i>
+                        </div>
+                        <h3 class="mb-3">Your Sessions</h3>
+                        {#              <p>Training History </p>#}
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="feature-2 text-center"
+                    hx-target="#BJR_view"
+                        hx-get=" {% url 'techniques' %}">
+                        <div class="wrap-icon icon-1 hoverScale">
+                            <i class="bi bi-diagram-3-fill "></i>
+
+                        </div>
+                        <h3 class="mb-3">Techniques Base</h3>
+                        {#                <p>Open grappling techniques database. Everyone can add technqiues and suggest changes.</p>#}
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="feature-2 text-center"
+                    hx-target="#BJR_view"
+                        hx-get=" {% url 'create' %}">
+                        <div class="wrap-icon icon-1 hoverScale">
+                            <i class="bi bi-card-checklist"></i>
+                        </div>
+                        <h3 class="mb-3">To Do </h3>
+                        {#                <p>Open grappling techniques database. Everyone can add technqiues and suggest changes.</p>#}
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class=" navPadding col-lg-2  text-center  countSection h-100 p-0 ">
+
+                {% include 'BJJournal/BJR_dashboard_count.html' %}
+
+            </div>
+        </div>

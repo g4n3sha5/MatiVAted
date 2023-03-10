@@ -18,25 +18,25 @@
         </button>
 
     <div class=" mainNavCollapse collapse navbar-collapse   align-items-center
-    justify-content-center justify-content-lg-end px-5">
+    justify-content-center justify-content-lg-end ">
         <div class="navbar-nav  d-flex px-md-4 text-center  justify-content-lg-end">
             <a class="nav-item" href="/">Home</a>
             <a class="nav-item" href="/bjjournal">BJJournal</a>
             <a class="nav-item" href="/clubs">Clubs</a>
 
             {#                                ACCOUNT BUTTON#}
-            <div class="  nav-item position-relative ">
+            <div class="  nav-item position-relative d-flex flex-column align-items-center ">
                 <a type="button"
                    class=" text-center dropdown-toggle"
                    data-bs-target=".accountDropdown"
                    data-bs-toggle="collapse"
                    aria-haspopup="true"
                    aria-expanded="false">Account</a>
-                <div class="accountDropdown dropdown-menu  ">
-                    <div class="dropdown-menu accountDropdown">
+                <div class="accountDropdown dropdown-menu mt-lg-5  ">
+
                         {% if user.is_authenticated %}
 
-                            <a class="dropdown-item" href="{% url 'myAccount' %}">Account</a>
+{#                            <a class="dropdown-item" href="{% url 'myAccount' %}">Account</a>#}
                             <a class="dropdown-item" href="{% url 'myAccount' %}">Profile</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
@@ -45,7 +45,7 @@
                             <a class="dropdown-item" href="{% url 'account_login' %}">Log In</a>
                             <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
                         {% endif %}
-                    </div>
+
                 </div>
 
             </div>

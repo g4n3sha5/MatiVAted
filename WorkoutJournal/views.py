@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 import json
 from django.http import JsonResponse
 from django.template.loader import render_to_string
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -16,7 +16,12 @@ from django.template.loader import render_to_string
 #
 
 #     return myDict
+@login_required
 def BJJournalIndex(request):
+
+    template = "BJR_index.html"
+    if request.META.get('HTTP_HX_REQUEST'):
+        template =  "BJR_index_reloadContent.html"
     # count = countAllHours(request.user)
     user = request.user
     total = TrainingSession.objects.filter(user_id=user.id).count()
@@ -26,6 +31,7 @@ def BJJournalIndex(request):
     LAST_MONTH = datetime.today() - timedelta(days=30)
     last30days = TrainingSession.objects.filter(user_id=user.id, date__gte=LAST_MONTH).count()
 
+
     context = {
         'total': total,
         'gi': gi,
@@ -33,7 +39,7 @@ def BJJournalIndex(request):
         'gym': gym,
         'last30days': last30days
     }
-    return render(request, "BJJournal/BJR_index.html", context)
+    return render(request, f"BJJournal/{template}", context)
 
     # context = {
     #     'user': request.user,
@@ -48,7 +54,7 @@ def BJJournalIndex(request):
 
 
 
-
+@login_required
 def dashboard(request):
     context = {
 
@@ -56,7 +62,7 @@ def dashboard(request):
 
     return render(request, "BJJournal/BJR_dashboard.html", context)
 
-
+@login_required
 def addSession(request):
     try:
         membership = UserMembership.objects.get(user_id=request.user.id)
@@ -91,7 +97,7 @@ def addSession(request):
 
     return render(request, "BJJournal/BJR_addSession/BJR_addSession.html", context)
 
-
+@login_required
 def editSession(request, id=None, orderIndex=None):
     try:
         membership = UserMembership.objects.get(user_id=request.user.id)
@@ -124,13 +130,13 @@ def editSession(request, id=None, orderIndex=None):
     }
     return render(request, "BJJournal/BJR_editSession.html", context)
 
-
+@login_required
 def removeSession(request, id):
     session = TrainingSession.objects.get(pk=id)
     session.delete()
     return HttpResponseRedirect('/yourSessions')
 
-
+@login_required
 def yourSessions(request):
     sessionsList = TrainingSession.objects.all().order_by('-id')
 
@@ -151,7 +157,7 @@ def yourSessions(request):
     # return JsonResponse(html, safe=False)
     return render(request, "BJJournal/BJR_yourSessions/BJR_yourSessions.html", context)
 
-
+@login_required
 def singleSessionView(request, id, orderIndex):
     Session = TrainingSession.objects.get(pk=id)
     context = {
@@ -161,7 +167,7 @@ def singleSessionView(request, id, orderIndex):
     }
     return render(request, "BJJournal/BJR_yourSessions/singleSessionView.html", context)
 
-
+@login_required
 def techniques(request):
     if request.method == 'POST':
         form = addTechniqueForm(request.POST)
@@ -183,7 +189,7 @@ def techniques(request):
     }
     return render(request, "BJJournal/BJR_Techniques.html", context)
 
-
+@login_required
 def singleTechniqueView(request, id):
     techniqueObj = Technique.objects.get(pk=id)
 

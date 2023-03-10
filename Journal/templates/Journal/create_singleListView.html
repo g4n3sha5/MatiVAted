@@ -8,10 +8,10 @@
         {#    {% csrf_token %}#}
         {#<div id="singleListView">#}
 
-        <div id="item-list w-100">
+        <div class=" w-100 px-lg-3 px-2">
             {% for item in checklist.item_set.all %}
 
-                <div class="toDoItem  mb-3 border-primary w-100">
+                <div class="toDoItem  mb-3 border-primary w-100 px-2">
 
                     {#            checkbox if task is done#}
                     <div class=" input-group-prepend  ">
@@ -28,7 +28,7 @@
                     </div>
 
                     {#                    <input class="itemTextField p-1 px-3" type="text" value="{{ item.text }}" class="form-control">#}
-                    <h3 class="itemTextField p-1 px-3">{{ item.text }}</h3>
+                    <h3 class="itemTextField p-1 px-lg-3">{{ item.text }}</h3>
                     {#                     {{ form.text }}#}
                     {#            bin symbol to delete task#}
                     <span

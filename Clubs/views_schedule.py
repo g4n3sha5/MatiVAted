@@ -2,12 +2,13 @@ from django.shortcuts import render, HttpResponseRedirect, reverse
 from datetime import datetime, date
 from .models import Schedule, UserMembership, userClub
 from .utilis import Calendar
+from django.contrib.auth.decorators import login_required
 
 from .forms import ScheduleForm
 from django.utils.safestring import mark_safe
 
 
-
+@login_required
 def clubSchedule(request):
     days = Schedule.days
     # userHasClub = False
@@ -59,15 +60,17 @@ def addTrainingModal(request, type, day):
 
     if request.method == 'POST':
         form = ScheduleForm(request.POST)
-
+        print("cojestkurwa")
         if form.is_valid():
+            print("huj")
             mySchedule = Schedule.objects.get_or_create(club=myClub)[0]
             data = form.cleaned_data
             time, description  = data['time'], data['description']
             dayField = getattr(mySchedule, day)
             dayField[time] = [type, description]
             mySchedule.save()
-            return HttpResponseRedirect(reverse('clubMembers'))
+        print(form.errors)
+        return HttpResponseRedirect(reverse('clubSchedule'))
 
     context ={
         'scheduleForm' : form,
@@ -81,7 +84,7 @@ def addTrainingModal(request, type, day):
 def removeTrainingSchedule(request, type, day, hour, clubID):
     mySchedule = Schedule.objects.get(club_id=clubID)
     dayField = getattr(mySchedule, day)
-    print(dayField.items())
+
     for hourDB, info in dayField.items():
         if hourDB == hour:
             del dayField[hourDB]

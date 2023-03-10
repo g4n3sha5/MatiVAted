@@ -1,10 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import ToDoList, Item, CreateNewList, singleListForm
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-
+@login_required
 def newTaskToDo(request, checklist):
     txt = request.POST.get("newItemText")
     if len(txt) > 2:
@@ -14,7 +14,7 @@ def newTaskToDo(request, checklist):
 
 def saveTaskStatus(request):
     pass
-
+@login_required
 def listManager(request, id):
     try:
         userLists = request.user.user_lists
@@ -46,6 +46,7 @@ def listManager(request, id):
 
 
     return render(request, "Journal/create_singleListView.html", context)
+@login_required
 def formValidator (request):
     if request.method == "POST":
         form = CreateNewList(request.POST)
@@ -59,7 +60,7 @@ def formValidator (request):
 
     return form
 
-
+@login_required
 def create(request):
     pathC = request.get_full_path()[1: -1]
     context = {
@@ -76,6 +77,7 @@ def saveItem (request):
 
 
 #removing list at /create/
+@login_required
 def removeList(request, id):
     ToDoList.objects.get(pk = id).delete()
     userLists = request.user.user_lists
@@ -88,6 +90,7 @@ def removeList(request, id):
 
 
 #removing item at /singlelistView
+@login_required
 def removeItem(request, listId, itemId):
     checklist = ToDoList.objects.get(pk=listId)
     Item.objects.get(pk=itemId).delete()

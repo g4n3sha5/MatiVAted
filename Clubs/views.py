@@ -3,7 +3,7 @@ from .models import Club, UserMembership, Request, BELT_ORDER, MEMBER_ORDER
 from Notifications.models import Notification
 from account_register.models import UserProfile
 from .forms import ClubForm, MemberForm
-
+from django.contrib.auth.decorators import login_required
 
 from django.contrib import messages
 
@@ -11,7 +11,6 @@ from django.contrib import messages
 # Create your views here.
 
 def checkRequests():
-
     requests =  Request.objects.filter(status = 'YES')
     for item in requests:
         newMember = UserMembership(user_id=item.user_id,
@@ -20,7 +19,7 @@ def checkRequests():
         newMember.save()
         item.delete()
 
-
+@login_required
 def ClubsIndex(request):
     authorized = True
     try:
@@ -75,7 +74,7 @@ userProfiles = UserProfile.objects.all()
 #                 profilesDict[profile] = member
 #
 #     return profilesDict
-
+@login_required
 def clubMembers(request):
     checkRequests()
     profilesDict, requestsDict = {}, {}
@@ -116,7 +115,7 @@ def clubMembers(request):
     }
 
     return render(request, "Clubs/clubMembers.html", context)
-
+@login_required
 def memberRemove(request, id):
     userDel = UserMembership.objects.get(pk=id)
     userDel.delete()
@@ -176,7 +175,7 @@ def clubTrainings(request):
 
 
 
-
+@login_required
 def clubsList(request):
     context = {
         'clubsList': Club.objects.all(),
@@ -184,7 +183,7 @@ def clubsList(request):
     }
     return render(request, "Clubs/clubsList.html", context)
 
-
+@login_required
 def singleClubView(request, id):
     myClub = Club.objects.get(pk=id)
     context = {
@@ -212,13 +211,13 @@ def singleClubView(request, id):
         context['alreadySent'] = True
     return render(request, "Clubs/singleClubView.html", context)
 
-
+@login_required
 def leaveClub(request):
     membership = UserMembership.objects.get(user_id=request.user.id)
     membership.delete()
     return redirect('/clubs/')
 
-
+@login_required
 def handleRequest(request, requestID):
     myrequest = Request.objects.get(id=requestID)
 

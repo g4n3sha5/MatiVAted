@@ -1,6 +1,6 @@
 :root {
     --navHeight: 90px;
-    --nav-width: 80px;
+    --nav-width: 69px;
     --first-color: #5e71f2;
     /*--first-color: #4723D9;*/
     --first-color: #5E3EE0;
@@ -10,8 +10,10 @@
     --normal-font-size: 1rem;
     --darkPurple: #3A0CA3;
     --SMgridHeight: 26.5vh !important;
-    --MDgridHeight: 28vh !important;
+    --MDgridHeight: 250px; !important;
+    /*--MDgridHeight: 28vh !important;*/
     --XLgridHeight: 26vh !important;
+
     --SMsectionHeight: calc(var(--SMgridHeight) * 7.777);
     --MDsectionHeight: calc(var(--SMgridHeight) * 4.5);
     --XLsectionHeight: calc(var(--XLgridHeight) * 4);
@@ -83,13 +85,13 @@ body {
 }
 
 /* ============= */
-/*.col-md-2-5 { width: 20.83333%;}*/
+/*.col-lg-2-5 { width: 20.83333%;}*/
 /*.col-md-9-5 { width: 79.16667%; }*/
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
-.fitIMG, .img-buddha, .silhouette img, .bjjimg, .countSection img,
+.fitIMG, .fitIMG img, .img-buddha, .silhouette img, .countSection img,
 .wrapper img, .yourSessionsType img, .beltIMG img {
     max-height: 100%;
     max-width: 100%;
@@ -193,11 +195,20 @@ nav a img {
 }
 
 .accountDropdown {
-    /*position:absolute;*/
+    position:absolute;
+    background-color:#3f37c9;
+    /*margin-top:35px;*/
+    width:100% !important;
 }
-
+.accountDropdown a {
+    color:white !important;
+       text-align: center;
+}
+.accountDropdown .dropdown-item:hover{
+    background-color:#240046;
+}
 .dropdown-menu {
-    width: 55% !important;
+    width: 100% !important;
     text-align: center;
 }
 
@@ -206,10 +217,6 @@ nav a img {
 
 }
 
-.dropdown-menu a {
-    text-align: center;
-    color: black !important;
-}
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media (max-width: 850px) {
@@ -498,7 +505,7 @@ h2, .h2 {
 }
 
 .feature-1 h3 {
-    font-weight: 800;
+    font-weight: 600;
     padding: 0 17px;
     height: 55.55px;
     /*margin-bottom:15px;*/
@@ -930,16 +937,22 @@ h2, .h2 {
 /**--------------------------------------------------------------*/
 /*# Footer*/
 /*--------------------------------------------------------------*!*/
+
 #footer {
 
     background: #101010;
-    padding: 60px 0 30px 0;
+    padding: 60px 12vw 30px;
     color: #fff;
     font-size: 14px;
     min-height: 15vh;
 
 }
-
+@media (max-width: 992px) {
+    #footer {
+        padding-left:0;
+        padding-right:0;
+    }
+}
 #footer .footer-info {
     margin-bottom: 15px;
     background: #191919;
@@ -1039,8 +1052,8 @@ h2, .h2 {
 }
 
 .bjjimg {
-    background: transparent url('../img/brucelee.png') no-repeat;
-    background-size: contain;
+    /*background: transparent url('../img/brucelee.png') no-repeat;*/
+    /*background-size: contain;*/
 
 }
 
@@ -1134,7 +1147,10 @@ a {
 /*    color: #545454;*/
 /*    background-color: #ffffff;*/
 /*}*/
-
+.btn-google img{
+    width:30px;
+    height:30px;
+}
 .or-container {
     align-items: center;
     color: #ccc;
@@ -1231,7 +1247,6 @@ a {
     margin: 0 auto;
     height: 100px;
     width: 100px;
-    border-radius: 11%;
     position: relative;
     box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.25);
     display: inline-flex;
@@ -1812,7 +1827,8 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     /*background-color: #3295d7;*/
     background-color: #1BD8FB;
     margin-top: 3px;
-    z-index: 4;
+
+     z-index:25;
 }
 
 .techniquesListWrap select:focus {
@@ -1841,7 +1857,8 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     list-style: none;
     overflow: auto;
     overflow-x: hidden;
-    max-height: 19vh;
+    height:100%;
+    /*max-height: 19vh;*/
 }
 
 .techniqueItem, .nowrap {
@@ -1918,7 +1935,9 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     display: flex !important;
     position: relative;
     padding-top: 1.4%;
+    scale:0.9;
     /* padding-bottom: 100%;*/
+
     /*margin-bottom: -100%;*/
 
 }
@@ -1955,7 +1974,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 
 @media screen and (max-width: 700px) {
     .caption {
-        top: -18%;
+        top: -20px;
     }
 }
 
@@ -2003,13 +2022,23 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 .addTechBtn {
     opacity: 0.8;
 }
+@media (min-width: 800px) {
+    .leftSideTechnique, .techList {
+        height:100vh;
+    }
+}
+@media (max-width: 800px) {
+    .leftSideTechnique, .techList {
+        min-height:100vh;
+    }
 
+}
 .techList {
     /*height: 100%;*/
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
+    /*position: absolute;*/
+    /*top: 0;*/
+    /*bottom: 0;*/
+    /*right: 0;*/
     padding-top: 16vh;
     background: #3f37c9;
 }
@@ -2022,10 +2051,13 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     max-height: none;
 }
 
-.techniqueSection .techniquesOptions li:hover {
+.techniqueSection .techniquesOptions li:hover,
+.hoverScale:hover {
     transform: scale(1.04);
     cursor: pointer;
 }
+
+
 
 /* =============== SINGLE TECNHIQUE VIEW ==============*/
 @media (max-width: 800px) {
@@ -2051,7 +2083,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 }
 
 .techDescriptionWrap {
-    position: absolute;
+    /*position: absolute;*/
     /*overflow:hidden;*/
     /*height:20vh;*/
     z-index: 45;
@@ -2119,12 +2151,13 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 .userSuggestions {
     min-height: 30vh;
     /*overflow: hidden;*/
-    top: 25vh;
+    /*top: 25vh;*/
+
 }
 
 .userSuggestions .techniquesListWrap {
     overflow-y: scroll;
-    height: 100%;
+    height: 50%;
 
 }
 
@@ -2143,18 +2176,24 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     column-gap: 1.5%;
     overflow: hidden;
     place-items: center;
-
+    min-height:100vh;
 }
-
-@media (max-width: 749px) {
+.sessionLength h4 {
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: 23px;
+    /*text-shadow: 1px 1px ghostwhite;*/
+    text-align: center;
+}
+@media (max-height: 1000px) {
     .sessionLength h4 {
-        font-size: 6.5vw !important;
+        font-size: 19px;!important;
     }
-
-    .sessionDate h3 {
-        font-size: 18px;
-    !important;
+        .sessionDate h3 {
+        font-size: 18px;!important;
     }
+}
+@media (max-width: 749px) {
 
     .grid-item {
         height: var(--SMgridHeight) !important;
@@ -2162,7 +2201,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 
     .yourSessionsSection {
         grid-template-columns: repeat(1, 1fr);
-        height: var(--SMsectionHeight);
+        /*height: var(--SMsectionHeight);*/
         row-gap: 1vh
 
     }
@@ -2172,7 +2211,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     .yourSessionsSection {
         grid-template-columns: repeat(2, 1fr);
         row-gap: 0.6%;
-        height: var(--MDsectionHeight);
+        /*height: var(--MDsectionHeight);*/
     }
 
     .grid-item {
@@ -2198,13 +2237,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     font-weight: 500;
 }
 
-.sessionLength h4 {
-    letter-spacing: 3px;
-    font-weight: 700;
-    font-size: 27px;
-    text-shadow: 1px 1px black;
-    text-align: center;
-}
+
 
 .grid-item {
     margin: auto;
@@ -2235,12 +2268,17 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     border-top: 1px solid #2A6DFC;
     /*flex-basis: 42%;*/
     flex-basis: 45%;
+    /*max-height: 38%;*/
     max-height: 45%;
     word-wrap: break-word;
     padding: 1% 0;
     height: 100%;
 }
-
+@media screen and (max-width: 1200px) {
+    .SessionNotes {
+        max-height: 40%;
+    }
+}
 .grid-item:hover {
     transform: scale(1.01)
 }
@@ -2251,7 +2289,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 }
 
 .yourSessionsSection .sessionLength {
-    width: 70%;
+    width: 50%;
     flex: 1;
 }
 
@@ -2260,18 +2298,22 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 }
 
 .sessionFight {
-    width: 38%;
+    width: 80%;
     height: 100%;
     display: inherit;
     align-items: inherit;
     text-align: center;
     background-color: #1E6AE1;
-    font-size: 15px;
+    font-size: 19px;
+
     justify-content: center;
+}
+.sessionFight h6{
+     margin:0 !important;
 }
 
 .fightIcon {
-    width: 60%;
+    width: 38%;
 }
 
 .sessionDate {
@@ -2329,9 +2371,15 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 .restSession {
     width: 50%;
 }
-
 .SessionLogo h3 {
-    font-size: 1.4rem;
+    font-size: 21px;
+    text-align:center;
+}
+@media screen and (max-width: 1200px) {
+.SessionLogo h3 {
+    font-size: 17px;
+}
+
 }
 
 .SessionInfo {
@@ -2353,7 +2401,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 
 .pagiNav {
     position: absolute;
-    bottom: 10px;
+    bottom: 3%;
     left: 0;
     right: 0;
     /*padding: 0 8vw;*/
@@ -3059,27 +3107,34 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 .clubSchedule th {
     padding: 20px 5px;
     text-align: center;
-    border: 1px solid white;
+
 }
 
+.clubSchedule th, .clubSchedule td{
+        border: 1px solid 	#C0C0C0;
+}
 .clubSchedule td {
-    border: 1px solid white;
     padding: 0 10px;
 }
 
-/*================= CLUBS SCHEDULE ===========*/
 .calendar td {
     text-align: center !important;
+
 }
 
 .clubSchedule {
-    height: 200vh;
+    /*height: 200vh;*/
+    background-color: 	#F0F0F0;
+}
+.clubSchedule *{
+    color:black;
 }
 
 .tdWRAP {
     height: 100px !important;
     overflow: hidden;
     width: 10vw;
+    padding:0;
 }
 
 .tdWRAP h1 {
@@ -3115,17 +3170,21 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 
 .scheduleTD {
     margin-left: 35% !important;
+    color:black;
 }
 
 .trainIcon {
-    width: 35%;
+    width:100%;
+
+
+}
+.imgschedule{
+       width: 35%;
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
-
 }
-
 .deleteTD {
     position: absolute;
     top: 5px;
@@ -3160,7 +3219,9 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     padding: 1vw;
 }
 
-
+.countItems{
+    padding-right:18px;
+}
 .time-line-box {
     height: 10vh;
 

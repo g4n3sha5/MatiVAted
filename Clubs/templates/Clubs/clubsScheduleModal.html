@@ -2,7 +2,8 @@
 {##}
 
 
-<div class="modal-dialog overflow-hidden" role="document">
+<form class="modal-dialog overflow-hidden" role="document">
+    {% csrf_token %}#}
     <div class="modal-content h-100 ">
         <div class="modal-header d-flex flex-column">
 
@@ -56,16 +57,17 @@
                     class="btn btn-secondary ">cancel
             </button>
 
-            <form class=""
-                  method="POST">
-                {% csrf_token %}
-                <button hx-post="{% url 'clubSchedule' type day %}"
+{#            <form class=""#}
+{#                  method="POST">#}
+
+{#                <button hx-post="{% url 'clubSchedule'  %}"#}
+                <button hx-post="{% url 'addTrainingModal' type day %}"
                         hx-target="#Clubs_view"
                         type="button"
                         class="btn btn-success">Save
                     {#                        data-dismiss="modal">Save#}
                 </button>
-            </form>
+{#            </form>#}
         </div>
     </div>
-</div>
+</form>

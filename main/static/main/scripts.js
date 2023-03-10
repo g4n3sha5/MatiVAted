@@ -192,7 +192,12 @@ function quickTimeButtons() {
         })
     }
 }
-
+const leftNavPadding = () =>{
+    const leftNav = document.querySelector('.l-navbar')
+    if(leftNav){
+        document.querySelector('#footer').classList.add('leftNavPadding')
+    }
+}
 
 allFunctionsMain()
 if (document.readyState !== 'loading') {
@@ -202,6 +207,7 @@ if (document.readyState !== 'loading') {
 document.body.addEventListener('htmx:afterOnLoad', event=>{
    searchItem()
     quickTimeButtons()
+    leftNavPadding()
     // allFunctionsMain()
 })
 function allFunctionsMain(){
@@ -210,4 +216,5 @@ function allFunctionsMain(){
     showNavbar()
     colorClick()
     formIcon()
+    leftNavPadding()
 }
