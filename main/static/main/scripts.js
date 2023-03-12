@@ -198,6 +198,24 @@ const leftNavPadding = () =>{
         document.querySelector('#footer').classList.add('leftNavPadding')
     }
 }
+// function footerLinks (){
+//     const footer = document.querySelector('footer')
+//     let footerLinksAll = footer.querySelectorAll('a[data-url][data-app]')
+//
+//     for (let a of footerLinksAll) {
+//
+//         let url = a.getAttribute('data-url')
+//         let app = a.getAttribute('data-app')
+//         a.addEventListener('click', function (evt){
+//              window.location.assign(`${app}`);
+//              let navelem = document.querySelector(`a[hx-get=${url}]`)
+//             console.log(navelem)
+//              // htmx.process(document.body)
+//         })
+//     }
+//
+//
+// }
 
 allFunctionsMain()
 if (document.readyState !== 'loading') {
@@ -211,6 +229,8 @@ document.body.addEventListener('htmx:afterOnLoad', event=>{
     // allFunctionsMain()
 })
 function allFunctionsMain(){
+
+
         quickTimeButtons()
     searchItem()
     showNavbar()

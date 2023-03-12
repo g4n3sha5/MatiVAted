@@ -63,7 +63,8 @@ def dashboard(request):
     return render(request, "BJJournal/BJR_dashboard.html", context)
 
 @login_required
-def addSession(request):
+def addSession(request, ext=False):
+
     try:
         membership = UserMembership.objects.get(user_id=request.user.id)
         yourClub = Club.objects.get(id=membership.club_id)
@@ -92,7 +93,8 @@ def addSession(request):
     context = {
         'BJRform': form,
         'Club': yourClub,
-        'techniquesList': Technique.objects.all()
+        'techniquesList': Technique.objects.all(),
+        'template' : template
     }
 
     return render(request, "BJJournal/BJR_addSession/BJR_addSession.html", context)

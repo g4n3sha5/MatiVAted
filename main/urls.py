@@ -26,6 +26,7 @@ urlpatterns = [
     path('', include("WorkoutJournal.urls")),
     path('', include("Clubs.urls")),
     path('', include("account_register.urls")),
+    path('', include("Presentation.urls")),
     path('', include("Notifications.urls"))
 
 ]

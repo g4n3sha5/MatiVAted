@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    {% include 'main/../../../main/templates/common/load_basic_scripts.html' %}
+    <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
+    <title> {% block title %}  About {% endblock %} </title>
+
+</head>
+
+<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+
+  {%include "common/navbar.html" %}
+
+
+<div class="  container-fluid p-0 min-vh-100 overflow-hidden m-0  ">
+        <div class="position-relative p-0 w-100">
+
+            {% block content %}
+            {% endblock %}
+        </div>
+</div>
+{% include "common/footer.html" %}
+
+{#    {% include "common/foo ter.html" %}#}
+<script>
+    document.body.addEventListener('htmx:configRequest', function (evt) {
+        evt.detail.headers['X-CSRFToken'] = '{{csrf_token}}'
+    });
+</script>
+
+{% block script %}
+
+{% endblock %}
+
+
+</body>
+</html>

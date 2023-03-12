@@ -60,16 +60,15 @@ def addTrainingModal(request, type, day):
 
     if request.method == 'POST':
         form = ScheduleForm(request.POST)
-        print("cojestkurwa")
+
         if form.is_valid():
-            print("huj")
             mySchedule = Schedule.objects.get_or_create(club=myClub)[0]
             data = form.cleaned_data
             time, description  = data['time'], data['description']
             dayField = getattr(mySchedule, day)
             dayField[time] = [type, description]
             mySchedule.save()
-        print(form.errors)
+
         return HttpResponseRedirect(reverse('clubSchedule'))
 
     context ={

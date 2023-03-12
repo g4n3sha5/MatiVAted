@@ -16,7 +16,7 @@
          class=" clubSchedule  min-vh-100 h-100 navPadding
     overflow-hidden pb-5 ">
         {#        {% if not userHasClub %}#}
-        <h2 class="text-center mb-3">Your Club Schedule</h2>
+        <h2 class="text-center mb-3 text-white">Your Club Schedule</h2>
 
 
         <div class="overflow-auto outer calendar px-5">
@@ -26,7 +26,7 @@
 
                 <tr>
                     {% for day in days %}
-                        <th> {{ day }} </th>
+                        <th class="text-white"> {{ day }} </th>
                     {% endfor %}
                     {#                            <th>Monday</th>#}
                     {#                            <th>Tuesday</th>#}
@@ -42,7 +42,7 @@
                     <tr>
                     {% for day in days %}
                         <td class="position-relative p-0">
-                            <div class="tdWRAP w-100 ">
+                            <div class="tdWRAP w-100 overflow-hidden position-relative">
 
 
                                 {% for session in sessionsArray %}
@@ -50,49 +50,50 @@
                                     {% if session.0 == day %}
                                         {# DAY #}
 
-                                        {% for info in session.2 %}
-                                            {% if info == 'GI' or info == 'NOGI' or info == 'GYM' %}
-                                                <div class="{{ info }}schedule trainIcon h-100  p-2">
-                                                <div class="imgschedule  justify-content-center d-flex flex-column">
-                                                    <img class="fitIMG  "
-                                                         src="{% static 'BJJournal/img/' %}{{ info }}.png">
-                                                    {{ info }}
-                                                </div>
-                                                {#  TYPE#}
-                                                <div class="d-flex justify-content-center align-items-center scheduleTD p-0 pt-1">
-                                                    <h1>{{ session.1 }}</h1>
+                                        <div class="trainIcon h-100 p-0 ">
+                                            {% for info in session.2 %}
+                                                {% if info == 'GI' or info == 'NOGI' or info == 'GYM' %}
+{#                                                    <div class="{{ info }}schedule w-100 h-100 position-absolute"></div>#}
+                                                        <div data-sessionType ="{{ info }}"
+                                                             class="{{ info }}schedule imgschedule  justify-content-center d-flex flex-column">
+                                                             <h1 class="m-0">{{ session.1 }}</h1>
+                                                            <img class="fitIMG  "
+                                                                 src="{% static 'BJJournal/img/' %}{{ info }}.png">
+                                                            <h2 class="m-0">{{ info }}</h2>
+                                                        </div>
+                                                    {#                                                  TYPE#}
+                                                            <div class="d-flex justify-content-center align-items-center scheduleTD p-0 pt-1">
 
-                                                    {#  HOUR#}
-                                                </div>
-                                                {% if authorized %}
 
-                                                    <form class="deleteTD">
-                                                        {% csrf_token %}
-                                                        <span
-                                                                hx-delete="{% url 'removeTrainingSchedule' info session.0 session.1 club.id %}"
-                                                                hx-target="#Clubs_view"
-                                                                class="p-2 border-0">
-                                                        <i class="bi bi-x"></i>
-                                                    </span>
-                                                    </form>
+
+                                                            </div>
+                                                    {% if authorized %}
+
+                                                        <form class="deleteTD">
+                                                            {% csrf_token %}
+                                                            <span
+                                                                    hx-delete="{% url 'removeTrainingSchedule' info session.0 session.1 club.id %}"
+                                                                    hx-target="#Clubs_view"
+                                                                    class="p-2 border-0 ">
+                                                        <i class="bi bi-x text-white"></i>
+                                                        </span>
+                                                        </form>
+                                                    {% endif %}
+
+                                                {% else %}
+
+                                                    <p class="scheduleTD">
+
+                                                        {{ info }}
+                                                        {#                                                      DESCRIPTON#}
+                                                    </p>
                                                 {% endif %}
 
-                                            {% else %}
-
-                                                <p class="scheduleTD">
-
-                                                    {{ info }}
-                                                    {#  DESCRIPTON #}
-                                                </p>
-                                            {% endif %}
 
 
+
+                                            {% endfor %}
                                         </div>
-
-
-
-
-                                        {% endfor %}
                                     {% endif %}
                                 {% endfor %}
                             </div>

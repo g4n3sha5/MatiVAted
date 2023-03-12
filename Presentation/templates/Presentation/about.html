@@ -1,0 +1,44 @@
+{% extends 'Presentation/layout.html' %}
+
+{% block content %}
+    <div class="row  docsRow w-100 px-0   vh-100  overflow-hidden">
+        <div class="col-lg-3 col-6 aboutLeftBar min-vh-100 h-100 navPadding  navStyling ">
+            <ul class="list-unstyled ">
+                <li class="list bigUp"
+                    hx-target="#About_view"
+                    hx-get="{% url 'aboutSection' 'introduction' %}">1. Introduction
+                    <ul>
+{#                        <li hx-get="{% url 'aboutSection' 'overview' %} " hx-target="#About_view" > Overview</li>#}
+{#                        <li hx-get="{% url 'aboutSection' 'objectives' %}" hx-target="#About_view" > Objectives and benefits</li>#}
+{#                        <li hx-get="{% url 'aboutSection' 'features '%}" hx-target="#About_view"  > Key features</li>#}
+                       <li  > Overview</li>
+                        <li > Objectives and benefits</li>
+                        <li > Key features</li>
+
+                    </ul>
+                </li>
+            </ul>
+            <ul class="list-unstyled ">
+                <li class="list bigUp"
+                    hx-target="#About_view"
+                    hx-get="{% url 'aboutSection' 'privacypolicy' %}">2. Privacy Policy
+                    <ul>
+{#                        <li hx-get="{% url 'aboutSection' 'overview' %} " hx-target="#About_view" > Overview</li>#}
+{#                        <li hx-get="{% url 'aboutSection' 'objectives' %}" hx-target="#About_view" > Objectives and benefits</li>#}
+{#                        <li hx-get="{% url 'aboutSection' 'features '%}" hx-target="#About_view"  > Key features</li>#}
+
+
+                    </ul>
+                </li>
+            </ul>
+
+
+
+        </div>
+        <div id="About_view" class="col-lg-9 col-6 navPadding h-100 overflow-auto secondScroll">
+
+        </div>
+    </div>
+
+
+{% endblock %}

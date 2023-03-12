@@ -25,14 +25,14 @@
             <a class="nav-item" href="/clubs">Clubs</a>
 
             {#                                ACCOUNT BUTTON#}
-            <div class="  nav-item position-relative d-flex flex-column align-items-center ">
+            <div class="  nav-item   dropdownParent">
                 <a type="button"
                    class=" text-center dropdown-toggle"
                    data-bs-target=".accountDropdown"
                    data-bs-toggle="collapse"
                    aria-haspopup="true"
                    aria-expanded="false">Account</a>
-                <div class="accountDropdown dropdown-menu mt-lg-5  ">
+                <div class=" navDropdown accountDropdown dropdown-menu mt-lg-5  ">
 
                         {% if user.is_authenticated %}
 
@@ -49,13 +49,33 @@
                 </div>
 
             </div>
-            {% if user.is_authenticated %}
+            <div class="nav-item dropdownParent">
+                <a type="button"
+                   class=" text-center dropdown-toggle"
+                   data-bs-target=".supportDropdown"
+                   data-bs-toggle="collapse"
+                   aria-haspopup="true"
+                   aria-expanded="false">Support</a>
+                <div class=" navDropdown supportDropdown dropdown-menu mt-lg-5  ">
 
-                {% include 'Notifications/notificationIcon.html' %}
+                        <a class="dropdown-item" href="{% url 'about' %}">About</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
 
-            {% endif %}
+
+
+
+                </div>
+            </div>
 
         </div>
+    </div>
+{#            {% if user.is_authenticated %}#}
+{##}
+{#                {% include 'Notifications/notificationIcon.html' %}#}
+{##}
+{#            {% endif %}#}
+
 </nav>
 
 
