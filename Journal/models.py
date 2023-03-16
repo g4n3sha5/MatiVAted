@@ -27,7 +27,7 @@ class Item(models.Model):
 # form for create, create.html
 class CreateNewList(forms.Form):
     name = forms.CharField(label="List name", max_length=200)
-    checked = forms.BooleanField(required=False)
+
 
 class singleListForm(forms.ModelForm):
     class Meta:

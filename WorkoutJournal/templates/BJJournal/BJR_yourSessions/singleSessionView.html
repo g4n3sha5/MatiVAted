@@ -1,7 +1,7 @@
 {% load static %}
 <div class=" d-flex justify-content-center align-items-center w-100 h-100">
     <div id="modal-backdrop"
-          onclick="closeModal()"
+         onclick="closeModal()"
          class="modal-backdrop fade show w-100 h-100" style="display:block;"></div>
 
     <div id="MajModal"
@@ -48,51 +48,54 @@
                         </div>
                     </div>
 
-                  <div class="SessionInfo overflow-hidden d-flex
+                    <div class="SessionInfo overflow-hidden d-flex
         justify-content-end align-items-stretch mx-0">
 
-            {#                /% if club has logo %}#}
-            {#                <div class="col-2 SessionLogo">#}
-            {#                    <img alt="Club ogo" src="{% static 'BJJournal/img/gblogo.png' %}">#}
-            {#                </div>  #}
+                        {#                /% if club has logo %}#}
+                        {#                <div class="col-2 SessionLogo">#}
+                        {#                    <img alt="Club ogo" src="{% static 'BJJournal/img/gblogo.png' %}">#}
+                        {#                </div>  #}
 
-            <div class=" SessionLogo  d-flex align-items-center justify-content-center ">
-                {#                    {% if session.location %}#}
-                <h3 class="font-weight-700">{{ session.location }}</h3>
-                {#                    {% endif %}#}
-            </div>
+                        <div class=" SessionLogo  d-flex align-items-center justify-content-center ">
+                            {#                    {% if session.location %}#}
+                            <h3 class="font-weight-700">{{ session.location }}</h3>
+                            {#                    {% endif %}#}
+                        </div>
 
+                        <div class="restSession d-flex ">
+                            <div class=" yourSessionsType count_icon d-flex   overflow-hidden p-xl-3 p-1  ">
+                                <img alt="{{ session.type }} symbol"
+                                     src="{% static 'BJJournal/img/' %}{{ session.type }}.png">
 
-            <div class=" yourSessionsType count_icon d-flex   overflow-hidden p-2 p-lg-4 ">
-                <img alt="{{ session.type }} symbol" src="{% static 'BJJournal/img/' %}{{ session.type }}.png">
+                            </div>
 
-            </div>
+                            <div class="  sessionLength d-flex align-items-center justify-content-between">
+                                <h4 class="w-100"> {{ session.hoursLength }}:{% if session.minutesLength == 0 %}00 h
+                                    {% else %}{{ session.minutesLength }} h
+                                {% endif %}
 
-            <div class="  sessionLength d-flex align-items-center justify-content-between">
-                <h4 class="w-100"> {{ session.hoursLength }}:{% if session.minutesLength == 0 %}00 h{% else %}{{ session.minutesLength }} h
-                        {% endif %}
+                                </h4>
+                                <div class="sessionFight d-flex flex-column py-lg-1">
+                                    <h6> {{ session.fightTime }} min</h6>
+                                    <img class="fightIcon mt-1 px-1" src="{% static 'BJJournal/img/katana.png' %}">
+                                </div>
 
-                    </h4>
-                <div class="sessionFight d-flex flex-column pt-1">
-                        <h6> {{ session.fightTime }} min</h6>
-                        <img class="fightIcon" src="{% static 'BJJournal/img/katana.png' %}">
+                            </div>
+                        </div>
+
+                        {#                {% if session.location %}#}
+
                     </div>
 
-            </div>
-
-            {#                {% if session.location %}#}
-
-        </div>
-
-    </div>
+                </div>
 
 
                 <div class="modal-footer editSessionFooter py-1 ">
                     <button
-                            hx-delete="{% url 'removeSession' session.id  %} "
+                            hx-delete="{% url 'removeSession' session.id %} "
                             hx-target="#BJR_view"
                             type="button"
-                             onclick="closeModal()"
+                            onclick="closeModal()"
                             class="sessionRemoveBtn btn btn-danger">
                         Remove
                     </button>

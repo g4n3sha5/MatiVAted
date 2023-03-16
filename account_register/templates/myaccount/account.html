@@ -1,0 +1,71 @@
+{% extends "myaccount/base.html" %}
+{% load crispy_forms_filters %}
+
+{% load static %}
+{% block content %}
+    <div class=" h-100 w-100">
+        {% load static %}
+        <div class="accountcontent d-flex flex-column w-100 h-100 flex-wrap ">
+            <div class="personalInfo position-relative h-100 ">
+
+                {#        <div class="profileBackground w-100 ">#}
+                {##}
+                {#            {% if success %}#}
+                {#                <div class="savedWrap bg-success px-3">#}
+                {#                    <i class="bi bi-check2 fa-2x"></i>#}
+                {#                    <h4>Saved correctly</h4>#}
+                {#                </div>#}
+                {#            {% endif %}#}
+                {#        </div>#}
+
+                <div class="row h-100 ">
+                    <div class="col-md-6 d-flex align-items-start px-lg-5 px-4 py-4  justify-content-start flex-column navPadding">
+                        <h1 class="my-5 text-left w-100 px-5 border-bottom border-white pb-3">Account settings</h1>
+                        <a class="changeACC btn btn-secondary my-3  py-2 font-weight-700"
+                           href="{% url 'account_email' %}">Change Email Address: {{ user.email }}
+                        </a>
+
+                        <a class="changeACC px-5 py-2 my-3 btn btn-info font-weight-700 "
+                           href="{% url 'account_change_password' %}">
+                            Change password <i class="bi bi-key"></i>
+                        </a>
+
+
+                        <a href="{% url 'account_logout' %}" class="btn btn-light my-2">Log Out</a>
+
+                        <button type="button"
+                                class="btn btn-danger areYouSureBTN">
+                            Remove Account
+                        </button>
+
+                        <div class="d-flex surePrompt d-none">
+
+                            <form action="{% url 'account' %}" class="d-flex align-items-center justify-content-center" method="POST">
+                                {% csrf_token %}
+                                <h3> Are you sure? </h3>
+                                <input type="submit" name="delete" value="Remove" class="btn btn-danger mx-2">
+                                <button type="button" class=" mx-2 px-3 btn btn-secondary cancelBtn">Cancel</button>
+                            </form>
+
+                        </div>
+
+
+                    </div>
+                    <div class="rightSideProfile  accountRCol col-md-6 py-3 px-3 align-items-center ">
+
+
+                        <img class=" fitIMG" src="{% static 'account_register/img/cyber-security.png' %}">
+                        {#                    {% include 'account/password_reset.html' %}#}
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+

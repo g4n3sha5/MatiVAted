@@ -4,7 +4,7 @@ from Notifications.models import Notification
 from account_register.models import UserProfile
 from .forms import ClubForm, MemberForm
 from django.contrib.auth.decorators import login_required
-
+from main.views import getBaseTemplate
 from django.contrib import messages
 
 
@@ -110,7 +110,8 @@ def clubMembers(request):
         'profiles': profilesDict,
         'Club': yourClub,
         'authorized': authorized,
-        'requestsDict': requestsDict
+        'requestsDict': requestsDict,
+        'base_template' : getBaseTemplate(request, "Clubs")
 
     }
 
@@ -170,7 +171,9 @@ def memberProfile(request, clubID, userID):
     return render(request, "Clubs/memberProfileModal.html", context)
 
 def clubTrainings(request):
-    context = {}
+    context = {
+        'base_template': getBaseTemplate(request, "Clubs")
+    }
     return render(request, "Clubs/clubsTrainings.html", context)
 
 
@@ -179,6 +182,7 @@ def clubTrainings(request):
 def clubsList(request):
     context = {
         'clubsList': Club.objects.all(),
+        'base_template': getBaseTemplate(request, "Clubs"),
 
     }
     return render(request, "Clubs/clubsList.html", context)

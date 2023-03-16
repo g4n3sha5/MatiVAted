@@ -5,7 +5,7 @@
 {% endblock %}
 {% load crispy_forms_tags %}
 {% block content %}
-
+{% include "common/messages.html" %}
     <div class="card-body border-0 mx-md-2 h-100 mb-5  p-0">
 
         <div class="napis w-100  text-center ">
@@ -20,7 +20,13 @@
                     <form method="post" class="form-group">
                         {% csrf_token %}
                         {{ form|crispy }}
-                        <button type="submit" class="btn text-white btn-primary p-2 mt-4">Login</button>
+
+                         <span class="text-center forgotPassword">
+                             <h4>Forgot your password?</h4>
+                            <a class="text-white" href="{% url 'account_reset_password' %}">
+                            Reset</a></span>
+
+                        <button type="submit" class="btn text-white btn-primary p-2 mt-3">Login</button>
                         <p class="text-center mt-2"> Don't have an account?
                             <a class="text-white font-weight-700" href="{% url 'account_signup' %}">
                             Register </a></p>

@@ -20,7 +20,9 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('myaccount/', views.myAccount, name="myAccount" ),
+    path('profile/', views.profile, name="profile"),
+    path('account/', views.account, name="account"),
+    path('magiclogin/', views.magiclogin, name="magiclogin"),
 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

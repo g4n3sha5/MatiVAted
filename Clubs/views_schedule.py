@@ -3,7 +3,7 @@ from datetime import datetime, date
 from .models import Schedule, UserMembership, userClub
 from .utilis import Calendar
 from django.contrib.auth.decorators import login_required
-
+from main.views import getBaseTemplate
 from .forms import ScheduleForm
 from django.utils.safestring import mark_safe
 
@@ -47,7 +47,8 @@ def clubSchedule(request):
         'authorized' : authorized,
         'club' : userClub(request.user.id),
         'days' : days,
-        'hoursDict' : hoursDict
+        'hoursDict' : hoursDict,
+        'base_template': getBaseTemplate(request, "Clubs")
      }
 
 

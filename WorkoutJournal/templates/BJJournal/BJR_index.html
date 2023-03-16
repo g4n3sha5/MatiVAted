@@ -1,19 +1,15 @@
-{% extends 'BJJournal/BJR_layout.html' %}
+{% extends 'BJJournal/base.html' %}
 {% load static %}
 
 {% block content %}
-    <section id="BJR_view" class=" container-fluid w-100 p-0 position-relative ">
+{#    <section id="BJR_view" class=" container-fluid w-100 p-0 position-relative ">#}
         {% include 'BJJournal/BJR_index_reloadContent.html' %}
 
 
 
 
-    </section>
+{#    </section>#}
 
 {% endblock %}
 
 
-{% block script %}
-    <script type="text/javascript" src="{% static 'BJJournal/scripts.js' %}"></script>
-    <script type="text/javascript" src="{% static 'main/scripts.js' %}"></script>
-{% endblock %}

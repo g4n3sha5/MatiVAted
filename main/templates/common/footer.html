@@ -13,27 +13,23 @@
                 <ul>
                     <li><i class="bi bi-chevron-double-right"></i> <a href="{% url 'bjjournal' %}">Dashboard</a></li>
                     <li>
-                        <i class="bi bi-chevron-double-right"></i> <a HX-refresh=True>
+                        <i class="bi bi-chevron-double-right"></i> <a href="{% url 'addSession' %}">
                         Add Training Session</a>
                     </li>
 
                     <li>
                         <i class="bi bi-chevron-double-right"></i>
-                        <a data-app="{% url 'bjjournal' %}"
-                        data-url="{% url 'yourSessions' %}">Your Training
-                        Sessions</a>
+                        <a href="{% url 'yourSessions' %}">Your Training Sessions</a>
                     </li>
 
                     <li>
                         <i class="bi bi-chevron-double-right"></i>
-                        <a data-app="{% url 'bjjournal' %}"
-                                data-url="{% url 'techniques' %}">Techniques Base</a>
+                        <a href="{% url 'techniques' %}">Techniques Base</a>
                     </li>
 
                     <li>
                         <i class="bi bi-chevron-double-right"></i>
-                        <a data-app="{% url 'bjjournal' %}"
-                           data-url="{% url 'create' %}">To Do App</a>
+                        <a href="{% url 'create' %}">To Do App</a>
                     </li>
                 </ul>
             </div>
@@ -59,13 +55,13 @@
                     <div class=" profilePicture smallProfile  mx-0 profile  mb-3"
                          style="background-image: url('/media/profile_images/ganesh.jpg')">
                     </div>
-                    <p>
-                        g4n3sha5 - creator
-                    <h4 class="font-weight-800"> Poznań, <span>Poland</span></h4>
 
-                    </p>
+                    <h5> g4n3sha5 - creator</h5>
+                    <h4 class="font-weight-800 mb-2"> Poznań, <span>Poland</span></h4>
+
+
                     <h4>Favourite Grappler:<br>
-                        <span class="font-weight-700">Mica Galvão</span>
+                        <span class="">Mica Galvão</span>
                     </h4>
 
                     <div class="social-links mt-3 d-flex justify-content-center">

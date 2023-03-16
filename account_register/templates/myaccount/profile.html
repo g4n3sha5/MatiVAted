@@ -1,0 +1,13 @@
+{% extends "myaccount/base.html" %}
+{% load crispy_forms_filters %}
+
+{% load static %}
+{% block content %}
+    <div class="AccountContentWrapper h-100 w-100">
+         {% include 'myaccount/profile_reloadContent.html' %}
+    </div>
+{% endblock %}
+
+{#{% block script %}#}
+{##}
+{#{% endblock %}#}

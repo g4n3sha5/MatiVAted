@@ -10,3 +10,10 @@ def index (request):
 #
 #
 #     return HttpResponseRedirect(reverse(f"{view}"))
+def getBaseTemplate(request, app):
+    if not request.META.get('HTTP_HX_REQUEST'):
+        base_template = f"{app}/base.html"
+    else:
+        base_template = "main/partial.html"
+
+    return base_template

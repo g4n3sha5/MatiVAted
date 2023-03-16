@@ -4,7 +4,7 @@
 <head>
     {% include 'main/../../../main/templates/common/load_basic_scripts.html' %}
     <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
-    <title> {% block title %}  MATIVATION {% endblock %} </title>
+    <title> {% block title %}  MATIVATED {% endblock %} </title>
 
 </head>
 
@@ -25,8 +25,12 @@
 
             <div class="BJR_content position-relative p-0">
 
+                <section id="BJR_view" class=" container-fluid w-100 p-0 position-relative ">
+
                 {% block content %}
+
                 {% endblock %}
+                </section>
             </div>
 
 
@@ -45,9 +49,12 @@
     });
 </script>
 
-{% block script %}
+{#{% block script %}#}
 
-{% endblock %}
+    <script type="text/javascript" src="{% static 'BJJournal/scripts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main/scripts.js' %}"></script>
+
+{#{% endblock %}#}
 
 
 </body>

@@ -9,7 +9,7 @@ import json
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
-
+from main.views import getBaseTemplate
 # Create your views here.
 
 # def countAllHours (user):
@@ -90,14 +90,20 @@ def addSession(request, ext=False):
     else:
         form = TrainingSessionForm()
 
+
+
     context = {
-        'BJRform': form,
+        'form': form,
         'Club': yourClub,
         'techniquesList': Technique.objects.all(),
-        'template' : template
+        'base_template' : getBaseTemplate(request, "BJJournal")
+
     }
 
-    return render(request, "BJJournal/BJR_addSession/BJR_addSession.html", context)
+
+    template_name = "BJJournal/BJR_addSession/BJR_addSession.html"
+
+    return render(request, template_name , context)
 
 @login_required
 def editSession(request, id=None, orderIndex=None):
@@ -126,7 +132,7 @@ def editSession(request, id=None, orderIndex=None):
     context = {
         'Club': yourClub,
         'id': id,
-        'BJRform': form,
+        'form': form,
         'orderIndex': orderIndex,
         'techniquesList': Technique.objects.all()
     }
@@ -140,8 +146,7 @@ def removeSession(request, id):
 
 @login_required
 def yourSessions(request):
-    sessionsList = TrainingSession.objects.all().order_by('-id')
-
+    sessionsList = TrainingSession.objects.filter(user_id = request.user.id).order_by('-id')
     for index, item in enumerate(reversed(sessionsList), start=1):
         setattr(item, 'orderIndex', index)
 
@@ -152,8 +157,9 @@ def yourSessions(request):
     form = TrainingSessionForm()
 
     context = {
-        'BJRform': form,
-        'sessionsList': sessions
+        'form': form,
+        'sessionsList': sessions,
+        'base_template' : getBaseTemplate(request, "BJJournal")
     }
     # html = render_to_string('BJJournal/BJR_yourSessions.html', context)
     # return JsonResponse(html, safe=False)
@@ -187,7 +193,8 @@ def techniques(request):
 
     context = {
         'TechForm': form,
-        'techniquesList': Technique.objects.all()
+        'techniquesList': Technique.objects.all(),
+        'base_template': getBaseTemplate(request, "BJJournal")
     }
     return render(request, "BJJournal/BJR_Techniques.html", context)
 

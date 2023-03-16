@@ -1,4 +1,7 @@
+{% extends base_template%}
 {% load static %}
+
+{% block content %}
 <div id="modalContainer"></div>
 
 <div class="yourSessionsSection  w-100 navPadding ">
@@ -80,7 +83,7 @@
                         </h4>
                         <div class="sessionFight d-flex flex-column py-lg-1 ">
                             <h6> {{ session.fightTime }} min</h6>
-                            <img class="fightIcon mt-lg-2 mt-1" src="{% static 'BJJournal/img/katana.png' %}">
+                            <img class="fightIcon  mt-1" src="{% static 'BJJournal/img/katana.png' %}">
                         </div>
 
                     </div>
@@ -163,6 +166,7 @@
         </div>
     {% endif %}
 </div>
+{% endblock %}
 {#        <div class="grid-item img-buddha cursor-pointer">#}
 {#            <div class="SessionDate p-2 px-3 d-flex justify-content-between">#}
 {#                <h3>29.04.2022       18:00</h3>#}

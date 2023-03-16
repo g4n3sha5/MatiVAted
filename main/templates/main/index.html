@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
     <main class="page landing-page ">
-
+ {% include 'common/messages.html' %}
         <section class="clean-block clean-hero position-relative p-5">
             <div class="wave">
 
@@ -23,11 +23,24 @@
 
             <div class=" w-100 text1 position-absolute py-4 px-0 text-white">
                 <h2 class="px-4">Do you love Jiu Jitsu? This app is created for you!</h2>
-                <p class="px-2">Know your needs - manage your habits!</p>
-                <a class="btn btn-outline-light btn-lg"
+                <p class="px-2">Know your needs - manage your habits!  </p>
+
+                   <a class="btn btn-light btn-lg"
+                   type="button"
+                      href="{% url 'magiclogin' %}"
+
+                > <i class="bi bi-key"></i> Log in to Test Account</a>
+
+                <a class="btn btn-outline-light btn-lg mx-4"
+                   type="button"
+                    href="#bubble"
+                >Learn More</a>
+
+                 <a class="btn btn-light btn-lg"
                    type="button"
                    href="#bubble"
-                >Learn More</a>
+                >Check Repository <i class="bi bi-box-arrow-up-right"></i></a>
+
             </div>
 
         </section>

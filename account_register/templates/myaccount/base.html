@@ -4,7 +4,7 @@
 <head>
     {% include 'main/../../../main/templates/common/load_basic_scripts.html' %}
     <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
-    <title> {% block title %}  MATIVATION {% endblock %} </title>
+    <title> {% block title %}  MATIVATED {% endblock %} </title>
 
 </head>
 
@@ -12,8 +12,8 @@
 
 
   {%include "common/navbar.html" %}
-         <div class = " TheContainer vh-100 container-fluid  overflow-hidden p-0">
-            {% include "common/messages.html" %}
+         <main class = " main  container-fluid  overflow-hidden p-0">
+{#            {% include "common/messages.html" %}#}
             {% if user.is_authenticated %}
 
 
@@ -24,20 +24,18 @@
                 <a href="/login">Login Here to see content</a>
             {% endif %}
 
-        </div>
+        </main>
     {% include "common/footer.html" %}
 
 {#    {% include "common/foo ter.html" %}#}
-    <script>
-        document.body.addEventListener('htmx:configRequest', function(evt) {
-            evt.detail.headers['X-CSRFToken'] = '{{csrf_token}}'
-        });
-    </script>
 
-        {% block script %}
-
-        {% endblock %}
-
+<script>
+    document.body.addEventListener('htmx:configRequest', function(evt) {
+        evt.detail.headers['X-CSRFToken'] = '{{csrf_token}}'
+    });
+</script>
+<script type="text/javascript" src="{% static 'account_register/scripts.js' %}"></script>
+<script type="text/javascript" src="{% static 'main/scripts.js' %}"></script>
 
 
 </body>

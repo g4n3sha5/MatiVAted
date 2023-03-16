@@ -155,7 +155,7 @@ function multiSelect() {
 
         if (checkBox.checked) {
 
-            // technique.classList.add('d-none', 'cantSearch')
+            technique.classList.add('d-none', 'cantSearch')
             if (choicePlaceholder.textContent === "Choose techniques") choicePlaceholder.textContent = ''
             choicePlaceholderWrapper.insertAdjacentHTML("beforeend", TechniqueHTML)
             // removeToggle(choicePlaceholderWrapper, choicePlaceholder, technique)
@@ -165,7 +165,7 @@ function multiSelect() {
             evt.preventDefault()
             technique.querySelector('input').checked = true
             // console.log()
-            // technique.classList.add('d-none', 'cantSearch')
+            technique.classList.add('d-none', 'cantSearch')
 
             if (choicePlaceholder.textContent === "Choose techniques") choicePlaceholder.textContent = ''
             choicePlaceholderWrapper.insertAdjacentHTML("beforeend", TechniqueHTML)
@@ -336,9 +336,9 @@ const populateInput = () => {
         sessionLocation.querySelector('input').value = vari
     }
 }
-
+allFunctions()
 if (document.readyState !== 'loading') {
-    allFunctions()
+    // allFunctions()
 }
 
 document.body.addEventListener('htmx:afterOnLoad', event => {
@@ -348,6 +348,7 @@ document.body.addEventListener('htmx:afterOnLoad', event => {
 
 
 function allFunctions() {
+
     multiSelect()
     onClickColor()
     quickDateButtons()

@@ -16,17 +16,17 @@
    <h1 class="text-white text-center">Editing your session ${{ orderIndex }}</h1>
         <hr class="text-light">
 
-        <div class="text-white">{{ BJRform.errors }}</div>
+        <div class="text-white">{{ form.errors }}</div>
         <div class="addSession row sessionType
         justify-content-around justify-content-xl-between  align-items-start
         py-2  gx-1  ">
-            {% include 'common/messages.html' %}
+
             {% include 'BJJournal/BJR_addSession/BJR_addSession_sessionType.html' %}
 
 
             <div class=" mx-auto BJRnotesWrap mt-5 mt-lg-2 mx-xl-0 order-2  col-lg-4  col-md-6 col-10 mt-xl-0">
                 <label class="h-100 w-100">
-                    {{ BJRform.notes }}
+                    {{ form.notes }}
                 </label>
             </div>
             <div class="col-xl-4 col-12 order-xl-3 sectionTechniques px-lg-3
@@ -46,7 +46,7 @@
                     <div class="datepicker-toggle mb-3 w-100">
                         <h3 class="">Date</h3>
                         <label class="w-100">
-                            {{ BJRform.date }}
+                            {{ form.date }}
                         </label>
                     </div>
 
@@ -63,7 +63,7 @@
                 <div class=" w-100 h-100 text-center p-3 overflow-hidden">
                     <h3 class="">Time</h3>
                     <label class="timeStampLabel">
-                        {{ BJRform.timestamp }}
+                        {{ form.timestamp }}
                     </label>
 
                     <div class="quickDateWrap d-flex flex-wrap justify-content-around my-2">
@@ -108,7 +108,7 @@
                 <div class="my-auto">
                     <h2 class="pb-2"><i class="bi bi-geo-fill"></i></h2>
                     <label>
-                        {{ BJRform.location }}
+                        {{ form.location }}
                     </label>
 
                 </div>

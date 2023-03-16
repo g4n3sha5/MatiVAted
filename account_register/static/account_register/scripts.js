@@ -1,22 +1,3 @@
-//
-// let addSession = document.getElementsByClassName ('addSession')
-// if(addSession) {
-//     addSession.forEach(sessionClass => {
-//         console.log(sessionClass)
-//         sessionClass.addEventListener('change', (evt) => {
-//             evt.currentTarget
-//                 .querySelectorAll('.activeType')
-//                 .forEach(element => {
-//                     element.classList.remove("activeType")
-//                 })
-//
-//             evt.target
-//                 .closest('.count_icon')
-//                 .classList.add("activeType");
-//         }, true);
-//     })
-// }
-//
 
 const chooseFile = (evt) => {
     document.querySelector('.imageInput').click()
@@ -25,14 +6,15 @@ const chooseFile = (evt) => {
 const hoverCircle = () =>{
     let imgCircle = document.querySelector('.imgCircle')
     let circleOnHover = document.querySelector('.circleOnHover')
-    imgCircle.addEventListener('mouseover', (evt) =>{
-        circleOnHover.classList.add('onHoverfilter')
+    if(imgCircle) {
+        imgCircle.addEventListener('mouseover', (evt) => {
+            circleOnHover.classList.add('onHoverfilter')
 
-    })
-
-    imgCircle.addEventListener("mouseleave", (evt) => {
-        circleOnHover.classList.remove('onHoverfilter')
-  });
+        })
+        imgCircle.addEventListener("mouseleave", (evt) => {
+            circleOnHover.classList.remove('onHoverfilter')
+        });
+    }
 }
 const messageSuccess = () =>{
       let savedWrap = document.querySelector('.savedWrap')

@@ -1,6 +1,9 @@
+{% extends base_template %}
 {% load crispy_forms_filters %}
 {%  load static %}
 {%load crispy_forms_tags %}
+
+{% block content %}
 <div class="techniqueSection row m-0 p-0   ">
  {% include 'common/messages.html' %}
 
@@ -53,8 +56,7 @@
 
         {% include 'BJJournal/BJR_Techniques/BJR_Techniques_List.html' %}
 
-
-
 </div>
+{% endblock %}
 
 

@@ -66,12 +66,6 @@ class TrainingSession(models.Model):
         self.totalLength = self.parseMinutes(self.hoursLength, self.minutesLength)
         super(TrainingSession, self).save(*args, **kwargs)
 
-
-
-
-
-
-
 class Suggestion(models.Model):
     addedByUser = models.ManyToManyField(User, related_name="suggestedByUser", default=None)
     technique = models.ForeignKey(Technique, on_delete=models.CASCADE, default=None, null=True, blank=True)

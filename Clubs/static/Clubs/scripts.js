@@ -1,7 +1,7 @@
 const showModal = () => {
     let modalContainer = document.querySelector('#leaveClub')
     let leaveBtn = document.querySelector('.leaveBtn')
-    if (modalContainer) {
+    if (leaveBtn) {
         leaveBtn.addEventListener('click', evt => {
             // modalContainer.style.display = "block"
         })
@@ -33,19 +33,6 @@ const messageSuccess = () => {
 
     }
 }
-const areYouSure = () => {
-    let areYouSureBTN = document.querySelector('.areYouSureBTN')
-    let surePrompt = document.querySelector('.surePrompt')
-    let cancelBtn = document.querySelector('.cancelBtn')
-    if (areYouSureBTN) {
-        [areYouSureBTN, cancelBtn].forEach(x => {
-            x.addEventListener('click', evt => {
-                areYouSureBTN.classList.toggle('d-none')
-                surePrompt.classList.toggle('d-none')
-            })
-        })
-    }
-}
 
 
 allFunctions()
@@ -61,6 +48,5 @@ function allFunctions() {
     hoverCircle()
     messageSuccess()
     showModal()
-    areYouSure()
 
 }

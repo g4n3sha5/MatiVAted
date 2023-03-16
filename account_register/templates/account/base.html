@@ -2,7 +2,7 @@
 {% load static %}
 <html lang="en">
 <head>
-    <title> {% block title %}  MATivation {% endblock %} </title>
+    <title> {% block title %}  MATIVATED {% endblock %} </title>
     {% include 'main/../../../main/templates/common/load_basic_scripts.html' %}
     <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
 </head>
@@ -10,16 +10,17 @@
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
 {% include "common/navbar.html" %}
 
-<div class="container-fluid min-vh-100  p-0 m-0 navStyling overflow-hidden">
+<main class="container-fluid min-vh-100  p-0 m-0 main navStyling overflow-hidden">
 
 
     <div class="row g-0 h-100 w-100 p-0 ">
         <div class=" col-lg-6 h-100 p-0 position-relative card-mother navPadding min-vh-100">
-            {% include "common/messages.html" %}
+            <div class="px-3 text-white">
+                {% block content %}
 
-            {% block content %}
-            {% endblock %}
 
+                {% endblock %}
+            </div>
         </div>
 
         <div
@@ -40,9 +41,16 @@
         </div>
 
     </div>
-</div>
+</main>
 {% include "common/footer.html" %}
 
+   <script type="text/javascript" src="{% static 'account_register/scripts.js' %}"></script>
+    <script type="text/javascript" src="{% static 'main/scripts.js' %}"></script>
+<script>
+    document.body.addEventListener('htmx:configRequest', function (evt) {
+        evt.detail.headers['X-CSRFToken'] = '{{csrf_token}}'
+    });
+</script>
 </body>
 </html>
 

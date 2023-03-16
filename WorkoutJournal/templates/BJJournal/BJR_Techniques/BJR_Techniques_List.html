@@ -1,26 +1,26 @@
-<div class="techList col-12 col-lg-4  text-white px-3 overflow-hidden">
+<div class=" col-12 col-lg-4  text-white px-3  pb-1 overflow-hidden ">
+    <div class="techList  px-2">
+        <h3 class="text-center"> Techniques List</h3>
+        <hr class="text-white mx-5 my-3">
+        <div class="techniquesSearch d-flex align-items-center pb-1 position-relative px-2">
+            <i class="bi bi-search"></i>
+            <input class="searchBox py-1 " type="text" placeholder="Search ">
+        </div>
 
-    <h3 class="text-center"> Techniques List</h3>
-    <hr class="text-white mx-5 my-3">
-    <div class="techniquesSearch d-flex align-items-center pb-1 position-relative">
-        <i class="bi bi-search"></i>
-        <input class="searchBox py-1 " type="text" placeholder="Search ">
-    </div>
+        <ul class="select techniquesOptions w-100  overflow-auto secondScroll " multiple>
 
-    <ul class="select suggestionsList
-     techniquesOptions w-100 customScroll  " multiple>
+            {% for technique in techniquesList %}
+                <li hx-get="{% url 'singleTechniqueView' technique.id %}"
+                        {#        <li  hx-get = "technique/{{ technique.id }}/"#}
+                    hx-target=".leftTechSection"
 
-        {% for technique in techniquesList %}
-            <li hx-get="{% url 'singleTechniqueView' technique.id %}"
-                    {#        <li  hx-get = "technique/{{ technique.id }}/"#}
-                hx-target=".leftTechSection"
-
-                value="{{ technique.EnglishName }}"
-                class=" cursor-pointer techniqueItem list-group-item p-2 d-flex
+                    value="{{ technique.EnglishName }}"
+                    class=" cursor-pointer techniqueItem list-group-item p-2 d-flex
          align-items-center justify-content-between mb-1 d-block ">
-                {{ forloop.counter }}. {{ technique.EnglishName }}
-            </li>
-        {% endfor %}
+                    {{ forloop.counter }}. {{ technique.EnglishName }}
+                </li>
+            {% endfor %}
 
-    </ul>
+        </ul>
+    </div>
 </div>

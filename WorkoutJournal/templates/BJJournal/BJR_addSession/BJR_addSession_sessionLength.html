@@ -6,7 +6,7 @@
 
     <div class="lengthType d-flex m-0 p-0 justify-content-around flex-wrap">
 
-        {% for item in BJRform.hoursLength %}
+        {% for item in form.hoursLength %}
 
             <div class="count_icon addSessionLength text-center">
                 <label>
@@ -25,7 +25,7 @@
     <hr class="bg-transparent mx-3 my-2">
     <div class="lengthType d-flex mt-2 m-0 p-0 justify-content-around align-items-center flex-wrap">
 
-        {% for item in BJRform.minutesLength %}
+        {% for item in form.minutesLength %}
 
             <div class="count_icon addSessionLength addSessionMinutes text-center ">
                 <label>
@@ -64,7 +64,7 @@
 
             <div class="formFight d-flex  justify-content-center ">
                 {#            fightTimeInput#}
-                {{ BJRform.fightTime }}
+                {{ form.fightTime }}
                 <div class="placeholder">
                     min
                 </div>

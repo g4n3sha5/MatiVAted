@@ -1,19 +1,11 @@
-{% extends 'Clubs/layout.html' %}
+{% extends 'Clubs/base.html' %}
 {%  load static %}
 
 {% block content %}
-    <section id="Clubs_view" class="Clubscontent container-fluid w-100
-     h-100 px-0
-flex-column d-flex position-relative "  >
 
         {% include 'Clubs/Clubs_reloadContent.html' %}
 
-    </section>
+
 
 {% endblock %}
 
-
-{% block script %}
- <script type="text/javascript" src="{% static 'Clubs/scripts.js' %}"></script>
-<script type="text/javascript" src="{% static 'main/scripts.js' %}"></script>
-{% endblock %}

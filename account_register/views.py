@@ -5,11 +5,13 @@ from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
 from .forms import UserProfileForm
 from .models import UserProfile
 from Clubs.models import Club, UserMembership
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import User
 from WorkoutJournal.models import Technique
 # # Create your views here.
 #
 #
-def myAccount(request):
+def profile(request):
     try:
         # yourClub = Club.objects.get(creator=request.user)
 
@@ -30,7 +32,7 @@ def myAccount(request):
     }
 
     if request.method == 'POST':
-        template = 'myaccount_reloadContent'
+        template = 'profile_reloadContent'
         form = UserProfileForm(request.POST,
                                request.FILES,
                                instance = currentProfile)
@@ -43,8 +45,31 @@ def myAccount(request):
             context['form'] = form
             context['success'] = True
     else:
-        template = 'myaccount'
+        template = 'profile'
     # UserProfile.objects.get(user=request.user)
 
 
     return render (request, f"myaccount/{template}.html", context)
+
+def account(request):
+    if request.method == "POST":
+        print(request)
+        print(list(request.POST.items()))
+        if "delete" in request.POST:
+            print("zbc")
+            idd = request.user.id
+            u = User.objects.get(id = idd)
+            # p = UserProfile.objects.get(user_id == idd)
+            u.delete()
+
+        return HttpResponseRedirect(reverse("index"))
+        # p.delete()
+    context={
+        'user' : request.user
+    }
+    return render(request, 'myaccount/account.html', context)
+def magiclogin(request):
+    user = authenticate(email = 'test@qa.pl', password='tester65')
+    login(request, user)
+
+    return HttpResponseRedirect(reverse('profile'))

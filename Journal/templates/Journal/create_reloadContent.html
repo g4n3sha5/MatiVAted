@@ -9,18 +9,18 @@
 {#</div>#}
 
 {#</div>#}
-<div class="row min-vh-100 m-0 p-0  ">
+<div class="row vh-100 m-0 p-0 d-flex overflow-hidden ">
 
-    <div class=" order-2 order-lg-1 col-lg-8 col-12 min-vh-100  justify-content-center  d-flex ">
+    <div class=" order-2 order-lg-1 col-lg-8 col-12 h-100  justify-content-center  d-flex overflow-auto customScroll ">
         <div id="singleList" class="row d-flex  ">
         </div>
     </div>
 
-    <div class="techList order-1 order-lg-2 col-12 col-lg-4 min-vh-100 text-white px-5 overflow-hidden">
+    <div class="techList order-1 order-lg-2 col-12 col-lg-4 h-100 text-white px-5 overflow-hidden">
         {% load static %}
 
         <div class="d-flex flex-column">
-    <h1>To do manager</h1>
+        <h1>To do manager</h1>
 {#            <div class="profile">#}
 {#                <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">#}
 {#                <h1 class="text-light"><a href="index.html"></a>{{ user.username }}</h1>#}
@@ -43,7 +43,7 @@
                                 {% csrf_token %}
                                 {{ form.as_p }}
                                 <button hx-post="{% url 'create_menu' %}"
-                                        hx-target=".card-mother"
+                                        hx-target="#BJR_view"
                                         name="save" class="btn btn-success">
                                     Create To Do List
                                 </button>

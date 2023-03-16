@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import ToDoList, Item, CreateNewList, singleListForm
 from django.contrib.auth.decorators import login_required
+from main.views import getBaseTemplate
 # Create your views here.
 
 @login_required
@@ -60,18 +61,20 @@ def formValidator (request):
 
     return form
 
-@login_required
+# @login_required
 def create(request):
-    pathC = request.get_full_path()[1: -1]
+    # pathC = request.get_full_path()[1: -1]
+
     context = {
         'form': formValidator(request),
-        'ListCollection' : ToDoList
+        'ListCollection' : ToDoList,
+        'base_template' : getBaseTemplate(request, "BJJournal")
     }
     if request.user.is_authenticated:
         context['ListCollection'] = request.user.user_lists.all()
 
     # return render(request, "Journal/create.html", context)
-    return render(request, f"Journal/{pathC}.html", context)
+    return render(request, "Journal/create.html", context)
 def saveItem (request):
     pass
 

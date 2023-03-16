@@ -21,14 +21,14 @@
 
             <div class="row h-100 ">
                 <div class="col-md-6 d-flex align-items-center justify-content-start flex-column">
-                    {% include 'myaccount/myaccount_reloadContent_profileInfo.html' %}
-                    {% include 'myaccount/myaccount_reloadContent_leftColumn.html' %}
+                    {% include 'myaccount/profile_profileInfo.html' %}
+                    {% include 'myaccount/profile_leftColumn.html' %}
                 </div>
 
                 <div class="rightSideProfile col-md-6 py-3 px-3 ">
                     <div class=" px-0 mt-lg-3 yourBelt  w-100 pr-lg-5  d-flex flex-column align-items-center
                           px-lg-5">
-                        {% include 'myaccount/myaccount_yourBelt.html' %}
+                        {% include 'myaccount/profile_yourBelt.html' %}
                         <div class=" profilePicture smallProfile  profile  "
                          style="background-image: url({{ club.avatar.url }})">
                         </div>
