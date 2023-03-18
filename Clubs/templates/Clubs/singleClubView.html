@@ -5,8 +5,7 @@
 
     <div class="profileBackground w-100  ">
 
-        {% if not alreadySent %}
-{#        {% if not userHasClub and not alreadySent %}#}
+        {% if not userHasClub and not alreadySent %}
             <form>
                 {% csrf_token %}
                 <div class="clubProfileBtn text-center">

@@ -216,6 +216,7 @@ def singleClubView(request, id):
     try:
         userRequest = Request.objects.get(user=request.user)
         context['alreadySent'] = True
+        context['userHasClub'] = userHasClub(request)
         # return render(request, "Clubs/singleClubView.html", context)
     except:
         userRequest = False
