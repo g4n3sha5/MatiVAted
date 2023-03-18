@@ -1,11 +1,12 @@
 {% load crispy_forms_filters %}
 {% load static %}
 
-<div class="clubProfile clubContent position-relative  vh-100 overflow-hidden ">
+<div class="clubProfile h-100 clubContent position-relative   overflow-hidden  ">
 
-    <div class="profileBackground w-100 navPadding ">
+    <div class="profileBackground w-100  ">
 
-        {% if not userHasClub and not alreadySent %}
+        {% if not alreadySent %}
+{#        {% if not userHasClub and not alreadySent %}#}
             <form>
                 {% csrf_token %}
                 <div class="clubProfileBtn text-center">
@@ -45,7 +46,8 @@
 
 
             {% if Club.description %}
-                <div class="border-bottom clubProfileDescription  text-center p-3 px-5  ">
+                <div class=" clubProfileDescription  text-center p-3 px-lg-5 px-2
+                 overflow-auto customScroll ">
                     <i class="bi bi-file-text-fill pt-1"></i>
                     <h3 class="py-2">   {{ Club.description }} </h3>
                 </div>
@@ -55,8 +57,8 @@
         </div>
 
 
-        <div class="rightSideProfile px-0 col-md-6 d-flex flex-column
-         align-items-around  clubProfileInfo">
+        <div class="rightSideProfile px-2 col-md-6 d-flex flex-column
+         align-items-around  clubProfileInfo ">
 
         <div class="w-100 pt-md-5  d-flex flex-column align-items-center adresSingleProfile">
 
@@ -98,13 +100,13 @@
 
 
 
-        {% if Club.instructors %}
-            <div class="border-bottom clubProfileDescription  text-center p-3">
-                <i class="bi bi-file-text-fill pt-1"></i>
-                <h3 class="py-2">   {{ Club.description }} </h3>
-            </div>
-
-        {% endif %}
+{#        {% if Club.instructors %}#}
+{#            <div class="border-bottom clubProfileDescription  text-center p-3 overflow-auto h-100 ">#}
+{#                <i class="bi bi-file-text-fill pt-1"></i>#}
+{#                <h3 class="py-2">   {{ Club.description }} </h3>#}
+{#            </div>#}
+{##}
+{#        {% endif %}#}
 
 
     </div>

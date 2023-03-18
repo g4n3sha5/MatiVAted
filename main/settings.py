@@ -105,7 +105,9 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 WSGI_APPLICATION = 'main.wsgi.application'
-# ASGI_APPLICATION = 'main.asgi.application'
+ASGI_APPLICATION = 'main.asgi.application'
+# SESSIONS_ENGINE='django.contrib.sessions.backends.cache'
+#
 
 
 # Database
@@ -131,7 +133,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-ASGI_APPLICATION = 'main.asgi.application'
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 

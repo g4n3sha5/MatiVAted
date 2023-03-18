@@ -23,7 +23,6 @@ class Technique (models.Model):
     def __str__(self):
         return self.EnglishName
 
-
 class TrainingSession(models.Model):
     TStypes = (
         ('GI', 'GI'),
@@ -47,7 +46,11 @@ class TrainingSession(models.Model):
     notes = models.TextField(max_length=2500,blank=True, null=True)
     techniques = models.ManyToManyField(Technique, blank=True)
     fightTime = models.IntegerField(blank=True, null=True)
-    user = models.ForeignKey(User, blank=True, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="userOwner", blank=True, on_delete=models.CASCADE)
+    # club = models.ForeignKey("Clubs.Club", blank=True, null=True, on_delete=models.CASCADE)
+    # participants = models.ManyToManyField(User, blank=True)
+
+
     #change to foreign key???????? ^
     def __str__(self):
         return f'{self.type} {self.date}'
@@ -65,6 +68,8 @@ class TrainingSession(models.Model):
     def save(self, *args, **kwargs):
         self.totalLength = self.parseMinutes(self.hoursLength, self.minutesLength)
         super(TrainingSession, self).save(*args, **kwargs)
+
+
 
 class Suggestion(models.Model):
     addedByUser = models.ManyToManyField(User, related_name="suggestedByUser", default=None)

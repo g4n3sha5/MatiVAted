@@ -1,169 +1,172 @@
-{%  extends base_template %}
+{% extends base_template %}
 {% load static %}
 
 {% block content %}
-{#{% load Clubs_tags %}#}
-<div id="scheduleModal"
+    {% if not userHasClub %}
+        {% include 'Clubs/noClub.html' %}
+    {% else %}
+        {#{% load Clubs_tags %}#}
+        <div id="scheduleModal"
 
-     data-backdrop="false"
-     class="modal w-100   h-100 navPadding "
-     tabindex="-1" role="dialog"
-     aria-labelledby="scheduleModal"
-     aria-hidden="true">
+             data-backdrop="false"
+             class="modal w-100   h-100 navPadding "
+             tabindex="-1" role="dialog"
+             aria-labelledby="scheduleModal"
+             aria-hidden="true">
 
-</div>
+        </div>
 
-<div class="row w-100"
->
-    <div id="clubSchedule"
-         class=" clubSchedule  min-vh-100 h-100 navPadding
+        <div class="row w-100"
+        >
+            <div id="clubSchedule"
+                 class=" clubSchedule  min-vh-100 h-100 navPadding
     overflow-hidden pb-5 ">
-        {#        {% if not userHasClub %}#}
-        <h2 class="text-center mb-3 text-white">Your Club Schedule</h2>
+                {#        {% if not userHasClub %}#}
+                <h2 class="text-center mb-3 text-white">Your Club Schedule</h2>
 
 
-        <div class="overflow-auto outer calendar px-5">
+                <div class="overflow-auto outer calendar px-5">
 
-            {{ scheduleForm.errors }}
-            <table>
+                    {{ scheduleForm.errors }}
+                    <table>
 
-                <tr>
-                    {% for day in days %}
-                        <th class="text-white"> {{ day }} </th>
-                    {% endfor %}
-                    {#                            <th>Monday</th>#}
-                    {#                            <th>Tuesday</th>#}
-                    {#                            <th>Wednesday</th>#}
-                    {#                            <th>Thursday</th>#}
-                    {#                            <th>Friday</th>#}
-                    {#                            <th>Saturday</th>#}
-                    {#                            <th>Sunday</th>#}
-                </tr>
+                        <tr>
+                            {% for day in days %}
+                                <th class="text-white"> {{ day }} </th>
+                            {% endfor %}
+                            {#                            <th>Monday</th>#}
+                            {#                            <th>Tuesday</th>#}
+                            {#                            <th>Wednesday</th>#}
+                            {#                            <th>Thursday</th>#}
+                            {#                            <th>Friday</th>#}
+                            {#                            <th>Saturday</th>#}
+                            {#                            <th>Sunday</th>#}
+                        </tr>
 
-                {% for timeHour, sessionsArray in hoursDict %}
-                    {#                    backend provides dictionary, where key is hour, when trainings happen, and key is all info#}
-                    <tr>
-                    {% for day in days %}
-                        <td class="position-relative p-0">
-                            <div class="tdWRAP w-100 overflow-hidden position-relative">
+                        {% for timeHour, sessionsArray in hoursDict %}
+                            {#                    backend provides dictionary, where key is hour, when trainings happen, and key is all info#}
+                            <tr>
+                            {% for day in days %}
+                                <td class="position-relative p-0">
+                                    <div class="tdWRAP w-100 overflow-hidden position-relative">
 
 
-                                {% for session in sessionsArray %}
+                                        {% for session in sessionsArray %}
 
-                                    {% if session.0 == day %}
-                                        {# DAY #}
+                                            {% if session.0 == day %}
+                                                {# DAY #}
 
-                                        <div class="trainIcon h-100 p-0 ">
-                                            {% for info in session.2 %}
-                                                {% if info == 'GI' or info == 'NOGI' or info == 'GYM' %}
-{#                                                    <div class="{{ info }}schedule w-100 h-100 position-absolute"></div>#}
-                                                        <div data-sessionType ="{{ info }}"
-                                                             class="{{ info }}schedule imgschedule  justify-content-center d-flex flex-column">
-                                                             <h1 class="m-0">{{ session.1 }}</h1>
-                                                            <img class="fitIMG  "
-                                                                 src="{% static 'BJJournal/img/' %}{{ info }}.png">
-                                                            <h2 class="m-0">{{ info }}</h2>
-                                                        </div>
-                                                    {#                                                  TYPE#}
+                                                <div class="trainIcon h-100 p-0 ">
+                                                    {% for info in session.2 %}
+                                                        {% if info == 'GI' or info == 'NOGI' or info == 'GYM' %}
+                                                            {#                                                    <div class="{{ info }}schedule w-100 h-100 position-absolute"></div>#}
+                                                            <div data-sessionType="{{ info }}"
+                                                                 class="{{ info }}schedule imgschedule  justify-content-center d-flex flex-column">
+                                                                <h1 class="m-0">{{ session.1 }}</h1>
+                                                                <img class="fitIMG  "
+                                                                     src="{% static 'BJJournal/img/' %}{{ info }}.png">
+                                                                <h2 class="m-0">{{ info }}</h2>
+                                                            </div>
+                                                            {#                                                  TYPE#}
                                                             <div class="d-flex justify-content-center align-items-center scheduleTD p-0 pt-1">
 
 
-
                                                             </div>
-                                                    {% if authorized %}
+                                                            {% if authorized %}
 
-                                                        <form class="deleteTD">
-                                                            {% csrf_token %}
-                                                            <span
-                                                                    hx-delete="{% url 'removeTrainingSchedule' info session.0 session.1 club.id %}"
-                                                                    hx-target="#Clubs_view"
-                                                                    class="p-2 border-0 ">
+                                                                <form class="deleteTD">
+                                                                    {% csrf_token %}
+                                                                    <span
+                                                                            hx-delete="{% url 'removeTrainingSchedule' info session.0 session.1 club.id %}"
+                                                                            hx-target="#Clubs_view"
+                                                                            class="p-2 border-0 ">
                                                         <i class="bi bi-x text-white"></i>
                                                         </span>
-                                                        </form>
-                                                    {% endif %}
+                                                                </form>
+                                                            {% endif %}
 
-                                                {% else %}
+                                                        {% else %}
 
-                                                    <p class="scheduleTD">
+                                                            <p class="scheduleTD">
 
-                                                        {{ info }}
-                                                        {#                                                      DESCRIPTON#}
-                                                    </p>
-                                                {% endif %}
-
-
+                                                                {{ info }}
+                                                                {#                                                      DESCRIPTON#}
+                                                            </p>
+                                                        {% endif %}
 
 
-                                            {% endfor %}
+
+
+                                                    {% endfor %}
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                </td>
+                            {% endfor %}
+                            {##}
+                        {% endfor %}
+                        {#                    </tr>#}
+
+
+                        {#                    <tr>#}
+                        {#                        {% for day in days %}#}
+                        {#                            {% get_obj_attr club day as dayDict %}#}
+                        {##}
+                        {#                                {% for time, info in dayDict %}#}
+                        {##}
+                        {#                                {% endfor %}#}
+                        {##}
+                        {#                            {% endfor %}#}
+                        {#                    </tr>#}
+
+                        <tr>
+                            {% for day in days %}
+
+                                <td class="pt-1 px-1">
+                                    <div class="w-100 d-flex justify-content-between">
+                                        <div
+
+                                                data-toggle="modal"
+                                                data-target="#scheduleModal"
+                                                hx-target="#scheduleModal"
+                                                hx-get="{% url 'addTrainingModal' 'GI' day %}"
+                                                class="scheduleIcon w-25 p-1">
+                                            <img class="fitIMG"
+                                                 src="{% static 'BJJournal/img/GI.png' %}">
                                         </div>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
-                        </td>
-                    {% endfor %}
-                    {##}
-                {% endfor %}
-                {#                    </tr>#}
+
+                                        <div data-toggle="modal"
+                                             data-target="#scheduleModal"
+                                             hx-target="#scheduleModal"
+                                             hx-get="{% url 'addTrainingModal' 'NOGI' day %}"
+                                             class="scheduleIcon w-25 p-1">
+                                            <img class="fitIMG"
+                                                 src="{% static 'BJJournal/img/NOGI.png' %}">
+                                        </div>
+
+                                        <div
+                                                data-toggle="modal"
+                                                data-target="#scheduleModal"
+                                                hx-target="#scheduleModal"
+                                                hx-get="{% url 'addTrainingModal' 'GYM' day %}"
+                                                class="scheduleIcon w-25 p-1">
+                                            <img class="fitIMG"
+                                                 src="{% static 'BJJournal/img/GYM.png' %}">
+                                        </div>
+                                    </div>
+
+                                </td>
+                            {% endfor %}
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
 
 
-                {#                    <tr>#}
-                {#                        {% for day in days %}#}
-                {#                            {% get_obj_attr club day as dayDict %}#}
-                {##}
-                {#                                {% for time, info in dayDict %}#}
-                {##}
-                {#                                {% endfor %}#}
-                {##}
-                {#                            {% endfor %}#}
-                {#                    </tr>#}
-
-                <tr>
-                    {% for day in days %}
-
-                        <td class="pt-1 px-1">
-                            <div class="w-100 d-flex justify-content-between">
-                                <div
-
-                                        data-toggle="modal"
-                                        data-target="#scheduleModal"
-                                        hx-target="#scheduleModal"
-                                        hx-get="{% url 'addTrainingModal' 'GI' day %}"
-                                        class="scheduleIcon w-25 p-1">
-                                    <img class="fitIMG"
-                                         src="{% static 'BJJournal/img/GI.png' %}">
-                                </div>
-
-                                <div data-toggle="modal"
-                                     data-target="#scheduleModal"
-                                     hx-target="#scheduleModal"
-                                     hx-get="{% url 'addTrainingModal' 'NOGI' day %}"
-                                     class="scheduleIcon w-25 p-1">
-                                    <img class="fitIMG"
-                                         src="{% static 'BJJournal/img/NOGI.png' %}">
-                                </div>
-
-                                <div
-                                        data-toggle="modal"
-                                        data-target="#scheduleModal"
-                                        hx-target="#scheduleModal"
-                                        hx-get="{% url 'addTrainingModal' 'GYM' day %}"
-                                        class="scheduleIcon w-25 p-1">
-                                    <img class="fitIMG"
-                                         src="{% static 'BJJournal/img/GYM.png' %}">
-                                </div>
-                            </div>
-
-                        </td>
-                    {% endfor %}
-                </tr>
-
-            </table>
+            {#        {% endif %}#}
+            {##}
         </div>
-    </div>
-
-
-    {#        {% endif %}#}
-    {##}
-</div>
+    {% endif %}
 {% endblock %}

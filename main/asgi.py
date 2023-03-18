@@ -12,13 +12,14 @@ import os
 from django.core.asgi import get_asgi_application
 from channels.routing import ProtocolTypeRouter
 from channels.routing import URLRouter
-from Notifications.routing import ws_urlpatterns
+# from Notifications.routing import ws_urlpatterns
 from channels.auth import AuthMiddlewareStack
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'main.settings')
 
-# application = get_asgi_application()
-application = ProtocolTypeRouter({
-    'http' : get_asgi_application(),
-    # 'websocket' : AuthMiddlewareStack(URLRouter(ws_urlpatterns))
-})
+application = get_asgi_application()
+
+# application = ProtocolTypeRouter({
+#     'http' : get_asgi_application(),
+#     # 'websocket' : AuthMiddlewareStack(URLRouter(ws_urlpatterns))
+# })

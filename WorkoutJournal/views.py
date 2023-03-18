@@ -5,11 +5,9 @@ from .forms import TrainingSessionForm, addTechniqueForm, descriptionSuggestion
 from django.core.paginator import Paginator
 from django.contrib import messages
 from datetime import datetime, timedelta
-import json
-from django.http import JsonResponse
-from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
 from main.views import getBaseTemplate
+
 # Create your views here.
 
 # def countAllHours (user):
@@ -63,15 +61,23 @@ def dashboard(request):
     return render(request, "BJJournal/BJR_dashboard.html", context)
 
 @login_required
-def addSession(request, ext=False):
+def addSession(request):
+    authorized = False
+    uid = request.user.id
 
     try:
-        membership = UserMembership.objects.get(user_id=request.user.id)
+        membership = UserMembership.objects.get(user_id=uid)
         yourClub = Club.objects.get(id=membership.club_id)
+        authorized = membership.authorized
     except:
         membership, yourClub = None, None
+
+
+    if authorized == "FULL" or "TRAININGS":
+        authorized = True
+
     if request.method == 'POST':
-        form = TrainingSessionForm(request.POST, auto_id=True)
+        form = TrainingSessionForm( request.POST, auto_id=True)
 
         if form.is_valid():
             instance = form.save(commit=False)
@@ -96,7 +102,8 @@ def addSession(request, ext=False):
         'form': form,
         'Club': yourClub,
         'techniquesList': Technique.objects.all(),
-        'base_template' : getBaseTemplate(request, "BJJournal")
+        'base_template' : getBaseTemplate(request, "BJJournal"),
+        'authorized' : authorized
 
     }
 

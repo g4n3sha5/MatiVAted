@@ -1,7 +1,14 @@
 {% extends base_template %}
 
 {% block content %}
+{% if not userHasClub %}
+     {% include 'Clubs/noClub.html' %}
+{% else %}
 
+
+
+
+{% endif %}
 
 
 {% endblock %}

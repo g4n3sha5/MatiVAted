@@ -6,9 +6,18 @@ from .forms import ClubForm, MemberForm
 from django.contrib.auth.decorators import login_required
 from main.views import getBaseTemplate
 from django.contrib import messages
-
+from django.core.cache import cache
 
 # Create your views here.
+def userClub( userID):
+    return UserMembership.objects.get(user_id=userID).club
+
+def userHasClub(request):
+    try:
+        userClub(request.user.id)
+        return True
+    except:
+        return False
 
 def checkRequests():
     requests =  Request.objects.filter(status = 'YES')
@@ -21,6 +30,7 @@ def checkRequests():
 
 @login_required
 def ClubsIndex(request):
+
     authorized = True
     try:
         # find what club is the user in
@@ -39,7 +49,8 @@ def ClubsIndex(request):
         'form': form,
         'Club': yourClub,
         'user': request.user,
-        'authorized': authorized
+        'authorized': authorized,
+
     }
     if request.method == 'POST':
         yourClub, created = Club.objects.get_or_create(id=membership.club_id)
@@ -111,6 +122,7 @@ def clubMembers(request):
         'Club': yourClub,
         'authorized': authorized,
         'requestsDict': requestsDict,
+        'userHasClub' : userHasClub(request),
         'base_template' : getBaseTemplate(request, "Clubs")
 
     }
@@ -172,7 +184,8 @@ def memberProfile(request, clubID, userID):
 
 def clubTrainings(request):
     context = {
-        'base_template': getBaseTemplate(request, "Clubs")
+        'base_template': getBaseTemplate(request, "Clubs"),
+        'userHasClub': userHasClub(request),
     }
     return render(request, "Clubs/clubsTrainings.html", context)
 
@@ -192,12 +205,11 @@ def singleClubView(request, id):
     myClub = Club.objects.get(pk=id)
     context = {
         'Club': myClub,
-        'userHasClub': False
     }
 
     try:
         userMembership = UserMembership.objects.get(user=request.user)
-        context['userHasClub'] = True
+        # context['userHasClub'] = True
     except:
         userMembership = None
 

@@ -4,6 +4,7 @@ from Notifications.models import Notification
 from account_register.models import UserProfile
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from WorkoutJournal.models import TrainingSession
 from django.db.models import Case, When, Value
 
 # Create your models here.
@@ -52,6 +53,9 @@ class Club(models.Model):
     def __str__(self):
         return f'{self.name} {self.estabilished}'
 
+# class ClubTrainingSession(TrainingSession):
+#     participants = models.ManyToManyField(User, blank=True)
+#
 
 class UserMembership(models.Model):
     MEMBER_TYPES = (
@@ -73,8 +77,8 @@ class UserMembership(models.Model):
     slug = models.SlugField(null=True, blank=True)
     club = models.ForeignKey(Club, related_name='membersClub', on_delete=models.CASCADE, null=True)
 
-def userClub( userID):
-    return UserMembership.objects.get(user_id=userID).club
+
+
 class Request(models.Model):
     ACCEPTED = (
         ('YES', 'YES'),

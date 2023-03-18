@@ -5,7 +5,6 @@ from django.forms import ModelForm
 from .models import Club
 from .models import *
 
-
 class ClubForm(ModelForm):
     class Meta:
         model = Club
@@ -58,6 +57,9 @@ class ClubForm(ModelForm):
         'class': 'form-control w-100 text-center ',
         'placeholder': 'Website (optional) [www.example.com or example.com]'
     }), required=False)
+
+
+
 
 class MemberForm(ModelForm):
     class Meta:

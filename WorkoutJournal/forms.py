@@ -3,7 +3,7 @@ from crispy_forms.layout import Layout, Fieldset, Submit, Field
 from django import forms
 from django.forms import ModelForm
 from django.utils.safestring import mark_safe
-
+from Clubs.views import userClub
 from .models import *
 
 
@@ -13,11 +13,12 @@ class DatePickerInput(forms.DateInput):
 
 
 class TrainingSessionForm(ModelForm):
-    # def __init__(self, *args, **kwargs):
+    # def __init__(self, userID, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
-    #     if user is not None:
-    #         self.fields['addedByUser'].initial = user
-
+    #     if self.fields['club']:
+    #         self.fields['club'] = userClub(userID)
+    #     else:
+    #         self.fields['club'] = None
     class Meta:
         model = TrainingSession
         fields = '__all__'
@@ -72,6 +73,9 @@ class TrainingSessionForm(ModelForm):
                                                 widget=forms.CheckboxSelectMultiple(),
                                                 required=False)
 
+    # club = forms.ChoiceField(widget=forms.CheckboxInput(
+    #     attrs={"class": "form-check-input", "id": "flexSwitchCheckDefault"}),
+    # required=False)
 
     # widget=forms.CheckboxSelectMultiple(attrs={'class':'techniqueOption list-group-item p-2 d-flex '
     #                                                  'align-items-center cursor-pointer justify-content-between '
@@ -82,16 +86,6 @@ class TrainingSessionForm(ModelForm):
 class addTechniqueForm(ModelForm):
     type = forms.ChoiceField(choices=Technique.TechniqueTypes, widget=forms.RadioSelect())
 
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #     self.helper = FormHelper()
-    #     self.helper.layout = Layout(
-    #         # Field('type', css_class='sessionType', template="BJR_Techniques_types.html"),
-    #         Field('type', css_class='sessionType'),
-    #         Field('EnglishName', css_class='form-control'),
-    #         Field('otherName', css_class='form-control'),
-    #         # Field('description', css_class='form-control mb-3')
-    #     )
 
     class Meta:
         model = Technique

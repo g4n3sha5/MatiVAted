@@ -9,6 +9,7 @@
     --cyanBlueFooter : #00b4d8;
     --paleBlack : #191919;
     --white-color: #F7F6FB;
+    --active:	#C8C8C8;
     --normal-font-size: 1rem;
     --darkPurple: #3A0CA3;
     --SMgridHeight: 29.5vh !important;
@@ -652,9 +653,9 @@ h2, .h2 {
         /*margin-bottom: -13% !important;*/
         margin-top: 5%;
         width: 50vw;
-        margin-left: 44vw !important;
-        margin-right: 20px;
-        padding: 0 20px;
+        margin-left: 42vw !important;
+        padding: 0 15px !important;
+
     }
 
     .unauthorized {
@@ -690,15 +691,13 @@ h2, .h2 {
 
     .profText {
         /*margin-bottom: -13% !important;*/
-
-
         margin-left: 23vw !important;
         margin-right: 20px;
-        padding: 0 20px;
+        padding: 0 20px !important;
     }
 
     .profileBackground {
-        height: 25vh !important;
+        height: 19.5vh !important;
     }
 }
 
@@ -712,11 +711,11 @@ h2, .h2 {
     .profText {
         /*margin-bottom: -13% !important;*/
         margin-top: 4vh;
-        width: 60vw;
+        width: 50vw;
         text-align: right !important;
         margin-left: 42vw !important;
-        margin-right: 10px;
-        padding: 0 15px;
+        margin-right:15px;
+
     }
 
 }
@@ -758,6 +757,7 @@ h2, .h2 {
     background-color: var(--paleBlack);
     /*background-color:#4361ee;*/
     color: white;
+    /*min-height:100vh !important;*/
 }
 
 /*.accountcontent > * > h2{*/
@@ -770,19 +770,32 @@ h2, .h2 {
     /*background-color:#3f37c9;*/
     color: black;
     /*padding-bottom: 150px;*/
-    display:flex;
     height: 100%;
     justify-content: center;
     padding-bottom: 20vh;
 }
-.accountRCol{
+
+.accountRCol {
     /*height:100vh;*/
-    min-height:65vh;
+    height: 100%;
+        display:flex;
+    min-height: 65vh;
 }
 .accountRCol img{
     max-width: 29vh;
     max-height:29vh;
 }
+@media screen and (min-width: 768px) {
+
+    .accMain, .accountRCol{
+    height:100vh !important;
+}
+    .accountRCol img{
+    max-width: 40vh !important;
+    max-height:40vh !important;
+}
+}
+
 .toggle {
     display: inline-block;
     cursor: pointer;
@@ -842,9 +855,7 @@ h2, .h2 {
 }
 
 @media (max-width: 992px) {
-    /*.profile {*/
-    /*    width: 50%;*/
-    /*}*/
+
     .beltIMG {
         max-width: 30vw;
     }
@@ -855,12 +866,6 @@ h2, .h2 {
 }
 
 @media (min-width: 900px) {
-    /*.profile{*/
-    /*  width:19%;*/
-    /*  }*/
-    .TheContainer {
-        height: 100vh !important;
-    }
 
     .beltIMG {
         max-width: 11vw;
@@ -869,11 +874,6 @@ h2, .h2 {
 
 }
 
-@media (min-width: 600px) {
-    .TheContainer {
-        height: auto;
-    }
-}
 
 
 .profileInfo {
@@ -1267,13 +1267,17 @@ a {
 
 /* =======BJJR DASHBOARD =======*/
 .BJRdashboard {
-    background-color: #00a6ed;
-    height: 35%;
+    /*background-color: var(--paleBlack);*/
+    /*background-color: #2284ee;*/
+
+    /*height: 40%;*/
 }
 
 .countSection {
-    background-color: #2e2686;
+    background-color: #00b4d8;
+    /*background-color: #2e2686;*/
     padding-right:15px !important;
+    color:black;
     /*background-color: #3f37c9;*/
 }
 
@@ -1318,9 +1322,9 @@ a {
     color: white;
 }
 
-.dashboardCount .count_item {
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-}
+/*.dashboardCount .count_item {*/
+/*    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;*/
+/*}*/
 
 .count_icon img, .SessionDate img {
     width: 100%;
@@ -1346,6 +1350,8 @@ a {
 
 .countItems .count_item {
     width: 90%;
+    /*background-color:#4361ee;   */
+    /*background-color:var(--cyanBlueFooter)*/
 }
 
 .hours_count {
@@ -1363,8 +1369,14 @@ a {
     outline: 2px solid black;
 }
 .count_item .count_icon{
-    padding:25px;
+    padding:12px;
 }
+@media (min-width: 1024px) {
+ .count_item .count_icon{
+    padding:22px;
+}
+}
+
 .hours_count h1 {
     font-weight: 800;
     letter-spacing: 2px;
@@ -1541,7 +1553,15 @@ a {
 
 }
 
-
+.addSessionHeader h1{
+    font-size:34px;
+}
+.clubTS{
+    font-size:20px;
+    position:absolute;
+    right:45px;
+    width:15%;
+}
 .addSession {
     padding: 0 4vw;
     /*overflow:hidden;*/
@@ -1682,6 +1702,9 @@ a {
 
 .activeType {
     background-color: #3e54ef !important;
+}
+.activeColor{
+    background-color:var(--active) !important;
 }
 
 .smallCapt {
@@ -1827,12 +1850,12 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 
 .techniquesSearch i, .formIcon i {
     position: absolute;
-    left: 5%;
+    left: 15px;
     color: black;
 }
 
 .techniquesSearch input {
-    padding-left: 12%;
+    padding-left: 45px;
     width: 100%;
     border: 1px solid #b3b3b3;
     border-radius: 5px;
@@ -2585,6 +2608,16 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 }
 
 /*=============== CLUBS MODULE ===============*/
+.bearsorry img{
+    width:45vw;
+    height:45vw;
+    background:white;
+    padding:3px;
+}
+.bearsorry a{
+    text-decoration: none !important;
+    font-weight: 800;
+}
 .Clubscontent {
     background-color: var(--paleBlack);
 }
@@ -2670,8 +2703,10 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     background-position: center;
     background-size: contain;
 }
-
-@media screen and (min-width: 765px) {
+.clubProfile{
+    /*min-height:100vh;*/
+}
+@media screen and (min-width: 749px) {
     .clubProfile {
         height: 100vh;
     }
@@ -2693,6 +2728,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 .clubsListWrap {
     background-color: #187DFE;
     color: ghostwhite;
+    height:100vh;
 }
 
 #leaveClub, #cantLeave {
@@ -2703,6 +2739,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     /*background: black !important;*/
     border: 5px solid white !important;
     /*color: ghostwhite !important;*/
+      max-height:55vh;
 }
 
 #leaveClub .modal-dialog {
@@ -2734,9 +2771,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     background: #3f37c9;
 }
 
-.clubsList {
-    overflow: auto;
-}
+
 
 .clubsList li {
     border-bottom: 2px solid #4ccaf0;
@@ -2774,7 +2809,8 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 .clubProfileName {
     font-size: 3rem;
     font-weight: 700;
-
+    word-wrap:break-word;
+    margin-right:20px;
 }
 
 .singleClubView {
@@ -2784,6 +2820,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 .estabilished {
     font-weight: 400;
     font-size: 1.25rem;
+     margin-right:20px;
 }
 
 .leftSingleClub {
@@ -2794,9 +2831,9 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     letter-spacing: 0.07em;
 }
 
-.adresSingleProfile {
-    background-color: #0164e4;
-}
+/*.adresSingleProfile {*/
+/*    background-color: #0164e4;*/
+/*}*/
 
 
 .clubProfileInfo h4 {
@@ -2842,6 +2879,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 .clubProfileDescription {
     color: #e9ecef;
     width: 100%;
+
     /*background-color:#e9ecef;*/
 }
 
@@ -2917,7 +2955,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 }
 
 @media screen and (min-width: 768px) {
-    .clubsListWrapper {
+    .xclubsListWrapper {
         padding: 0 3vw 8vh 3vw;
     }
 
@@ -3214,7 +3252,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 }
 
 .tdWRAP h1 {
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 800;
     text-align: center;
 }

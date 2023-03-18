@@ -1,4 +1,4 @@
-{% extends base_template%}
+{% extends base_template %}
 
 {% load static %}
 {% load crispy_forms_filters %}
@@ -6,140 +6,150 @@
 
 {% block content %}
 
-<div class="addSessionSection px-lg-5 min-h-100 px-1 w-100 navPadding d-flex justify-content-center   ">
- {% include 'common/messages.html' %}
+    <div class="addSessionSection px-lg-5 min-h-100 px-1 w-100 navPadding d-flex justify-content-center   ">
+        {% include 'common/messages.html' %}
 
-    {#    <form method ="post" action ="/addSession/">#}
-    <form method="post" class="container-fluid">
-        {% csrf_token %}
-        <h1 class="text-white text-center">Add new session</h1>
-        <hr class="text-light">
+        {#    <form method ="post" action ="/addSession/">#}
+        <form method="post" class="container-fluid">
+            {% csrf_token %}
+            <div class="addSessionHeader text-white d-flex justify-content-center">
+                <h1>Add new session</h1>
+{#                {% if authorized %}#}
+{#                    <span class="clubTS form-check form-switch  ">#}
+{#                        {{ form.club }}#}
+{#                    Club Training Session#}
+{#                </span>#}
+{#                {% endif %}#}
+            </div>
 
-        <div class="text-white">{{ form.errors }}</div>
-        <div class="addSession row sessionType
+
+            <hr class="text-light">
+
+            <div class="text-white">{{ form.errors }}</div>
+            <div class="addSession row sessionType
         justify-content-around justify-content-xl-between  align-items-start
         py-2  gx-1  ">
 
-            {% include 'BJJournal/BJR_addSession/BJR_addSession_sessionType.html' %}
+                {% include 'BJJournal/BJR_addSession/BJR_addSession_sessionType.html' %}
 
 
-            <div class=" mx-auto BJRnotesWrap mt-5 mt-lg-2 mx-xl-0 order-2  col-lg-4  col-md-6 col-10 mt-xl-0">
-                <label class="h-100 w-100">
-                    {{ form.notes }}
-                </label>
-            </div>
-            <div class="col-xl-4 col-12 order-xl-3 sectionTechniques px-lg-3
+                <div class=" mx-auto BJRnotesWrap mt-5 mt-lg-2 mx-xl-0 order-2  col-lg-4  col-md-6 col-10 mt-xl-0">
+                    <label class="h-100 w-100">
+                        {{ form.notes }}
+                    </label>
+                </div>
+                <div class="col-xl-4 col-12 order-xl-3 sectionTechniques px-lg-3
             justify-content-center position-relative mt-3 mt-xl-0">
-                {% include 'BJJournal/BJR_addSession/BJR_addSession_Techniques.html' %}
-            </div>
-            {#    DATE        #}
+                    {% include 'BJJournal/BJR_addSession/BJR_addSession_Techniques.html' %}
+                </div>
+                {#    DATE        #}
 
-        </div>
-        <hr class="text-light mt-5 mb-2 ">
-        <div class="addSession row
+            </div>
+            <hr class="text-light mt-5 mb-2 ">
+            <div class="addSession row
         justify-content-md-around py-3 justify-content-center align-items-center  ">
-            <div class="col-xl-3 col-md-4 col-12 mx-auto mx-lg-0 order order-xl-3
+                <div class="col-xl-3 col-md-4 col-12 mx-auto mx-lg-0 order order-xl-3
             position-relative SessionDate mt-5 mt-lg-0 overflow-hidden">
-                <div class=" w-100 h-100 text-center p-3 overflow-hidden">
+                    <div class=" w-100 h-100 text-center p-3 overflow-hidden">
 
-                    <div class="datepicker-toggle mb-3 w-100">
-                        <h3 class="">Date</h3>
-                        <label class="w-100">
-                            {{ form.date }}
-                        </label>
-                    </div>
-
-                    <div class="quickDateWrap d-flex  justify-content-around">
-                        <span class="quickDate today btn btn-outline-primary">Today</span>
-                        <span class="quickDate yesterday btn btn-outline-primary ">Yesterday</span>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-lg-7 col-md-5  col-12 mx-auto mx-lg-0 order order-xl-3
-            position-relative SessionDate timeLabel mt-5 mt-lg-0 overflow-hidden">
-                <div class=" w-100 h-100 text-center p-3 overflow-hidden">
-                    <h3 class="">Time</h3>
-                    <label class="timeStampLabel">
-                        {{ form.timestamp }}
-                    </label>
-
-                    <div class="quickDateWrap d-flex flex-wrap justify-content-around my-2">
-                        <span class="quickDate quickTimeBtn btn btn-outline-primary">6:00</span>
-                        <span class="quickDate quickTimeBtn btn btn-outline-primary ">9:00</span>
-                        <span class="quickDate quickTimeBtn btn btn-outline-primary ">12:00</span>
-                        <span class="quickDate quickTimeBtn btn btn-outline-primary ">18:00</span>
-                        <span class="quickDate quickTimeBtn btn btn-outline-primary ">20:00</span>
-                    </div>
-
-                    <div class=" mb-3 w-100 ">
-
-                        <div class=" w-100 d-flex flex-column  justify-content-center align-items-center">
-
-
-                            <div class="timeStampWrap d-flex  w-100 flex-wrap justify-content-center ">
-                                <div class=" timeStampBtn ">
-                                    <i class="bi bi-dash"></i>1h
-                                </div>
-                                <div class=" timeStampBtn">
-                                    <i class="bi bi-plus"></i>5<span class="min">min</span>
-                                </div>
-                                <div class=" timeStampBtn">
-                                    <i class="bi bi-plus"></i>15<span class="min">min</span>
-                                </div>
-
-                                <div class=" timeStampBtn">
-                                    <i class="bi bi-plus"></i>1h
-                                </div>
-                            </div>
-
+                        <div class="datepicker-toggle mb-3 w-100">
+                            <h3 class="">Date</h3>
+                            <label class="w-100">
+                                {{ form.date }}
+                            </label>
                         </div>
+
+                        <div class="quickDateWrap d-flex  justify-content-around">
+                            <span class="quickDate today btn btn-outline-primary">Today</span>
+                            <span class="quickDate yesterday btn btn-outline-primary ">Yesterday</span>
+                        </div>
+
                     </div>
-
-
                 </div>
-            </div>
 
-            <div data-club="{{ Club.name }}"
-                 class=" col-xl-2 col-10 sessionLocation boxShadow    mx-auto mx-xl-0 mt-3
+                <div class="col-xl-3 col-lg-7 col-md-5  col-12 mx-auto mx-lg-0 order order-xl-3
+            position-relative SessionDate timeLabel mt-5 mt-lg-0 overflow-hidden">
+                    <div class=" w-100 h-100 text-center p-3 overflow-hidden">
+                        <h3 class="">Time</h3>
+                        <label class="timeStampLabel">
+                            {{ form.timestamp }}
+                        </label>
+
+                        <div class="quickDateWrap d-flex flex-wrap justify-content-around my-2">
+                            <span class="quickDate quickTimeBtn btn btn-outline-primary">6:00</span>
+                            <span class="quickDate quickTimeBtn btn btn-outline-primary ">9:00</span>
+                            <span class="quickDate quickTimeBtn btn btn-outline-primary ">12:00</span>
+                            <span class="quickDate quickTimeBtn btn btn-outline-primary ">18:00</span>
+                            <span class="quickDate quickTimeBtn btn btn-outline-primary ">20:00</span>
+                        </div>
+
+                        <div class=" mb-3 w-100 ">
+
+                            <div class=" w-100 d-flex flex-column  justify-content-center align-items-center">
+
+
+                                <div class="timeStampWrap d-flex  w-100 flex-wrap justify-content-center ">
+                                    <div class=" timeStampBtn ">
+                                        <i class="bi bi-dash"></i>1h
+                                    </div>
+                                    <div class=" timeStampBtn">
+                                        <i class="bi bi-plus"></i>5<span class="min">min</span>
+                                    </div>
+                                    <div class=" timeStampBtn">
+                                        <i class="bi bi-plus"></i>15<span class="min">min</span>
+                                    </div>
+
+                                    <div class=" timeStampBtn">
+                                        <i class="bi bi-plus"></i>1h
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div data-club="{{ Club.name }}"
+                     class=" col-xl-2 col-10 sessionLocation boxShadow    mx-auto mx-xl-0 mt-3
              mt-xl-0 text-center d-flex flex-column py-3 align-items-center SessionDate">
-                <div class="my-auto">
-                    <h2 class="pb-2"><i class="bi bi-geo-fill"></i></h2>
-                    <label>
-                        {{ form.location }}
-                    </label>
+                    <div class="my-auto">
+                        <h2 class="pb-2"><i class="bi bi-geo-fill"></i></h2>
+                        <label>
+                            {{ form.location }}
+                        </label>
 
+                    </div>
                 </div>
+
             </div>
 
-        </div>
+
+            <hr class="text-light  ">
+
+            <div class="addSession row d-flex justify-content-between mt-4 px-2 mb-4">
 
 
-        <hr class="text-light  ">
-
-        <div class="addSession row d-flex justify-content-between mt-4 px-2 mb-4">
+                {% include 'BJJournal/BJR_addSession/BJR_addSession_sessionLength.html' %}
 
 
-            {% include 'BJJournal/BJR_addSession/BJR_addSession_sessionLength.html' %}
-
-
-        </div>
-        <div class="addSess ionButtonWrap d-flex justify-content-center  ">
-            <button
-                    type="button"
-                    name="save"
-                    class="addSessionButton btn  btn-primary p-3 mt-5
+            </div>
+            <div class="addSess ionButtonWrap d-flex justify-content-center  ">
+                <button
+                        type="button"
+                        name="save"
+                        class="addSessionButton btn  btn-primary p-3 mt-5
                                       text-white w-75 "
-                    hx-post="{% url 'addSession' %}"
-                    hx-target="#BJR_view">
-                Add Training Session
-            </button>
+                        hx-post="{% url 'addSession' %}"
+                        hx-target="#BJR_view">
+                    Add Training Session
+                </button>
 
-        </div>
+            </div>
 
 
-    </form>
+        </form>
 
-</div>
+    </div>
 {% endblock %}
