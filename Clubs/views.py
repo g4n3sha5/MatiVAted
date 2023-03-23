@@ -205,6 +205,7 @@ def singleClubView(request, id):
     myClub = Club.objects.get(pk=id)
     context = {
         'Club': myClub,
+        'userHasClub' : userHasClub(request)
     }
 
     try:
@@ -216,10 +217,12 @@ def singleClubView(request, id):
     try:
         userRequest = Request.objects.get(user=request.user)
         context['alreadySent'] = True
-        context['userHasClub'] = userHasClub(request)
+
         # return render(request, "Clubs/singleClubView.html", context)
+
     except:
         userRequest = False
+
 
 
     if request.method == 'POST':

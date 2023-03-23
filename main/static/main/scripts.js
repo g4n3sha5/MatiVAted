@@ -192,13 +192,13 @@ const leftNavPadding = () => {
 const navOnHover = () => {
     const dropParent = document.querySelectorAll('.dropdownParent')
     dropParent.forEach(elem => {
-         let dropdown =   elem.querySelector('.navDropdown')
+        let dropdown = elem.querySelector('.navDropdown')
         elem.addEventListener('mouseover', (evt) => {
-          dropdown.style.display = "block"
+            dropdown.style.display = "block"
         })
 
         elem.addEventListener('mouseleave', () => {
-           dropdown.style.display = "none"
+            dropdown.style.display = "none"
         })
     })
 }
@@ -217,8 +217,39 @@ const areYouSure = () => {
         })
     }
 }
+const flagToggle = () => {
+    let flag = document.querySelectorAll('.flagIMG')
+    if (flag) {
+        flag.forEach(fl => {
+            if (fl.classList.contains('toSelect')) {
+                fl.addEventListener('click', evt => {
 
+                    let selectedSRC = document.querySelector('.selected img').src
+                    let toSelectSRC = fl.querySelector('img').src
 
+                    document.querySelector('.selected img').src = toSelectSRC
+                    // document.querySelector('.selected').classList.remove('selected')
+
+                    // fl.classList.add('selected')
+
+                    fl.querySelector('img').src = selectedSRC
+                    // flagToggle()
+                })
+            }
+
+        })
+    }
+}
+const chooseFile = () => {
+
+    const image = document.querySelector('.imageInput')
+    const chooseFile = document.querySelector('.chooseFile')
+    if(chooseFile){
+        chooseFile.addEventListener('click', evt =>{
+            image.click()
+        } )
+    }
+}
 allFunctionsMain()
 if (document.readyState !== 'loading') {
     allFunctionsMain()
@@ -228,17 +259,18 @@ document.body.addEventListener('htmx:afterOnLoad', event => {
     searchItem()
     quickTimeButtons()
     leftNavPadding()
+    chooseFile()
     // allFunctionsMain()
 })
 
 
 function allFunctionsMain() {
-
-     areYouSure()
+    flagToggle()
+    areYouSure()
     navOnHover()
     quickTimeButtons()
     searchItem()
-
+    chooseFile()
     showNavbar()
     colorClick()
     formIcon()

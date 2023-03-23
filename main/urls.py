@@ -17,8 +17,11 @@ from django.contrib import admin
 from django.urls import path, include
 from Journal.views import *
 from . import views
+from django.conf.urls.i18n import i18n_patterns
+
 
 urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),
     path('', views.index, name="index"),
     path('admin/', admin.site.urls),
     path('', include("Journal.urls")),
@@ -30,6 +33,7 @@ urlpatterns = [
     path('', include("Notifications.urls"))
 
 ]
+# urlpatterns += i18n_patterns('')
 htmx_urlpatterns = [
 
 ]

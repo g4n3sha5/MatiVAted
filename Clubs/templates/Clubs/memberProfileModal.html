@@ -2,7 +2,7 @@
     <form class="h-100 w-100"
           method="post">{% csrf_token %}
 
-        <div class="modal-dialog overflow-hidden profileModal" role="document">
+        <div class="modal-diaxxlog  profileModal " role="document">
             <div class="modal-content h-100 w-100">
 
                 <div class="modal-header profileModalHeader d-flex align-items-center">
@@ -94,7 +94,7 @@
                             class="btn btn-light w-25"
                             hx-post="{% url 'memberProfile' member.club_id  profile.user_id %}"
                             hx-target="#Clubs_view"
-                            data-dismiss="modal">Save and leave
+                            data-dismiss="modal">{% if authorizedRequest %}Save and leave{% else %}Leave{% endif %}
                     </button>
 
                 </div>

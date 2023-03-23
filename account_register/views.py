@@ -13,9 +13,6 @@ from WorkoutJournal.models import Technique
 #
 def profile(request):
     try:
-        # yourClub = Club.objects.get(creator=request.user)
-
-        # yourClub = UserMembership.getMyUsersClub(request)
         membership = UserMembership.objects.get(user_id=request.user.id)
         yourClub = Club.objects.get(id = membership.club_id)
 
@@ -28,7 +25,6 @@ def profile(request):
         'form': form,
         'UserProfile': currentProfile,
         'club' : yourClub
-        # 'techniques' : Technique.objects.all()
     }
 
     if request.method == 'POST':
@@ -53,10 +49,9 @@ def profile(request):
 
 def account(request):
     if request.method == "POST":
-        print(request)
-        print(list(request.POST.items()))
+
         if "delete" in request.POST:
-            print("zbc")
+
             idd = request.user.id
             u = User.objects.get(id = idd)
             # p = UserProfile.objects.get(user_id == idd)
@@ -68,6 +63,7 @@ def account(request):
         'user' : request.user
     }
     return render(request, 'myaccount/account.html', context)
+
 def magiclogin(request):
     user = authenticate(email = 'test@qa.pl', password='tester65')
     login(request, user)

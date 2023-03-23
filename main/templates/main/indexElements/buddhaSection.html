@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+
 <div class="container buddhasection ">
     <div class="row align-items-start mt-4 g-5 ">
         <div class="col-lg-5  p-4 p-lg-1 img-buddha-wrap"><img class="img-buddha" src="{% static 'main/img/amit-kumar.jpg' %}" /></div>
@@ -14,11 +16,11 @@
                     <blockquote class="blockquote p-3">
                         <p class="pb-3">
                             <i class="bi bi-quote fa-2x text-primary"></i>
-                            <span class="lead font-italic">Every action you take is a vote for the person you wish to become. </span>
-                            <span class="lead font-italic"><br>The only way I made progress – the only choice I had – was to start small.</span>
+                            <span class="lead font-italic">{% trans "Every action you take is a vote for the person you wish to become." %} </span>
+                            <span class="lead font-italic"><br>{% trans "The only way I made progress – the only choice I had – was to start small."%}</span>
                         </p>
                         <figcaption class="blockquote-footer mb-0">
-                        James Clear - Atomic Habits
+                        James Clear - {% trans "Atomic Habits"%}
                         </figcaption>
                     </blockquote>
 
@@ -28,9 +30,9 @@
 
             <p></p>
             <div class="getting-started-info pt-5 text-white">
-                <p class="px-2">As science proves, the best way to achieve our goals is to create a system, that will make us embrace the routine without obsessing
-                    over the final objective. <br>
-                    The best way to boost your motivation is focus on these small wins. Every small step you accomplish gives you a feeling of power.
+                <p class="px-2">{% trans "As science proves, the best way to achieve our goals is to create a system, that will make us embrace the routine without obsessing
+                    over the final objective."%} <br>
+                    {% trans "The best way to boost your motivation is focus on these small wins. Every small step you accomplish gives you a feeling of power." %}
                     <h2 class="MATIVATED my-2 "> STAY MATIVATED.</h2></p>
             </div>
 

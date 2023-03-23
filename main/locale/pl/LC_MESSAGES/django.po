@@ -1,0 +1,58 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-03-22 17:47+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && (n"
+"%100<12 || n%100>14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && n"
+"%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+#: .\templates\main\index.html:26
+msgid "Do you love Jiu Jitsu? This app is created for you!"
+msgstr "Jiu Jitsu to twoja pasja? Ta aplikacja jest dla Ciebie!"
+
+#: .\templates\main\index.html:27
+msgid "Know your needs - manage your habits!"
+msgstr "Znaj swoje potrzeby - zarządzaj swoimi nawykami!"
+
+#: .\templates\main\index.html:33
+msgid "Log in to Test Account"
+msgstr "Konto testowe"
+
+#: .\templates\main\index.html:38
+msgid "Learn More"
+msgstr "Zobacz więcej"
+
+#: .\templates\main\index.html:43
+msgid "Check Repository"
+msgstr "Repozytorium"
+
+#: .\templates\main\indexElements\buddhaSection.html:19
+msgid "Every action you take is a vote for the person you wish to become."
+msgstr "Każde nasze działanie to głos na osobę, którą chcemy zostać."
+
+#: .\templates\main\indexElements\buddhaSection.html:20
+msgid"The only way I made progress – the only choice I had – was to start small."
+msgstr "Jedyny sposób, aby stać się lepszym - jedyny wybór który miałem - to zacząć działać u podstaw, małymi krokami. "
+
+#: .\templates\main\indexElements\buddhaSection.html:23
+msgid "Atomic Habits"
+msgstr "Atomowe Nawyki"
+
+#: .\templates\main\indexElements\buddhaSection.html:35
+msgid ""
+"The best way to boost your motivation is focus on these small wins. Every "
+"small step you accomplish gives you a feeling of power."
+msgstr "Najlepszym sposobem, aby zwiększyć swoją motywację jest docenianie naszych małych zwycięstw. Każdy krok który stawiasz daje Ci poczucie siły."

@@ -241,7 +241,13 @@ nav a img {
 
 }
 
-
+.flagIMG img{
+    width:60px;
+    height:37px;
+}
+.flagDropdown{
+    width:80px !important;
+}
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media (max-width: 850px) {
     .navCaption {
@@ -411,7 +417,9 @@ nav a img {
     background-image: radial-gradient(farthest-corner, rgba(16, 0, 43, 0.4), rgba(72, 12, 168, 0.8));
 }
 
-
+.indexHeader{
+    color:white;
+}
 .feature-box i {
     font-size: 50px;
 }
@@ -447,6 +455,7 @@ nav a img {
     position: absolute;
     z-index: 1;
     bottom: -170px;
+    /*background-color:black;*/
 }
 
 .section-heading {
@@ -485,6 +494,9 @@ h2, .h2 {
 }
 
 .bubbleContainer {
+    /*background-color: #191919;*/
+    /*background-color: var(--paleBlack);*/
+
     background-color: #f2f3f4;
     min-height: 35vh;
 
@@ -492,9 +504,17 @@ h2, .h2 {
 
 
 .bubbleSection p {
-    color: black !important;
+      color:#4ccaf0;
+      /*color:var(--cyanBlueFooter);*/
 }
-
+.bubbleSection .col-md-3{
+    padding:0;
+    margin:0;
+}
+.feature-1 h3{
+    color:black;
+    margin:19px 0;
+}
 .feature-1 {
     margin: 0 15px;
     height: 90%;
@@ -524,8 +544,9 @@ h2, .h2 {
 }
 
 .feature-1 .wrap-icon.icon-1 {
+    background:#2e2686;
     /*background: linear-gradient(-55deg, #5753C9, #2d71a2);*/
-    background: linear-gradient(45deg, hsla(271, 100%, 14%, 1) 17%, hsla(271, 85%, 23%, 1) 64%);
+    /*background: linear-gradient(45deg, hsla(271, 100%, 14%, 1) 17%, hsla(271, 85%, 23%, 1) 64%);*/
 }
 
 .feature-1 h3 {
@@ -539,7 +560,7 @@ h2, .h2 {
 }
 
 .feature-1 p {
-    color: white;
+    margin-top:12px;
     letter-spacing: 1px;
 }
 
@@ -882,13 +903,13 @@ h2, .h2 {
     top: 0;
     /*margin-top:-7%;*/
     /*padding-top:4%;*/
-    margin-left: 4%;
+    margin-left: 2%;
 
 }
 
 
 .unauthorized {
-    margin-left: 15%;
+    /*margin-left: 15%;*/
 }
 
 .leftColContent {
@@ -2680,7 +2701,6 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 
 .imgCircle {
     background: ghostwhite;
-
     border: 3px solid black;
     overflow: hidden;
 }
@@ -2697,6 +2717,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 .profilePicture {
     background-position: center 25%;
     background-size: cover;
+    background-repeat:no-repeat;
 }
 
 .clubProfile .imgCircle {
@@ -2735,20 +2756,29 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     padding-top: 30vh;
 }
 
-#leaveClub .modal-content {
-    /*background: black !important;*/
-    border: 5px solid white !important;
-    /*color: ghostwhite !important;*/
-      max-height:55vh;
-}
 
 #leaveClub .modal-dialog {
     height: 100% !important;
 }
 
 #leaveClub .modal-content {
-    height: 100% !important;
-    max-height:20vh;
+        border: 5px solid white !important;
+
+
+}
+
+#leaveClub .modal-content, .profileModal .modal-content
+{
+      max-height:75vh;
+    max-width:75vw;
+}
+
+@media screen and (max-width: 900px) {
+    #leaveClub .modal-content, .profileModal .modal-content {
+        height:90vh;
+        max-width: 95vw;
+        overflow:auto;
+    }
 }
 
 #leaveClub .modal-header {
@@ -2888,6 +2918,9 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 }
 
 /*================ Club Members =================*/
+.proBorder{
+    border-bottom:1px solid #1bd8fb;
+}
 @media screen and (max-width: 900px) {
     .memberItem {
         min-height: 14vh;
@@ -3149,9 +3182,12 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 }
 
 .profileModal {
-    width: 65vw;
-    height: 75vh;
-    max-width: 100vw !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin:0;
+    padding:20px 15px 0;
+    display:flex;
+    justify-content: center;
 }
 
 @media (max-width: 1224px) {
@@ -3162,6 +3198,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     .profileModal {
         height: 100vh;
     }
+
 }
 
 .profileModal .modal-content {
@@ -3180,8 +3217,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 }
 
 .surePrompt button {
-    height: 40px;
-!important;
+    height: 40px;!important;
 }
 
 .memberModalType {
