@@ -19,15 +19,6 @@ def userHasClub(request):
     except:
         return False
 
-def checkRequests():
-    requests =  Request.objects.filter(status = 'YES')
-    for item in requests:
-        newMember = UserMembership(user_id=item.user_id,
-                                 club_id=item.club_id,
-                                   )
-        newMember.save()
-        item.delete()
-
 @login_required
 def ClubsIndex(request):
 
@@ -85,9 +76,12 @@ userProfiles = UserProfile.objects.all()
 #                 profilesDict[profile] = member
 #
 #     return profilesDict
+
+
+
+
 @login_required
 def clubMembers(request):
-    checkRequests()
     profilesDict, requestsDict = {}, {}
     authorized = False
     try:
@@ -243,10 +237,17 @@ def handleRequest(request, requestID):
 
     if request.method == 'POST':
         myrequest.status = 'YES'
-        myrequest.save()
+        newMember = UserMembership(user_id=myrequest.user_id,
+                                   club_id=myrequest.club_id,
+                                   )
+        newMember.save()
+        myrequest.delete()
+
     if request.method == 'DELETE':
-        myrequest.status = 'REJECTED'
-        myrequest.save()
+        # myrequest.status = 'REJECTED'
+        myrequest.delete()
+
+
 
     return clubMembers(request)
 

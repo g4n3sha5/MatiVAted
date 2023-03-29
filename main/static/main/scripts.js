@@ -189,17 +189,22 @@ const leftNavPadding = () => {
         document.querySelector('#footer').classList.add('leftNavPadding')
     }
 }
+
 const navOnHover = () => {
     const dropParent = document.querySelectorAll('.dropdownParent')
     dropParent.forEach(elem => {
-        let dropdown = elem.querySelector('.navDropdown')
-        elem.addEventListener('mouseover', (evt) => {
-            dropdown.style.display = "block"
-        })
+         if (this.matchMedia("(min-width: 991px)").matches) {
 
-        elem.addEventListener('mouseleave', () => {
-            dropdown.style.display = "none"
-        })
+             let dropdown = elem.querySelector('.navDropdown')
+             elem.addEventListener('mouseover', (evt) => {
+                 dropdown.style.display = "block"
+             })
+
+             elem.addEventListener('mouseleave', () => {
+                 dropdown.style.display = "none"
+             })
+         }
+
     })
 }
 
@@ -260,6 +265,7 @@ document.body.addEventListener('htmx:afterOnLoad', event => {
     quickTimeButtons()
     leftNavPadding()
     chooseFile()
+    areYouSure()
     // allFunctionsMain()
 })
 

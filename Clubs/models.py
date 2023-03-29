@@ -90,17 +90,20 @@ class Request(models.Model):
     status = models.CharField(choices=ACCEPTED, max_length=30)
 
     def save(self, *args, **kwargs):
-        clubID = self.club.id
-        receiverClub = Club.objects.get(id=clubID)
-        authorizedMembers = receiverClub.authorizedMembers()
-        for member in authorizedMembers:
+        if(self.status == 'NO'):
+            clubID = self.club.id
+            receiverClub = Club.objects.get(id=clubID)
+            authorizedMembers = receiverClub.authorizedMembers()
             myNotification = Notification(
                 message="A user sent a request to join your club!",
                 userSender=self.user,
             )
+            print("save creates a notification")
             myNotification.save()
-            authorizedUser = User.objects.get(id=member.user_id)
-            myNotification.userReceiver.add(authorizedUser)
+
+            for member in authorizedMembers:
+                authorizedUser = User.objects.get(id=member.user_id)
+                myNotification.userReceiver.add(authorizedUser)
 
         super(Request, self).save(*args, **kwargs)
 

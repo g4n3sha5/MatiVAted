@@ -3,7 +3,9 @@ from . import views
 
 
 urlpatterns = [
-    path('notifications/', views.notifications, name="notifications"),
+    # path('notifications/', views.notifications, name="notifications"),
+    # path('allNotifications/', views.allNotifications, name="allNotifications"),
+    path('clearNotifications/', views.clearNotifications, name="clearNotifications"),
 
 ]
 htmx_urlpatterns = [

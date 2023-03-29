@@ -1,25 +1,33 @@
 <div
-        class="nav-item bellIcon d-flex justify-content-center align-items-center">
-    <a data-bs-target=".notificationDropdown"
+        class="nav-item bellIcon  mx-lg-5
+         {% if notifications %}dropdownParent hoverScale {% endif %} ">
+    <a
+
+            {% if notifications %} data-bs-target=".notificationDropdown"
        data-bs-toggle="collapse"
        aria-haspopup="true"
        aria-expanded="false"
-       hx-trigger="every 800ms"
-
-       class=" p-0 dropdown-toggle m-0">
+            {% endif %}
+       class=" p-0  {% if notifications %} dropdown-toggle {% endif %} m-0 position-relative">
         <i class="bi bi-bell-fill "></i>
+       <span class="notifyAmount ">  {{ notifications | length }}
+      </span>
     </a>
 
-{#    <div class="notificationDropdown dropdown-menu  ">#}
-{#        {% if notifications %}#}
-{#            {% for item in notifications %}#}
-{#                <h2>{{ item.message }}</h2>#}
-{#                <h2>{{ item.timestamp }}</h2>#}
+    <div class="notificationDropdown navDropdown dropdown-menu customScroll  ">
+        <a hx-delete="{% url 'clearNotifications' %}"
+           hx-target="#notiParent"
+           class="d-block font-weight-700 my-2 readAll hoverScale mx-5 mx-lg-0 ">Read All</a>
+
+        {% if notifications %}
+            {% for item in notifications %}
+                <a href="{% url 'clubMembers' %}"
+                   class="notification d-block">{{ item.message }} {{ item.timestamp }}</a>
 {#                <h2>{{ item.is_read }}</h2>#}
-{##}
-{#            {% endfor %}#}
-{#        {% endif %}#}
-{##}
-{#        <h4>Show all notifications</h4>#}
-{#    </div>#}
+
+            {% endfor %}
+        {% endif %}
+
+{#        <a href="{% url 'allNotifications' %}">Show all notifications</a>#}
+    </div>
 </div>

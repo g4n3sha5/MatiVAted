@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponseRedirect, reverse
 from datetime import datetime, date
 from .models import Schedule, UserMembership
-from .utilis import Calendar
+
 from django.contrib.auth.decorators import login_required
 from main.views import getBaseTemplate
 from .forms import ScheduleForm

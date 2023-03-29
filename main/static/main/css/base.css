@@ -140,9 +140,8 @@ body {
 }
 
 .navContainer .navbar-brand {
-    margin-left: 4vw;
+    left:15%;
 }
-
 .landingNavbar {
     background: rgba(42, 50, 75, 0.01);
     /*background: transparent !important;*/
@@ -207,6 +206,7 @@ nav a img {
     display: flex;
     flex-direction: column;
     align-items: center;
+
 }
 .accountDropdown {
 
@@ -216,14 +216,72 @@ nav a img {
 .dropdownParent:hover + .navDropdown{
     display:block !important;
 }
-
+.dropdown-menu {
+    width: 100% !important;
+    text-align: center;
+    min-width:10px;!important;
+}
 .navDropdown{
      position:absolute;
+    left:0;
     background-color:#3f37c9;
-     width:100% !important;
+     width:100%; !important;
     margin-top:35px;
 
+
 }
+
+.notifyAmount{
+    background:red;
+    border-radius:50%;
+    font-size:16px;
+    font-weight:700;
+    text-align: center;
+    width:22px;
+    height:22px;
+    position:absolute;
+    top:0;
+    left:-10px;
+
+}
+.bellIcon {
+    font-size: 25px !important;
+}
+
+.readAll{
+    font-size:21px;
+    border:1px solid white;
+}
+.notification{
+    border-bottom:1px solid lightgray;
+    padding:2px 2px;
+}
+.notificationDropdown * {
+    color:white;
+   font-size:15px;
+    letter-spacing:0;
+}
+
+.notificationDropdown{
+    width:170px !important;
+    height:150px;
+    overflow:auto;
+    padding:2px 7px;
+    left:-50%;
+    margin-left:-50%;
+}
+@media (max-width: 992px) {
+
+    .navDropdown{
+        margin-top:0;
+    }
+    .notificationDropdown{
+        width:100%;
+        left:0;
+        margin-left:0;
+    }
+}
+
 .navDropdown a {
     color:white !important;
        text-align: center;
@@ -231,10 +289,10 @@ nav a img {
 .navDropdown .dropdown-item:hover{
     background-color:#240046;
 }
-.dropdown-menu {
-    width: 100% !important;
-    text-align: center;
+.nav .dropdown-item{
+    padding:0 !important;
 }
+
 
 .dropdown-menu:first-child {
     border-bottom: 1px solid grey;
@@ -245,9 +303,9 @@ nav a img {
     width:60px;
     height:37px;
 }
-.flagDropdown{
-    width:80px !important;
-}
+/*.flagDropdown{*/
+/*    width:80px !important;*/
+/*}*/
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media (max-width: 850px) {
     .navCaption {
@@ -372,20 +430,6 @@ nav a img {
     }
 }
 
-.bellIcon {
-    position: relative;
-    left: 6%;
-
-}
-
-.bellIcon {
-    font-size: 25px !important;
-}
-
-.notificationDropdown {
-    margin-top: 100px;
-}
-
 
 /* ============ LANDING PAGE ============ */
 
@@ -420,12 +464,24 @@ nav a img {
 .indexHeader{
     color:white;
 }
+.feature-box{
+    border:2px solid var(--cyanBlueFooter);
+    border-radius:15px;
+    margin:5px 30px;
+    padding:12px 16px;
+    /*background:rgba(67,97,238, 1);*/
+    background:#292929;
+    /*background:black;*/
+}
 .feature-box i {
     font-size: 50px;
+     
 }
 
 .feature-box h4 {
     font-weight: 700;
+    margin-bottom:9px;
+
 }
 
 .clean-hero::before {
@@ -504,7 +560,7 @@ h2, .h2 {
 
 
 .bubbleSection p {
-      color:#4ccaf0;
+      color:var(--paleBlack);
       /*color:var(--cyanBlueFooter);*/
 }
 .bubbleSection .col-md-3{
@@ -560,8 +616,9 @@ h2, .h2 {
 }
 
 .feature-1 p {
-    margin-top:12px;
+    margin-top:6px;
     letter-spacing: 1px;
+
 }
 
 .wrap-icon i {
@@ -645,7 +702,7 @@ h2, .h2 {
 }
 
 .features {
-    background-color: #2e007b;
+    background-color: #191919;
     color: white;
 }
 
@@ -989,7 +1046,7 @@ h2, .h2 {
 #footer {
 
     background: #101010;
-    padding: 60px 12vw 30px;
+    padding: 60px 4vw 30px;
     color: #fff;
     font-size: 14px;
     min-height: 15vh;
@@ -1104,11 +1161,22 @@ h2, .h2 {
     /*background-size: contain;*/
 
 }
+@media (min-width: 992px) {
+#footer a, nav .nav-item {
+    padding: 6px 5px;!important;
+    margin:0 9px;
+    cursor:pointer;
 
-#footer a, .navContainer a {
-    padding: 6px 8px 6px 16px;
 }
+}
+nav .nav-item{
 
+}
+#footer a {
+
+    margin: 1px 12px;
+
+}
 a {
     text-decoration: none;
 }
@@ -1118,7 +1186,9 @@ a {
     width: 75%;
     display: flex;
 }
-
+#listsDisplayer{
+    min-height:100vh;
+}
 .formContent * {
     color: #51e19e;
 
@@ -2123,16 +2193,20 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 .addTechBtn {
     opacity: 0.8;
 }
-@media (min-width: 800px) {
-    .leftSideTechnique, .techList {
+.techList{
+    height:100vh;
+}
+@media (min-width: 750px) {
+    .leftSideTechnique{
         /*height:100%;*/
-        height:100vh;
+        height:100vh
     /**/
     }
+
 }
-@media (max-width: 800px) {
-    .leftSideTechnique, .techList {
-        min-height:100vh;
+@media (max-width: 749px) {
+    .leftSideTechnique, #listsDisplayer {
+        height:150vh;
     }
 
 }
@@ -2417,13 +2491,13 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
      margin:0 !important;
 }
 .fightIcon {
-    width: 45%;
-    height:45%;
+    width: 40%;
+    height:40%;
 }
 @media screen and (max-width: 1000px) {
 .fightIcon {
-    width: 65%;
-    height:65%;
+    width: 55%;
+    height:35%;
 }
 
 }
@@ -2630,8 +2704,8 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 
 /*=============== CLUBS MODULE ===============*/
 .bearsorry img{
-    width:45vw;
-    height:45vw;
+    width:30vw;
+    height:30vw;
     background:white;
     padding:3px;
 }
@@ -2750,6 +2824,8 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     background-color: #187DFE;
     color: ghostwhite;
     height:100vh;
+    padding-bottom:50px !important;
+
 }
 
 #leaveClub, #cantLeave {
@@ -2920,6 +2996,9 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 /*================ Club Members =================*/
 .proBorder{
     border-bottom:1px solid #1bd8fb;
+}
+.clubsListWrapper{
+    height:90%;
 }
 @media screen and (max-width: 900px) {
     .memberItem {

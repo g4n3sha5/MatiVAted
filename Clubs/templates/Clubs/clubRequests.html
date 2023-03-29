@@ -37,13 +37,13 @@
                 <th class="requestIcon ">
                     <form class="d-flex justify-content-around">
                         {% csrf_token %}
-                        <div id="acceptRequest iconScale  h-100"
+                        <div id="acceptRequest hoverScale  h-100"
                              hx-post="{% url 'handleRequest' userRequest.1.id %}"
                              hx-target="#Clubs_view"
                         >
                             <i class="bi  px-2 bi-person-check w-100 h-100"></i>
                         </div>
-                        <div id="rejectRequest iconScale  h-100"
+                        <div id="rejectRequest hoverScale  h-100"
                              hx-delete="{% url 'handleRequest' userRequest.1.id %}"
                              hx-target="#Clubs_view"
                         >

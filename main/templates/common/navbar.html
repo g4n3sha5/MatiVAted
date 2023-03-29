@@ -4,11 +4,11 @@
 <nav id="header" class="
  navStyling navContainer navbar d-flex fixed-top  align-items-center
  navbar-dark navbar-expand-lg ">
-    <a class="ml-5 navbar-brand nav-link position-absolute d-inline p-1" target="_blank" href="/">
+    <a class="ml-5 navbar-brand nav-link  position-absolute d-inline p-1" target="_blank" href="/">
         <img src=" {% static 'main/img/logo-removebg.png' %}">
     </a>
 
-    <button class="navbar-toggler  position-absolute"
+    <button class="navbar-toggler  position-absolute "
 
             data-bs-target=".mainNavCollapse"
             data-bs-toggle="collapse"
@@ -19,15 +19,15 @@
 
     <div class=" mainNavCollapse collapse navbar-collapse   align-items-center
     justify-content-center justify-content-lg-end ">
-        <div class="navbar-nav  d-flex px-md-4 text-center  justify-content-lg-end">
-            <a class="nav-item" href="/">Home</a>
-            <a class="nav-item" href="/bjjournal">BJJournal</a>
-            <a class="nav-item" href="/clubs">Clubs</a>
+        <div class="navbar-nav  d-flex px-lg-4 text-center pb-3 pb-lg-0  justify-content-lg-end">
+            <a class="nav-item hoverScale" href="/">Home</a>
+            <a class="nav-item hoverScale" href="/bjjournal">BJJournal</a>
+            <a class="nav-item hoverScale" href="/clubs">Clubs</a>
 
             {#                                ACCOUNT BUTTON#}
             <div class="  nav-item   dropdownParent">
                 <a type="button"
-                   class=" text-center dropdown-toggle"
+                   class=" text-center dropdown-toggle hoverScale"
                    data-bs-target=".accountDropdown"
                    data-bs-toggle="collapse"
                    aria-haspopup="true"
@@ -36,36 +36,43 @@
 
                     {% if user.is_authenticated %}
 
-                        <a class="dropdown-item" href="{% url 'account' %}">Account</a>
-                        <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                        <a class="dropdown-item " href="{% url 'account' %}">Account</a>
+                        <a class="dropdown-item " href="{% url 'profile' %}">Profile</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'account_logout' %}">Log Out</a>
+                        <a class="dropdown-item " href="{% url 'account_logout' %}">Log Out</a>
 
                     {% else %}
-                        <a class="dropdown-item" href="{% url 'account_login' %}">Log In</a>
-                        <a class="dropdown-item" href="{% url 'account_signup' %}">Sign Up</a>
+                        <a class="dropdown-item  " href="{% url 'account_login' %}">Log In</a>
+                        <a class="dropdown-item " href="{% url 'account_signup' %}">Sign Up</a>
                     {% endif %}
 
                 </div>
 
             </div>
-            <div class="nav-item dropdownParent">
+            <div class="nav-item dropdownParent ">
                 <a type="button"
-                   class=" text-center dropdown-toggle"
+                   class=" text-center dropdown-toggle hoverScale "
                    data-bs-target=".supportDropdown"
                    data-bs-toggle="collapse"
                    aria-haspopup="true"
                    aria-expanded="false">Support</a>
-                <div class=" navDropdown supportDropdown dropdown-menu ">
+                <div class=" navDropdown supportDropdown dropdown-menu  ">
 
                     <a class="dropdown-item" href="{% url 'about' %}">About</a>
 
 
                 </div>
             </div>
+            {% if user.is_authenticated %}
+            <div id="notiParent">
 
-            <div class="nav-item dropdownParent mx-lg-5 mt-1 cursor-pointer my-0">
-                <div class="selected fitIMG flagIMG">
+
+                    {% include 'Notifications/notificationIcon.html' %}
+        </div>
+                {% endif %}
+
+            <div class="nav-item  dropdownParent mx-lg-5 mt-1  my-0  ">
+                <div class="selected  fitIMG flagIMG hoverScale dropdown-toggle">
                     <img src="{% static 'main/img/ukflag.png' %}">
                 </div>
                 <div class=" navDropdown  flagDropdown dropdown-menu  ">
@@ -79,11 +86,6 @@
 
         </div>
     </div>
-    {#            {% if user.is_authenticated %}#}
-    {##}
-    {#                {% include 'Notifications/notificationIcon.html' %}#}
-    {##}
-    {#            {% endif %}#}
 
 </nav>
 
