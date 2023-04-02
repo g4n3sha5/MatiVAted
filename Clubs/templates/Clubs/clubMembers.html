@@ -23,60 +23,6 @@
 
 
             <hr class="text-white mx-5 my-3">
-{#            <div class="techniquesSearch d-flex align-items-center pb-1 position-relative w-75 pb-3">#}
-{#                <i class="bi bi-search"></i>#}
-{#                <input class="searchBox py-1 " type="text" placeholder="Search ">#}
-{#            </div>#}
-
-            {#        <ul class=" customScroll  h-100 w-100 px-5 d-flex flex-column align-items-center overflow-auto" multiple>#}
-            {##}
-            {#            {% for profile, member in profiles.items %}#}
-            {#                <li#}
-            {#                        hx-target="#Clubs_view"#}
-            {#                    value="{{  technique.EnglishName }}"#}
-            {#                        class="memberItem techniqueOption nowrap cursor-pointer#}
-            {#                          w-100 list-group-item p-2 d-flex align-items-center mb-1 d-block position-relative">#}
-            {#                    <h1>{{ forloop.counter }}.</h1>#}
-            {##}
-            {#                    <div class=" profilePicture smallProfile  profile  "#}
-            {#                         style="background-image: url({{ profile.avatar.url }})">#}
-            {##}
-            {#                    </div>#}
-            {##}
-            {#                    <h2 class="listName">#}
-            {#                        {% if profile.firstName %}#}
-            {#                            {{ profile.firstName }}#}
-            {#                        {% endif %}#}
-            {#                        {% if profile.lastName %}#}
-            {#                            {{ profile.lastName }}#}
-            {#                        {% endif %}#}
-            {#                        {% if not profile.lastName and not profile.firstName %}#}
-            {#                            User Anonymous#}
-            {#                        {% endif %}</h2>#}
-            {##}
-            {#                    <div class="memberType d-flex justify-content-between">#}
-            {#                        <div class="personIcon">#}
-            {#                            {% if member.authorized == 'FULL' %}#}
-            {#                                <i class="bi bi-person-fill-gear"></i>#}
-            {#                                <i class="bi bi-person-fill-add"></i>#}
-            {#                            {% endif %}#}
-            {#                            {% if member.authorized == 'TRAININGS' %}#}
-            {#                                <i class="bi bi-person-fill-add"></i>#}
-            {#                            {% endif %}#}
-            {#                        </div>#}
-            {##}
-            {##}
-            {#                        <h2 class="profileBelt">{{ profile.belt }}</h2>#}
-            {#                        <h2 class="">{{ member.memberType }}</h2>#}
-            {#                    </div>#}
-            {#                </li>#}
-            {##}
-            {#                {% endfor %}#}
-            {##}
-            {#            {% endfor %}#}
-            {##}
-            {#        </ul>#}
-            {#        #}
 
             <table class="w-100 membersTable h-100  px-lg-5 overflow-hidden">
 
@@ -88,7 +34,7 @@
                             data-target="#memberProfile"
                             hx-target="#memberProfile"
                             hx-get="{% url 'memberProfile' member.club_id  profile.user_id %}"
-                            class="my-2 proBorder memberItem techniqueOption  nowrap cursor-pointer
+                            class="my-2 proBorder mx-lg-2  memberItem techniqueOption  nowrap cursor-pointer
 {#                          align-items-center mb-1 position-relative">#}
                            d-flex flex-wrap align-items-center mb-1 position-relative overflow-hidden">
                         <th class="memberh1 px-1 p-lg-1  mb-lg-0 memberCounter">{{ forloop.counter }}.</th>
@@ -104,7 +50,7 @@
 
                             <div class="nameIcon ">
                                 <div class="personIcon text-center d-flex flex-column">
-                                    {% if authorized %}
+                                    {% if authorized == 'FULL'%}
                                         {% if member.authorized == 'FULL' %}
 
                                               <i class="bi bi-person-fill-gear"></i>
@@ -153,15 +99,15 @@ flex-column align-items-center px-1 px-lg-5">
             <button type="button"
                     class="btn w-50 btn-primary leaveBtn text-center"
                     data-toggle="modal"
-                    {% if not authorized %} data-target="#leaveClub" {% endif %}
-                    {% if authorized %} data-target="#cantLeave" {% endif %}
+                    {% if authorized != 'FULL' %} data-target="#leaveClub" {% endif %}
+                    {% if authorized == 'FULL' %} data-target="#cantLeave" {% endif %}
             >
                 <i class="bi bi-box-arrow-right"></i>
                 <h3>Leave Club</h3>
 
             </button>
             <div class="clubRequests w-100 text-center mt-2 mt-lg-4">
-                {% if authorized %}
+                {% if authorized == 'FULL' %}
                     <h1> Requests</h1>
                     {% if requestsDict|length > 0 %}
                         {% include 'Clubs/clubRequests.html' %}

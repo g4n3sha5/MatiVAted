@@ -47,8 +47,8 @@ class TrainingSession(models.Model):
     techniques = models.ManyToManyField(Technique, blank=True)
     fightTime = models.IntegerField(blank=True, null=True)
     user = models.ForeignKey(User, related_name="userOwner", blank=True, on_delete=models.CASCADE)
-    # club = models.ForeignKey("Clubs.Club", blank=True, null=True, on_delete=models.CASCADE)
-    # participants = models.ManyToManyField(User, blank=True)
+    club = models.ForeignKey("Clubs.Club", blank=True, null=True, on_delete=models.CASCADE)
+    participants = models.ManyToManyField(User, blank=True)
 
 
     #change to foreign key???????? ^

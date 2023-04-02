@@ -98,7 +98,7 @@ class Request(models.Model):
                 message="A user sent a request to join your club!",
                 userSender=self.user,
             )
-            print("save creates a notification")
+
             myNotification.save()
 
             for member in authorizedMembers:

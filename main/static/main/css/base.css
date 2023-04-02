@@ -208,6 +208,19 @@ nav a img {
     align-items: center;
 
 }
+@media (min-width: 992px) {
+
+    .acc{
+
+        border:2px solid rgba(255,255,255,0.115);
+        border-radius:4%;
+        padding:5px; !important;
+        margin-left:20px !important;
+        font-weight: 800;
+}
+}
+
+
 .accountDropdown {
 
     /*margin-top:35px;*/
@@ -1506,7 +1519,10 @@ a {
     overflow: hidden;
     border: 1px solid black;
 }
-
+.kindOf{
+    font-size:16px;
+    font-weight:400;
+}
 @media (max-width: 1024px) {
     .count_item {
         max-height: 10vh !important;
@@ -1573,75 +1589,12 @@ a {
     height: 100%;
 }
 
-
-
-
-/*@media screen and (min-width: 700px) and (max-width: 900px){*/
-/*    .addSessionSection {*/
-/*        height: 255vh !important;*/
-/*    }*/
-/*}*/
-/*@media screen and (min-width: 700px) and (max-width: 900px) and (min-height:1000px){*/
-/*    .addSessionSection {*/
-/*        height: 200vh !important;*/
-/*    }*/
-/*}*/
-
-/*@media screen and (min-width: 900px) and (max-width:1290px)*/
-/*    and (min-height:750px) {*/
-/*    .addSessionSection {*/
-/*        height: 210vh !important;*/
-/*    }*/
-/*}*/
-/*@media screen and (min-width: 1024px) and (max-height: 1024px){*/
-/*    .addSessionSection {*/
-/*        height: 208vh !important;*/
-/*    }*/
-/*}*/
-
-/*@media screen and (min-width: 1024px) and (min-height:1024px) {*/
-/*    .addSessionSection {*/
-/*        height: 125vh !important;*/
-/*    }*/
-/*}*/
-/*@media screen and (min-width: 400px) and (max-width: 700px){*/
-/*    .addSessionSection {*/
-/*        height: 270vh !important;*/
-/*    }*/
-/*}*/
-/*@media screen and (min-width: 400px) and (max-width: 700px) and (max-height:850px){*/
-/*    .addSessionSection {*/
-/*        height: 335vh !important;*/
-/*    }*/
-/*}*/
-
-/*@media (max-width: 400px) {*/
-/*    .addSessionSection {*/
-/*        height: 335vh !important;*/
-/*    }*/
-/*}*/
-/*@media screen and (max-width: 500px) and (min-height:700px){*/
-/*    .addSessionSection {*/
-/*        height: 310vh !important;*/
-/*    }*/
-/*}*/
 .addSessionSection {
-    /*height: 250vh;*/
     min-height:125vh;
     padding-bottom:15px;
     overflow:hidden;
     /*scale: 0.8;*/
     padding-top: calc(var(--navHeight) / 2);
-    /*min-height: 121vh;*/
-
-    /*!*background:#6961d0;*!*/
-    /*background: url("../img/sam-mgrdichian5.png");*/
-    /*background-size:     cover;*/
-    /*background-repeaon
-    t:   no-repeat;*/
-    /*background-position: center 50%;*/
-    /*border:none;*/
-
 }
 
 .addSessionHeader h1{
@@ -2457,7 +2410,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
         max-height: 40%;
     }
 }
-.grid-item:hover {
+.yourSessions .grid-item:hover {
     transform: scale(1.01)
 }
 

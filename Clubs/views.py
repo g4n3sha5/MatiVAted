@@ -1,12 +1,13 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, redirect, reverse, HttpResponseRedirect
 from .models import Club, UserMembership, Request, BELT_ORDER, MEMBER_ORDER
-from Notifications.models import Notification
+from WorkoutJournal.models import TrainingSession
 from account_register.models import UserProfile
 from .forms import ClubForm, MemberForm
 from django.contrib.auth.decorators import login_required
 from main.views import getBaseTemplate
 from django.contrib import messages
-from django.core.cache import cache
+from main.views import userAuth
 
 # Create your views here.
 def userClub( userID):
@@ -19,17 +20,17 @@ def userHasClub(request):
     except:
         return False
 
-@login_required
-def ClubsIndex(request):
 
-    authorized = True
+@login_required
+@userAuth
+def ClubsIndex(request):
     try:
         # find what club is the user in
         membership = UserMembership.objects.get(user_id=request.user.id)
         yourClub = Club.objects.get(id=membership.club_id)
         # yourClub = Club.objects.get(creator=request.user)
-        if membership.authorized != 'FULL':
-            authorized = False
+        # if membership.authorized != 'FULL':
+        #     authorized = False
 
     except:
         yourClub = None
@@ -40,8 +41,7 @@ def ClubsIndex(request):
         'form': form,
         'Club': yourClub,
         'user': request.user,
-        'authorized': authorized,
-
+        'authorized' : request.session.get('authorized')
     }
     if request.method == 'POST':
         yourClub, created = Club.objects.get_or_create(id=membership.club_id)
@@ -81,16 +81,13 @@ userProfiles = UserProfile.objects.all()
 
 
 @login_required
+@userAuth
 def clubMembers(request):
     profilesDict, requestsDict = {}, {}
-    authorized = False
     try:
         membership = UserMembership.objects.get(user_id=request.user.id)
         yourClub = Club.objects.get(id=membership.club_id)
-        if membership.authorized == 'FULL':
-            authorized = True
         membersListT = UserMembership.objects.filter(club=yourClub).order_by(MEMBER_ORDER)
-        # membersListT = yourClub.membersList().order_by(MEMBER_ORDER)
         requestListT = yourClub.requestList()
 
     except:
@@ -114,7 +111,7 @@ def clubMembers(request):
         'membersList': membersListT,
         'profiles': profilesDict,
         'Club': yourClub,
-        'authorized': authorized,
+        'authorized': request.session.get('authorized'),
         'requestsDict': requestsDict,
         'userHasClub' : userHasClub(request),
         'base_template' : getBaseTemplate(request, "Clubs")
@@ -122,6 +119,7 @@ def clubMembers(request):
     }
 
     return render(request, "Clubs/clubMembers.html", context)
+
 @login_required
 def memberRemove(request, id):
     userDel = UserMembership.objects.get(pk=id)
@@ -142,11 +140,12 @@ def profileMemberMatcher (userID):
 
 
 
+@userAuth
 def memberProfile(request, clubID, userID):
     profileDict = {}
     authorizedRequest, myProfile = False, False
     ARR = profileMemberMatcher(userID)
-    requestUserAuthorized = profileMemberMatcher(request.user.id)[1]
+
     # profile, member = profileMemberMatcher(userID)
 
     # user profile and membership that has been clicked
@@ -163,33 +162,60 @@ def memberProfile(request, clubID, userID):
     else:
          form = MemberForm(instance=member)
 
-    if requestUserAuthorized.authorized == 'FULL':
-        authorizedRequest = True
+
     if userID == request.user.id:
         myProfile = True
 
     context = {
         'profile': profileDict,
-        'authorizedRequest': authorizedRequest,
+        'authorizedRequest': request.session.get('authorized'),
         'myProfile' : myProfile,
         'form' : form
     }
     return render(request, "Clubs/memberProfileModal.html", context)
 
 def clubTrainings(request):
+    uid = request.user.id
+    try:
+        userclub = userClub(uid)
+    except:
+        userclub = None
+    sessionsList = TrainingSession.objects.filter(club=userclub).order_by('-id')
+
+    for index, item in enumerate(reversed(sessionsList), start=1):
+        setattr(item, 'orderIndex', index)
+        if request.user in item.participants.all():
+            setattr(item, 'participant', True)
+
+
+    p = Paginator(sessionsList, 6)
+    page = request.GET.get('page')
+    sessions = p.get_page(page)
+
+
     context = {
         'base_template': getBaseTemplate(request, "Clubs"),
         'userHasClub': userHasClub(request),
+        'sessionsList': sessions
     }
     return render(request, "Clubs/clubsTrainings.html", context)
 
+def clubTraining(request, trainingID, action):
+    training = TrainingSession.objects.get(id=trainingID)
+    if request.method == "POST":
+        if action == "join":
+            training.participants.add(request.user)
+        if action == "leave":
+            training.participants.remove(request.user)
 
+    return HttpResponseRedirect(reverse(clubTrainings))
 
 @login_required
 def clubsList(request):
     context = {
         'clubsList': Club.objects.all(),
         'base_template': getBaseTemplate(request, "Clubs"),
+
 
     }
     return render(request, "Clubs/clubsList.html", context)
@@ -248,16 +274,7 @@ def handleRequest(request, requestID):
         myrequest.delete()
 
 
-
     return clubMembers(request)
-
-
-
-
-
-    # return reverse('/clubMembers')
-
-    # return reverse('/clubMembers')
 
 
 

@@ -6,7 +6,7 @@
             <div class="modal-content h-100 w-100">
 
                 <div class="modal-header profileModalHeader d-flex align-items-center">
-                    {% if authorizedRequest and not myProfile %}
+                    {% if authorizedRequest == 'FULL' and not myProfile %}
                         <div class="profileModalRemove">
 
 
@@ -25,7 +25,7 @@
                                         class=" px-3 btn btn-danger mx-1">YES
                                 </button>
 
-                                <button clas-s=" px-3 btn btn-secondary cancelBtn">CANCEL</button>
+                                <button class=" px-3 btn btn-secondary cancelBtn">CANCEL</button>
 
 
                             </div>
@@ -54,7 +54,7 @@
                             <h2 class="">{{ profile.belt }}</h2>
 
 
-                            {% if authorizedRequest %}
+                            {% if authorizedRequest == 'FULL'%}
                                 {{ member.authorized }}
                                 {{ form.authorized }}
                                 {% if member.authorized == 'FULL' %}
@@ -83,7 +83,7 @@
                         {% endif %}
                         <div class="memberModalType">
                             {{ member.memberType }}
-                            {% if authorizedRequest %}
+                            {% if authorizedRequest == 'FULL' %}
                                 {{ form.memberType }}
                             {% endif %}
                         </div>
@@ -95,7 +95,7 @@
                             class="btn btn-light w-25"
                             hx-post="{% url 'memberProfile' member.club_id  profile.user_id %}"
                             hx-target="#Clubs_view"
-                            data-dismiss="modal">{% if authorizedRequest %}Save and leave{% else %}Leave{% endif %}
+                            data-dismiss="modal">{% if authorizedRequest == 'FULL' %}Save and leave{% else %}Leave{% endif %}
                     </button>
 
                 </div>

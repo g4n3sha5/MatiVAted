@@ -76,7 +76,6 @@ class MemberForm(ModelForm):
     # }), required=False)
 
 class ScheduleForm(forms.Form):
-    # NIE DZIALA????????????
     time = forms.CharField(
         widget=forms.TimeInput(
 

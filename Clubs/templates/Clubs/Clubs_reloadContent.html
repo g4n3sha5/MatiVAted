@@ -11,7 +11,8 @@
             </div>
         {% endif %}
     </div>
-    {% if authorized %}
+
+    {% if authorized == 'FULL' %}
         <form enctype="multipart/form-data"
               class="min-vh-100 h-100"
               hx-target=".Clubscontent"
@@ -23,6 +24,7 @@
 
                 <div class="col-md-6 d-flex align-items-center justify-content-start
                  flex-column position-relative">
+
                     {% include 'Clubs/Clubs_reloadContent_profileInfo.html' %}
 
 

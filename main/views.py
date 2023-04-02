@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponse, HttpResponseRedirect
+from functools import wraps
+from Clubs.models import UserMembership
 
 
-def index (request):
+def index(request):
     return render(request, "main/index.html", {})
+
 
 # def renderFromFooter(request, app, view):
 #
@@ -17,3 +20,27 @@ def getBaseTemplate(request, app):
         base_template = "main/partial.html"
 
     return base_template
+
+
+# def isUserAuth(request):
+
+
+
+def userAuth(func):
+    @wraps(func)
+    def wrapped(request, *args, **kwargs):
+        authorized = request.session.get('authorized')
+        if authorized:
+            return func(request, *args, **kwargs)
+
+        try:
+            authorized = UserMembership.objects.get(user_id=request.user.id).authorized
+        except:
+            authorized = None
+
+        request.session['authorized'] = authorized
+
+        return func(request, *args, **kwargs)
+
+
+    return wrapped

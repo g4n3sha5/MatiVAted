@@ -7,19 +7,20 @@ from main.views import getBaseTemplate
 from .forms import ScheduleForm
 from django.utils.safestring import mark_safe
 from .views import userHasClub, userClub
+from main.views import userAuth
 
 @login_required
+@userAuth
 def clubSchedule(request):
     days = Schedule.days
-    authorized = False
+
     hoursDict = {}
 
 
     try:
         myClub = userClub(request.user.id)
         membership = UserMembership.objects.get(user_id=request.user.id)
-        if membership.authorized == 'FULL':
-            authorized = True
+
     except:
         myClub = False
 
@@ -45,7 +46,7 @@ def clubSchedule(request):
 
 
     context = {
-        'authorized' : authorized,
+        'authorized' : request.session.get('authorized'),
         'club' : myClub,
         'days' : days,
         'hoursDict' : hoursDict,

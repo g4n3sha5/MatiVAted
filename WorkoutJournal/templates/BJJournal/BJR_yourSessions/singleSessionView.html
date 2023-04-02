@@ -91,6 +91,7 @@
 
 
                 <div class="modal-footer editSessionFooter py-1 ">
+                    {% if session.club and authorized or not session.club%}
                     <button
                             hx-delete="{% url 'removeSession' session.id %} "
                             hx-target="#BJR_view"
@@ -107,6 +108,7 @@
                             class="sessionEditBtn btn btn-secondary">
                         Edit
                     </button>
+                       {% endif %}
 
                     <button
                             {#                            hx-post="{% url 'editSession' session.id  %} "#}
@@ -116,6 +118,8 @@
                             onclick="closeModal()">
                         Close
                     </button>
+
+
                 </div>
 
 

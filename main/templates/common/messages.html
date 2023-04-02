@@ -8,23 +8,37 @@
 {##}
 {#    {% endfor %}#}
 {#{% endif %}#}
- {% if form.errors %}
-    {% for field in form %}
-        {% for error in field.errors %}
-            <p> {{ error }} </p>
-        {% endfor %}
-    {% endfor %}
-{% endif %}
+{# {% if form.errors %}#}
+{#    {% for field in form %}#}
+{#        {% for error in field.errors %}#}
+{#            <p> {{ error }} </p>#}
+{#        {% endfor %}#}
+{#    {% endfor %}#}
+{#{% endif %}#}
 
-{% if messages %}
+
+{% if form.errors %}
+
+    <div class=" zIndex35 messageWrap w-100  position-fixed d-flex justify-content-center navPadding  ">
+          <div class=" center-block alert alert-danger text-center">
+              <button type="button" class=" alert-dismissable btn btn-outline-dark close float-end" onclick="this.parentNode.parentNode.remove()"
+                      data-dismiss=".messageWrap" aria-hidden="true">&times;</button>
+        <p>{{ form.errors }}</p>
+
+        </div>
+      </div>
+
+
+{% elif messages %}
   {% for msg in messages %}
 
+      <div class=" zIndex35 messageWrap w-100  position-fixed d-flex justify-content-center navPadding  ">
 
-      <div class=" zIndex35 messageWrap w-100 alert-dismissable position-fixed d-flex justify-content-center navPadding  ">
-
-          <div class=" center-block alert  {% if msg.tags %}alert-{{ msg.tags }}{% endif %}
+          <div class=" center-block alert   {% if msg.tags %}alert-{{ msg.tags }}{% endif %}
            text-center">
-              <button type="button" class="btn btn-outline-dark close float-end" onclick="this.parentNode.remove()" data-dismiss="alert" aria-hidden="true">&times;</button>
+
+              <button type="button" class=" alert-dismissable btn btn-outline-dark close float-end" onclick="this.parentNode.parentNode.remove()"
+                      data-dismiss=".messageWrap" aria-hidden="true">&times;</button>
               {{msg.message}}
         </div>
 

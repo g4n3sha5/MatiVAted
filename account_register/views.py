@@ -66,6 +66,6 @@ def account(request):
 
 def magiclogin(request):
     user = authenticate(email = 'test@qa.pl', password='tester65')
-    login(request, user)
+    login(request, user, backend = "django.contrib.auth.backends.ModelBackend")
 
     return HttpResponseRedirect(reverse('profile'))

@@ -12,6 +12,13 @@ class DatePickerInput(forms.DateInput):
 
 
 
+class ClubTrainingSession(forms.Form):
+    # club = forms.BooleanField(widget= forms.CheckboxInput(), initial = False,required=False)
+   club = forms.BooleanField(widget=forms.CheckboxInput(
+        attrs={"class": "form-check-input", "id": "flexSwitchCheckDefault"}),
+    required=False)
+
+
 class TrainingSessionForm(ModelForm):
     # def __init__(self, userID, *args, **kwargs):
     #     super().__init__(*args, **kwargs)
@@ -36,8 +43,6 @@ class TrainingSessionForm(ModelForm):
         'type': 'date'
     }), required=False)
 
-    # time = forms.TimeField(widget = forms.TimeInput(attrs={
-    #     'input_type' : 'time'}))
     timestamp = forms.TimeField(widget=forms.TimeInput(attrs={
         'class':'timepicker',
         'type' :'time'
@@ -73,9 +78,7 @@ class TrainingSessionForm(ModelForm):
                                                 widget=forms.CheckboxSelectMultiple(),
                                                 required=False)
 
-    # club = forms.ChoiceField(widget=forms.CheckboxInput(
-    #     attrs={"class": "form-check-input", "id": "flexSwitchCheckDefault"}),
-    # required=False)
+
 
     # widget=forms.CheckboxSelectMultiple(attrs={'class':'techniqueOption list-group-item p-2 d-flex '
     #                                                  'align-items-center cursor-pointer justify-content-between '

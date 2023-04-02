@@ -72,7 +72,7 @@
 
 
                                                             </div>
-                                                            {% if authorized %}
+                                                            {% if authorized == 'FULL'%}
 
                                                                 <form class="deleteTD">
                                                                     {% csrf_token %}

@@ -1,14 +1,207 @@
 {% extends base_template %}
-
+{% load static %}
 {% block content %}
-{% if not userHasClub %}
-     {% include 'Clubs/noClub.html' %}
-{% else %}
+    {% if not userHasClub %}
+        {% include 'Clubs/noClub.html' %}
+    {% else %}
+
+
+        <div id="modalContainer"></div>
+
+        <div class="yourSessionsSection  w-100 navPadding ">
+
+            {% for session in sessionsList %}
+                {#    {% for session in sessionsList reversed %}#}
+                <div hx-get="{% url 'singleSessionView' session.id session.orderIndex %}"
+                     hx-target="#modalContainer"
+                     class="grid-item img-buddha cursor-pointer ">
+
+                    <div class="sessionDate p-2 px-3 d-flex justify-content-between w-100">
+                        {% if session.date %}
+                            <h3>
+                                {{ session.date }}
+                            </h3>
+                        {% endif %}
+                        <h4 class="SessionId">
+                            #{{ session.orderIndex }}
+                        </h4>
+                    </div>
+
+
+                    <div class="SessionNotes  py-lg-1 px-3 ">
+                        <div class="row h-100 ">
+
+                            <div class="col-6 SessionNotesLeft h-100 ">
+                                {% if session.notes %}
+                                    <div class="cut-overflow h-100">
+                                        {{ session.notes }}
+                                    </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="col-6 p-xl-2 h-100">
+
+                                {% if session.techniques %}
+
+
+                                    <div class="cut-overflow h-100 pb-1">
+                                        {% for technique in session.techniques.all %}
+                                            <h4 class="d-inline sessTechnique">{{ technique }}</h4>
+                                            {% if session.techniques.all|length > 1  and forloop.counter < session.techniques.all|length %}
+                                                ,{% endif %}
+
+
+                                        {% endfor %}
+
+                                    </div>
+
+                                {% endif %}
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="SessionInfo overflow-hidden d-flex
+        justify-content-end align-items-stretch mx-0">
+
+                        {#                /% if club has logo %}#}
+                        {#                <div class="col-2 SessionLogo">#}
+                        {#                    <img alt="Club ogo" src="{% static 'BJJournal/img/gblogo.png' %}">#}
+                        {#                </div>  #}
+
+                        <div class=" SessionLogo  d-flex align-items-center justify-content-center px-1 py-lg-2 py-1 ">
+                            {#                    {% if session.location %}#}
+                            <form>
+                                {% csrf_token %}
+
+                                {% if session.participant %}
+                                      <span class="btn btn-dark text-white font-weight-700 p-2 px-4 hoverScale"
+                                      hx-post="{% url 'clubTraining' session.id "leave" %}"
+                                      hx-target="#Clubs_view"
+
+                                >Leave</span>
+                                {% else %}
+                                <span class="btn btn-info text-white font-weight-700 p-2 px-4 hoverScale"
+                                      hx-post="{% url 'clubTraining' session.id "join" %}"
+                                      hx-target="#Clubs_view"
+
+                                >Join</span>
+
+                                {% endif %}
 
 
 
 
-{% endif %}
+
+                            </form>
 
 
+
+                            {#                    {% endif %}#}
+                        </div>
+
+                        <div class="restSession d-flex ">
+                            <div class=" yourSessionsType count_icon d-flex   overflow-hidden p-xl-3 p-1  ">
+                                <img alt="{{ session.type }} symbol"
+                                     src="{% static 'BJJournal/img/' %}{{ session.type }}.png">
+
+                            </div>
+
+                            <div class="  sessionLength d-flex align-items-center justify-content-between pt-0 ">
+                                <h4 class="w-100 px-1"> {{ session.hoursLength }}:{% if session.minutesLength == 0 %}00
+                                    h
+                                    {% else %}{{ session.minutesLength }} h
+                                {% endif %}
+
+                                </h4>
+                                <div class="sessionFight d-flex flex-column py-lg-1 ">
+                                    <h6> {{ session.fightTime }} min</h6>
+                                    <img class="fightIcon  mt-1" src="{% static 'BJJournal/img/katana.png' %}">
+                                </div>
+
+                            </div>
+                        </div>
+                        {#                {% if session.location %}#}
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+            {% if sessionsList.has_next or sessionsList.has_previous %}
+                <div class="d-flex justify-content-center w-100 mx-2 pagiNav ">
+
+                    <nav class=" text-center" aria-label="Page navigation example">
+                        <h1 class="pagiCap"> Page {{ sessionsList.number }}
+                            of
+                            {{ sessionsList.paginator.num_pages }}
+                        </h1>
+
+                        <ul class="pagination">
+
+                            {% if sessionsList.has_previous %}
+                                <li class="page-item specialBtn">
+                                    <a class="page-link"
+                                       hx-get="{% url 'clubTrainings' %}?page={{ sessionsList.number| add:"-1" }}"
+                                       hx-target="#Clubs_view"
+                                    >Prev
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            <li class="page-item">
+                                <a class="page-link"
+                                   hx-get="{% url 'clubTrainings' %}?page=1"
+                                   hx-target="#Clubs_view">
+                                    1
+                                </a>
+                            </li>
+
+                            {% if sessionsList.paginator.num_pages > 1 %}
+                                <li class="page-item">
+                                    <a class="page-link"
+                                       hx-get="{% url 'clubTrainings' %}?page=2"
+                                       hx-target="#Clubs_view"
+                                    >2
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if sessionsList.paginator.num_pages > 2 %}
+                                <li class="page-item">
+                                    <a class="page-link"
+                                       hx-get="{% url 'clubTrainings' %}?page=3"
+                                       hx-target="#Clubs_view"
+                                    >3
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if sessionsList.paginator.num_pages > 3 %}
+                                <li class="page-item lastItem">
+                                    <a class="page-link"
+                                       hx-get="{% url 'clubTrainings' %}?page={{ sessionsList.paginator.num_pages }}"
+                                       hx-target="#Clubs_view"
+                                    >Last
+                                    </a>
+                                </li>
+                            {% endif %}
+                            {% if sessionsList.has_next %}
+                                <li class="page-item specialBtn">
+                                    <a class="page-link"
+                                       hx-get="{% url 'clubTrainings' %}?page={{ sessionsList.number| add:1 }}"
+                                       hx-target="#Clubs_view"
+                                    >Next
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
 {% endblock %}
+
+
+
+
