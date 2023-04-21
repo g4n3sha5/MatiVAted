@@ -24,4 +24,5 @@ jobs:
             - .git*
             - .git*/**
             -  **/.git*/**
+            - staticfiles/**
         
