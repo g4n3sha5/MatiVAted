@@ -6,6 +6,7 @@ urlpatterns = [
     # path('notifications/', views.notifications, name="notifications"),
     # path('allNotifications/', views.allNotifications, name="allNotifications"),
     path('clearNotifications/', views.clearNotifications, name="clearNotifications"),
+    path('sendSuggestion/', views.sendSuggestion, name="sendSuggestion"),
 
 ]
 htmx_urlpatterns = [

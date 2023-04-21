@@ -40,6 +40,7 @@ body, html {
     padding: 0 !important;
     margin: 0 !important;
 
+
 }
 
 body {
@@ -48,11 +49,16 @@ body {
     /*font-weight:600;*/
     font-size: 22px;
     /*background-color: #f2f3f4;*/
-    background-color: #240046;
-    width: 100vw;
+    background-color: #240046   ;
+
+    scrollbar-gutter: stable ;
 
 }
+html{
 
+
+     width: 100vw;
+}
 /* ========= FONTS =============*/
 
 .BJR, .JRLN, .navStyling, .accountcontent, .Clubscontent {
@@ -140,7 +146,7 @@ body {
 }
 
 .navContainer .navbar-brand {
-    left:15%;
+    left:5%;
 }
 .landingNavbar {
     background: rgba(42, 50, 75, 0.01);
@@ -210,16 +216,10 @@ nav a img {
 }
 @media (min-width: 992px) {
 
-    .acc{
-
-        border:2px solid rgba(255,255,255,0.115);
-        border-radius:4%;
-        padding:5px; !important;
-        margin-left:20px !important;
-        font-weight: 800;
+    .acc {
+        height: 100vh !important;
+    }
 }
-}
-
 
 .accountDropdown {
 
@@ -504,11 +504,15 @@ nav a img {
     top: 0;
     width: 100%;
     height: 100%;
-    background-size: contain;
+
     filter: blur(2px);
-    background: url("../img/jonathan-borba.jpg") 50% 65%;
+    background: url("../img/jonathan-borba.webp");
+    background-size:cover;
+    background-repeat: no-repeat;
     /*background-image: url("../img/jonathan-borba.jpg");*/
-    /*background-position:center bottom;*/
+    /*background-position:70% 65%;*/
+    background-position:center bottom;
+    transform:scale(1.5);
     filter: saturate(100%) invert(27%) sepia(72%) saturate(165%) hue-rotate(215deg);
 }
 
@@ -864,11 +868,12 @@ h2, .h2 {
     height: 100%;
     justify-content: center;
     padding-bottom: 20vh;
+
 }
 
 .accountRCol {
     /*height:100vh;*/
-    height: 100%;
+
         display:flex;
     min-height: 65vh;
 }
@@ -876,10 +881,14 @@ h2, .h2 {
     max-width: 29vh;
     max-height:29vh;
 }
+.accLeftContent{
+    padding-bottom:15vh !important;
+}
 @media screen and (min-width: 768px) {
 
     .accMain, .accountRCol{
-    height:100vh !important;
+    height:100vh; !important;
+
 }
     .accountRCol img{
     max-width: 40vh !important;
@@ -985,7 +994,10 @@ h2, .h2 {
 .leftColContent {
     /*transform:translateY(-15%);*/
 }
+.accLeftContent{
+    /*padding-botom:15vh !important;*/
 
+}
 .handleimg img {
     width: 100%;
     height: 100%;
@@ -1007,6 +1019,10 @@ h2, .h2 {
     position: absolute;
     width: 100%;
     /*top:40%;*/
+    top:0;
+    left:0;
+    background:var(--paleBlack);
+    padding:0 15px !important;
 }
 
 .personalLabel {
@@ -1033,7 +1049,7 @@ h2, .h2 {
 
 .yourBio {
     /*background-color:#3f37c9;*/
-    height: 14vh;
+    height: 25%;
     /*flex:1;*/
 }
 
@@ -1049,6 +1065,13 @@ h2, .h2 {
 .favTechToggle {
     text-shadow: 2px 2px rgba(76, 202, 240, 0.6);
 }
+.yourBelt{
+    padding-bottom:40vh;
+}
+.favTechnique{
+    background:var(--paleBlack);
+    color:white;
+}
 
 /* ==============================================================*/
 
@@ -1059,7 +1082,7 @@ h2, .h2 {
 #footer {
 
     background: #101010;
-    padding: 60px 4vw 30px;
+    padding: 85px 2vw 30px;
     color: #fff;
     font-size: 14px;
     min-height: 15vh;
@@ -1082,7 +1105,7 @@ h2, .h2 {
 
 #footer .footer-info h3 {
     font-size: 36px;
-    margin: 0 0 7px 0;
+    margi: 0 0 7px 0;
     padding: 2px 0 2px 0;
     line-height: 1;
     font-weight: 700;
@@ -1169,6 +1192,40 @@ h2, .h2 {
     position: relative;
 }
 
+.reportIcon{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background:var(--paleBlack);
+     height:110px;
+    position:relative;
+    width:110px;
+    z-index:1;
+    margin-top:8px;
+
+}
+.colorTransform:after{
+    background-color:var(--cyanBlueFooter) !important;
+    content: "";
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:100%;
+    transform:scaleY(0);
+    transform-origin:bottom center;
+    z-index:-1;
+   transition: transform 0.35s;
+}
+.colorTransform:hover::after{
+       transform:scaleY(1);
+}
+.reportIcons{
+
+}
+.reportIcons i{
+
+}
 .bjjimg {
     /*background: transparent url('../img/brucelee.png') no-repeat;*/
     /*background-size: contain;*/
@@ -1183,7 +1240,7 @@ h2, .h2 {
 }
 }
 nav .nav-item{
-
+    height:50px !important;
 }
 #footer a {
 
@@ -1351,21 +1408,13 @@ a {
 }
 
 .BJR_content {
-    background: url("../img/sam-mgrdichian5.png");
+    background: url("../img/sam-mgrdichian5.webp");
     flex-grow: 1;
     padding-right: 0;
-    /*!*background:#6961d0;*!*/
-    /*background: url("../img/sam-mgrdichian5.png");*/
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center 50%;
     border: none;
-    /*background: linear-gradient(135deg, rgba(3, 4, 94 ,1) 26%, rgba(72,149,239,1) 72%);*/
-    /*background: hsla(197, 100%, 63%, 1);*/
-    /*background: linear-gradient(90deg, hsla(197, 100%, 63%, 1) 0%, hsla(294, 100%, 55%, 1) 100%);*/
-    /*background: linear-gradient(90deg, hsla(270, 94%, 25%, 1) 0%, hsla(158, 94%, 49%, 1) 100%);*/
-
-
     /**/
 }
 
@@ -1386,6 +1435,7 @@ a {
 }
 
 .feature-2 .wrap-icon {
+
     color: #2e007b !important;
     background-color: #f2f3f4;
     font-size: 2rem;
@@ -2561,7 +2611,11 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
     background: #F0F0F0 !important;
     letter-spacing: 2px !important;
 }
+.modal,
+.modal-open[style]{
+    padding-right: 0 !important;
 
+}
 .modal-footer {
     padding: 5px 5px;
     position: relative;
@@ -2578,6 +2632,9 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 }
 
 /*========= SINGLE SESSION VIEW ===========*/
+
+
+
 #modalContainer {
     position: absolute;
     display: none;

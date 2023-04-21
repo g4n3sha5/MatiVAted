@@ -1,0 +1,50 @@
+
+<div id="bugModalWrap">
+<div id="bugModal"
+     class="modal navPadding w-100 overflow-hidden "
+     data-bs-backdrop="false"
+     tabindex="-1" role="dialog"
+     aria-labelledby="leaveClubModal"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h5 class="modal-title font-weight-700">Would you like to report a bug?</h5>
+                    {#                <form method="post">#}
+                    {#                    {% csrf_token %}#}
+                    <button data-bs-dismiss="modal" class="btn-close" aria-label="Close">
+
+                    </button>
+                    {#                </form>#}
+
+                </div>
+                <div class="modal-body">
+                    {{ suggestForm.title }}
+                    {{ suggestForm.content }}
+                </div>
+                <div class="modal-footer">
+                    {% if sent %}
+                        <span class="text-success">
+                        Sent succesfully
+                        </span>
+                    {% endif %}
+
+
+                    {% csrf_token %}
+                    <button
+                            hx-post="{% url 'sendSuggestion' %}"
+                            hx-target="#bugModalWrap"
+                            type="button"
+                            class="btn btn-success "
+                    >Send
+                    </button>
+
+                    <button type="button" class="btn btn-secondary w-25 " data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+</div>

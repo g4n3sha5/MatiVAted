@@ -1,2 +1,2 @@
-START python manage.py runserver 0.0.0.0:8000
+START python manage.py runserver
 PAUSE

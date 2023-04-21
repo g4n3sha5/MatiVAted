@@ -14,34 +14,49 @@
         </div>
 
         <form enctype="multipart/form-data"
-              class="h-100"
+              class="h-100 "
               hx-target=".AccountContentWrapper"
               hx-post="."
               hx-trigger="change delay:500ms, submit">
             {{ csrf.token }}
 
-            <div class="row h-100 ">
+            <div class="row h-100 mx-0">
+
                 <div class="col-md-6 d-flex align-items-center justify-content-start flex-column">
+
+
+
                     {% include 'myaccount/profile_profileInfo.html' %}
                     {% include 'myaccount/profile_leftColumn.html' %}
                 </div>
 
-                <div class="rightSideProfile col-md-6 py-3 px-3 ">
-                    <div class=" px-0 mt-lg-3 yourBelt  w-100 pr-lg-5  d-flex flex-column align-items-center
-                          px-lg-5">
+                <div class="rightSideProfile col-md-6 pt-3 px-0 mx-0">
+                    <div class=" px-0 mt-lg-3 yourBelt  w-100 mx-0 d-flex flex-column align-items-center
+                    justify-content-start    ">
                         {% include 'myaccount/profile_yourBelt.html' %}
                         <div class=" profilePicture smallProfile  profile  "
-                         style="background-image: url({{ club.avatar.url }})">
+                             style="background-image: url({{ club.avatar.url }})">
+
                         </div>
-                        {{ club.avatar.url }}
+
+
+
+                        <div class="favTechnique py-2 position-relative mt-lg-2 d-flex
+                        justify-content-center flex-wrap flex-column w-100  1">
+        {% include 'myaccount/profile_favTechnique.html' %}
                     </div>
-{#                    <input type="submit">#}
+
+
+
+
                 </div>
-
-
+                {#                    <input type="submit">#}
             </div>
-        </form>
 
 
     </div>
+    </form>
+
+
+</div>
 </div>

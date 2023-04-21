@@ -30,7 +30,8 @@ urlpatterns = [
     path('', include("Clubs.urls")),
     path('', include("account_register.urls")),
     path('', include("Presentation.urls")),
-    path('', include("Notifications.urls"))
+    path('', include("Notifications.urls")),
+    path('__debug__/', include('debug_toolbar.urls')),
 
 ]
 # urlpatterns += i18n_patterns('')
