@@ -18,7 +18,10 @@ jobs:
           username:	github@mativated.com
           password: ${{ secrets.ftp_password }}
           exclude: |
-            main/wsgi.py
-            main/asgi.py
-            main/__init__.py
+            - main/wsgi.py
+            - main/asgi.py
+            - main/__init__.py
+            - .git*
+            - .git*/**
+            -  **/.git*/**
         
