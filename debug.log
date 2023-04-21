@@ -2994,3 +2994,9 @@ File C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\WorkoutJournal\migrations\
 File C:\Users\Admin\AppData\Local\Programs\Python\Python310\Lib\site-packages\django\contrib\contenttypes\migrations\0001_initial.py first seen with mtime 1679502776.49786
 File C:\Users\Admin\AppData\Local\Programs\Python\Python310\Lib\site-packages\django\contrib\auth\migrations\0008_alter_user_username_max_length.py first seen with mtime 1679502776.1697333
 File C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\WorkoutJournal\migrations\0003_rename_length_trainingsession_hourslength_and_more.py first seen with mtime 1675844959.4436371
+File C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\main\settings.py previous mtime: 1682107684.248619, current mtime: 1682107916.5563083
+C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\main\settings.py notified as changed. Signal results: [(<function template_changed at 0x000001FA5E1F8E50>, None), (<function translation_file_changed at 0x000001FA5EEDE560>, None)].
+C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\main\settings.py changed, reloading.
+File C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\main\settings.py previous mtime: 1682107684.248619, current mtime: 1682107916.5563083
+C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\main\settings.py notified as changed. Signal results: [(<function template_changed at 0x000001AFD4788E50>, None), (<function translation_file_changed at 0x000001AFD5462560>, None)].
+C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\main\settings.py changed, reloading.

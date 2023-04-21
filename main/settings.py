@@ -39,6 +39,9 @@ USE_TZ = True
 # SESSION_COOKIE_DOMAIN = '.mativated.com'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+import mimetypes
+mimetypes.add_type("text/css", ".css", True)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'h26.seohost.pl'
 EMAIL_PORT = '587'
@@ -47,13 +50,21 @@ EMAIL_HOST_USER = 'no-reply@mativated.com'
 EMAIL_HOST_PASSWORD = 'kamorekxd1'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-q$h-7xe*!yo(u8wr-het-!8ybcp%wmyw-(mc+j^3(r7%&obof$'
+
+try:
+    env = os.environ["SECRET_KEY"]
+    if env:
+        SECRET_KEY = os.environ["SECRET_KEY"]
+except:
+    SECRET_KEY = 'django-insecure-q$h-7xe*!yo(u8wr-het-!8ybcp%wmyw-(mc+j^3(r7%&obof$'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
