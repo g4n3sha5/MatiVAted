@@ -21,16 +21,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 #STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # STATIC_DIR = os.path.join(BASE_DIR, 'templates')
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # STATICFILES_DIRS = [
 #     STATIC_DIR
 #  ]
+#LOCALE_PATHS = (
+#   os.path.join(BASE_DIR, 'locale'),
+#)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-LOCALE_PATHS = (
-    os.path.join(BASE_DIR, 'locale'),
-)
+
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 USE_I18N = True
@@ -67,7 +68,7 @@ except:
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 INTERNAL_IPS = [
@@ -77,6 +78,7 @@ INTERNAL_IPS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'cloudinary',
     'main',
     'Notifications',
@@ -91,7 +93,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
+
     'django.contrib.staticfiles',
     'account_register.apps.UsersConfig',
     # 'django.template.loaders.app_directories.load_template_source',
