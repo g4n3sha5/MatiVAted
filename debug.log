@@ -23950,3 +23950,11 @@ File C:\Users\Admin\AppData\Local\Programs\Python\Python310\Lib\site-packages\dj
 File C:\Users\Admin\AppData\Local\Programs\Python\Python310\Lib\site-packages\django\contrib\sites\migrations\__init__.py first seen with mtime 1679502779.0245757
 File C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\Clubs\migrations\0003_alter_club_logo.py first seen with mtime 1673292720.0110514
 File C:\Users\Admin\AppData\Local\Programs\Python\Python310\Lib\site-packages\django\contrib\sessions\migrations\__init__.py first seen with mtime 1679502778.6811874
+File C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\WorkoutJournal\templates\BJJournal previous mtime: 1682252267.7377841, current mtime: 1682252892.1149848
+C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\WorkoutJournal\templates\BJJournal notified as changed. Signal results: [(<function template_changed at 0x000001B4CFA18E50>, True), (<function translation_file_changed at 0x000001B4D06F2560>, None)].
+File C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\WorkoutJournal\templates\BJJournal\base.html previous mtime: 1682252267.7377841, current mtime: 1682252892.1149848
+C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\WorkoutJournal\templates\BJJournal\base.html notified as changed. Signal results: [(<function template_changed at 0x000001B4CFA18E50>, True), (<function translation_file_changed at 0x000001B4D06F2560>, None)].
+File C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\main\templates\main previous mtime: 1682252015.6905842, current mtime: 1682252912.318854
+C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\main\templates\main notified as changed. Signal results: [(<function template_changed at 0x000001B4CFA18E50>, True), (<function translation_file_changed at 0x000001B4D06F2560>, None)].
+File C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\main\templates\main\base.html previous mtime: 1682252015.6905842, current mtime: 1682252912.318854
+C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\main\templates\main\base.html notified as changed. Signal results: [(<function template_changed at 0x000001B4CFA18E50>, True), (<function translation_file_changed at 0x000001B4D06F2560>, None)].
