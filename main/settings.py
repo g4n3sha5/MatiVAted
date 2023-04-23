@@ -19,14 +19,14 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-STATIC_DIR = os.path.join(BASE_DIR, 'static')
+#STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # STATIC_DIR = os.path.join(BASE_DIR, 'templates')
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATICFILES_DIRS = [
-    STATIC_DIR
- ]
+# STATICFILES_DIRS = [
+#     STATIC_DIR
+#  ]
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
@@ -36,7 +36,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = False
 USE_TZ = True
-# SESSION_COOKIE_DOMAIN = '.mativated.com'
+SESSION_COOKIE_DOMAIN = '.mativated.com'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -84,7 +84,6 @@ INSTALLED_APPS = [
     'WorkoutJournal',
     'Clubs',
     'Presentation',
-    'django_static_fontawesome',
     'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.auth',
