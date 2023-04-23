@@ -19,14 +19,14 @@ import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#STATIC_DIR = os.path.join(BASE_DIR, 'static')
+STATIC_DIR = os.path.join(BASE_DIR, 'static')
 # STATIC_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-# STATICFILES_DIRS = [
-#     STATIC_DIR
-#  ]
+STATICFILES_DIRS = [
+    STATIC_DIR
+]
 #LOCALE_PATHS = (
 #   os.path.join(BASE_DIR, 'locale'),
 #)
@@ -37,12 +37,12 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = False
 USE_TZ = True
-SESSION_COOKIE_DOMAIN = '.mativated.com'
+SESSION_COOKIE_DOMAIN = 'mativated.com'
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-import mimetypes
-mimetypes.add_type("text/css", ".css", True)
+#import mimetypes
+#mimetypes.add_type("text/css", ".css", True)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'h26.seohost.pl'
 EMAIL_PORT = '587'
@@ -68,7 +68,7 @@ except:
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 INTERNAL_IPS = [

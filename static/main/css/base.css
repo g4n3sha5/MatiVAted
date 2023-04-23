@@ -504,9 +504,10 @@ nav a img {
     top: 0;
     width: 100%;
     height: 100%;
-
     filter: blur(2px);
-    background: url("../img/jonathan-borba.webp");
+    background-image: url('../img/jonathan-borba.webp');
+
+    /*background: url("static/img/jonathan-borba.webp");*/
     background-size:cover;
     background-repeat: no-repeat;
     /*background-image: url("../img/jonathan-borba.jpg");*/
