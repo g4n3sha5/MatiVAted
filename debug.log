@@ -21385,3 +21385,453 @@ File C:\Users\Admin\AppData\Local\Programs\Python\Python310\Lib\site-packages\tz
 File C:\Users\Admin\AppData\Local\Programs\Python\Python310\Lib\site-packages\django\contrib\messages\context_processors.py first seen with mtime 1679502777.75729
 File C:\Users\Admin\AppData\Local\Programs\Python\Python310\Lib\textwrap.py first seen with mtime 1662380252.0
 File C:\Users\Admin\AppData\Local\Programs\Python\Python310\Lib\site-packages\whitenoise\compress.py first seen with mtime 1679489900.859504
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2023-04-23 12:07:49.854997' AND "django_session"."session_key" = '0g29tv5xmzglc0zifhs8fkvst8f8qp5k') LIMIT 21; args=('2023-04-23 12:07:49.854997', '0g29tv5xmzglc0zifhs8fkvst8f8qp5k'); alias=default
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 47 LIMIT 21; args=(47,); alias=default
+(0.000) SELECT "Notifications_notification"."id", "Notifications_notification"."is_read", "Notifications_notification"."message", "Notifications_notification"."timestamp", "Notifications_notification"."userSender_id" FROM "Notifications_notification" INNER JOIN "Notifications_notification_userReceiver" ON ("Notifications_notification"."id" = "Notifications_notification_userReceiver"."notification_id") WHERE "Notifications_notification_userReceiver"."user_id" = 47; args=(47,); alias=default
+Exception while resolving variable 'form' in template 'main/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'form'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'form'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'form'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [form] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'n1yP4FiMybA4wOZPk8r2vgi8mw5HoPyCe6kwA8XU4khn4eT4dvI6KnEg59XLx2eR'>, 'debug': True, 'sql_queries': <function debug.<locals>.<lambda> at 0x0000025029E781F0>, 'request': <WSGIRequest: GET '/'>, 'user': <SimpleLazyObject: <User: test>>, 'perms': PermWrapper(<SimpleLazyObject: <User: test>>), 'messages': <SessionStorage: request=<WSGIRequest: GET '/'>>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'notifications': <QuerySet [<Notification: Notification object (351)>, <Notification: Notification object (352)>]>, 'suggestForm': <ContactForm bound=False, valid=Unknown, fields=(title;content;notes)>}, {}, {'block': <Block Node: content. Contents: [<TextNode: '\n    <main class="page la'>, <IncludeNode: template=<FilterExpression "'common/messages.html'">>, <TextNode: '\n\n        <section class='>, <django.templatetags.i18n.TranslateNode object at 0x0000025029ADF8B0>, <TextNode: '</h2>\n                <p '>, <django.templatetags.i18n.TranslateNode object at 0x0000025029ADF9A0>, <TextNode: '  </p>\n                <h'>, <URLNode view_name=''magiclogin'' args=[] kwargs={} as=None>, <TextNode: '"\n\n                > <i c'>, <django.templatetags.i18n.TranslateNode object at 0x0000025029ADF5E0>, <TextNode: '</a>\n\n                <a '>, <django.templatetags.i18n.TranslateNode object at 0x0000025029ADFA30>, <TextNode: '</a>\n\n'>, <TextNode: '\n'>, <TextNode: '\n'>, <TextNode: '\n'>, <TextNode: '\n\n            </div>\n\n   '>, <TextNode: '\n            <div id="bub'>, <IncludeNode: template=<FilterExpression "'main/indexElements/bubbleSection.html'">>, <TextNode: '\n            </div>\n     '>, <IncludeNode: template=<FilterExpression "'main/svg/svgele2.svg'">>, <TextNode: '\n                    </di'>, <TextNode: '\n            <div class="'>, <IncludeNode: template=<FilterExpression "'main/indexElements/buddhaSection.html'">>, <TextNode: '\n            </div>\n\n\n   '>, <TextNode: '\n                '>, <TextNode: '\n                '>, <TextNode: '\n                '>, <TextNode: '\n            </div>\n\n    '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n    </main>\n\n\n\n\n\n\n\n\n\n\n\n\n'>]>}, {}]
+Exception while resolving variable 'sent' in template 'main/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'sent'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'sent'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'sent'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [sent] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: 'n1yP4FiMybA4wOZPk8r2vgi8mw5HoPyCe6kwA8XU4khn4eT4dvI6KnEg59XLx2eR'>, 'debug': True, 'sql_queries': <function debug.<locals>.<lambda> at 0x0000025029E781F0>, 'request': <WSGIRequest: GET '/'>, 'user': <SimpleLazyObject: <User: test>>, 'perms': PermWrapper(<SimpleLazyObject: <User: test>>), 'messages': <SessionStorage: request=<WSGIRequest: GET '/'>>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'notifications': <QuerySet [<Notification: Notification object (351)>, <Notification: Notification object (352)>]>, 'suggestForm': <ContactForm bound=False, valid=Unknown, fields=(title;content;notes)>}, {}, {}, {}]
+"GET / HTTP/1.1" 200 40107
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\static.py", line 40, in serve
+    raise Http404(_("“%(path)s” does not exist") % {"path": fullpath})
+django.http.response.Http404: “C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\staticfiles\fontawesome\js\all.min.js” does not exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'django.conf.urls.i18n' from 'C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\django\\conf\\urls\\i18n.py'> (None:None) 'i18n/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\static.py", line 40, in serve
+    raise Http404(_("“%(path)s” does not exist") % {"path": fullpath})
+django.http.response.Http404: “C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\staticfiles\fontawesome\js\all.min.js” does not exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\static.py", line 40, in serve
+    raise Http404(_("“%(path)s” does not exist") % {"path": fullpath})
+django.http.response.Http404: “C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\staticfiles\fontawesome\js\all.min.js” does not exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'allauth.urls' from 'C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\allauth\\urls.py'> (None:None) 'account/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\static.py", line 40, in serve
+    raise Http404(_("“%(path)s” does not exist") % {"path": fullpath})
+django.http.response.Http404: “C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\staticfiles\fontawesome\js\all.min.js” does not exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'debug_toolbar.urls' from 'C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\debug_toolbar\\urls.py'> (djdt:djdt) '__debug__/'>
+"GET /static/main/css/base.css HTTP/1.1" 200 62475
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2023-04-23 12:07:50.303997' AND "django_session"."session_key" = '0g29tv5xmzglc0zifhs8fkvst8f8qp5k') LIMIT 21; args=('2023-04-23 12:07:50.303997', '0g29tv5xmzglc0zifhs8fkvst8f8qp5k'); alias=default
+Not Found: /static/fontawesome/js/all.min.js
+"GET /static/fontawesome/js/all.min.js HTTP/1.1" 404 19162
+"GET /static/main/scripts.js HTTP/1.1" 200 8328
+"GET /static/main/img/logo-removebg.png HTTP/1.1" 200 41908
+"GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 200 12378
+"GET /static/main/img/plflag.png HTTP/1.1" 200 13647
+"GET /static/main/img/ukflag.png HTTP/1.1" 200 18066
+"GET /static/main/img/Gregor_Cresnar.png HTTP/1.1" 200 1725
+"GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 200 13404
+"GET /static/main/img/brucelee.webp HTTP/1.1" 200 21900
+"GET /static/debug_toolbar/css/print.css HTTP/1.1" 200 43
+"GET /static/main/img/amit-kumar.webp HTTP/1.1" 200 716474
+"GET /static/main/img/jonathan-borba.webp HTTP/1.1" 200 747336
+"GET /static/debug_toolbar/js/utils.js HTTP/1.1" 200 4527
+"GET /static/main/img/logo-removebg.png HTTP/1.1" 200 41908
+(0.016) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2023-04-23 12:08:26.025711' AND "django_session"."session_key" = '0g29tv5xmzglc0zifhs8fkvst8f8qp5k') LIMIT 21; args=('2023-04-23 12:08:26.025711', '0g29tv5xmzglc0zifhs8fkvst8f8qp5k'); alias=default
+(0.000) SELECT "auth_user"."id", "auth_user"."password", "auth_user"."last_login", "auth_user"."is_superuser", "auth_user"."username", "auth_user"."first_name", "auth_user"."last_name", "auth_user"."email", "auth_user"."is_staff", "auth_user"."is_active", "auth_user"."date_joined" FROM "auth_user" WHERE "auth_user"."id" = 47 LIMIT 21; args=(47,); alias=default
+(0.016) SELECT "Notifications_notification"."id", "Notifications_notification"."is_read", "Notifications_notification"."message", "Notifications_notification"."timestamp", "Notifications_notification"."userSender_id" FROM "Notifications_notification" INNER JOIN "Notifications_notification_userReceiver" ON ("Notifications_notification"."id" = "Notifications_notification_userReceiver"."notification_id") WHERE "Notifications_notification_userReceiver"."user_id" = 47; args=(47,); alias=default
+Exception while resolving variable 'form' in template 'main/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'form'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'form'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'form'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [form] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: '5QAtWTESpRSPWytGurTljhxATJ3AEzlVWVmasmj0V0z8uYnVnOapyoTICmVENM1a'>, 'debug': True, 'sql_queries': <function debug.<locals>.<lambda> at 0x0000025029E2CD30>, 'request': <WSGIRequest: GET '/'>, 'user': <SimpleLazyObject: <User: test>>, 'perms': PermWrapper(<SimpleLazyObject: <User: test>>), 'messages': <SessionStorage: request=<WSGIRequest: GET '/'>>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'notifications': <QuerySet [<Notification: Notification object (351)>, <Notification: Notification object (352)>]>, 'suggestForm': <ContactForm bound=False, valid=Unknown, fields=(title;content;notes)>}, {}, {'block': <Block Node: content. Contents: [<TextNode: '\n    <main class="page la'>, <IncludeNode: template=<FilterExpression "'common/messages.html'">>, <TextNode: '\n\n        <section class='>, <django.templatetags.i18n.TranslateNode object at 0x0000025029ADF8B0>, <TextNode: '</h2>\n                <p '>, <django.templatetags.i18n.TranslateNode object at 0x0000025029ADF9A0>, <TextNode: '  </p>\n                <h'>, <URLNode view_name=''magiclogin'' args=[] kwargs={} as=None>, <TextNode: '"\n\n                > <i c'>, <django.templatetags.i18n.TranslateNode object at 0x0000025029ADF5E0>, <TextNode: '</a>\n\n                <a '>, <django.templatetags.i18n.TranslateNode object at 0x0000025029ADFA30>, <TextNode: '</a>\n\n'>, <TextNode: '\n'>, <TextNode: '\n'>, <TextNode: '\n'>, <TextNode: '\n\n            </div>\n\n   '>, <TextNode: '\n            <div id="bub'>, <IncludeNode: template=<FilterExpression "'main/indexElements/bubbleSection.html'">>, <TextNode: '\n            </div>\n     '>, <IncludeNode: template=<FilterExpression "'main/svg/svgele2.svg'">>, <TextNode: '\n                    </di'>, <TextNode: '\n            <div class="'>, <IncludeNode: template=<FilterExpression "'main/indexElements/buddhaSection.html'">>, <TextNode: '\n            </div>\n\n\n   '>, <TextNode: '\n                '>, <TextNode: '\n                '>, <TextNode: '\n                '>, <TextNode: '\n            </div>\n\n    '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n        '>, <TextNode: '\n    </main>\n\n\n\n\n\n\n\n\n\n\n\n\n'>]>}, {}]
+Exception while resolving variable 'sent' in template 'main/index.html'.
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 880, in _resolve_lookup
+    current = current[bit]
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\context.py", line 83, in __getitem__
+    raise KeyError(key)
+KeyError: 'sent'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 886, in _resolve_lookup
+    if isinstance(current, BaseContext) and getattr(
+AttributeError: type object 'RequestContext' has no attribute 'sent'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'sent'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [sent] in [{'True': True, 'False': False, 'None': None}, {'csrf_token': <SimpleLazyObject: '5QAtWTESpRSPWytGurTljhxATJ3AEzlVWVmasmj0V0z8uYnVnOapyoTICmVENM1a'>, 'debug': True, 'sql_queries': <function debug.<locals>.<lambda> at 0x0000025029E2CD30>, 'request': <WSGIRequest: GET '/'>, 'user': <SimpleLazyObject: <User: test>>, 'perms': PermWrapper(<SimpleLazyObject: <User: test>>), 'messages': <SessionStorage: request=<WSGIRequest: GET '/'>>, 'DEFAULT_MESSAGE_LEVELS': {'DEBUG': 10, 'INFO': 20, 'SUCCESS': 25, 'WARNING': 30, 'ERROR': 40}, 'notifications': <QuerySet [<Notification: Notification object (351)>, <Notification: Notification object (352)>]>, 'suggestForm': <ContactForm bound=False, valid=Unknown, fields=(title;content;notes)>}, {}, {}, {}]
+"GET / HTTP/1.1" 200 40107
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\static.py", line 40, in serve
+    raise Http404(_("“%(path)s” does not exist") % {"path": fullpath})
+django.http.response.Http404: “C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\staticfiles\fontawesome\js\all.min.js” does not exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'django.conf.urls.i18n' from 'C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\django\\conf\\urls\\i18n.py'> (None:None) 'i18n/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\static.py", line 40, in serve
+    raise Http404(_("“%(path)s” does not exist") % {"path": fullpath})
+django.http.response.Http404: “C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\staticfiles\fontawesome\js\all.min.js” does not exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <URLPattern list> (admin:admin) 'admin/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\static.py", line 40, in serve
+    raise Http404(_("“%(path)s” does not exist") % {"path": fullpath})
+django.http.response.Http404: “C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\staticfiles\fontawesome\js\all.min.js” does not exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'allauth.urls' from 'C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\allauth\\urls.py'> (None:None) 'account/'>
+Exception while resolving variable 'name' in template 'unknown'.
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\views\static.py", line 40, in serve
+    raise Http404(_("“%(path)s” does not exist") % {"path": fullpath})
+django.http.response.Http404: “C:\Users\Admin\Desktop\PROJEKTY\python\BJJournal\staticfiles\fontawesome\js\all.min.js” does not exist
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 880, in _resolve_lookup
+    current = current[bit]
+TypeError: 'URLResolver' object is not subscriptable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 890, in _resolve_lookup
+    current = getattr(current, bit)
+AttributeError: 'URLResolver' object has no attribute 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 896, in _resolve_lookup
+    current = current[int(bit)]
+ValueError: invalid literal for int() with base 10: 'name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Admin\AppData\Local\Programs\Python\Python310\lib\site-packages\django\template\base.py", line 903, in _resolve_lookup
+    raise VariableDoesNotExist(
+django.template.base.VariableDoesNotExist: Failed lookup for key [name] in <URLResolver <module 'debug_toolbar.urls' from 'C:\\Users\\Admin\\AppData\\Local\\Programs\\Python\\Python310\\lib\\site-packages\\debug_toolbar\\urls.py'> (djdt:djdt) '__debug__/'>
+"GET /static/main/css/base.css HTTP/1.1" 200 62475
+(0.000) SELECT "django_session"."session_key", "django_session"."session_data", "django_session"."expire_date" FROM "django_session" WHERE ("django_session"."expire_date" > '2023-04-23 12:08:26.384703' AND "django_session"."session_key" = '0g29tv5xmzglc0zifhs8fkvst8f8qp5k') LIMIT 21; args=('2023-04-23 12:08:26.384703', '0g29tv5xmzglc0zifhs8fkvst8f8qp5k'); alias=default
+Not Found: /static/fontawesome/js/all.min.js
+"GET /static/fontawesome/js/all.min.js HTTP/1.1" 404 19162
+"GET /static/main/scripts.js HTTP/1.1" 200 8328
+"GET /static/main/img/logo-removebg.png HTTP/1.1" 200 41908
+"GET /static/main/img/ukflag.png HTTP/1.1" 200 18066
+"GET /static/debug_toolbar/css/toolbar.css HTTP/1.1" 200 12378
+"GET /static/main/img/Gregor_Cresnar.png HTTP/1.1" 200 1725
+"GET /static/main/img/plflag.png HTTP/1.1" 200 13647
+"GET /static/main/img/amit-kumar.webp HTTP/1.1" 200 716474
+"GET /static/debug_toolbar/js/toolbar.js HTTP/1.1" 200 13404
+"GET /static/main/img/brucelee.webp HTTP/1.1" 200 21900
+"GET /static/debug_toolbar/css/print.css HTTP/1.1" 200 43
+"GET /static/main/img/jonathan-borba.webp HTTP/1.1" 200 747336
+"GET /static/debug_toolbar/js/utils.js HTTP/1.1" 200 4527
+"GET /static/main/img/logo-removebg.png HTTP/1.1" 200 41908
