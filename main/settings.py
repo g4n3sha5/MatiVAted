@@ -135,7 +135,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'Notifications.views.notifications',
-                'Notifications.views.reportSuggestion'
+               # 'Notifications.views.reportSuggestion'
             ],
         },
     },
