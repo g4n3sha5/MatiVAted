@@ -23,8 +23,8 @@ def clearNotifications(request):
     return render(request, "Notifications/notificationIcon.html", {'notifications' : notifi(request)})
 
 
-def reportSuggestion (request):
-    return {'suggestForm' : ContactForm()}
+# def reportS1uggestion (request):
+#     return {'suggestForm' : ContactForm()}
 
 def sendSuggestion (request):
     sent = False
