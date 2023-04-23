@@ -19,6 +19,7 @@ jobs:
           password: ${{ secrets.ftp_password }}
           exclude: |
             - main/wsgi.py
+            - /db.sqlite3/
             - main/asgi.py
             - main/__init__.py
             - .git*
