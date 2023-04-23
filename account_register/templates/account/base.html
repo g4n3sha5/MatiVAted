@@ -44,8 +44,9 @@
 </main>
 {% include "common/footer.html" %}
 
-   <script type="text/javascript" src="{% static 'account_register/scripts.js' %}"></script>
+
     <script type="text/javascript" src="{% static 'main/scripts.js' %}"></script>
+<script type="text/javascript" src="{% static 'account_register/scripts.js' %}"></script>
 <script>
     document.body.addEventListener('htmx:configRequest', function (evt) {
         evt.detail.headers['X-CSRFToken'] = '{{csrf_token}}'

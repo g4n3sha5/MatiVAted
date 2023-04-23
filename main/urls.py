@@ -33,7 +33,7 @@ urlpatterns = [
     path('', include("account_register.urls")),
     path('', include("Presentation.urls")),
     path('', include("Notifications.urls")),
-    path('__debug__/', include('debug_toolbar.urls')),
+
 
 ]
 urlpatterns +=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
