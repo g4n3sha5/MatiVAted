@@ -29,6 +29,7 @@ def getBaseTemplate(request, app):
 def userAuth(func):
     @wraps(func)
     def wrapped(request, *args, **kwargs):
+
         authorized = request.session.get('authorized')
         if authorized:
             return func(request, *args, **kwargs)

@@ -81,7 +81,7 @@ def addSession(request):
             if clubForm.is_valid():
                 clubTS = clubForm.cleaned_data['club']
             instance = form.save(commit=False)
-            instance.user = request.user
+            instance.user_id = uid
 
             if yourClub and clubTS:
                 instance.club = yourClub
@@ -113,9 +113,9 @@ def addSession(request):
     }
 
 
-    template_name = "BJJournal/BJR_addSession/BJR_addSession.html"
+    template_name = "BJJournal/BJR_addSession.html"
 
-    return render(request, template_name , context)
+    return render(request, template_name, context)
 
 @login_required
 @userAuth
@@ -260,7 +260,7 @@ def singleTechniqueView(request, id):
             suggestion = form.save(commit=False)
             suggestion.technique_id = id
             suggestion.save()
-            suggestion.addedByUser.add(request.user)
+            suggestion.addedByUser.add(request.user.id)
 
     else:
         form = descriptionSuggestion()

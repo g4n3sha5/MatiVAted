@@ -51,8 +51,8 @@ def ClubsIndex(request):
         if form.is_valid():
             instance = form.save(commit=False)
             if not membership:
-                yourClub.creator = request.user
-                UserMembership(user=request.user, authorized='FULL', memberType='Head', club=yourClub).save()
+                yourClub.creator = request.user.id
+                UserMembership(user_id=request.user.id, authorized='FULL', memberType='Head', club=yourClub).save()
             instance.save()
 
             context['form'] = form
@@ -229,13 +229,13 @@ def singleClubView(request, id):
     }
 
     try:
-        userMembership = UserMembership.objects.get(user=request.user)
+        userMembership = UserMembership.objects.get(user=request.user.id)
         # context['userHasClub'] = True
     except:
         userMembership = None
 
     try:
-        userRequest = Request.objects.get(user=request.user)
+        userRequest = Request.objects.get(user_id=request.user.id)
         context['alreadySent'] = True
 
         # return render(request, "Clubs/singleClubView.html", context)
@@ -246,7 +246,7 @@ def singleClubView(request, id):
 
 
     if request.method == 'POST':
-        userRequest = Request(status='NO', user=request.user, club=myClub)
+        userRequest = Request(status='NO', user_id=request.user.id, club=myClub)
         userRequest.save()
         context['alreadySent'] = True
     return render(request, "Clubs/singleClubView.html", context)

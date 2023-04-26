@@ -1650,12 +1650,21 @@ a {
 
 .addSessionHeader h1{
     font-size:34px;
+    margin-right:5px;
+    text-align: center;
 }
 .clubTS{
-    font-size:20px;
-    position:absolute;
-    right:45px;
-    width:15%;
+    max-width:20%;
+}
+@media screen and (min-width: 768px) {
+    .clubTS{
+        position: absolute;
+        right:15px;
+
+    }
+}
+.clubTS *{
+     font-size:21px;
 }
 .addSession {
     padding: 0 4vw;
@@ -2501,7 +2510,7 @@ rgba(255, 255, 255, 0.35) 0 px - 2 px 6 px 0 px inset;
 @media screen and (max-width: 1000px) {
 .fightIcon {
     width: 55%;
-    height:35%;
+    height:25%;
 }
 
 }

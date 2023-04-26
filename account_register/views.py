@@ -19,7 +19,7 @@ def profile(request):
     except:
         yourClub = None
 
-    currentProfile =  UserProfile.objects.get(user=request.user)
+    currentProfile =  UserProfile.objects.get(user_id=request.user.id)
     form = UserProfileForm(instance=currentProfile)
     context = {
         'form': form,

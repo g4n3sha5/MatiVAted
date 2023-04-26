@@ -60,7 +60,11 @@ def clubSchedule(request):
 
 def addTrainingModal(request, type, day):
     form = ScheduleForm()
-    myClub = userClub(request.user.id)
+    myClub = None
+    if request.user.is_authenticated():
+        myClub = userClub(request.user.id)
+
+
 
     if request.method == 'POST':
         form = ScheduleForm(request.POST)

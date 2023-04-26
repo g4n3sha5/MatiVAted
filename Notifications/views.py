@@ -15,7 +15,7 @@ def notifications(request):
 
 def clearNotifications(request):
     if request.method == 'DELETE':
-        myset = Notification.objects.filter(userReceiver=request.user)
+        myset = Notification.objects.filter(userReceiver=request.user.id)
         for x in myset:
             x.userReceiver.remove(request.user.id)
 

@@ -86,14 +86,12 @@ INSTALLED_APPS = [
     'WorkoutJournal',
     'Clubs',
     'Presentation',
-
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-
     'django.contrib.staticfiles',
     'account_register.apps.UsersConfig',
     # 'django.template.loaders.app_directories.load_template_source',
@@ -174,6 +172,14 @@ LOGGING = {
             'class': 'logging.FileHandler',
             'filename': 'debug.log',
         },
+        "console": {
+            "class": "logging.StreamHandler",
+            "level": "WARNING",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+
     },
     'loggers': {
         'django': {
@@ -183,6 +189,7 @@ LOGGING = {
         },
     },
 }
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
