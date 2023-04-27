@@ -32,7 +32,7 @@ STATICFILES_DIRS = [
 #)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'pl-PL'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = False

@@ -43,6 +43,8 @@ def ClubsIndex(request):
         'user': request.user,
         'authorized' : request.session.get('authorized')
     }
+    template = 'index'
+
     if request.method == 'POST':
         yourClub, created = Club.objects.get_or_create(id=membership.club_id)
         # yourClub, created = Club.objects.get_or_create(creator=request.user)
@@ -58,8 +60,7 @@ def ClubsIndex(request):
             context['form'] = form
             context['Club'] = yourClub
             context['success'] = True
-    else:
-        template = 'index'
+
 
     if request.META.get('HTTP_HX_REQUEST'):
         template = 'Clubs_reloadContent'
