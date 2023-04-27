@@ -25,12 +25,15 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+   os.path.join(BASE_DIR, 'static')
 ]
 #LOCALE_PATHS = (
 #   os.path.join(BASE_DIR, 'locale'),
 #)
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
 
 LANGUAGE_CODE = 'pl-PL'
 TIME_ZONE = 'UTC'
@@ -81,6 +84,7 @@ INSTALLED_APPS = [
     'whitenoise.runserver_nostatic',
     'cloudinary',
     'main',
+
     'Notifications',
     'Journal',
     'WorkoutJournal',
