@@ -506,7 +506,7 @@ nav a img {
     height: 100%;
     background-size: contain;
     filter: blur(2px);
-    background: url("../img/jonathan-borba.31df2801762f.webp") 50% 65%;
+
     /*background-image: url("../img/jonathan-borba.089c39aae5b6.jpg");*/
     /*background-position:center bottom;*/
     filter: saturate(100%) invert(27%) sepia(72%) saturate(165%) hue-rotate(215deg);

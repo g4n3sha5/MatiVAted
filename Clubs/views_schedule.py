@@ -46,6 +46,7 @@ def clubSchedule(request):
 
 
     context = {
+        'scheduleForm' : ScheduleForm(),
         'authorized' : request.session.get('authorized'),
         'club' : myClub,
         'days' : days,

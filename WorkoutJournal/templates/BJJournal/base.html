@@ -6,9 +6,11 @@
     <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
     <title> {% block title %}  MATIVATED {% endblock %} </title>
 
+
+
 </head>
 
-<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+<body>
 
   {%include "common/navbar.html" %}
   {% include "BJJournal/BJR_leftsideMenu.html" %}

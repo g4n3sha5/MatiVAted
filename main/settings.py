@@ -51,8 +51,8 @@ EMAIL_HOST_USER = 'no-reply@mativated.com'
 EMAIL_HOST_PASSWORD = 'kamorekxd1'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -68,7 +68,7 @@ except:
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 INTERNAL_IPS = [
