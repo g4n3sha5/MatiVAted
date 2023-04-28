@@ -18,7 +18,7 @@
               hx-target=".AccountContentWrapper"
               hx-post="."
               hx-trigger="change delay:500ms, submit">
-            {{ csrf.token }}
+            {% csrf_token %}
 
             <div class="row h-100 mx-0">
 
