@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+
 # # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
@@ -22,12 +23,11 @@ STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
-   os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static')
 ]
-#LOCALE_PATHS = (
+# LOCALE_PATHS = (
 #   os.path.join(BASE_DIR, 'locale'),
-#)
-
+# )
 
 
 LANGUAGE_CODE = 'pl-PL'
@@ -42,8 +42,8 @@ USE_TZ = True
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-#import mimetypes
-#mimetypes.add_type("text/css", ".css", True)
+# import mimetypes
+# mimetypes.add_type("text/css", ".css", True)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'h26.seohost.pl'
 EMAIL_PORT = '587'
@@ -59,7 +59,6 @@ try:
 except:
     EMAIL_HOST_PASSWORD = ''
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
@@ -71,7 +70,6 @@ try:
         SECRET_KEY = os.environ['SECRET_KEY']
 except:
     SECRET_KEY = 'django-insecure-q$h-7xe*!yo(u8wr-het-!8ybcp%wmyw-(mc+j^3(r7%&obof$'
-
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -103,7 +101,7 @@ INSTALLED_APPS = [
     'account_register.apps.UsersConfig',
     # 'django.template.loaders.app_directories.load_template_source',
     'crispy_forms',
-    # 'crispy_bootstrap5',
+    'crispy_bootstrap5',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -127,7 +125,7 @@ ROOT_URLCONF = 'main.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'APP_DIRS' : True,
+        'APP_DIRS': True,
         'DIRS': [
 
         ],
@@ -213,7 +211,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
@@ -225,7 +222,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -234,8 +230,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-CRISPY_TEMPLATE_PACK = "bootstrap5"
+CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
 LOGIN_URL = '/account/login/'
 LOGIN_REDIRECT_URL = "/profile/"
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
@@ -254,9 +250,10 @@ ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 500
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+
 CLOUDINARY_STORAGE = {
-  'CLOUD_NAME' : 'dj8dhfr6k',
-  'API_KEY' : '676142837672146',
-  'API_SECRET' : 'GmPJ0LooGJru061v4Q90na1b67o'
+    'CLOUD_NAME': 'dj8dhfr6k',
+    'API_KEY': '676142837672146',
+    'API_SECRET': 'GmPJ0LooGJru061v4Q90na1b67o'
 }
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.RawMediaCloudinaryStorage'

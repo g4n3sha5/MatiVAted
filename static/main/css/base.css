@@ -519,14 +519,18 @@ nav a img {
     object-position: top;
 }
 
-.clean-hero .wave {
+    .clean-hero .wave {
     width: 100%;
     overflow: hidden;
     position: absolute;
     z-index: 1;
     bottom: -170px;
-    /*background-color:black;*/
+
+
 }
+    .clean-hero .wave svg{
+           fill:black !important;
+    }
 
 .section-heading {
     color: #240046;
@@ -567,14 +571,14 @@ h2, .h2 {
     /*background-color: #191919;*/
     /*background-color: var(--paleBlack);*/
 
-    background-color: #f2f3f4;
+    background-color: var(--paleBlack);
     min-height: 35vh;
-
+    color:white;
 }
 
 
 .bubbleSection p {
-      color:var(--paleBlack);
+      /*color:var(--paleBlack);*/
       /*color:var(--cyanBlueFooter);*/
 }
 .bubbleSection .col-md-3{
@@ -582,7 +586,7 @@ h2, .h2 {
     margin:0;
 }
 .feature-1 h3{
-    color:black;
+    color:white;
     margin:19px 0;
 }
 .feature-1 {
