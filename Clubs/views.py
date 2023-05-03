@@ -26,19 +26,17 @@ def userHasClub(request):
 def ClubsIndex(request):
     try:
         # find what club is the user in
-        membership = UserMembership.objects.get(user_id=request.user.id)
-        yourClub = Club.objects.get(id=membership.club_id)
-        # yourClub = Club.objects.get(creator=request.user)
-        # if membership.authorized != 'FULL':
-        #     authorized = False
+        club = userClub(request.user.id)
+        yourClub = Club.objects.get(id=club.club_id)
+
 
     except:
         yourClub = None
 
-    form = ClubForm(instance=yourClub)
+
 
     context = {
-        'form': form,
+        'form': ClubForm(instance=yourClub),
         'Club': yourClub,
         'user': request.user,
         'authorized' : request.session.get('authorized'),
@@ -47,13 +45,13 @@ def ClubsIndex(request):
     template = 'index'
 
     if request.method == 'POST':
-        yourClub, created = Club.objects.get_or_create(id=membership.club_id)
+        yourClub, created = Club.objects.get_or_create(id=club.club_id)
         # yourClub, created = Club.objects.get_or_create(creator=request.user)
         form = ClubForm(request.POST, request.FILES, instance=yourClub)
 
         if form.is_valid():
             instance = form.save(commit=False)
-            if not membership:
+            if not club:
                 yourClub.creator = request.user.id
                 UserMembership(user_id=request.user.id, authorized='FULL', memberType='Head', club=yourClub).save()
             instance.save()
@@ -61,7 +59,6 @@ def ClubsIndex(request):
             context['form'] = form
             context['Club'] = yourClub
             context['success'] = True
-
 
     if request.META.get('HTTP_HX_REQUEST'):
         template = 'Clubs_reloadContent'

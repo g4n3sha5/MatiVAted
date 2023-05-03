@@ -30,7 +30,6 @@ def getBaseTemplate(request, app):
 def userAuth(func):
     @wraps(func)
     def wrapped(request, *args, **kwargs):
-
         authorized = request.session.get('authorized')
         if authorized:
             return func(request, *args, **kwargs)
@@ -38,7 +37,7 @@ def userAuth(func):
         try:
             authorized = UserMembership.objects.get(user_id=request.user.id).authorized
         except:
-            authorized = None
+            authorized = False
 
         request.session['authorized'] = authorized
 
