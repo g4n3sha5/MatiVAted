@@ -15,12 +15,9 @@ import os
 # # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-#STATIC_URL = '/templates/'
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# STATIC_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -52,9 +49,16 @@ EMAIL_HOST = 'h26.seohost.pl'
 EMAIL_PORT = '587'
 SERVER_EMAIL = 'no-reply@mativated.com'
 EMAIL_HOST_USER = 'no-reply@mativated.com'
-EMAIL_HOST_PASSWORD = 'kamorekxd1'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+try:
+    env = os.environ['EMAIL_PASSWORD']
+    if env:
+        EMAIL_HOST_PASSWORD = env
+except:
+    EMAIL_HOST_PASSWORD = ''
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -62,9 +66,9 @@ EMAIL_USE_SSL = False
 # SECURITY WARNING: keep the secret key used in production secret!
 
 try:
-    env = os.environ["SECRET_KEY"]
+    env = os.environ['SECRET_KEY']
     if env:
-        SECRET_KEY = os.environ["SECRET_KEY"]
+        SECRET_KEY = os.environ['SECRET_KEY']
 except:
     SECRET_KEY = 'django-insecure-q$h-7xe*!yo(u8wr-het-!8ybcp%wmyw-(mc+j^3(r7%&obof$'
 
@@ -99,7 +103,7 @@ INSTALLED_APPS = [
     'account_register.apps.UsersConfig',
     # 'django.template.loaders.app_directories.load_template_source',
     'crispy_forms',
-    'crispy_bootstrap5',
+    # 'crispy_bootstrap5',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
