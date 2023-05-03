@@ -41,7 +41,8 @@ def ClubsIndex(request):
         'form': form,
         'Club': yourClub,
         'user': request.user,
-        'authorized' : request.session.get('authorized')
+        'authorized' : request.session.get('authorized'),
+        'success' : False
     }
     template = 'index'
 

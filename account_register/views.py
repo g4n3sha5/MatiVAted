@@ -12,19 +12,14 @@ from WorkoutJournal.models import Technique
 #
 #
 def profile(request):
-    try:
-        membership = UserMembership.objects.get(user_id=request.user.id)
-        yourClub = Club.objects.get(id = membership.club_id)
-
-    except:
-        yourClub = None
 
     currentProfile =  UserProfile.objects.get(user_id=request.user.id)
     form = UserProfileForm(instance=currentProfile)
     context = {
         'form': form,
         'UserProfile': currentProfile,
-        'club' : yourClub
+        'success' : False
+
     }
 
     if request.method == 'POST':
