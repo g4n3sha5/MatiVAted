@@ -35,9 +35,9 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = False
 USE_TZ = True
-# SESSION_COOKIE_DOMAIN = 'mativated.com'
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_DOMAIN = 'mativated.com'
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -151,10 +151,10 @@ AUTHENTICATION_BACKENDS = [
 
 ]
 
-# WSGI_APPLICATION = 'main.wsgi.application'
+WSGI_APPLICATION = 'main.wsgi.application'
 ASGI_APPLICATION = 'main.asgi.application'
-# SESSIONS_ENGINE='django.contrib.sessions.backends.cache'
-#
+SESSIONS_ENGINE='django.contrib.sessions.backends.cache'
+
 
 
 # Database
