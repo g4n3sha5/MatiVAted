@@ -38,7 +38,10 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = False
 USE_TZ = True
-SESSION_COOKIE_DOMAIN = 'mativated.com'
+# SESSION_COOKIE_DOMAIN = 'mativated.com'
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -52,8 +55,6 @@ EMAIL_HOST_USER = 'no-reply@mativated.com'
 EMAIL_HOST_PASSWORD = 'kamorekxd1'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
-# SESSION_COOKIE_SECURE = True
-# CSRF_COOKIE_SECURE = True
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
@@ -69,7 +70,7 @@ except:
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 INTERNAL_IPS = [
@@ -130,12 +131,11 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                # 'webp_converter.context_processors.webp_support',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'Notifications.views.notifications',
-               'Notifications.views.reportSuggestion'
+                'Notifications.views.reportSuggestion'
             ],
         },
     },
@@ -149,7 +149,7 @@ AUTHENTICATION_BACKENDS = [
 
 ]
 
-WSGI_APPLICATION = 'main.wsgi.application'
+# WSGI_APPLICATION = 'main.wsgi.application'
 ASGI_APPLICATION = 'main.asgi.application'
 # SESSIONS_ENGINE='django.contrib.sessions.backends.cache'
 #

@@ -835,7 +835,9 @@ h2, .h2 {
     position: absolute;
     right: 4%;
     bottom: 0.555%;
+    height:80px;
     color: white;
+
 }
 
 .savedWrap h4 {

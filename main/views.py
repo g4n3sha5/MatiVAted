@@ -6,7 +6,8 @@ from Clubs.models import UserMembership
 
 
 def index(request):
-    return render(request, "main/index.html", {})
+
+    return render(request, "main/index.html")
 
 
 # def renderFromFooter(request, app, view):

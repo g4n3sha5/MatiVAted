@@ -23,8 +23,9 @@ from django.conf.urls.i18n import i18n_patterns
 
 
 urlpatterns = [
-    path('i18n/', include('django.conf.urls.i18n')),
     path('', views.index, name="index"),
+    # path('i18n/', include('django.conf.urls.i18n')),
+
     path('admin/', admin.site.urls),
     path('', include("Journal.urls")),
     path('account/', include('allauth.urls')),
@@ -34,12 +35,11 @@ urlpatterns = [
     path('', include("Presentation.urls")),
     path('', include("Notifications.urls")),
 
-
 ]
 urlpatterns +=static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-# urlpatterns += i18n_patterns('')
-htmx_urlpatterns = [
 
-]
+# htmx_urlpatterns = [
+#
+# ]
 
-urlpatterns += htmx_urlpatterns
+# urlpatterns += htmx_urlpatterns
