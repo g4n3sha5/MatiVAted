@@ -4,7 +4,7 @@ As numerous studies have shown, monitoring your progress and tracking your habit
 
 ### ==== ANNOUNCEMENT ===
 As for now - 04.05.2023 I decide to share the code, the app is  working perfectly locally and when I deploy it, there are some problems with static files. 
-I did not find the reason for now, and I've been looking since few weeks. I will keep trying in spare time, but I proceed with next project. Maybe I will re-write this project, or maybe someone can find the reason behind it.
+I did not find the reason for now, and I've been looking since few weeks. I will keep trying to fix it in spare time, but I proceed with a next project. Maybe I will re-write this project with REST API or maybe someone can find the reason behind it.
 
 
 # About
