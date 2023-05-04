@@ -44,7 +44,7 @@ Project made with Django, HTML, CSS, JavaScript, Bootstrap, HTMX, FontAwesome
 # Run
 Beta version live on www.mativated.com
 
-## Locally
+### Locally
 Clone the repo, install dependencies with 
   pip: -r requirements.txt
 And run with 
@@ -60,8 +60,6 @@ App is in continous development since 2022 and have further plans for developmen
 ## Author
 
 * **Kamil Matysiak** - [g4n3sha5](https://github.com/g4n3sha5)
-
-
 
 
 ## Acknowledgments
