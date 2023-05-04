@@ -4,7 +4,7 @@ As numerous studies have shown, monitoring your progress and tracking your habit
 
 ### ==== ANNOUNCEMENT ===
 As for now - 04.05.2023 I decide to share the code, the app is  working perfectly locally and when I deploy it, there are some problems with static files. 
-I did not find the reason for now, and I've been looking since few weeks. I will keep trying to fix it in spare time, but I proceed with a next project. Maybe I will re-write this project with REST API or maybe someone can find the reason behind it.
+I did not find the reason for now, and I've been looking since few weeks. I will keep trying to fix it in spare time, but I proceed with a next project. Maybe I will re-write this project with REST API or maybe me or someone can finally find the reason behind it.
 
 
 # About
@@ -44,6 +44,13 @@ Project made with Django, HTML, CSS, JavaScript, Bootstrap, HTMX, FontAwesome
 # Run
 Beta version live on www.mativated.com
 
+### Locally
+Clone the repo, install dependencies with 
+  pip: -r requirements.txt
+And run with 
+  python manage.py runserver
+
+
 # Future development
 App is in continous development since 2022 and have further plans for development.
 
@@ -53,8 +60,6 @@ App is in continous development since 2022 and have further plans for developmen
 ## Author
 
 * **Kamil Matysiak** - [g4n3sha5](https://github.com/g4n3sha5)
-
-
 
 
 ## Acknowledgments
