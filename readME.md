@@ -43,7 +43,8 @@ Project made with Django, HTML, CSS, JavaScript, Bootstrap, HTMX, FontAwesome
 
 # Run
 Beta version live on www.mativated.com
-##Locally
+
+## Locally
 Clone the repo, install dependencies with 
   pip: -r requirements.txt
 And run with 
