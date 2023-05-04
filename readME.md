@@ -43,6 +43,12 @@ Project made with Django, HTML, CSS, JavaScript, Bootstrap, HTMX, FontAwesome
 
 # Run
 Beta version live on www.mativated.com
+##Locally
+Clone the repo, install dependencies with 
+  pip: -r requirements.txt
+And run with 
+  python manage.py runserver
+
 
 # Future development
 App is in continous development since 2022 and have further plans for development.
