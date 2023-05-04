@@ -6,6 +6,7 @@ As numerous studies have shown, monitoring your progress and tracking your habit
 As for now - 04.05.2023 I decide to share the code, the app is  working perfectly locally and when I deploy it, there are some problems with static files. 
 I did not find the reason for now, and I've been looking since few weeks. I will keep trying in spare time, but I proceed with next project. Maybe I will re-write this project, or maybe someone can find the reason behind it.
 
+
 # About
 I created the project inspired by literature about habits and motivation, as Jiu-Jitsu is my passion and I didn't know any app for Jiu Jitsu I decided to create one - to save my Training Sessions, following this idea I did:
 
