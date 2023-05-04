@@ -1,80 +1,62 @@
+# MATIVATED
+## Non-commercial pet project for Martial Artists
+As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts, this app is specifically created for Brazilian Jiu Jitsu.
 
-# Sun Jitsu - Journal
+# About
+I created the project inspired by literature about habits and motivation, as Jiu-Jitsu is my passion and I didn't know any app for Jiu Jitsu I decided to create one - to save my Training Sessions, following this idea I did:
 
-As numerous studies have shown, monitoring your progress and tracking your habits makes us significantly more prone to 
-change our habits and improve faster.  
-Small wins are massive motivators but we need to recognize them.      
-With this project I create my  first comprehensive web app which provides many utilities
-for people who train Martial Arts and similar people willing to progress in sports,  especially in Jiu Jitsu:  
-- News, BJJ Tournament Info
-- Habit Manager, BJJournal (Training journal), To Do List
-## Getting Started
-App is developed using Django, Bootstrap.
-App will be available on a website soon.
+- Logo, name, colors and typography
 
+- Landing page and general UI & UX design 
 
+### And a set of small apps serving as tools for Martial Arts students:
+#### Clubs
+- Add / edit club
+- Club Members (others' profiles, and permissions manager for authorized)
+- Club Schedule (generator)
+- Club Training Sessions (more info in About)
+- Clubs List, where all users of MATIVATED can see every Club created, and ask (Request) authorized members of the Club to join it (permissions)
 
-### Prerequisites
+#### BJJorunal (Brazilian Jiu - Jitsu Journal)
+- Dashboard (Statistics)
+- Add Training Session (Save Session type, length, techniques learned etc.)
+- Your Training Sessions (list of every TS, where user can edit or remove every Session)
+- Open Techniques base (where every user can add a Jiu Jitsu Technique (name, type etc.) and add Suggestions to other Techniques)
+- Simple To Do App where user can add a To Do List, and Items to do for each List.
 
-If you want to run app on your local machine you should make sure that you have installed:
+#### Notifications
+- Notify authorized members about Requests 
 
-```
-python, django
-```
+#### Account / Profile
+- Manage Account (change password / e-mail) and Profile (personal info (optional) - user's avatar, belt, bio, favourite technique and favourite grappler).
 
-### Installing
+#### additional: About and Privacy policy
+As the application processes some personal data, there is information how and what does it do.
 
-You can run server in cmd manually changing diretory to /main/ and using:
-```
-python manage.py runserver
-```
+# Technologies
+Project made with Django, HTML, CSS, JavaScript, Bootstrap, HTMX, FontAwesome
 
-You can also just click on 'startserver' .bat file.  
-Great! Now app is available  under this address: 
+# Run
+Beta version live on www.mativated.com
 
-```
-http://127.0.0.1:8000/
-```
+# Future development
+App is in continous development since 2022 and have further plans for development.
 
+![logo](https://user-images.githubusercontent.com/116462435/227205699-fc9fae9f-02a4-4240-b9c3-9eccc002573f.png)
 
-## Running the tests
-
-TO BE ANNOUNCED
-
-```
-
-```
-
-
-## Built With
-
-* [Python](https://docs.python.org/3/) - Basic Language
-* [Django](https://www.djangoproject.com/) - The web framework used
-* [Bootstrap](https://getbootstrap.com/) - Framework responsible for CSS
-* [FontAwesome](https://fontawesome.com/) - Icon library and toolkit
-* [HTMX](https://htmx.org/) - Gives access to AJAX Server Sent Events etc. directly in HTML
-## Contributing
-
-PL
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Author
 
-* **Kamil Matysiak** - *Creator* - [g4n3sha5](https://github.com/g4n3sha5)
+* **Kamil Matysiak** - [g4n3sha5](https://github.com/g4n3sha5)
 
 
-## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 App inspired by:
 * Atomic Habits by James Clear
 * The Motivation Myth by Jeff Haden
 * The Power of Habit by Charles Duhigg
-
 
 
 * <a href="https://www.flaticon.com/free-icons/flexibility" title="flexibility icons">Flexibility icons created by Flat Icons - Flaticon</a>
