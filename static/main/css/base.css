@@ -570,10 +570,9 @@ h2, .h2 {
 .bubbleContainer {
     /*background-color: #191919;*/
     /*background-color: var(--paleBlack);*/
-
-    background-color: var(--paleBlack);
+    background-color:  #F7F6FB;
     min-height: 35vh;
-    color:white;
+    color:black;
 }
 
 
@@ -586,7 +585,7 @@ h2, .h2 {
     margin:0;
 }
 .feature-1 h3{
-    color:white;
+    /*color:white;*/
     margin:19px 0;
 }
 .feature-1 {
@@ -1206,6 +1205,9 @@ h2, .h2 {
     z-index:1;
     margin-top:8px;
 
+}
+.reportIcon i{
+    font-size:3em;
 }
 .colorTransform:after{
     background-color:var(--cyanBlueFooter) !important;

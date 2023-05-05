@@ -21,17 +21,20 @@ import cloudinary.api
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME' : os.environ['CLOUD_NAME'],
-    'API_KEY' : os.environ['CLOUD_API_KEY'],
-    'API_SECRET' : os.environ['CLOUD_API_SECRET']
-}
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+try:
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': os.environ['CLOUD_NAME'],
+        'API_KEY': os.environ['CLOUD_API_KEY'],
+        'API_SECRET': os.environ['CLOUD_API_SECRET']
+    }
+    STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+except:
+    pass
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
@@ -48,7 +51,6 @@ USE_TZ = True
 SESSION_COOKIE_DOMAIN = 'mativated.com'
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
-
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -92,7 +94,7 @@ INTERNAL_IPS = [
 # Application definition
 
 INSTALLED_APPS = [
-        'django.contrib.staticfiles',
+    'django.contrib.staticfiles',
     'cloudinary_storage',
     'cloudinary',
     'main',
@@ -163,9 +165,7 @@ AUTHENTICATION_BACKENDS = [
 
 WSGI_APPLICATION = 'main.wsgi.application'
 ASGI_APPLICATION = 'main.asgi.application'
-SESSIONS_ENGINE='django.contrib.sessions.backends.cache'
-
-
+SESSIONS_ENGINE = 'django.contrib.sessions.backends.cache'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -256,4 +256,3 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 7
 ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 500
-

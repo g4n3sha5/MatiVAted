@@ -8,6 +8,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <form>
+                    {% csrf_token %}
                     <div class="modal-header">
                         <h5 class="modal-title font-weight-700">Would you like to report a bug?</h5>
                         {#                <form method="post">#}
@@ -30,7 +31,7 @@
                         {% endif %}
 
 
-                        {% csrf_token %}
+
                         <button
                                 hx-post="{% url 'sendSuggestion' %}"
                                 hx-target="#bugModalWrap"
