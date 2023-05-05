@@ -21,13 +21,14 @@ import cloudinary.api
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-print("OSSSSSSSSSSSSSSSSSSSSSS", os.environ)
+
 try:
     CLOUDINARY_STORAGE = {
         'CLOUD_NAME': os.environ['CLOUD_NAME'],
         'API_KEY': os.environ['CLOUD_API_KEY'],
         'API_SECRET': os.environ['CLOUD_API_SECRET']
     }
+    print("psss", CLOUDINARY_STORAGE)
     STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 except:

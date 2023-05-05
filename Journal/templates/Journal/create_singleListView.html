@@ -4,9 +4,6 @@
         {% csrf_token %}
         <h1 class="text-center text-white">{{ checklist.name }} </h1>
         <hr class="solid">
-        {##}
-        {#    {% csrf_token %}#}
-        {#<div id="singleListView">#}
 
         <div class=" w-100 px-lg-3 px-2">
             {% for item in checklist.item_set.all %}
