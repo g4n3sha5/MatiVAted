@@ -21,6 +21,7 @@ import cloudinary.api
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+print("OSSSSSSSSSSSSSSSSSSSSSS", os.environ)
 try:
     CLOUDINARY_STORAGE = {
         'CLOUD_NAME': os.environ['CLOUD_NAME'],
