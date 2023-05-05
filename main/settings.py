@@ -28,7 +28,7 @@ try:
         'API_KEY': os.environ['CLOUD_API_KEY'],
         'API_SECRET': os.environ['CLOUD_API_SECRET']
     }
-    print("psss", CLOUDINARY_STORAGE)
+
     STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 except:
