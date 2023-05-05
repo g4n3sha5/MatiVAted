@@ -1,103 +1,103 @@
-{% load static %}
-
+{#{% load static %}#}
+{##}
 {#{% include 'main/indexModals.html' %}#}
-
-<footer id="footer" class="mb-0 navStyling ">
-    <div class="container-fluid">
-        <div class="row gx-5 px-2 px-lg-5 d-flex justify-content-around gy-5">
-
-            <div class="col-xl-3 col-lg-4 col-md-6 col-12 bjjimg fitIMG d-flex align-items-center align-items-xl-start px-1 px-lg-1 px-xl-4 order-lg-0   ">
-                <img src="{% static 'main/img/brucelee.webp' %}">
-            </div>
-
-
-            <div class="col-xl-2 col-lg-4 col-md-6 col-12 footer-links mb-3 mb-lg-0 order-lg-2 order-xl-1">
-                <h4>BJJournal</h4>
-                <ul>
-                    <li><i class="bi bi-chevron-double-right"></i> <a href="{% url 'bjjournal' %}">Dashboard</a></li>
-                    <li>
-                        <i class="bi bi-chevron-double-right"></i> <a href="{% url 'addSession' %}">
-                        Add Training Session</a>
-                    </li>
-
-                    <li>
-                        <i class="bi bi-chevron-double-right"></i>
-                        <a href="{% url 'yourSessions' %}">Your Training Sessions</a>
-                    </li>
-
-                    <li>
-                        <i class="bi bi-chevron-double-right"></i>
-                        <a href="{% url 'techniques' %}">Techniques Base</a>
-                    </li>
-
-                    <li>
-                        <i class="bi bi-chevron-double-right"></i>
-                        <a href="{% url 'create' %}">To Do App</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-xl-2 col-lg-4  col-md-6 col-12 footer-links mb-3 mb-lg-0 order-lg-3 order-xl-2">
-                <h4>Clubs</h4>
-                <ul>
-                    <li><i class="bi bi-chevron-double-right"></i> <a href="{% url 'clubsIndex' %}">Add / Edit Club</a>
-                    </li>
-                    <li><i class="bi bi-chevron-double-right"></i> <a href="{% url 'clubMembers' %}">Club Members</a>
-                    </li>
-                    <li><i class="bi bi-chevron-double-right"></i> <a href="{% url 'clubTrainings' %}">Club Training
-                        Sessions</a></li>
-                    <li><i class="bi bi-chevron-double-right"></i> <a href="{% url 'clubSchedule' %}">Club Schedule</a>
-                    </li>
-                    <li><i class="bi bi-chevron-double-right"></i> <a href="{% url 'clubsList' %}">Clubs List</a></li>
-
-                </ul>
-            </div>
-            <div class="col-lg-6 col-xl-3 mt-lg-5 mt-xl-0  px-4 order-lg-1 order-xl-3">
-                <div class="footer-info d-flex flex-column align-items-center">
-                    <h3 class="MATIVATED">MATIVATED</h3>
-                    <div class=" profilePicture smallProfile  mx-0 profile  mb-3"
-                         style="background-image: url('https://res.cloudinary.com/dj8dhfr6k/image/upload/v1681241014/media/profile_images/ganesh.jpg')">
-                    </div>
-
-                    <h5> g4n3sha5 - creator</h5>
-                    <h4 class="font-weight-800 mb-2"> Poznań, <span>Poland</span></h4>
-
-
-                    <h4>Favourite Grappler:<br>
-                        <span class="">Mica Galvão</span>
-                    </h4>
-
-                    <div class="social-links mt-3 d-flex justify-content-center">
-                        <a href="https://github.com/g4n3sha5" target="_blank" class="facebook"><i
-                                class="bi bi-github"></i></a>
-                        <a href="https://www.linkedin.com/in/kamilmatysiak" target="_blank" class="linkedin"><i
-                                class="bi bi-linkedin"></i></a>
-                        <a href="#" class="mativated">
-                            <img class="fitIMG" src="{% static 'main/img/logo-removebg.png' %}">
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="reportIcons col-lg-4 col-xl-1 align-items-center
-             d-flex flex-column col-md-4 justify-content-around pb-5 pt-1 order-lg-4 ">
-
+{##}
+{#<footer id="footer" class="mb-0 navStyling ">#}
+{#    <div class="container-fluid">#}
+{#        <div class="row gx-5 px-2 px-lg-5 d-flex justify-content-around gy-5">#}
+{##}
+{#            <div class="col-xl-3 col-lg-4 col-md-6 col-12 bjjimg fitIMG d-flex align-items-center align-items-xl-start px-1 px-lg-1 px-xl-4 order-lg-0   ">#}
+{#                <img src="{% static 'main/img/brucelee.webp' %}">#}
+{#            </div>#}
+{##}
+{##}
+{#            <div class="col-xl-2 col-lg-4 col-md-6 col-12 footer-links mb-3 mb-lg-0 order-lg-2 order-xl-1">#}
+{#                <h4>BJJournal</h4>#}
+{#                <ul>#}
+{#                    <li><i class="bi bi-chevron-double-right"></i> <a href="{% url 'bjjournal' %}">Dashboard</a></li>#}
+{#                    <li>#}
+{#                        <i class="bi bi-chevron-double-right"></i> <a href="{% url 'addSession' %}">#}
+{#                        Add Training Session</a>#}
+{#                    </li>#}
+{##}
+{#                    <li>#}
+{#                        <i class="bi bi-chevron-double-right"></i>#}
+{#                        <a href="{% url 'yourSessions' %}">Your Training Sessions</a>#}
+{#                    </li>#}
+{##}
+{#                    <li>#}
+{#                        <i class="bi bi-chevron-double-right"></i>#}
+{#                        <a href="{% url 'techniques' %}">Techniques Base</a>#}
+{#                    </li>#}
+{##}
+{#                    <li>#}
+{#                        <i class="bi bi-chevron-double-right"></i>#}
+{#                        <a href="{% url 'create' %}">To Do App</a>#}
+{#                    </li>#}
+{#                </ul>#}
+{#            </div>#}
+{##}
+{#            <div class="col-xl-2 col-lg-4  col-md-6 col-12 footer-links mb-3 mb-lg-0 order-lg-3 order-xl-2">#}
+{#                <h4>Clubs</h4>#}
+{#                <ul>#}
+{#                    <li><i class="bi bi-chevron-double-right"></i> <a href="{% url 'clubsIndex' %}">Add / Edit Club</a>#}
+{#                    </li>#}
+{#                    <li><i class="bi bi-chevron-double-right"></i> <a href="{% url 'clubMembers' %}">Club Members</a>#}
+{#                    </li>#}
+{#                    <li><i class="bi bi-chevron-double-right"></i> <a href="{% url 'clubTrainings' %}">Club Training#}
+{#                        Sessions</a></li>#}
+{#                    <li><i class="bi bi-chevron-double-right"></i> <a href="{% url 'clubSchedule' %}">Club Schedule</a>#}
+{#                    </li>#}
+{#                    <li><i class="bi bi-chevron-double-right"></i> <a href="{% url 'clubsList' %}">Clubs List</a></li>#}
+{##}
+{#                </ul>#}
+{#            </div>#}
+{#            <div class="col-lg-6 col-xl-3 mt-lg-5 mt-xl-0  px-4 order-lg-1 order-xl-3">#}
+{#                <div class="footer-info d-flex flex-column align-items-center">#}
+{#                    <h3 class="MATIVATED">MATIVATED</h3>#}
+{#                    <div class=" profilePicture smallProfile  mx-0 profile  mb-3"#}
+{#                         style="background-image: url('https://res.cloudinary.com/dj8dhfr6k/image/upload/v1681241014/media/profile_images/ganesh.jpg')">#}
+{#                    </div>#}
+{##}
+{#                    <h5> g4n3sha5 - creator</h5>#}
+{#                    <h4 class="font-weight-800 mb-2"> Poznań, <span>Poland</span></h4>#}
+{##}
+{##}
+{#                    <h4>Favourite Grappler:<br>#}
+{#                        <span class="">Mica Galvão</span>#}
+{#                    </h4>#}
+{##}
+{#                    <div class="social-links mt-3 d-flex justify-content-center">#}
+{#                        <a href="https://github.com/g4n3sha5" target="_blank" class="facebook"><i#}
+{#                                class="bi bi-github"></i></a>#}
+{#                        <a href="https://www.linkedin.com/in/kamilmatysiak" target="_blank" class="linkedin"><i#}
+{#                                class="bi bi-linkedin"></i></a>#}
+{#                        <a href="#" class="mativated">#}
+{#                            <img class="fitIMG" src="{% static 'main/img/logo-removebg.png' %}">#}
+{#                        </a>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="reportIcons col-lg-4 col-xl-1 align-items-center#}
+{#             d-flex flex-column col-md-4 justify-content-around pb-5 pt-1 order-lg-4 ">#}
+{##}
 {#                <div class=" reportIcon hoverScale colorTransform "#}
 {#                data-toggle="modal">#}
 {#                    <i class="bi bi-lightbulb-fill fa-3x"></i>#}
 {##}
 {#                </div>#}
-
-                <div class="reportIcon hoverScale colorTransform"
-                data-bs-toggle="modal"
-                data-bs-target="#bugModal">
-                    <i class="bi bi-hammer fa-2x"></i>
-                </div>
-
-
-            </div>
-
-
-        </div>
-    </div>
-
-</footer>
+{##}
+{#                <div class="reportIcon hoverScale colorTransform"#}
+{#                data-bs-toggle="modal"#}
+{#                data-bs-target="#bugModal">#}
+{#                    <i class="bi bi-hammer fa-2x"></i>#}
+{#                </div>#}
+{##}
+{##}
+{#            </div>#}
+{##}
+{##}
+{#        </div>#}
+{#    </div>#}
+{##}
+{#</footer>#}
