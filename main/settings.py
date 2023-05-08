@@ -44,15 +44,15 @@ STATICFILES_DIRS = [
 #   os.path.join(BASE_DIR, 'locale'),
 # )
 
-
+SITE_ID = 1
 LANGUAGE_CODE = 'pl-PL'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = False
 USE_TZ = True
-SESSION_COOKIE_DOMAIN = 'mativated.com'
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+#SESSION_COOKIE_DOMAIN = 'mativated.com'
+#SESSION_COOKIE_SECURE = True
+#CSRF_COOKIE_SECURE = True
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
