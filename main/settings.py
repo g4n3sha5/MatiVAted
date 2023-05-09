@@ -27,13 +27,14 @@ try:
         'CLOUD_NAME': os.environ['CLOUD_NAME'],
         'API_KEY': os.environ['CLOUD_API_KEY'],
         'API_SECRET': os.environ['CLOUD_API_SECRET'],
-        'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'png', 'gif', 'webp'],
+        # 'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'png', 'gif', 'webp'],
     },
     # STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
     SESSION_COOKIE_DOMAIN = 'mativated.com'
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 except:
     pass
@@ -126,7 +127,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
