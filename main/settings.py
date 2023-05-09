@@ -22,13 +22,22 @@ import cloudinary.api
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ['CLOUD_NAME'],
-    'API_KEY': os.environ['CLOUD_API_KEY'],
-    'API_SECRET': os.environ['CLOUD_API_SECRET']
-}
-STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+try:
+    CLOUDINARY_STORAGE = {
+        'CLOUD_NAME': os.environ['CLOUD_NAME'],
+        'API_KEY': os.environ['CLOUD_API_KEY'],
+        'API_SECRET': os.environ['CLOUD_API_SECRET']
+    }
+    STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    SESSION_COOKIE_DOMAIN = 'mativated.com'
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+
+except:
+    pass
+
+
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -45,9 +54,7 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = False
 USE_TZ = True
-#SESSION_COOKIE_DOMAIN = 'mativated.com'
-#SESSION_COOKIE_SECURE = True
-#CSRF_COOKIE_SECURE = True
+
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -95,24 +102,24 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'main',
-   # 'Notifications',
-   # 'Journal',
-   # 'WorkoutJournal',
-  #  'Clubs',
-   # 'Presentation',
+   'Notifications',
+   'Journal',
+   'WorkoutJournal',
+   'Clubs',
+   'Presentation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    # 'account_register.apps.UsersConfig',
-    # 'crispy_forms',
-    # 'crispy_bootstrap5',
-    # 'allauth',
-    # 'allauth.account',
-    # 'allauth.socialaccount',
-    # 'allauth.socialaccount.providers.google',
+    'account_register.apps.UsersConfig',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 
 ]
 
