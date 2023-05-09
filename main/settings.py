@@ -15,12 +15,21 @@ import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-
+from django.conf import settings
 # # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+if not settings.DEBUG:
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    SESSION_COOKIE_DOMAIN = 'mativated.com'
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 try:
     CLOUDINARY_STORAGE = {
@@ -30,11 +39,7 @@ try:
         # 'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'png', 'gif', 'webp'],
     },
     # STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-    SESSION_COOKIE_DOMAIN = 'mativated.com'
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
 
 except:
     pass
