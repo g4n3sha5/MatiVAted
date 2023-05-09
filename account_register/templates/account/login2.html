@@ -1,8 +1,6 @@
 {% extends 'register/base.html' %}
 {% load static %}
-{% block title %}
-Login here
-{% endblock %}
+
 {% load crispy_forms_tags %}
 {% block content %}
     <form method="post" class= "form-group">
@@ -31,7 +29,7 @@ Login here
 
 {#{% extends "account/base.html" %}#}
 {##}
-{#{#{% load i18n %}#}#}
+{#{#{% load i18n %}#}
 {#{% load account socialaccount %}#}
 {##}
 {#{% block head_title %}{% trans "Sign In" %}{% endblock %}#}

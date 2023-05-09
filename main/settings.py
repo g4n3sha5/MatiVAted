@@ -22,17 +22,11 @@ import cloudinary.api
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-try:
-    CLOUDINARY_STORAGE = {
-        'CLOUD_NAME': os.environ['CLOUD_NAME'],
-        'API_KEY': os.environ['CLOUD_API_KEY'],
-        'API_SECRET': os.environ['CLOUD_API_SECRET']
-    }
-
-
-except:
-    pass
-
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ['CLOUD_NAME'],
+    'API_KEY': os.environ['CLOUD_API_KEY'],
+    'API_SECRET': os.environ['CLOUD_API_SECRET']
+}
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 STATIC_URL = 'static/'
@@ -101,23 +95,22 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'main',
-    'Notifications',
-    'Journal',
-    'WorkoutJournal',
-    'Clubs',
-    'Presentation',
+   # 'Notifications',
+   # 'Journal',
+   # 'WorkoutJournal',
+  #  'Clubs',
+   # 'Presentation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'account_register.apps.UsersConfig',
-    # 'django.template.loaders.app_directories.load_template_source',
-    'crispy_forms',
-    'crispy_bootstrap5',
-    'allauth',
-    'allauth.account',
+    # 'account_register.apps.UsersConfig',
+    # 'crispy_forms',
+    # 'crispy_bootstrap5',
+    # 'allauth',
+    # 'allauth.account',
     # 'allauth.socialaccount',
     # 'allauth.socialaccount.providers.google',
 
