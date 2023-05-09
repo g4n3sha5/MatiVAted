@@ -112,6 +112,7 @@ INSTALLED_APPS = [
    'Notifications',
    'Journal',
    'WorkoutJournal',
+    'account_register',
    'Clubs',
    'Presentation',
     'django.contrib.admin',
@@ -120,13 +121,14 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'account_register.apps.UsersConfig',
+    # 'account_register.apps.UsersConfig',
     'crispy_forms',
     'crispy_bootstrap5',
+
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',
-    'allauth.socialaccount.providers.google',
+    # 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.google',
 
 ]
 
