@@ -26,9 +26,10 @@ try:
     CLOUDINARY_STORAGE = {
         'CLOUD_NAME': os.environ['CLOUD_NAME'],
         'API_KEY': os.environ['CLOUD_API_KEY'],
-        'API_SECRET': os.environ['CLOUD_API_SECRET']
-    }
-    STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+        'API_SECRET': os.environ['CLOUD_API_SECRET'],
+        'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'png', 'gif', 'webp'],
+    },
+    # STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
     SESSION_COOKIE_DOMAIN = 'mativated.com'
     SESSION_COOKIE_SECURE = True
