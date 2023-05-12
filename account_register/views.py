@@ -59,6 +59,9 @@ def account(request):
 
 def magiclogin(request):
     user = authenticate(email='test@qa.pl', password='tester65')
+    if not user:
+        user = authenticate(email='test@qa.pl', password='tester65')
+
     login(request, user, backend="allauth.account.auth_backends.AuthenticationBackend")
 
     return HttpResponseRedirect(reverse('profile'))
