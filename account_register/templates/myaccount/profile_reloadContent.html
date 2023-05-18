@@ -5,7 +5,7 @@
 
         <div class="profileBackground w-100 ">
 
-            {% if success is True %}
+            {% if success %}
                 <div class="savedWrap bg-success px-3">
                     <i class="bi bi-check2 fa-2x"></i>
                     <h4>Saved correctly</h4>
@@ -16,14 +16,14 @@
         <form enctype="multipart/form-data"
               class="h-100 "
               hx-target=".AccountContentWrapper"
-              hx-post="."
-              hx-trigger="change delay:500ms, submit">
+              hx-post="{% url 'profile' %}"
+              hx-trigger="change delay:500ms, click from:#saveProfile">
+
             {% csrf_token %}
 
             <div class="row h-100 mx-0">
 
                 <div class="col-md-6 d-flex align-items-center justify-content-start flex-column">
-
 
 
                     {% include 'myaccount/profile_profileInfo.html' %}
@@ -33,27 +33,29 @@
                 <div class="rightSideProfile col-md-6 pt-3 px-0 mx-0">
                     <div class=" px-0 mt-lg-3 yourBelt  w-100 mx-0 d-flex flex-column align-items-center
                     justify-content-start    ">
-                        {% include 'myaccount/profile_yourBelt.html' %}
-                        
 
+                        {% include 'myaccount/profile_yourBelt.html' %}
 
 
                         <div class="favTechnique py-2 position-relative mt-lg-2 d-flex
                         justify-content-center flex-wrap flex-column w-100  1">
-        {% include 'myaccount/profile_favTechnique.html' %}
+                            {% include 'myaccount/profile_favTechnique.html' %}
+                        </div>
+
+
+                        <span class="btn btn-success saveProfile text-white font-weight-700 mt-4 px-5 "
+                              hx-post="{% url 'profile' %}"
+                              hx-target=".AccountContentWrapper "
+
+                        >Save</span>
                     </div>
-
-
-
-
+                    {#                    <input type="submit">#}
                 </div>
-                {#                    <input type="submit">#}
+
+
             </div>
+        </form>
 
 
     </div>
-    </form>
-
-
-</div>
 </div>

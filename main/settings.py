@@ -16,34 +16,37 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from django.conf import settings
+
 # # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+DEBUG = True
 
-if not settings.DEBUG:
-    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+if not DEBUG:
     SESSION_COOKIE_DOMAIN = 'mativated.com'
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
+    STORAGES = {
+        "staticfiles": {
+            "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        },
+    }
+    try:
+        CLOUDINARY_STORAGE = {
+             'CLOUD_NAME': os.environ['CLOUD_NAME'],
+             'API_KEY': os.environ['CLOUD_API_KEY'],
+             'API_SECRET': os.environ['CLOUD_API_SECRET']
+         }
 
-try:
-    CLOUDINARY_STORAGE = {
-        'CLOUD_NAME': os.environ['CLOUD_NAME'],
-        'API_KEY': os.environ['CLOUD_API_KEY'],
-        'API_SECRET': os.environ['CLOUD_API_SECRET'],
-        # 'STATIC_IMAGES_EXTENSIONS': ['jpg', 'jpe', 'png', 'gif', 'webp'],
-    },
-    # STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
+        DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-
-except:
-    pass
-
+    except:
+        pass
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -62,11 +65,8 @@ USE_I18N = True
 USE_L10N = False
 USE_TZ = True
 
-
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# import mimetypes
-# mimetypes.add_type("text/css", ".css", True)
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'h26.seohost.pl'
 EMAIL_PORT = '587'
@@ -95,7 +95,7 @@ except:
     SECRET_KEY = 'django-insecure-q$h-7xe*!yo(u8wr-het-!8ybcp%wmyw-(mc+j^3(r7%&obof$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+
 
 ALLOWED_HOSTS = ['*']
 INTERNAL_IPS = [
@@ -109,26 +109,24 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'main',
-   'Notifications',
-   'Journal',
-   'WorkoutJournal',
-    'account_register',
-   'Clubs',
-   'Presentation',
+    'Notifications',
+    'Journal',
+    'WorkoutJournal',
+    'Clubs',
+    'Presentation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    # 'account_register.apps.UsersConfig',
+    'account_register.apps.UsersConfig',
     'crispy_forms',
     'crispy_bootstrap5',
-
     'allauth',
     'allauth.account',
-    # 'allauth.socialaccount',
-    # 'allauth.socialaccount.providers.google',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
 
 ]
 
@@ -181,12 +179,7 @@ SESSIONS_ENGINE = 'django.contrib.sessions.backends.cache'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-STORAGES = {
-    # ...
-    # "staticfiles": {
-    #     "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    # },
-}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

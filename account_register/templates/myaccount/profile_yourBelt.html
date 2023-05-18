@@ -11,12 +11,12 @@
     </li>
 </div>
 
-<div class="beltDropdown d-flex  justify-content-center">
+<div class="beltDropdown d-flex  justify-content-center mb-3">
     <ul class="d-flex flex-row flex-wrap justify-content-center w-100 p-0  ">
 
         {% for belt in form.belt %}
 
-            <li class="  mx-2 text-center  d-flex flex-column align-items-center
+            <li class="belt mx-2 text-center  d-flex flex-column align-items-center
                 justify-content-center mb-1 d-block">
                 <label class="cursor-pointer hideInput techniqueOptionClick w-100 h-100" for="{{belt.id_for_label}}">
                     {{belt.tag}}

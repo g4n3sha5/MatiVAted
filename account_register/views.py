@@ -14,7 +14,7 @@ from WorkoutJournal.models import Technique
 #
 #
 def profile(request):
-    currentProfile = UserProfile.objects.get(user_id=request.user.id)
+    currentProfile = UserProfile.objects.get(user=request.user)
     form = UserProfileForm(instance=currentProfile)
     context = {
         'form': form,
@@ -23,6 +23,8 @@ def profile(request):
 
     }
     template = 'profile'
+
+
     if request.method == 'POST':
         template = 'profile_reloadContent'
         form = UserProfileForm(request.POST,
@@ -35,8 +37,6 @@ def profile(request):
             context['success'] = True
 
 
-
-
     return render(request, f"myaccount/{template}.html", context)
 
 
@@ -46,7 +46,7 @@ def account(request):
         if "delete" in request.POST:
             idd = request.user.id
             u = User.objects.get(id=idd)
-            # p = UserProfile.objects.get(user_id == idd)
+
             u.delete()
 
         return HttpResponseRedirect(reverse("index"))
@@ -58,9 +58,7 @@ def account(request):
 
 
 def magiclogin(request):
-    user = authenticate(email='test@qa.pl', password='tester65')
-    if not user:
-        user = authenticate(email='test@qa.pl', password='tester65')
+    user = authenticate(email='test2@qa.pl', password='test2@qa.pl')
 
     login(request, user, backend="allauth.account.auth_backends.AuthenticationBackend")
 
