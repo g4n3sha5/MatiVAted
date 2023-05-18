@@ -1157,7 +1157,10 @@ h2, .h2 {
 
 
 }
-
+.footerBelt img {
+    width:90px !important;
+    height:auto;
+}
 
 .footer-links ul {
     list-style: none;

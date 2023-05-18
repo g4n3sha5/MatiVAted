@@ -488,12 +488,13 @@ nav a img {
 }
 .feature-box i {
     font-size: 50px;
-     
+
 }
 
 .feature-box h4 {
     font-weight: 700;
     margin-bottom:9px;
+
 
 }
 
@@ -519,14 +520,18 @@ nav a img {
     object-position: top;
 }
 
-.clean-hero .wave {
+    .clean-hero .wave {
     width: 100%;
     overflow: hidden;
     position: absolute;
     z-index: 1;
     bottom: -170px;
-    /*background-color:black;*/
+
+
 }
+    .clean-hero .wave svg{
+           fill:black !important;
+    }
 
 .section-heading {
     color: #240046;
@@ -566,15 +571,14 @@ h2, .h2 {
 .bubbleContainer {
     /*background-color: #191919;*/
     /*background-color: var(--paleBlack);*/
-
-    background-color: #f2f3f4;
+    background-color:  #F7F6FB;
     min-height: 35vh;
-
+    color:black;
 }
 
 
 .bubbleSection p {
-      color:var(--paleBlack);
+      /*color:var(--paleBlack);*/
       /*color:var(--cyanBlueFooter);*/
 }
 .bubbleSection .col-md-3{
@@ -582,7 +586,7 @@ h2, .h2 {
     margin:0;
 }
 .feature-1 h3{
-    color:black;
+    /*color:white;*/
     margin:19px 0;
 }
 .feature-1 {
@@ -827,22 +831,25 @@ h2, .h2 {
     position: relative;
     height: 20.2vh;
     /*background-color:#5e71f2;*/
-    /*background-color:#2e007b;*/
-    background-color: hsla(194, 85%, 62%, 1);
+    background-color: #18F0FE;
+    /*background-color: #4ccaf0;*/
 }
 
 .savedWrap {
     position: absolute;
     right: 4%;
-    bottom: 0.555%;
+    bottom:3px;
+    padding-top:5px;
+    height:80px !important;
     color: white;
+
 }
 
 .savedWrap h4 {
     /*position:relative;*/
     /*top:5%;*/
     font-size: 1.05rem;
-    margin-top: -10%;
+
 }
 
 .accountcontent {
@@ -864,7 +871,7 @@ h2, .h2 {
     /*padding-bottom: 150px;*/
     height: 100%;
     justify-content: center;
-    padding-bottom: 20vh;
+    /*padding-bottom: 20vh;*/
 
 }
 
@@ -954,9 +961,14 @@ h2, .h2 {
 @media (max-width: 992px) {
 
     .beltIMG {
-        max-width: 30vw;
-    }
+        /*max-width: 30vw;*/
+        width:120px;
+        height:80px;
 
+    }
+    .belt{
+    max-height:100px;
+}
     .logoEdit {
         font-size: 3vw !important;
     }
@@ -1083,6 +1095,7 @@ h2, .h2 {
     color: #fff;
     font-size: 14px;
     min-height: 15vh;
+    border-top:5px solid var(--cyanBlueFooter);
 
 }
 @media (max-width: 992px) {
@@ -1144,7 +1157,10 @@ h2, .h2 {
 
 
 }
-
+#footerBelt {
+    width:90px !important;
+    height:100px;
+}
 
 .footer-links ul {
     list-style: none;
@@ -1200,6 +1216,9 @@ h2, .h2 {
     z-index:1;
     margin-top:8px;
 
+}
+.reportIcon i{
+    font-size:3em;
 }
 .colorTransform:after{
     background-color:var(--cyanBlueFooter) !important;
@@ -1403,6 +1422,7 @@ a {
 }
 
 .BJR_content {
+    background: url("../img/sam-mgrdichian5.webp");
     flex-grow: 1;
     padding-right: 0;
     background-size: cover;
