@@ -186,7 +186,16 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+# if not DEBUG:
+#     DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'm4tivated$default',
+#         'USER': 'm4tivated',
+#         'PASSWORD': os.environ['SQL_PASSWORD'],
+#         'HOST': 'm4tivated.mysql.eu.pythonanywhere-services.com',
+#     }
+# }
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
