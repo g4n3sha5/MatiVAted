@@ -7,13 +7,22 @@ from django.contrib import messages
 from datetime import datetime, timedelta
 from django.contrib.auth.decorators import login_required
 from main.views import getBaseTemplate, userAuth
-from django.db.models import Q
+from django.db.models import Q, Sum
+
+
 # Create your views here.
 
 # def countAllHours (user):
 #
 
-#     return myDict
+def toMinutes(field):
+    x = field['totalLength__sum']
+    if x:
+        return round(x / 60, 1)
+    else:
+        return 0
+
+
 @login_required
 def BJJournalIndex(request):
 
@@ -22,12 +31,20 @@ def BJJournalIndex(request):
         template =  "BJR_index_reloadContent.html"
     # count = countAllHours(request.user)
     user = request.user
-    total = TrainingSession.objects.filter(user_id=user.id).count()
-    gi = TrainingSession.objects.filter(user_id=user.id, type="GI").count()
-    nogi = TrainingSession.objects.filter(user_id=user.id, type="NOGI").count()
-    gym = TrainingSession.objects.filter(user_id=user.id, type="GYM").count()
+    total = TrainingSession.objects.filter(user_id=user.id).aggregate(Sum('totalLength'))
+    gi = TrainingSession.objects.filter(user_id=user.id, type="GI").aggregate(Sum('totalLength'))
+    nogi = TrainingSession.objects.filter(user_id=user.id, type="NOGI").aggregate(Sum('totalLength'))
+    gym = TrainingSession.objects.filter(user_id=user.id, type="GYM").aggregate(Sum('totalLength'))
     LAST_MONTH = datetime.today() - timedelta(days=30)
-    last30days = TrainingSession.objects.filter(user_id=user.id, date__gte=LAST_MONTH).count()
+    last30days = TrainingSession.objects.filter(user_id=user.id, date__gte=LAST_MONTH).aggregate(Sum('totalLength'))
+
+    statistics = [total, gi, nogi, gym, last30days]
+
+    total, gi, nogi, gym, last30days = list(map(toMinutes, statistics))
+
+
+
+
 
 
     context = {

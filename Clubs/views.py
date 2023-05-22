@@ -24,6 +24,7 @@ def userHasClub(request):
 @login_required
 @userAuth
 def ClubsIndex(request):
+
     try:
         # find what club is the user in
         club = userClub(request.user.id)
@@ -31,8 +32,7 @@ def ClubsIndex(request):
 
 
     except:
-        yourClub = None
-
+        yourClub,club  = None, None
 
 
     context = {
@@ -45,14 +45,20 @@ def ClubsIndex(request):
     template = 'index'
 
     if request.method == 'POST':
-        yourClub, created = Club.objects.get_or_create(id=club.club_id)
-        # yourClub, created = Club.objects.get_or_create(creator=request.user)
+
+        if club:
+            yourClub = Club.objects.get(id=club.club_id)
+
+        else:
+            yourClub = Club.objects.create()
+
         form = ClubForm(request.POST, request.FILES, instance=yourClub)
 
         if form.is_valid():
+
             instance = form.save(commit=False)
             if not club:
-                yourClub.creator = request.user.id
+                yourClub.creator = request.user
                 UserMembership(user_id=request.user.id, authorized='FULL', memberType='Head', club=yourClub).save()
             instance.save()
 
@@ -60,8 +66,11 @@ def ClubsIndex(request):
             context['Club'] = yourClub
             context['success'] = True
 
+
+
     if request.META.get('HTTP_HX_REQUEST'):
         template = 'Clubs_reloadContent'
+
 
     return render(request, f"Clubs/{template}.html", context)
 
@@ -105,7 +114,6 @@ def clubMembers(request):
                 requestProfile = userProfiles.get(user_id=userRequest.user_id)
                 requestsDict[requestProfile] = userRequest
 
-
     context = {
         'membersList': membersListT,
         'profiles': profilesDict,
@@ -126,10 +134,7 @@ def memberRemove(request, id):
     return HttpResponseRedirect(reverse('clubMembers'))
 
 
-# def editMemberPermissions(request, memberID, form):
-#
-#     return HttpResponseRedirect(reverse('clubMembers'))
-#
+
 
 def profileMemberMatcher (userID):
 

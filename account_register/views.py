@@ -14,7 +14,11 @@ from WorkoutJournal.models import Technique
 #
 #
 def profile(request):
-    currentProfile = UserProfile.objects.get(user=request.user)
+    try:
+        currentProfile = UserProfile.objects.get(user_id = request.user.id)
+    except:
+        currentProfile = None
+
     form = UserProfileForm(instance=currentProfile)
     context = {
         'form': form,

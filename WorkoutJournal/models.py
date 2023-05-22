@@ -40,7 +40,7 @@ class TrainingSession(models.Model):
     date = models.DateField(default=date.today, blank=True, null=True)
     timestamp = models.TimeField(blank = True, null = True)
     location = models.CharField(max_length=50, blank=True, null=True)
-    hoursLength = models.IntegerField(blank=False, null=True)
+    hoursLength = models.IntegerField(blank=False, null=True, default = 0)
     minutesLength = models.IntegerField(blank=False, null=True, default = 00)
     totalLength =  models.IntegerField(blank=True, null=True, default = 0)
     notes = models.TextField(max_length=2500,blank=True, null=True)

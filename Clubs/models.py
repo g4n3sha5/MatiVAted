@@ -25,6 +25,7 @@ BELT_ORDER = Case(
 
 
 class Club(models.Model):
+
     name = models.CharField(blank=False, max_length=100, unique=True)
     logo = models.ImageField(default='defaultLogo.png', upload_to='clubs_logo', blank=True, null=True)
     estabilished = models.CharField(max_length=15, blank=True, null=True)

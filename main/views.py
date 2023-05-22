@@ -26,10 +26,14 @@ def userAuth(func):
         if authorized:
             return func(request, *args, **kwargs)
 
+        authorized = 'NOCLUB'
+
         try:
-            authorized = UserMembership.objects.get(user_id=request.user.id).authorized
+            member = UserMembership.objects.get(user_id=request.user.id)
+            authorized = member.authorized
+
         except:
-            authorized = False
+            pass
 
         request.session['authorized'] = authorized
 
