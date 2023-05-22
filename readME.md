@@ -2,10 +2,6 @@
 ## Non-commercial pet project for Martial Artists
 As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts, this app is specifically created for Brazilian Jiu Jitsu.
 
-### ==== ANNOUNCEMENT ===
-As for now - 04.05.2023 I decide to share the code, the app is working perfectly locally but when I deploy it, there are some server problems with static files. 
-I did not find the reason for now, and I've been looking for few weeks, I keep trying to find reasons behind it in spare time.
-
 
 # About
 I created the project inspired by literature about habits and motivation, as Jiu-Jitsu is my passion and I didn't know any app for Jiu Jitsu I decided to create one - to save my Training Sessions, following this idea I did:
