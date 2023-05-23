@@ -25,6 +25,13 @@ from django.conf import settings
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+
 
 try:
     envType = os.environ['ENV_TYPE']
@@ -42,16 +49,13 @@ try:
                 'HOST': 'm4tivated.mysql.eu.pythonanywhere-services.com',
         }
     }
+    else:
+        from dotenv import load_dotenv
+        load_dotenv()
 
 except:
-    from dotenv import load_dotenv
-    load_dotenv()
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+   pass
+
 
 if not DEBUG:
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
