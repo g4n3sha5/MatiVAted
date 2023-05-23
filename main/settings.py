@@ -24,21 +24,23 @@ from django.conf import settings
 try:
     envType = os.environ['ENV_TYPE']
     if envType == 'PROD':
+        pwd = os.environ['SQL_PASSWORD']
         SESSION_COOKIE_DOMAIN = 'mativated.com'
         SESSION_COOKIE_SECURE = True
         CSRF_COOKIE_SECURE = True
         DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'm4tivated$default',
+            'NAME': 'm4tivated$main',
             'USER': 'm4tivated',
-            'PASSWORD': os.environ['SQL_PASSWORD'],
+            'PASSWORD': pwd,
             'HOST': 'm4tivated.mysql.eu.pythonanywhere-services.com',
         }
     }
     else:
         from dotenv import load_dotenv
         load_dotenv()
+
 except:
    pass
 
