@@ -20,7 +20,9 @@ from django.conf import settings
 # # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+from dotenv import load_dotenv
 
+load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 DEBUG = True
@@ -36,7 +38,7 @@ DATABASES = {
 try:
     envType = os.environ['ENV_TYPE']
     if envType == 'PROD':
-        pwd = os.environ['SQL_PASSWORD']
+        pwd = str(os.environ['SQL_PASSWORD'])
         SESSION_COOKIE_DOMAIN = 'mativated.com'
         SESSION_COOKIE_SECURE = True
         CSRF_COOKIE_SECURE = True
@@ -49,9 +51,6 @@ try:
                 'HOST': 'm4tivated.mysql.eu.pythonanywhere-services.com',
         }
     }
-    else:
-        from dotenv import load_dotenv
-        load_dotenv()
 
 except:
    pass
