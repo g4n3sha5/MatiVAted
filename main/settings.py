@@ -21,6 +21,11 @@ from django.conf import settings
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+DEBUG = True
+
+
 try:
     envType = os.environ['ENV_TYPE']
     if envType == 'PROD':
@@ -29,23 +34,27 @@ try:
         SESSION_COOKIE_SECURE = True
         CSRF_COOKIE_SECURE = True
         DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'm4tivated$main',
-            'USER': 'm4tivated',
-            'PASSWORD': pwd,
-            'HOST': 'm4tivated.mysql.eu.pythonanywhere-services.com',
+            'default': {
+                'ENGINE': 'django.db.backends.mysql',
+                'NAME': 'm4tivated$main',
+                'USER': 'm4tivated',
+                'PASSWORD': pwd,
+                'HOST': 'm4tivated.mysql.eu.pythonanywhere-services.com',
         }
     }
     else:
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.sqlite3',
+                'NAME': BASE_DIR / 'db.sqlite3',
+            }
+        }
         from dotenv import load_dotenv
         load_dotenv()
 
+
 except:
    pass
-
-BASE_DIR = Path(__file__).resolve().parent.parent
-DEBUG = True
 
 if not DEBUG:
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
@@ -199,12 +208,7 @@ SESSIONS_ENGINE = 'django.contrib.sessions.backends.cache'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+
 
 LOGGING = {
     'version': 1,
