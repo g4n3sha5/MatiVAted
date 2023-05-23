@@ -111,9 +111,12 @@ def clubMembers(request):
     if requestListT:
         for userRequest in requestListT:
             if userRequest.status != 'REJECTED':
-                requestProfile = userProfiles.get(user_id=userRequest.user_id)
-                requestsDict[requestProfile] = userRequest
+                try:
+                    requestProfile = userProfiles.get(user_id=userRequest.user_id)
+                    requestsDict[requestProfile] = userRequest
 
+                except:
+                    requestProfile = None
     context = {
         'membersList': membersListT,
         'profiles': profilesDict,

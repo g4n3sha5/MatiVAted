@@ -16,20 +16,27 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 from django.conf import settings
-from dotenv import load_dotenv
-load_dotenv()
+
 # # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+try:
+    envType = os.environ['ENV_TYPE']
+    if envType == 'PROD':
+        SESSION_COOKIE_DOMAIN = 'mativated.com'
+        SESSION_COOKIE_SECURE = True
+        CSRF_COOKIE_SECURE = True
+    else:
+        from dotenv import load_dotenv
+        load_dotenv()
+except:
+   pass
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DEBUG = False
+DEBUG = True
 
 if not DEBUG:
-    # SESSION_COOKIE_DOMAIN = 'mativated.com'
-    # SESSION_COOKIE_SECURE = True
-    # CSRF_COOKIE_SECURE = True
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
     STORAGES = {
