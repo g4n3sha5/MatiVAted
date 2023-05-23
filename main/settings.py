@@ -27,6 +27,15 @@ try:
         SESSION_COOKIE_DOMAIN = 'mativated.com'
         SESSION_COOKIE_SECURE = True
         CSRF_COOKIE_SECURE = True
+        DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'm4tivated$default',
+            'USER': 'm4tivated',
+            'PASSWORD': os.environ['SQL_PASSWORD'],
+            'HOST': 'm4tivated.mysql.eu.pythonanywhere-services.com',
+        }
+    }
     else:
         from dotenv import load_dotenv
         load_dotenv()
@@ -194,16 +203,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-# if not DEBUG:
-#     DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'm4tivated$default',
-#         'USER': 'm4tivated',
-#         'PASSWORD': os.environ['SQL_PASSWORD'],
-#         'HOST': 'm4tivated.mysql.eu.pythonanywhere-services.com',
-#     }
-# }
+
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
