@@ -32,18 +32,17 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+from dotenv import load_dotenv
+load_dotenv()
 try:
-    envType = os.environ['ENV_TYPE']
-    if envType == 'LOCAL':
-        from dotenv import load_dotenv
-        load_dotenv()
+    envType = str(os.getenv('ENV_TYPE'))
+    # envType = os.environ['ENV_TYPE']
+    print(envType)
 
-except:
-    pass
-try:
-    envType = os.environ['ENV_TYPE']
-    if envType == 'PROD':
-        pwd = str(os.environ['SQL_PASSWORD'])
+    if str(envType) == 'PROD':
+
+        pwd = str(os.getenv('SQL_PASSWORD'))
+        # pwd = str(os.environ['SQL_PASSWORD'])
         SESSION_COOKIE_DOMAIN = 'mativated.com'
         SESSION_COOKIE_SECURE = True
         CSRF_COOKIE_SECURE = True
@@ -61,25 +60,34 @@ try:
 except:
     pass
 
+import traceback
+
+try:
+    CLOUDINARY_STORAGE = {
+         'CLOUD_NAME': str(os.getenv('CLOUD_NAME')),
+         'API_KEY': str(os.getenv('CLOUD_API_KEY')),
+         'API_SECRET': str(os.getenv('CLOUD_API_SECRET'))
+
+        # 'CLOUD_NAME': os.environ['CLOUD_NAME'],
+         # 'API_KEY': os.environ['CLOUD_API_KEY'],
+         # 'API_SECRET': os.environ['CLOUD_API_SECRET']
+     }
+
+    DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
+
+except Exception:
+    traceback.print_exc()
+
+
 if not DEBUG:
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
     STORAGES = {
         "staticfiles": {
             "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
         },
     }
-    try:
-        CLOUDINARY_STORAGE = {
-             'CLOUD_NAME': os.environ['CLOUD_NAME'],
-             'API_KEY': os.environ['CLOUD_API_KEY'],
-             'API_SECRET': os.environ['CLOUD_API_SECRET']
-         }
 
-        DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
-    except:
-        pass
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -109,7 +117,8 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 try:
-    env = os.environ['EMAIL_PASSWORD']
+    env =str(os.getenv('EMAIL_PASSWORD'))
+    # env = os.environ['EMAIL_PASSWORD']
     if env:
         EMAIL_HOST_PASSWORD = str(env)
 except:
@@ -121,9 +130,11 @@ except:
 # SECURITY WARNING: keep the secret key used in production secret!
 
 try:
-    env = os.environ['SECRET_KEY']
+    env = str(os.getenv('SECRET_KEY'))
+    # env = os.environ['SECRET_KEY']
+
     if env:
-        SECRET_KEY = os.environ['SECRET_KEY']
+        SECRET_KEY = env
 except:
     SECRET_KEY = 'django-insecure-q$h-7xe*!yo(u8wr-het-!8ybcp%wmyw-(mc+j^3(r7%&obof$'
 
