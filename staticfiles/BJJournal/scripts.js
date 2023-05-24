@@ -18,7 +18,8 @@
 // }
 //
 
-/*
+/* An attempt to communicate Django Paginator with Frontend to make it show different amount out Sessions in Your Sessions
+
 function responsiveBackend() {
     const smallScreens = window.matchMedia('(max-width: 768px)')
     const bigScreens = window.matchMedia('(min-width: 768px)')
@@ -64,8 +65,6 @@ function responsiveBackend() {
 function onClickColor() {
     const addSession = document.querySelector('.addSessionSection')
     const count_icon = document.querySelectorAll('.count_icon')
-    // let lengthTYPE = document.querySelector('.lengthTYPE')
-
     if (count_icon) {
         Array.from(count_icon)
 
@@ -154,17 +153,14 @@ function multiSelect() {
                     </span>`
 
         if (checkBox.checked) {
-
             technique.classList.add('d-none', 'cantSearch')
             if (choicePlaceholder.textContent === "Choose techniques") choicePlaceholder.textContent = ''
             choicePlaceholderWrapper.insertAdjacentHTML("beforeend", TechniqueHTML)
-            // removeToggle(choicePlaceholderWrapper, choicePlaceholder, technique)
 
         }
         technique.addEventListener('click', (evt) => {
             evt.preventDefault()
             technique.querySelector('input').checked = true
-            // console.log()
             technique.classList.add('d-none', 'cantSearch')
 
             if (choicePlaceholder.textContent === "Choose techniques") choicePlaceholder.textContent = ''
@@ -193,14 +189,12 @@ function removeToggle(choicePlaceholderWrapper, choicePlaceholder, technique=fal
             elementToView.classList.remove('d-none', 'cantSearch')
             evt.target.remove()
             elementToView.querySelector('input').checked = false
-            // checkBox.checked = false
             if (choicePlaceholderWrapper.textContent.trim() === '') choicePlaceholder.textContent = "Choose techniques"
 
         })
 
 
     })
-    // if (choicePlaceholder.textContent === '') choicePlaceholder.textContent = "Choose techniques"
 
 }
 
@@ -246,7 +240,6 @@ function editDescription() {
                 showDescription(techDescription, techDescriptionInput)
             }
 
-            // techDescriptionInput.style.height = 30 + '%'
 
         })
     }
@@ -321,7 +314,6 @@ function quickFightTimeButtons() {
 
                 fightTime.insertAdjacentHTML('beforeend', html)
                 fightTime.lastChild.addEventListener('click', evt => {
-                    // evt.target.classList.o
                     fightTimeInput.value = x
                 })
             }

@@ -1157,9 +1157,9 @@ h2, .h2 {
 
 
 }
-#footerBelt {
-    width:90px !important;
-    height:100px;
+.footerBelt  {
+    width:15vw; !important;
+    height:auto;
 }
 
 .footer-links ul {

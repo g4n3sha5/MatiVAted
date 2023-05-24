@@ -20,12 +20,11 @@ from django.conf import settings
 # # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-from dotenv import load_dotenv
 
-load_dotenv()
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
-DEBUG = True
+DEBUG = False
 
 DATABASES = {
     'default': {
@@ -33,8 +32,14 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+try:
+    envType = os.environ['ENV_TYPE']
+    if envType == 'LOCAL':
+        from dotenv import load_dotenv
+        load_dotenv()
 
-
+except:
+    pass
 try:
     envType = os.environ['ENV_TYPE']
     if envType == 'PROD':
@@ -52,9 +57,9 @@ try:
         }
     }
 
-except:
-   pass
 
+except:
+    pass
 
 if not DEBUG:
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
@@ -106,7 +111,7 @@ EMAIL_USE_SSL = False
 try:
     env = os.environ['EMAIL_PASSWORD']
     if env:
-        EMAIL_HOST_PASSWORD = env
+        EMAIL_HOST_PASSWORD = str(env)
 except:
     EMAIL_HOST_PASSWORD = ''
 

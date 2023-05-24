@@ -1157,8 +1157,8 @@ h2, .h2 {
 
 
 }
-.footerBelt img {
-    width:90px !important;
+.footerBelt  {
+    width:15vw; !important;
     height:auto;
 }
 
