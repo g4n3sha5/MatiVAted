@@ -74,7 +74,7 @@ try:
      }
 
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-
+    print("success")
 
 except Exception:
     traceback.print_exc()
