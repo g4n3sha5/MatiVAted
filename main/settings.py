@@ -13,14 +13,14 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 from pathlib import Path
 import os
 import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+from cloudinary import config
+import traceback
 from django.conf import settings
+
 
 # # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,6 +33,7 @@ DATABASES = {
     }
 }
 from dotenv import load_dotenv
+
 load_dotenv()
 try:
     envType = str(os.getenv('ENV_TYPE'))
@@ -40,7 +41,6 @@ try:
     print(envType)
 
     if str(envType) == 'PROD':
-
         pwd = str(os.getenv('SQL_PASSWORD'))
         # pwd = str(os.environ['SQL_PASSWORD'])
         SESSION_COOKIE_DOMAIN = 'mativated.com'
@@ -53,32 +53,37 @@ try:
                 'USER': 'm4tivated',
                 'PASSWORD': pwd,
                 'HOST': 'm4tivated.mysql.eu.pythonanywhere-services.com',
+            }
         }
-    }
 
 
 except:
     pass
 
-import traceback
+
+
 
 try:
-    CLOUDINARY_STORAGE = {
-         'CLOUD_NAME': str(os.getenv('CLOUD_NAME')),
-         'API_KEY': str(os.getenv('CLOUD_API_KEY')),
-         'API_SECRET': str(os.getenv('CLOUD_API_SECRET'))
 
-        # 'CLOUD_NAME': os.environ['CLOUD_NAME'],
-         # 'API_KEY': os.environ['CLOUD_API_KEY'],
-         # 'API_SECRET': os.environ['CLOUD_API_SECRET']
-     }
+    CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': str(os.getenv('CLOUD_NAME')),
+    'API_KEY': str(os.getenv('CLOUD_API_KEY')),
+    'API_SECRET': str(os.getenv('CLOUD_API_SECRET'))
+    }
+    # 'CLOUD_NAME': os.environ['CLOUD_NAME'],
+    # 'API_KEY': os.environ['CLOUD_API_KEY'],
+    # 'API_SECRET': os.environ['CLOUD_API_SECRET']
+
 
     DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
     print("success")
 
+
 except Exception:
     traceback.print_exc()
 
+import cloudinary.uploader
+import cloudinary.api
 
 if not DEBUG:
     STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
@@ -87,7 +92,6 @@ if not DEBUG:
             "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
         },
     }
-
 
 STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
@@ -117,7 +121,7 @@ EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
 try:
-    env =str(os.getenv('EMAIL_PASSWORD'))
+    env = str(os.getenv('EMAIL_PASSWORD'))
     # env = os.environ['EMAIL_PASSWORD']
     if env:
         EMAIL_HOST_PASSWORD = str(env)
@@ -223,7 +227,6 @@ SESSIONS_ENGINE = 'django.contrib.sessions.backends.cache'
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
-
 
 
 LOGGING = {
