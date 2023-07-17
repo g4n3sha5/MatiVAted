@@ -38,7 +38,9 @@ As the application processes some personal data, there is information how and wh
 Project made with Django, HTML, CSS, JavaScript, Bootstrap, HTMX, FontAwesome
 
 # Run
-Beta version live on www.mativated.com
+Beta version live on https://m4tivated.eu.pythonanywhere.com/
+
+(www.mativated.com)
 
 ### Locally
 Clone the repo, install dependencies with 
