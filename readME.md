@@ -23,7 +23,7 @@ I created the project inspired by literature about habits and motivation, as Jiu
 - Add Training Session (Save Session type, length, techniques learned etc.)
 - Your Training Sessions (list of every TS, where user can edit or remove every Session)
 - Open Techniques base (where every user can add a Jiu Jitsu Technique (name, type etc.) and add Suggestions to other Techniques)
-- Simple To Do App where user can add a To Do List, and Items to do for each List.
+- Simple To Do app where user can add a To Do list, and items to do for each list.
 
 #### Notifications
 - Notify authorized members about Requests 
