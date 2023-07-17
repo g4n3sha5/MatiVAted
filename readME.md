@@ -48,7 +48,7 @@ And run with
 
 
 # Future development
-App is in continous development since 2022 and have further plans for development.
+App is planned to be in further development.
 
 ![logo](https://user-images.githubusercontent.com/116462435/227205699-fc9fae9f-02a4-4240-b9c3-9eccc002573f.png)
 
