@@ -3,15 +3,15 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/g4n3sha5/Auratek">
-    <img src="main/img/logo-removebg.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/g4n3sha5/MatiVAted">
+    <img src="staticfiles/main/img/logo-removebg.png" alt="Logo" width="80" height="80">
   </a>
 
   
 <h3 align="center">Mativated</h3>
 
   <p align="center">
-Non-commercial pet project for Martial Artists.
+Non-commercial project for Martial Artists.
   As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts, this app is specifically created for Brazilian Jiu Jitsu.
   </p>
 </div>
