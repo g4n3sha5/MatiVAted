@@ -1,29 +1,29 @@
-name: Build and deploy
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
+# name: Build and deploy
+# on:
+#   push:
+#     branches: [main]
+#   workflow_dispatch:
 
-jobs:
-  deploy:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@main
-      - name: Sync files to hosting
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
-        with:
-          server : h26.seohost.pl
-          username:	github@mativated.com
-          password: ${{ secrets.ftp_password }}
-          exclude: |
-            - main/wsgi.py
-            - /db.sqlite3/
-            - main/asgi.py
-            - main/__init__.py
-            - .git*
-            - .git*/**
-            -  **/.git*/**
-            - staticfiles/**
+# jobs:
+#   deploy:
+#     name: Build
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@main
+#       - name: Sync files to hosting
+#         uses: SamKirkland/FTP-Deploy-Action@4.0.0
+#         with:
+#           server : h26.seohost.pl
+#           username:	github@mativated.com
+#           password: ${{ secrets.ftp_password }}
+#           exclude: |
+#             - main/wsgi.py
+#             - /db.sqlite3/
+#             - main/asgi.py
+#             - main/__init__.py
+#             - .git*
+#             - .git*/**
+#             -  **/.git*/**
+#             - staticfiles/**
         
