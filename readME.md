@@ -1,6 +1,21 @@
-# MATIVATED
-## Non-commercial pet project for Martial Artists
-As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts, this app is specifically created for Brazilian Jiu Jitsu.
+## About 
+
+
+<br />
+<div align="center">
+  <a href="https://github.com/g4n3sha5/Auratek">
+    <img src="main/img/logo-removebg.png" alt="Logo" width="80" height="80">
+  </a>
+
+  
+<h3 align="center">Mativated</h3>
+
+  <p align="center">
+Non-commercial pet project for Martial Artists.
+  As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts, this app is specifically created for Brazilian Jiu Jitsu.
+
+  </p>
+</div>
 
 
 # About
@@ -48,6 +63,14 @@ Clone the repo, install dependencies with
 And run with 
   python manage.py runserver
 
+
+
+### Built With
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/bootstrap-%238511FA.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+![Django](https://img.shields.io/badge/django-%23092E20.svg?style=for-the-badge&logo=django&logoColor=white)
++ HTMX
 
 # Future development
 App is planned to be in further development.
