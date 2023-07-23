@@ -13,9 +13,15 @@
   <p align="center">
 Non-commercial pet project for Martial Artists.
   As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts, this app is specifically created for Brazilian Jiu Jitsu.
-
   </p>
 </div>
+
+
+[![mativated.webp](https://i.postimg.cc/L5BGP8mP/mativated.webp)](https://postimg.cc/y3xf4Bg6)
+
+[![mativated2.png](https://i.postimg.cc/1tgFCvXR/mativated2.png)](https://postimg.cc/Vr855BX2)
+
+[![mativated3.png](https://i.postimg.cc/MK17J3Dv/mativated3.png)](https://postimg.cc/svDQpcbr)
 
 
 # About
