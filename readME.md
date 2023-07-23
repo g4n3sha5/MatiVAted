@@ -1,5 +1,3 @@
-## About 
-
 
 <br />
 <div align="center">
