@@ -18,7 +18,7 @@
 // }
 //
 
-/* An attempt to communicate Django Paginator with Frontend to make it show different amount out Sessions in Your Sessions
+/* An attempt to communicate Django Paginator with Frontend to make it show different amount of Sessions in Your Sessions
 
 function responsiveBackend() {
     const smallScreens = window.matchMedia('(max-width: 768px)')
