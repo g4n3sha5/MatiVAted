@@ -77,7 +77,7 @@ And run with
 + HTMX
 
 # Future development
-For year 2023/2024 the app is planned to be rebuild with React Native.
+For year 2023/2024 the app is planned to be rebuild with React.
 
 ![logo](https://user-images.githubusercontent.com/116462435/227205699-fc9fae9f-02a4-4240-b9c3-9eccc002573f.png)
 
