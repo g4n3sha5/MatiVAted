@@ -17,11 +17,12 @@ Now using that experience I am remaking it with a better technology stack. [Rema
 </ h4>
 
   
+<br/>
   <p align="center">
 Non-commercial project for Martial Artists.
   As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts, this app is specifically created for Brazilian Jiu Jitsu.
   </p>
-</div>
+
 
 
 [![mativated.webp](https://i.postimg.cc/L5BGP8mP/mativated.webp)](https://postimg.cc/y3xf4Bg6)
