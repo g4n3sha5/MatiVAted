@@ -8,6 +8,15 @@
   
 <h3 align="center">Mativated</h3>
 
+  <h4 align="center">
+This app is still (2025) hosted on pythonanywhere and working, however I am not working on it anymore.
+It was a great playground, great struggle and a great lesson working on it for over 10 months, however I didn't realize how not scalable and messy using Django (not DRF) + HTMX can be.
+I am proud I've made it all myself from scratch, but it's time to move forward. There is a lot of mess in this version, as I didn't have enough experience to plan it properly. 
+Creating an app solo taught me Project Management, Problem-Solving, UI/UX Design, Time Management. 
+Now using that experience I am remaking it with a better technology stack. [Remake](https://github.com/g4n3sha5/mativated-monorepo).
+</ h4>
+
+  
   <p align="center">
 Non-commercial project for Martial Artists.
   As numerous studies have shown, monitoring your progress and tracking your habits make us significantly more prone to improve our behaviour and progress faster. Small wins are massive motivators, but we need to recognize them. This project provides utilities for people who love sport - grappling Martial Arts, this app is specifically created for Brazilian Jiu Jitsu.
